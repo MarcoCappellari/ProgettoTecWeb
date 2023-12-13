@@ -1,0 +1,265 @@
+* {
+    margin: 0px;
+    padding: 0;
+}
+
+:root {
+    --headerBgColor: rgb(0, 0, 0);
+    --headerTxtColor: #f0f0f0;
+
+    --breadcrumbBgColor: rgb(41, 40, 40);
+
+    --bgColor: white;
+    --txtColor: black;
+
+    --footerBgColor: black;
+    --footerTxtColor: white;
+
+    --linkColor: rgb(255, 255, 255);
+    --visitedLinkColor: red;
+
+    --font-body_family: "Century Gothic", sans-serif;
+}
+
+html {
+    font-size: 100%;
+    font-family: var(--font-body_family);
+    line-height: 1.5em;
+    margin: auto;
+    font-size: 20px;
+    /* Ho messo qui background color perche quando ho uno schermo tanto grande
+    rimarrebbe uno spazio vuoto ai lati*/
+    background-image: url("./images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; 
+}
+
+/*Questo codice l'ho generato per rendere immagine di sfondo tendente al nero */
+
+html::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+}
+
+
+header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+    /*oppure space-between*/
+    align-items: center;
+    background-color: var(--headerBgColor);
+    color: var(--headerTxtColor);
+    /* per schermi troppo grandi */
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+
+}
+
+header h1 {
+    text-indent: -999em;
+    background-image: url("./images/logo1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    width: 200px;
+    height: 100px;
+
+}
+
+nav {
+    color: var(--headerTxtColor);
+}
+
+/*ho tolto il nav davanti perche alla fine voglio che tutti i link
+sia quelli del nav, che gli altri abbiamo la stessa forma*/
+a:link {
+    color: var(--linkColor);
+}
+
+a:visited {
+    color: var(--visitedLinkColor);
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu ul li {
+    margin: 0 1em;
+    display: inline-block;
+    /* width: 20%; bisogna vedere se essenziale come tag*/
+}
+
+#breadcrumb {
+    background-color: var(--breadcrumbBgColor);
+    /* per schermi troppo grandi */
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+}
+
+#breadcrumb p {
+    margin: 0;
+}
+
+/*css main*/
+
+#film-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+}
+
+#search-bar {
+    margin-right: 1em;
+    border: none;
+
+}
+
+#search-bar input {
+    height: 1em;
+    width: 23em;
+    padding: 1em;
+}
+
+#search-bar button {
+    padding: 1em;
+    background-color: var(--visitedLinkColor);
+    color: #fff;
+    /*cursor: pointer; */
+}
+
+
+.film-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 2em;
+    /* Spazio tra le colonne e le righe */
+    text-align: center;
+    color: var(--headerTxtColor);
+    background-color: var(--headerBgColor);
+    /* padding: 10em;  Non so se necessario*/
+
+    /* per schermi troppo grandi */
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+
+}
+
+.film-image {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.film-image:hover {
+    transform: scale(0.9); /* Ingrandisce l'elemento del 10% al passaggio del mouse */
+  }
+/*footer*/
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--breadcrumbBgColor);
+    color: var(--headerTxtColor);
+
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+}
+
+/* Stile per ciascuna colonna nel footer */
+footer>div {
+    flex: 1;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+footer .footer-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--footerTxtColor);
+    margin-bottom: 1em;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer li {
+    margin-bottom: 1em;
+}
+
+
+/*Template_film*/
+#film-informazioni-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    align-items: center;
+    border: 1px solid #000;
+    
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;  
+}
+
+#film-dettagli h1 {
+    padding: 0.2em;
+    background-color: rgb(230, 86, 86); 
+    color: var(--headerTxtColor); 
+    text-align: center; 
+    text-transform: uppercase; 
+    border-radius: 8px;  
+    line-height: 1; /*L'ho aggiunto perche' se titolo troppo lungo*/
+}
+
+#film-locandina img {
+    min-width: 60%;
+    padding: 1em;
+    margin: auto;  
+}
+
+#film-dettagli {
+    max-width: 70%;
+}
+
+.orari-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: center;
+    justify-items: center;  
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 1em; 
+    margin: auto;
+}
+
+.film-data {
+    padding: 10px;
+}
+
+.film-ora {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--linkColor);
+}
