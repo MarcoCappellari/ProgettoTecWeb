@@ -1,24 +1,12 @@
 <?php
-// Connessione al database (sostituisci con le tue credenziali)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cinema";
-
-// Creazione della connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica della connessione
-if ($conn->connect_error) {
-    die("Connessione al database fallita: " . $conn->connect_error);
-}
+require_once 'connessione_database.php';
 
 // Query per ottenere i film dal database
 $sql = "SELECT id, nome, locandina FROM Film";
 $result = $conn->query($sql);
-
 // Chiudi la connessione
 $conn->close();
+
 // Inizializza la stringa HTML dei film
 $filmHtml = '';
 
