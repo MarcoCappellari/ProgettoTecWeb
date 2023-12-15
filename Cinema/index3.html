@@ -33,14 +33,15 @@
 
     <!--main-->
     <main>
-        <!--h2 + barra di ricerca-->
-
+        <!--h2 + barra di ricerca, ricordati che ho creato form-->
         <div id="film-section">
             <h2>Film consigliati per te</h2>
-            <div id="search-bar">
-                <input type="text" placeholder="Inserisci il nome di un film...">
-                <button type="button">Cerca</button>
-            </div>
+            <form id="search-form" action="ricerca.php" method="GET">
+                <div id="search-bar">
+                    <input type="text" name="film_name" placeholder="Inserisci il nome di un film...">
+                    <button type="submit">Cerca</button>
+                </div>
+            </form>
         </div>
 
         <div class="film-container">
