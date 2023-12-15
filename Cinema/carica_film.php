@@ -4,28 +4,25 @@ require_once 'connessione_database.php';
 // Query per ottenere i film dal database
 $sql = "SELECT id, nome, locandina FROM Film";
 $result = $conn->query($sql);
-// Chiudi la connessione
+// Chiusa
 $conn->close();
 
-// Inizializza la stringa HTML dei film
-$filmHtml = '';
+$stringa_info_film = '';
 
-// Itera sui risultati della query e costruisci la stringa HTML dei film
+// creo una section  per ogni film
 while ($row = $result->fetch_assoc()) {
-    $filmHtml .= '<section class="film">';
-    $filmHtml .= '<a href="visualizza_film.php?film=' . $row['id'] . '">';
-    $filmHtml .= '<img class="film-image" src="data:image/jpeg;base64,' . base64_encode($row['locandina']) . '" alt="">';
-    $filmHtml .= '<p> ' . $row['nome'] . '</p>';
-    $filmHtml .= '</a>';
-    $filmHtml .= '</section>';
+    $stringa_info_film .= '<section class="film">';
+    $stringa_info_film .= '<a href="visualizza_film.php?film=' . $row['id'] . '">';
+    $stringa_info_film .= '<img class="film-image" src="data:image/jpeg;base64,' . base64_encode($row['locandina']) . '" alt="">';
+    $stringa_info_film .= '<p> ' . $row['nome'] . '</p>';
+    $stringa_info_film .= '</a>';
+    $stringa_info_film .= '</section>';
 }
 
-
-
-// Sostituisci la stringa {FILM} nel file HTML con la stringa HTML dei film
-$html = file_get_contents('index3.html');
-$html = str_replace('{FILM}', $filmHtml, $html);
+// sostituisco stringa {FILM} nel file film_template.html
+$template_film = file_get_contents('index3.html');
+$template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
 
 // Stampa il risultato
-echo $html;
+echo $template_film;
 ?>
