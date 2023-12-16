@@ -19,12 +19,12 @@ if ($result) {
         $row = $result->fetch_assoc();
         $film_id = $row['id'];
         header("Location: visualizza_film.php?film=$film_id");
-        exit();
+        //exit();
     } else {
         // Nessun risultato trovato, puoi gestire questa situazione come desideri
         //echo "Nessun risultato trovato.";
         header("Location: carica_film.php?film_name=$film_name");
-        exit();
+        //exit();
     }
 }
 
