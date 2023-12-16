@@ -23,6 +23,5 @@ while ($row = $result->fetch_assoc()) {
 $template_film = file_get_contents('index3.html');
 $template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
 
-// Stampa il risultato
 echo $template_film;
 ?>
