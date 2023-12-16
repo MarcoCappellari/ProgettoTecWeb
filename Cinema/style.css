@@ -263,3 +263,39 @@ footer li {
     padding: 10px;
     background-color: var(--linkColor);
 }
+
+/*Errore film*/
+#film-non-esiste {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    flex-direction: column; /* Disposizione verticale */
+    background-color: #ffdddd;
+    text-align: center;
+    padding: 1em;
+}
+
+#immagine-errore-film {
+    width: 200px; /* Imposta la larghezza dell'immagine */
+    height: 200px; /* Imposta l'altezza dell'immagine */
+    background-image: url("./images/error-film.png"); /* Imposta l'immagine di sfondo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;  
+}
+
+
+#film-non-esiste p {
+    margin: 1em; /* Aggiunge spazio tra i paragrafi */
+    font-size: 25px;
+    color: var(--txtColor);
+}
+
+#film-name-error{
+    color: var(--visitedLinkColor); /* Colore rosso */
+    font-weight: bold; /* Testo in grassetto */
+    font-size: 30px; /* Dimensione del carattere */
+    background-color: var(--headerTxtColor); /* Sfondo chiaro */
+    padding: 0.3em; /* Spazio interno */
+    border-radius: 5px; /* Bordo arrotondato */
+
+}
