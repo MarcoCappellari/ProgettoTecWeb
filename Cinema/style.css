@@ -243,7 +243,7 @@ footer li {
 
 .orari-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     align-items: center;
     justify-items: center;  
@@ -299,3 +299,36 @@ footer li {
     border-radius: 5px; /* Bordo arrotondato */
 
 }
+
+/*mostra altri orari*/
+#locandina-title {
+    display: flex;
+    align-items: center; /* Centra verticalmente all'interno del contenitore */
+    justify-content: left;
+}
+
+#locandina-title img {
+    margin: 0.5em; /* Margine a destra per separare l'immagine dal testo */
+}
+
+#film-orari-container {
+    background-color: #f0f0f0;
+
+
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+}
+
+#data-ora{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd; /* Aggiunge una linea tra le date e le ore */
+    padding: 0.5em;
+}
+
+#data-ora ul {
+    list-style-type: none;
+}
+

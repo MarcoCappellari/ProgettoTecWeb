@@ -127,6 +127,8 @@ if ($resultFilm->num_rows > 0) {
         }
 
         $orariHTML .= "</div></div>";
+        $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'><strong>Mostra altri orari</strong></a>";
+
         $template = str_replace('{ORARI}', $orariHTML, $template);
     } else {
         $template = str_replace('{ORARI}', "<p> Nessuna riproduzione è ancora stata programmata, la preghiamo di attendere (le nuove riproduzioni saranno inserite mercoledì sera).</p>", $template);
