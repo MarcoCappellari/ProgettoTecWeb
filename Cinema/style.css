@@ -15,7 +15,7 @@
     --footerBgColor: black;
     --footerTxtColor: white;
 
-    --linkColor: rgb(255, 255, 255);
+    --linkColor: rgb(255, 145, 11);
     --visitedLinkColor: red;
 
     --font-body_family: "Century Gothic", sans-serif;
@@ -258,10 +258,9 @@ footer li {
 }
 
 .film-ora {
-    border: 1px solid #000;
-    border-radius: 8px;
+  
     padding: 10px;
-    background-color: var(--linkColor);
+  
 }
 
 /*Errore film*/
@@ -330,5 +329,50 @@ footer li {
 
 #data-ora ul {
     list-style-type: none;
+}
+
+/*posti*/
+#film-posti{
+    display: flex;
+    flex-direction: column; /* Disposizione verticale */
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;     /* Centra orizzontalmente */
+    text-align: center;        /* Allinea il testo a sinistra */
+
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+}
+
+#cinema-screen {
+    width: 100px; /* Imposta la larghezza dell'immagine */
+    height: 100px; /* Imposta l'altezza dell'immagine */
+    background-image: url("./images/cinema-screen.png"); /* Imposta l'immagine di sfondo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;  
+}
+
+/*checkbox*/
+/* Stili per i posti selezionabili */
+.selezionabile {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0.3em; 
+}
+
+/* Stili per i posti non selezionabili */
+.non-selezionabile {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: not-allowed; 
+    background-image: url("./images/checkbox.png"); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 5px; 
 }
 

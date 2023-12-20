@@ -120,10 +120,10 @@ if ($resultFilm->num_rows > 0) {
 
 
         while ($rowOrariMinimi = $resultOrariMinimi->fetch_assoc()) {
-            $oraCorrente = date('H:i', strtotime($rowOrariMinimi['ora']));
-
+            $oraFormattata = date('H:i', strtotime($rowOrariMinimi['ora']));
+            $link = "seleziona_posti.php?idFilm=$idFilm&data=$dataMinima&ora=" . urlencode($rowOrariMinimi['ora']);
             // Aggiungi ogni ora con una classe
-            $orariHTML .= "<p class='film-ora'>$oraCorrente</p>";
+            $orariHTML .= "<p class='film-ora'><a href='$link'>$oraFormattata</a></p>";
         }
 
         $orariHTML .= "</div></div>";

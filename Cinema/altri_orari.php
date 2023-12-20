@@ -4,7 +4,7 @@ if (isset($_GET['idFilm'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['idFilm'];
 
-    // Connessione al database (sostituisci con le tue credenziali)
+    // Connessione al database
     require_once 'connessione_database.php';
 
     // Esegui la query per ottenere gli orari di proiezione e le informazioni sul film
@@ -51,7 +51,11 @@ if (isset($_GET['idFilm'])) {
 
             foreach ($proiezioni as $proiezione) {
                 $oraFormattata = date('H:i', strtotime($proiezione['ora']));
-                 $proiezioniHTML .= "<li class='film-ora'> $oraFormattata</li>";
+               //PER OGNI ORA, collego un link alla pagina di selezione posto
+                $link = "seleziona_posti.php?idFilm=$idFilm&data=$data&ora=" . urlencode($proiezione['ora']);
+    
+                // Crea il link con l'orario come testo del link
+                $proiezioniHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
             }
             $proiezioniHTML .= "</div></ul></div>";
 
