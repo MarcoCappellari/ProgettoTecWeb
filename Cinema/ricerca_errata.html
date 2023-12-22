@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PopCorn Cinema</title>
+    <meta name="keyword" content="PopCorn Cinema, film ">
+    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="mini.css" media="screen and (max-width: 600px)">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="shortcut icon" href="./images/logo.png" />
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <h1>Popcorn Cinema</h1>
+        <nav id="menu">
+            <ul>
+                <li><a href="carica_film.php"><span lang="en">Home</span></a></li>
+                <li><a href="Prenota.html">Prenota</a></li>
+                <li><a href="Recensioni.html">Recensioni </a></li>
+                <li><a href="Accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--breadcrumb-->
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="carica_film.php"><span lang="en">Home</span></a> > Nessun Risultato per: {NOMEFILM} </p>
+    </nav>
+
+    <!--main-->
+    <main>
+        <!--h2 + barra di ricerca, ricordati che ho creato form-->
+        <div id="film-section">
+            <h2>Film consigliati per te</h2>
+            <form id="search-form" action="ricerca.php" method="GET">
+                <div id="search-bar">
+                    <input type="text" name="film_name" placeholder="Inserisci il nome di un film...">
+                    <button type="submit">Cerca</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="film-non-esiste">
+            <div id="immagine-errore-film"> </div>
+            <div id="messaggio-errore-film">
+                <p>Purtroppo, non abbiamo trovato alcun film corrispondente al nome:
+                    <span id="film-name-error">{NOMEFILM}</span>
+                </p>
+                <p> Ti consigliamo di verificare l'ortografia, utilizzare un nome alternativo o esplorare la nostra
+                    vasta selezione di film disponibili.</p>
+                <p>Torna alla <a href="carica_film.php">lista dei film</a></p>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <div>
+            <p class="footer-title" lang="en">About Us</p>
+            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
+        </div>
+        <div>
+            <p class="footer-title" lang="en"> Where to Find Us</p>
+            <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
+                    14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
+        </div>
+        <div>
+            <p class="footer-title" lang="en">Contact Us</p>
+            <ul>
+                <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
+                <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
+                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

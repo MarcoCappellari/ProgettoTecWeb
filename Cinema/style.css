@@ -34,6 +34,8 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     position: relative; 
+
+    
 }
 
 /*Questo codice l'ho generato per rendere immagine di sfondo tendente al nero */
@@ -375,4 +377,39 @@ footer li {
     background-repeat: no-repeat; 
     margin: 5px; 
 }
+
+/*500*/
+#error-container {
+    width: 80%;  /* Larghezza del contenitore */
+    margin: 1em auto;  /* Centra il contenitore orizzontalmente e aggiunge spazio sopra e sotto */
+    padding: 20px;  /* Aggiunge spazio interno al contenitore */
+    background-color: #f9f9f9;  /* Colore di sfondo del contenitore */
+    border: 1px solid #e0e0e0;  /* Bordo leggero attorno al contenitore */
+    text-align: center;  /* Centra il testo all'interno del contenitore */
+   
+}
+
+#error-container p {
+    margin: 26px 0;  /* Spazio sopra e sotto ogni paragrafo */
+    line-height: 1.6;  /* Altezza della riga per migliorare la leggibilità */
+    color: #333;  /* Colore del testo dei paragrafi */
+    font-size: 25px;  /* Dimensione del testo dei paragrafi */
+}
+
+#immagine-errore-500 {
+    width: 200px; /* Imposta la larghezza dell'immagine */
+    height: 200px; /* Imposta l'altezza dell'immagine */
+    background-image: url("./images/error.png"); /* Imposta l'immagine di sfondo */
+    background-size: contain;
+    background-repeat: no-repeat;
+     
+}
+
+#imgError-text {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    margin: auto; 
+}
+
 
