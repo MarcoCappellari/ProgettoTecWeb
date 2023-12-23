@@ -24,7 +24,7 @@ ksort($proiezioniFilm); //ordino array in base alla data (chiave) da + recente a
 
 foreach ($proiezioniFilm as $data => $orari) {
     $proiezioniHTML .= "<div id='data-ora'>";
-    $proiezioniHTML .= "<p>Data: $data</p>";
+    $proiezioniHTML .= "<p>Data: <span class='film-data'>$data</span></p>";
     $proiezioniHTML .= "<p>Ora:</p>";
     $proiezioniHTML .= "<ul>";
     $proiezioniHTML .= "<div class='orari-container'>";

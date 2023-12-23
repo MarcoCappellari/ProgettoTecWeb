@@ -14,7 +14,7 @@ if ($result->num_rows == 0) {
                            <p> Torna presto per scoprire le ultime novità!</p>';
     $stringa_info_film .= '</div>';
 } else {
-    $stringa_info_film .= '<div class="film-container">';
+    $stringa_info_film .= '<div id="film-container">';
     while ($row = $result->fetch_assoc()) {
         $stringa_info_film .= '<section class="film">';
         $stringa_info_film .= '<a href="visualizza_film.php?film=' . $row['id'] . '">';

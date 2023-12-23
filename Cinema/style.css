@@ -106,7 +106,7 @@ a:visited {
     margin: auto;
 }
 
-#film-section {
+#searchHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,7 +133,7 @@ a:visited {
     color: var(--headerTxtColor);
 }
 
-.film-container {
+#film-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
     gap: 2em;
@@ -239,11 +239,17 @@ footer li {
 }
 
 .film-data {
-    padding: 10px;
+    padding: 0.4em;
+    font-weight: bold;
+    color: var(--txtColor);
+    font-size: 22px;
 }
 
 .film-ora {
-    padding: 12px;
+    padding: 0.4em;
+    font-weight: bold;
+    color: var(--txtColor);
+    font-size: 22px;
 }
 
 /*Errore film*/
@@ -291,6 +297,7 @@ footer li {
 
 #locandina-title img {
     margin: 0.5em; 
+    width: 12%;
 }
 
 #film-orari-container {
