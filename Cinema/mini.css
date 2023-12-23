@@ -18,3 +18,37 @@ header {
 footer {
     flex-direction: column;
 }
+
+#goToMenu {
+    display: block; /* Mostra il pulsante su dispositivi mobili */
+   
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999; /* Assicurati che il pulsante sia sempre visibile sopra altri elementi */
+    /* ... (aggiungi altri stili se necessario) ... */
+}
+
+#bottomMenu {
+    display: block; /* Mostra il bottomMenu su dispositivi mobili */
+    text-align: center; /* Centra il contenuto */
+    background-color: var(--bgColor); /* Sfondo bianco */
+    font-size: 26px;
+    padding: 3em; /* Spazio interno */
+    margin: auto;
+
+}
+
+#bottomMenu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#bottomMenu ul li {
+    margin-bottom: 3em; 
+    color: var(--txtColor);
+    font-weight: bold;
+}
+
+#menu{
+    display: none;
+}

@@ -410,3 +410,10 @@ footer li {
 }
 
 
+#goToMenu {
+    display: none; /* Nascondi il pulsante per impostazione predefinita su desktop */
+}
+
+#bottomMenu {
+    display: none;
+}
