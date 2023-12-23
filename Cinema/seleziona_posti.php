@@ -29,7 +29,7 @@ while ($row = $SeatRow->fetch_assoc()) {
             $output .= "</div>"; //fine riga dei posti
         }
         $current_fila = $row['fila'];
-        $output .= "<div><strong>Fila " . $current_fila . "</strong>: "; //il div inserito serve per andare a capo ogni riga dei posti
+        $output .= "<div><span class='bold-text'>Fila " . $current_fila . "</span>: "; //il div inserito serve per andare a capo ogni riga dei posti
     }
 
     $stato_posto = $row['disponibile'] ? "selezionabile" : "non-selezionabile";

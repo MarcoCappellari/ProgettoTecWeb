@@ -4,19 +4,25 @@
 }
 
 :root {
-    --headerBgColor: rgb(0, 0, 0);
+    --headerBgColor: #000000;
     --headerTxtColor: #f0f0f0;
 
-    --breadcrumbBgColor: rgb(41, 40, 40);
+    --breadcrumbBgColor: #292828;
+    --breadcrumbTxtColor: #f0f0f0;
 
-    --bgColor: white;
-    --txtColor: black;
+    --searchHeaderBg: #f0f0f0;
 
-    --footerBgColor: black;
-    --footerTxtColor: white;
+    --bgColorHome: #000000;
+    --txtColorHome: #f0f0f0;
+    --bgColor: #f0f0f0;
+    --txtColor: #000000;
 
-    --linkColor: rgb(255, 145, 11);
-    --visitedLinkColor: red;
+    --footerTitleColor: #f0f0f0;
+    --footerBgColor: #292828;
+    --footerTxtColor: #ffffff;
+
+    --linkColor: #0294b9;
+    --visitedLinkColor: #FF0000;
 
     --font-body_family: "Century Gothic", sans-serif;
 }
@@ -27,18 +33,12 @@ html {
     line-height: 1.5em;
     margin: auto;
     font-size: 20px;
-    /* Ho messo qui background color perche quando ho uno schermo tanto grande
-    rimarrebbe uno spazio vuoto ai lati*/
     background-image: url("./images/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative; 
-
-    
 }
-
-/*Questo codice l'ho generato per rendere immagine di sfondo tendente al nero */
 
 html::before {
     content: "";
@@ -50,7 +50,6 @@ html::before {
     background-color: rgba(0, 0, 0, 0.9);
     z-index: -1;
 }
-
 
 header {
     padding: 1em;
@@ -82,8 +81,6 @@ nav {
     color: var(--headerTxtColor);
 }
 
-/*ho tolto il nav davanti perche alla fine voglio che tutti i link
-sia quelli del nav, che gli altri abbiamo la stessa forma*/
 a:link {
     color: var(--linkColor);
 }
@@ -99,29 +96,21 @@ a:visited {
 #menu ul li {
     margin: 0 1em;
     display: inline-block;
-    /* width: 20%; bisogna vedere se essenziale come tag*/
 }
 
 #breadcrumb {
     background-color: var(--breadcrumbBgColor);
-    /* per schermi troppo grandi */
+    color:var(--headerTxtColor);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
 }
 
-#breadcrumb p {
-    margin: 0;
-}
-
-/*css main*/
-
 #film-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0f0f0;
-
+    background-color: var(--searchHeaderBg);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
@@ -130,7 +119,6 @@ a:visited {
 #search-bar {
     margin-right: 1em;
     border: none;
-
 }
 
 #search-bar input {
@@ -142,26 +130,19 @@ a:visited {
 #search-bar button {
     padding: 1em;
     background-color: var(--visitedLinkColor);
-    color: #fff;
-    /*cursor: pointer; */
+    color: var(--headerTxtColor);
 }
-
 
 .film-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
     gap: 2em;
-    /* Spazio tra le colonne e le righe */
     text-align: center;
-    color: var(--headerTxtColor);
-    background-color: var(--headerBgColor);
-    /* padding: 10em;  Non so se necessario*/
-
-    /* per schermi troppo grandi */
+    color: var(--txtColorHome);
+    background-color: var(--bgColorHome);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
-
 }
 
 .film-image {
@@ -174,14 +155,12 @@ a:visited {
 .film-image:hover {
     transform: scale(0.9); /* Ingrandisce l'elemento del 10% al passaggio del mouse */
   }
-/*footer*/
 
 footer {
     display: flex;
     justify-content: space-around;
-    background-color: var(--breadcrumbBgColor);
-    color: var(--headerTxtColor);
-
+    background-color: var(--footerBgColor);
+    color: var(--footerTxtColor);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
@@ -197,7 +176,7 @@ footer>div {
 footer .footer-title {
     font-size: 25px;
     font-weight: bold;
-    color: var(--footerTxtColor);
+    color: var(--footerTitleColor);
     margin-bottom: 1em;
 }
 
@@ -209,15 +188,19 @@ footer li {
     margin-bottom: 1em;
 }
 
+.bold-text{
+    font-weight: bold;
+    color: var(--txtColor);
+    font-size: 22px;
+}
 
 /*Template_film*/
 #film-informazioni-container {
     display: flex;
     justify-content: space-around;
-    background-color: #f0f0f0;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
     align-items: center;
-    border: 1px solid #000;
-    
     max-width: 1024px;
     padding: 1em;
     margin: auto;  
@@ -225,8 +208,8 @@ footer li {
 
 #film-dettagli h1 {
     padding: 0.2em;
-    background-color: rgb(230, 86, 86); 
-    color: var(--headerTxtColor); 
+    background-color: var(--visitedLinkColor); 
+    color: var(--bgColor); 
     text-align: center; 
     text-transform: uppercase; 
     border-radius: 8px;  
@@ -249,7 +232,7 @@ footer li {
     gap: 10px;
     align-items: center;
     justify-items: center;  
-    border: 1px solid #000;
+    border: 1px solid var(--txtColor);
     border-radius: 8px;
     padding: 1em; 
     margin: auto;
@@ -260,17 +243,16 @@ footer li {
 }
 
 .film-ora {
-  
-    padding: 10px;
-  
+    padding: 12px;
 }
 
 /*Errore film*/
 #film-non-esiste {
     display: flex;
-    align-items: center; /* Centra verticalmente */
-    flex-direction: column; /* Disposizione verticale */
-    background-color: #ffdddd;
+    align-items: center; 
+    flex-direction: column; 
+    background-color: var(--bgColor);
+    color: var(--txtColor);
     text-align: center;
     padding: 1em;
 }
@@ -278,44 +260,42 @@ footer li {
 #immagine-errore-film {
     width: 200px; /* Imposta la larghezza dell'immagine */
     height: 200px; /* Imposta l'altezza dell'immagine */
-    background-image: url("./images/error-film.png"); /* Imposta l'immagine di sfondo */
+    background-image: url("./images/error-film.png"); 
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;  
 }
 
-
 #film-non-esiste p {
-    margin: 1em; /* Aggiunge spazio tra i paragrafi */
+    margin: 1em; 
     font-size: 25px;
     color: var(--txtColor);
 }
 
 #film-name-error{
-    color: var(--visitedLinkColor); /* Colore rosso */
-    font-weight: bold; /* Testo in grassetto */
-    font-size: 30px; /* Dimensione del carattere */
-    background-color: var(--headerTxtColor); /* Sfondo chiaro */
-    padding: 0.3em; /* Spazio interno */
-    border-radius: 5px; /* Bordo arrotondato */
+    color: var(--visitedLinkColor); 
+    font-weight: bold; 
+    font-size: 30px; 
+    background-color: var(--bgColor); 
+    padding: 0.3em; 
+    border-radius: 5px;
 
 }
 
-/*mostra altri orari*/
+/*altri orari*/
 #locandina-title {
     display: flex;
-    align-items: center; /* Centra verticalmente all'interno del contenitore */
+    align-items: center; 
     justify-content: left;
 }
 
 #locandina-title img {
-    margin: 0.5em; /* Margine a destra per separare l'immagine dal testo */
+    margin: 0.5em; 
 }
 
 #film-orari-container {
-    background-color: #f0f0f0;
-
-
+    background-color: var(--bgColor);
+    color: var(--txtColor);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
@@ -325,7 +305,6 @@ footer li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ddd; /* Aggiunge una linea tra le date e le ore */
     padding: 0.5em;
 }
 
@@ -336,21 +315,21 @@ footer li {
 /*posti*/
 #film-posti{
     display: flex;
-    flex-direction: column; /* Disposizione verticale */
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #f0f0f0;     /* Centra orizzontalmente */
-    text-align: center;        /* Allinea il testo a sinistra */
-
+    background-color: var(--bgColor);     
+    color: var(--txtColor);
+    text-align: center;        
     max-width: 1024px;
     padding: 1em;
     margin: auto;
 }
 
 #cinema-screen {
-    width: 100px; /* Imposta la larghezza dell'immagine */
-    height: 100px; /* Imposta l'altezza dell'immagine */
-    background-image: url("./images/cinema-screen.png"); /* Imposta l'immagine di sfondo */
+    width: 100px; 
+    height: 100px; 
+    background-image: url("./images/cinema-screen.png"); 
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;  
@@ -360,46 +339,43 @@ footer li {
 /* Stili per i posti selezionabili */
 .selezionabile {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
     margin: 0.3em; 
 }
 
 /* Stili per i posti non selezionabili */
 .non-selezionabile {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    cursor: not-allowed; 
+    width: 2.5rem;
+    height: 2.5rem;
     background-image: url("./images/checkbox.png"); 
     background-size: cover; 
     background-repeat: no-repeat; 
-    margin: 5px; 
+    margin: 0.4em; 
 }
 
-/*500*/
+/*500 e 404*/
 #error-container {
-    width: 80%;  /* Larghezza del contenitore */
-    margin: 1em auto;  /* Centra il contenitore orizzontalmente e aggiunge spazio sopra e sotto */
-    padding: 20px;  /* Aggiunge spazio interno al contenitore */
-    background-color: #f9f9f9;  /* Colore di sfondo del contenitore */
-    border: 1px solid #e0e0e0;  /* Bordo leggero attorno al contenitore */
-    text-align: center;  /* Centra il testo all'interno del contenitore */
-   
+    width: 80%; 
+    margin: 0.4em auto; 
+    padding: 20px;  
+    background-color: var(--bgColor); 
+    color: var(--txtColor);
+    text-align: center;  
 }
 
 #error-container p {
-    margin: 26px 0;  /* Spazio sopra e sotto ogni paragrafo */
-    line-height: 1.6;  /* Altezza della riga per migliorare la leggibilità */
-    color: #333;  /* Colore del testo dei paragrafi */
-    font-size: 25px;  /* Dimensione del testo dei paragrafi */
+    margin: 0.6em 0; 
+    line-height: 1.6em;  
+    color: var(--txtColor); 
+    font-size: 25px;  
 }
 
-#immagine-errore-500 {
-    width: 200px; /* Imposta la larghezza dell'immagine */
-    height: 200px; /* Imposta l'altezza dell'immagine */
-    background-image: url("./images/error.png"); /* Imposta l'immagine di sfondo */
+#immagine-errore-500-404 {
+    width: 200px; 
+    height: 200px; 
+    background-image: url("./images/error.png"); 
     background-size: contain;
     background-repeat: no-repeat;
      

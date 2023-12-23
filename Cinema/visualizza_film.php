@@ -42,7 +42,7 @@ $template = str_replace('{IDFILM}', $idFilm, $template);
 
 // Aggiungi  attori se presenti nel film (es. film di animazione non ha attori)
 if (!empty($attori)) {
-    $attoriSection = "<p><strong>Attori:</strong> $attori</p>";
+    $attoriSection = "<p><span class='bold-text'>Attori:</span> $attori</p>";
     $template = str_replace('{ATTORI_SECTION}', $attoriSection, $template);
 } else {
     $template = str_replace('{ATTORI_SECTION}', '', $template);
@@ -59,7 +59,7 @@ if (!empty($dataMinima)) {
 // Aggiungi la variabile degli orari al template HTML
 if ($resultOrariMinimi && $resultOrariMinimi->num_rows > 0) {
     // Variabile per memorizzare gli orari HTML
-    $orariHTML = " <p><strong>Ora:</strong></p>
+    $orariHTML = " <p><span class='bold-text'>Orari:</span></p>
                 <div id='data-ora'>
                 <ul>
                 <div class='orari-container'>";
@@ -72,7 +72,7 @@ if ($resultOrariMinimi && $resultOrariMinimi->num_rows > 0) {
     }
 
     $orariHTML .= "</div></ul>";
-    $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'><strong>Mostra tutte le date</strong></a>";
+    $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'>Mostra tutte le date</a>";
     $orariHTML .= "</div>";
     $template = str_replace('{ORARI}', $orariHTML, $template);
 } else {
