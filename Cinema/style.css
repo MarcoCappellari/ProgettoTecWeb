@@ -244,12 +244,26 @@ footer li {
     color: var(--txtColor);
     font-size: 22px;
 }
-
+/*Semprano uguali ma ho aggiunto un font qui sotto*/
 .film-ora {
     padding: 0.4em;
     font-weight: bold;
     color: var(--txtColor);
     font-size: 22px;
+    font-family: 'Dancing Script', cursive, sans-serif;
+}
+
+#mostra-date {
+    max-width: 7em; /* Per non scrivere tutta la stringa in una riga */
+    margin: 1px;;
+    padding: 1em;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold; 
+}
+
+#title-date-time h2, p {
+    margin-bottom: 0.5em; 
 }
 
 /*Errore film*/

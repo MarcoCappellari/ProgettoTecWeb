@@ -72,7 +72,7 @@ if ($resultOrariMinimi && $resultOrariMinimi->num_rows > 0) {
     }
 
     $orariHTML .= "</div></ul>";
-    $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'>Mostra tutte le date</a>";
+    $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'><div id='mostra-date'>Mostra tutte le date</div></a>";
     $orariHTML .= "</div>";
     $template = str_replace('{ORARI}', $orariHTML, $template);
 } else {

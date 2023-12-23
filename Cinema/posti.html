@@ -28,7 +28,9 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="carica_film.php"><span lang="en">Home</span></a> ><a href="visualizza_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="altri_orari.php?idFilm={IDFILM}"> Date e Orari</a> > Selezione posti</p>
+        <p>Ti trovi in: <a href="carica_film.php"><span lang="en">Home</span></a> ><a
+                href="visualizza_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="altri_orari.php?idFilm={IDFILM}">
+                Date e Orari</a> > Selezione posti</p>
     </nav>
 
     <!--main-->
@@ -36,24 +38,27 @@
         <div id="film-orari-container">
             <div id="locandina-title">
                 <img src="data:image/jpeg;base64,{LOCANDINA} " alt="">
-                <h2> {TITOLO} </h2>
+                <div id="title-date-time">
+                    <h2> {TITOLO} </h2>
+                    <p>Data:<span class="film-data"> {DATA}</span></p>
+                    <p>Ora: <span class="film-ora">{ORA}</span></p>
+                </div>
+
             </div>
         </div>
 
-        <form action="prenota.php" method="post">
-            <div id="film-posti">
-                <p>Data: {DATA} Ora: {ORA}</p>
-              
+        <div id="film-posti">
+            <h3>SELEZIONA LE POLTRONE</h3>
+            <div id="cinema-screen"></div>
 
-
-                <div id="cinema-screen"></div>
+            <form action="prenota.php" method="post">
                 <div id="posti">
                     {POSTI}
                 </div>
                 <input type='submit' value='Prenota'>
-            </div>
+            </form>
+        </div>
 
-        </form>
     </main>
 
     <footer>
