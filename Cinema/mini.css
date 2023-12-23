@@ -1,0 +1,20 @@
+header {
+    flex-direction: column;
+}
+
+#menu ul li {
+    margin-right: 5px;
+}
+
+
+#search-bar {
+    padding: 0.3em;
+}
+
+#searchHeader {
+    flex-direction: column;
+}
+
+footer {
+    flex-direction: column;
+}
