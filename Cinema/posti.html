@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>PopCorn Cinema</title>
+    <title>Selezione Posti, cinema PopCorn</title>
     <meta name="keyword" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="style.css" media="screen">
@@ -24,6 +24,7 @@
                 <li><a href="Accedi.html">Accedi</a></li>
             </ul>
         </nav>
+        <a href="#bottomMenu" id="goToMenu"></a>
     </header>
 
     <!--breadcrumb-->
@@ -55,7 +56,7 @@
                 <div id="posti">
                     {POSTI}
                 </div>
-                <input type='submit' value='Prenota'>
+                <input type='submit' value='Prenota' id="prenota-button">
             </form>
         </div>
 
@@ -81,6 +82,14 @@
         </div>
     </footer>
 
+    <nav id="bottomMenu">
+        <ul>
+            <li><span lang="en">Home</span></li>
+            <li><a href="Prenota.html">Prenota</a></li>
+            <li><a href="Recensioni.html">Recensioni</a></li>
+            <li><a href="Accedi.html">Accedi</a></li>
+        </ul>
+    </nav>
 
 </body>
 

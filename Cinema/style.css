@@ -37,7 +37,7 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative; 
+    position: relative;
 }
 
 html::before {
@@ -98,7 +98,7 @@ a:visited {
 
 #breadcrumb {
     background-color: var(--breadcrumbBgColor);
-    color:var(--headerTxtColor);
+    color: var(--headerTxtColor);
     max-width: 1024px;
     padding: 1em;
     margin: auto;
@@ -121,9 +121,11 @@ a:visited {
 
 #search-bar input {
     height: 1em;
-    width: 19em;
+    width: 17em;
     padding: 1em;
+    font-size: 15px;
 }
+
 
 #search-bar button {
     padding: 1em;
@@ -151,8 +153,9 @@ a:visited {
 }
 
 .film-image:hover {
-    transform: scale(0.9); /* Ingrandisce l'elemento del 10% al passaggio del mouse */
-  }
+    transform: scale(0.9);
+    /* Ingrandisce l'elemento del 10% al passaggio del mouse */
+}
 
 footer {
     display: flex;
@@ -186,7 +189,7 @@ footer li {
     margin-bottom: 1em;
 }
 
-.bold-text{
+.bold-text {
     font-weight: bold;
     color: var(--txtColor);
     font-size: 22px;
@@ -201,23 +204,24 @@ footer li {
     align-items: center;
     max-width: 1024px;
     padding: 1em;
-    margin: auto;  
+    margin: auto;
 }
 
 #film-dettagli h1 {
     padding: 0.2em;
-    background-color: var(--visitedLinkColor); 
-    color: var(--bgColor); 
-    text-align: center; 
-    text-transform: uppercase; 
-    border-radius: 8px;  
-    line-height: 1; /*L'ho aggiunto perche' se titolo troppo lungo*/
+    background-color: var(--visitedLinkColor);
+    color: var(--bgColor);
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 8px;
+    line-height: 1;
+    /*L'ho aggiunto perche' se titolo troppo lungo*/
 }
 
 #film-locandina img {
     min-width: 60%;
     padding: 1em;
-    margin: auto;  
+    margin: auto;
 }
 
 #film-dettagli {
@@ -226,13 +230,13 @@ footer li {
 
 .orari-container {
     display: grid;
-    grid-template-columns: repeat(4, 0.5fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     align-items: center;
-    justify-items: center;  
+    justify-items: center;
     border: 1px solid var(--txtColor);
     border-radius: 8px;
-    padding: 1em; 
+    padding: 0.4em;
     margin: auto;
 }
 
@@ -242,6 +246,7 @@ footer li {
     color: var(--txtColor);
     font-size: 22px;
 }
+
 /*Semprano uguali ma ho aggiunto un font qui sotto*/
 .film-ora {
     padding: 0.4em;
@@ -252,23 +257,25 @@ footer li {
 }
 
 #mostra-date {
-    max-width: 7em; /* Per non scrivere tutta la stringa in una riga */
-    margin: 1px;;
+    max-width: 7em;
+    /* Per non scrivere tutta la stringa in una riga */
+    margin: 1px;
     padding: 1em;
     text-align: center;
     font-size: 24px;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
-#title-date-time h2, p {
-    margin-bottom: 0.5em; 
+#title-date-time h2,
+p {
+    margin-bottom: 0.5em;
 }
 
 /*Errore film*/
 #film-non-esiste {
     display: flex;
-    align-items: center; 
-    flex-direction: column; 
+    align-items: center;
+    flex-direction: column;
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
@@ -276,26 +283,28 @@ footer li {
 }
 
 #immagine-errore-film {
-    width: 200px; /* Imposta la larghezza dell'immagine */
-    height: 200px; /* Imposta l'altezza dell'immagine */
-    background-image: url("./images/error-film.png"); 
+    width: 200px;
+    /* Imposta la larghezza dell'immagine */
+    height: 200px;
+    /* Imposta l'altezza dell'immagine */
+    background-image: url("./images/error-film.png");
     background-size: contain;
     background-repeat: no-repeat;
-    margin: auto;  
+    margin: auto;
 }
 
 #film-non-esiste p {
-    margin: 1em; 
+    margin: 1em;
     font-size: 25px;
     color: var(--txtColor);
 }
 
-#film-name-error{
-    color: var(--visitedLinkColor); 
-    font-weight: bold; 
-    font-size: 30px; 
-    background-color: var(--bgColor); 
-    padding: 0.3em; 
+#film-name-error {
+    color: var(--visitedLinkColor);
+    font-weight: bold;
+    font-size: 30px;
+    background-color: var(--bgColor);
+    padding: 0.3em;
     border-radius: 5px;
 
 }
@@ -303,12 +312,12 @@ footer li {
 /*altri orari*/
 #locandina-title {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: left;
 }
 
 #locandina-title img {
-    margin: 0.5em; 
+    margin: 0.5em;
     width: 12%;
 }
 
@@ -320,11 +329,13 @@ footer li {
     margin: auto;
 }
 
-#data-ora{
+#data-ora {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 0.5em;
+
 }
 
 #data-ora ul {
@@ -332,87 +343,93 @@ footer li {
 }
 
 /*posti*/
-#film-posti{
+#film-posti {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--bgColor);     
+    background-color: var(--bgColor);
     color: var(--txtColor);
-    text-align: center;        
+    text-align: center;
     max-width: 1024px;
     padding: 1em;
     margin: auto;
 }
 
 #cinema-screen {
-    width: 100px; 
-    height: 100px; 
-    background-image: url("./images/cinema-screen.png"); 
+    width: 100px;
+    height: 100px;
+    background-image: url("./images/cinema-screen.png");
     background-size: contain;
     background-repeat: no-repeat;
-    margin: auto;  
+    margin: auto;
 }
 
 /*checkbox*/
 /* Stili per i posti selezionabili */
 .selezionabile {
     display: inline-block;
-    width: 2.5rem;
-    height: 2.5rem;
-    margin: 0.3em; 
+    width: 2em;
+    height: 2em;
+    margin: 0.3em;
 }
 
 /* Stili per i posti non selezionabili */
 .non-selezionabile {
     display: inline-block;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-image: url("./images/checkbox.png"); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    margin: 0.4em; 
+    width: 2em;
+    height: 2em;
+    background-image: url("./images/checkbox.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0.4em;
 }
 
 /*500 e 404*/
 #error-container {
-    width: 80%; 
-    margin: 0.4em auto; 
-    padding: 20px;  
-    background-color: var(--bgColor); 
+    width: 80%;
+    margin: 0.4em auto;
+    padding: 20px;
+    background-color: var(--bgColor);
     color: var(--txtColor);
-    text-align: center;  
+    text-align: center;
 }
 
 #error-container p {
-    margin: 0.6em 0; 
-    line-height: 1.6em;  
-    color: var(--txtColor); 
-    font-size: 25px;  
+    margin: 0.6em 0;
+    line-height: 1.6em;
+    color: var(--txtColor);
+    font-size: 25px;
 }
 
 #immagine-errore-500-404 {
-    width: 200px; 
-    height: 200px; 
-    background-image: url("./images/error.png"); 
+    width: 200px;
+    height: 200px;
+    background-image: url("./images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
-     
+
 }
 
 #imgError-text {
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto; 
+    margin: auto;
 }
 
-
 #goToMenu {
-    display: none; /* Nascondi il pulsante per impostazione predefinita su desktop */
+    display: none;
 }
 
 #bottomMenu {
     display: none;
+}
+
+#prenota-button {
+    background-color: var(--linkColor);
+    color: var(--txtColorHome);
+    padding: 0.7em 1em;
+    border-radius: 5px;
 }
