@@ -1,5 +1,5 @@
-header {
-    flex-direction: column;
+header{
+    justify-content: space-between;
 }
 
 #menu ul li {
@@ -20,22 +20,21 @@ footer {
 }
 
 #goToMenu {
-    display: block; /* Mostra il pulsante su dispositivi mobili */
-   
-    bottom: 10px;
-    right: 10px;
-    z-index: 9999; /* Assicurati che il pulsante sia sempre visibile sopra altri elementi */
-    /* ... (aggiungi altri stili se necessario) ... */
+    display: inline;
+    width: 4em; 
+    height: 4em; 
+    background-image: url('./images/menu-bottom.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
 }
 
 #bottomMenu {
-    display: block; /* Mostra il bottomMenu su dispositivi mobili */
-    text-align: center; /* Centra il contenuto */
-    background-color: var(--bgColor); /* Sfondo bianco */
+    display: block;
+    text-align: center;
+    background-color: var(--bgColor); 
     font-size: 26px;
-    padding: 3em; /* Spazio interno */
+    padding: 3em; 
     margin: auto;
-
 }
 
 #bottomMenu ul {
@@ -51,4 +50,30 @@ footer {
 
 #menu{
     display: none;
+}
+
+/*film template*/
+#film-informazioni-container{
+    flex-direction: column;
+}
+
+#data-ora{
+    flex-direction: column;
+}
+
+#film-locandina{
+    display: none;
+}
+
+.selezionabile {
+    width: 0.8em;
+    height: 0.8em;
+
+}
+
+/* Stili per i posti non selezionabili */
+.non-selezionabile {
+    width: 0.8em;
+    height: 0.8em;
+  
 }

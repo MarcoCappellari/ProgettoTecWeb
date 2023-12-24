@@ -55,11 +55,9 @@ header {
     padding: 1em;
     display: flex;
     justify-content: space-around;
-    /*oppure space-between*/
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
-    /* per schermi troppo grandi */
     max-width: 1024px;
     padding: 1em;
     margin: auto;
@@ -228,7 +226,7 @@ footer li {
 
 .orari-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 0.5fr);
     gap: 10px;
     align-items: center;
     justify-items: center;  
@@ -337,6 +335,7 @@ footer li {
 #film-posti{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
     background-color: var(--bgColor);     
