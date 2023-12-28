@@ -114,12 +114,12 @@ a:visited {
     margin: auto;
 }
 
-#search-bar {
+#search-form {
     margin-right: 1em;
     border: none;
 }
 
-#search-bar input {
+#search-form input[type="text"] {
     height: 1em;
     width: 17em;
     padding: 1em;
@@ -127,7 +127,7 @@ a:visited {
 }
 
 
-#search-bar button {
+#search-form input[type="submit"] {
     padding: 1em;
     background-color: var(--visitedLinkColor);
     color: var(--headerTxtColor);
