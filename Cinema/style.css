@@ -1,5 +1,5 @@
 * {
-    margin: 0px;
+    margin: 0;
     padding: 0;
 }
 
@@ -32,7 +32,7 @@ html {
     font-family: var(--font-body_family);
     line-height: 1.5em;
     margin: auto;
-    font-size: 20px;
+    font-size: 1.2em;
     background-image: url("./images/background.jpg");
     background-size: cover;
     background-position: center;
@@ -123,7 +123,7 @@ a:visited {
     height: 1em;
     width: 17em;
     padding: 1em;
-    font-size: 15px;
+    font-size: 0.8em;
 }
 
 
@@ -175,7 +175,7 @@ footer>div {
 }
 
 footer .footer-title {
-    font-size: 25px;
+    font-size: 1.2em;
     font-weight: bold;
     color: var(--footerTitleColor);
     margin-bottom: 1em;
@@ -192,7 +192,7 @@ footer li {
 .bold-text {
     font-weight: bold;
     color: var(--txtColor);
-    font-size: 22px;
+    font-size: 1.1em;
 }
 
 /*Template_film*/
@@ -244,7 +244,7 @@ footer li {
     padding: 0.4em;
     font-weight: bold;
     color: var(--txtColor);
-    font-size: 22px;
+    font-size: 1.1em;
 }
 
 /*Semprano uguali ma ho aggiunto un font qui sotto*/
@@ -252,7 +252,7 @@ footer li {
     padding: 0.4em;
     font-weight: bold;
     color: var(--txtColor);
-    font-size: 22px;
+    font-size: 1.1em;
     font-family: 'Dancing Script', cursive, sans-serif;
 }
 
@@ -262,7 +262,7 @@ footer li {
     margin: 1px;
     padding: 1em;
     text-align: center;
-    font-size: 24px;
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -295,14 +295,14 @@ p {
 
 #film-non-esiste p {
     margin: 1em;
-    font-size: 25px;
+    font-size: 1.4em;
     color: var(--txtColor);
 }
 
 #film-name-error {
     color: var(--visitedLinkColor);
     font-weight: bold;
-    font-size: 30px;
+    font-size: 1.3em;
     background-color: var(--bgColor);
     padding: 0.3em;
     border-radius: 5px;
@@ -400,7 +400,7 @@ p {
     margin: 0.6em 0;
     line-height: 1.6em;
     color: var(--txtColor);
-    font-size: 25px;
+    font-size: 1.3em;
 }
 
 #immagine-errore-500-404 {
