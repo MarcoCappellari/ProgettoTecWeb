@@ -253,7 +253,7 @@ footer li {
     font-weight: bold;
     color: var(--txtColor);
     font-size: 1.1em;
-    font-family: 'Dancing Script', cursive, sans-serif;
+    font-family: 'architectural', 'cursive', sans-serif;
 }
 
 #mostra-date {
@@ -262,7 +262,7 @@ footer li {
     margin: 1px;
     padding: 1em;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
