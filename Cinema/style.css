@@ -10,14 +10,14 @@
     --breadcrumbBgColor: #292828;
     --breadcrumbTxtColor: #f0f0f0;
 
-    --searchHeaderBg: #f0f0f0;
+    --searchHeaderBg: #f0f0f0; 
 
     --bgColorHome: #000000;
     --txtColorHome: #f0f0f0;
     --bgColor: #f0f0f0;
     --txtColor: #000000;
 
-    --footerTitleColor: #f0f0f0;
+    --footerTitleColor: #f70c0c;
     --footerBgColor: #292828;
     --footerTxtColor: #ffffff;
 
@@ -58,6 +58,7 @@ header {
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
+    
     max-width: 1024px;
     padding: 1em;
     margin: auto;

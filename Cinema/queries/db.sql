@@ -1,10 +1,10 @@
 
 -- Ricrea le tabelle nell'ordine corretto
 CREATE TABLE Utente (
-    username VARCHAR(50) PRIMARY KEY,
+    mail VARCHAR(50)  PRIMARY KEY,
+    username VARCHAR(50),
     nome VARCHAR(50),
     cognome VARCHAR(50),
-    mail VARCHAR(100),
     permessi BOOLEAN,
     password VARCHAR(255)
 );
@@ -83,7 +83,7 @@ CREATE TABLE Biglietto (
     id_riproduzione INT,
     id_utente VARCHAR(50),
     FOREIGN KEY (id_riproduzione) REFERENCES Riproduzione(id),
-    FOREIGN KEY (id_utente) REFERENCES Utente(username)
+    FOREIGN KEY (id_utente) REFERENCES Utente(mail)
 );
 
 CREATE TABLE Recensioni (
@@ -91,6 +91,6 @@ CREATE TABLE Recensioni (
     testo TEXT,
     data_creazione TIMESTAMP,
     id_utente VARCHAR(50),
-    FOREIGN KEY (id_utente) REFERENCES Utente(username)
+    FOREIGN KEY (id_utente) REFERENCES Utente(mail)
     
 );

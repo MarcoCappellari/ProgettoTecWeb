@@ -26,8 +26,10 @@ if ($result->num_rows == 0) {
     $stringa_info_film .= '</div>';
 }
 
+$stringa_footer= file_get_contents('footer.html');
 // sostituisco stringa {FILM} nel file index.html
 $template_film = file_get_contents('index3.html');
 $template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
+$template_film = str_replace('{FOOTER}', $stringa_footer, $template_film);
 echo $template_film;
 ?>

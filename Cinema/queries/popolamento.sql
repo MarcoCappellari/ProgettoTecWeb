@@ -260,10 +260,10 @@ INSERT INTO Conforme (id_film, nome_genere) VALUES
 
 -- Inserisci dati nella tabella Biglietto
 INSERT INTO Biglietto (id, id_riproduzione, id_utente) VALUES 
-(1, 1, 'user1'),
-(2, 2, 'user2');
+(1, 1, 'mario@email.com'),
+(2, 2, 'luca@email.com');
 
 -- Inserisci dati nella tabella Recensioni
 INSERT INTO Recensioni (id, testo, data_creazione, id_utente) VALUES 
-(1, 'Bel film!', NOW(), 'user1'),
-(2, 'Molto interessante', NOW(), 'user2');
+(1, 'Bel film!', NOW(), 'mario@email.com'),
+(2, 'Molto interessante', NOW(), 'luca@email.com');
