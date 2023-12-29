@@ -16,7 +16,7 @@ try {
 } catch (Exception $e) {
 
     // Reindirizza l'utente alla pagina di errore 500
-    header("Location: 500.html");
+    header('Location: ../html/500.html');
     exit(); // Termina lo script PHP dopo il reindirizzamento
 
 }

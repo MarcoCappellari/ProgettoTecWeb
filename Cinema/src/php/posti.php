@@ -1,11 +1,11 @@
 <?php
 // Connessione al database
-require_once './queries/queries.php';
+require_once '../../queries/queries.php';
 
 if (!isset($_GET['idFilm']) || !isset($_GET['ora']) || !isset($_GET['data']) || 
     $_GET['idFilm'] === null || $_GET['ora'] === null || $_GET['data'] === null) {
     
-    header('Location: 404.html'); 
+    header('Location: ..\html\404.html'); 
     exit; 
 }
 
@@ -43,7 +43,7 @@ if (!empty($current_fila)) {
 
 $ora_formattata = date('H:i', strtotime($ora_film));
 
-$html_content = file_get_contents('posti.html');
+$html_content = file_get_contents('..\html\posti.html');
 $html_content = str_replace('{IDFILM}', $id_film, $html_content);
 $html_content = str_replace('{TITOLO}', $titolo, $html_content);
 $html_content = str_replace('{LOCANDINA}', $locandina, $html_content);

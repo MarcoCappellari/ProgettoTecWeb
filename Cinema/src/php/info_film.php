@@ -1,11 +1,11 @@
 <?php
-require_once './queries/queries.php';
+require_once '../../queries/queries.php';
 
 if (isset($_GET['film'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['film'];
 } else {
-    header('Location: 404.html'); //nel caso in cui chiamo la pagina senza specificare id
+    header('Location: ..\html\404.html'); //nel caso in cui chiamo la pagina senza specificare id
     exit; 
 }
 
@@ -29,7 +29,7 @@ $durata = $resultFilm['durata'];
 $trama = $resultFilm['trama'];
 
 // Leggi il contenuto del file HTML
-$template = file_get_contents('film_template.html');
+$template = file_get_contents('..\html\info_film.html');
 
 // Sostituisci le variabili nel template
 $template = str_replace('{TITOLO}', $titolo, $template);
@@ -66,13 +66,13 @@ if ($resultOrariMinimi && $resultOrariMinimi->num_rows > 0) {
 
 
     while ($rowOrariMinimi = $resultOrariMinimi->fetch_assoc()) {
-        $link = "seleziona_posti.php?idFilm=$idFilm&data=$dataMinima&ora=" . urlencode($rowOrariMinimi['ora']);
+        $link = "posti.php?idFilm=$idFilm&data=$dataMinima&ora=" . urlencode($rowOrariMinimi['ora']);
         $oraFormattata = date('H:i', strtotime($rowOrariMinimi['ora']));
         $orariHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
     }
 
     $orariHTML .= "</div></ul>";
-    $orariHTML .= "<a href='altri_orari.php?idFilm=$idFilm'><div id='mostra-date'>Mostra tutte le date</div></a>";
+    $orariHTML .= "<a href='orari.php?idFilm=$idFilm'><div id='mostra-date'>Mostra tutte le date</div></a>";
     $orariHTML .= "</div>";
     $template = str_replace('{ORARI}', $orariHTML, $template);
 } else {

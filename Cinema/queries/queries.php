@@ -18,7 +18,7 @@ function getFilmByIdQuery($conn, $idFilm)
     if ($resultFilm && $resultFilm->num_rows > 0) {
         return $resultFilm->fetch_assoc();
     } else {
-        header('Location: 404.html'); 
+        header('Location: ../html/404.html'); 
         exit; 
     }
 }
@@ -156,7 +156,7 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
     $result = $conn->query($query);
 
     if ($result->num_rows == 0) {
-        header('Location: 500.html');  // NON so se errore 404 o 500
+        header('Location: ../html/500.html');  // NON so se errore 404 o 500
         exit;
     }
 
