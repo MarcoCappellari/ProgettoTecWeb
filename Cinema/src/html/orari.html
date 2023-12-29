@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Selezione Posti, cinema PopCorn</title>
+    <title>Date e Orari Cinema PopCorn</title>
     <meta name="keyword" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
-    <link rel="stylesheet" href="style.css" media="screen">
-    <link rel="stylesheet" href="mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="./images/logo.png" />
+    <link rel="shortcut icon" href="../images/logo.png" />
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <h1>Popcorn Cinema</h1>
         <nav id="menu">
             <ul>
-                <li><a href="carica_film.php"><span lang="en">Home</span></a></li>
+                <li><a href="../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="Prenota.html">Prenota</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
                 <li><a href="Accedi.html">Accedi</a></li>
@@ -29,37 +29,21 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="carica_film.php"><span lang="en">Home</span></a> ><a
-                href="visualizza_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="altri_orari.php?idFilm={IDFILM}">
-                Date e Orari</a> > Selezione posti</p>
+        <p>Ti trovi in: <a href="../index.php"><span lang="en">Home</span></a> ><a href="../php/info_film.php?film={IDFILM}"> Film: {TITOLO}</a> > Date e Orari</p>
     </nav>
 
     <!--main-->
     <main>
         <div id="film-orari-container">
             <div id="locandina-title">
-                <img src="data:image/jpeg;base64,{LOCANDINA} " alt="">
-                <div id="title-date-time">
-                    <h2> {TITOLO} </h2>
-                    <p>Data:<span class="film-data"> {DATA}</span></p>
-                    <p>Ora: <span class="film-ora">{ORA}</span></p>
-                </div>
-
+                <img src="data:image/jpeg;base64, {LOCANDINA} " alt="">
+                <h2>{TITOLO}</h2>
+                
             </div>
+
+            {PROIEZIONI}
+
         </div>
-
-        <div id="film-posti">
-            <h3>SELEZIONA LE POLTRONE</h3>
-            <div id="cinema-screen"></div>
-
-            <form action="prenota.php" method="post">
-                <div id="posti">
-                    {POSTI}
-                </div>
-                <input type='submit' value='Prenota' id="prenota-button">
-            </form>
-        </div>
-
     </main>
 
     <footer>
@@ -84,13 +68,12 @@
 
     <nav id="bottomMenu">
         <ul>
-            <li><a href="carica_film.php"><span lang="en">Home</span></a></li>
+            <li><a href="../index.php"><span lang="en">Home</span></a></li>
             <li><a href="Prenota.html">Prenota</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
             <li><a href="Accedi.html">Accedi</a></li>
         </ul>
     </nav>
-
 </body>
 
 </html>
