@@ -33,7 +33,7 @@ html {
     line-height: 1.5em;
     margin: auto;
     font-size: 1.2em;
-    background-image: url("./images/background.jpg");
+    background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -67,7 +67,7 @@ header {
 
 header h1 {
     text-indent: -999em;
-    background-image: url("./images/logo1.png");
+    background-image: url("../images/logo1.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -288,7 +288,7 @@ p {
     /* Imposta la larghezza dell'immagine */
     height: 200px;
     /* Imposta l'altezza dell'immagine */
-    background-image: url("./images/error-film.png");
+    background-image: url("../images/error-film.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -361,7 +361,7 @@ p {
 #cinema-screen {
     width: 100px;
     height: 100px;
-    background-image: url("./images/cinema-screen.png");
+    background-image: url("../images/cinema-screen.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -381,7 +381,7 @@ p {
     display: inline-block;
     width: 2em;
     height: 2em;
-    background-image: url("./images/checkbox.png");
+    background-image: url("../images/checkbox.png");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0.4em;
@@ -407,7 +407,7 @@ p {
 #immagine-errore-500-404 {
     width: 200px;
     height: 200px;
-    background-image: url("./images/error.png");
+    background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
 

@@ -1,11 +1,11 @@
 <?php
-require_once './queries/queries.php';
+require_once '../../queries/queries.php';
 
 if (isset($_GET['idFilm'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['idFilm'];
 } else {
-    header('Location: 404.html'); //se utente non inserisce id
+    header('Location: ..\html\404.html'); //se utente non inserisce id
     exit; 
 }
 
@@ -32,14 +32,14 @@ foreach ($proiezioniFilm as $data => $orari) {
     foreach ($orari as $ora) {
         $oraFormattata = date('H:i', strtotime($ora));
         //PER OGNI ORA, collego un link alla pagina di selezione posto
-        $link = "seleziona_posti.php?idFilm=$idFilm&data=$data&ora=" . urlencode($ora);
+        $link = "posti.php?idFilm=$idFilm&data=$data&ora=" . urlencode($ora);
         // Crea il link con l'orario come testo del link
         $proiezioniHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
     }
     $proiezioniHTML .= "</div></ul></div>";
 }
 
-$htmlContent = file_get_contents('altri_orari.html');
+$htmlContent = file_get_contents('..\html\orari.html');
 $htmlContent = str_replace('{TITOLO}', $nomeFilm, $htmlContent);
 $htmlContent = str_replace('{LOCANDINA}', $locandina, $htmlContent);
 $htmlContent = str_replace('{IDFILM}', $idFilm, $htmlContent);

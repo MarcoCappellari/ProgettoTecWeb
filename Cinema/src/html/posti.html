@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Errore 500</title>
+    <title>Selezione Posti, cinema PopCorn</title>
     <meta name="keyword" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
-    <link rel="stylesheet" href="style.css" media="screen">
-    <link rel="stylesheet" href="mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="./images/logo.png" />
+    <link rel="shortcut icon" href="../images/logo.png" />
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <h1>Popcorn Cinema</h1>
         <nav id="menu">
             <ul>
-                <li><a href="carica_film.php"><span lang="en">Home</span></a></li>
+                <li><a href="../../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="Prenota.html">Prenota</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
                 <li><a href="Accedi.html">Accedi</a></li>
@@ -29,35 +29,38 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="carica_film.php"><span lang="en">Home</span></a> > ERRORE 500 </p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
+                href="../php/info_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="../php/orari.php?idFilm={IDFILM}">
+                Date e Orari</a> > Selezione posti</p>
     </nav>
 
     <!--main-->
     <main>
-        <div id="searchHeader">
-            <h2>Film del momento</h2>
-            <form id="search-form" action="ricerca.php" method="GET">
-                    <input type="text" name="film_name" placeholder="Inserisci il nome di un film...">
-                    <input type="submit" value="Cerca" />
+        <div id="film-orari-container">
+            <div id="locandina-title">
+                <img src="data:image/jpeg;base64,{LOCANDINA} " alt="">
+                <div id="title-date-time">
+                    <h2> {TITOLO} </h2>
+                    <p>Data:<span class="film-data"> {DATA}</span></p>
+                    <p>Ora: <span class="film-ora">{ORA}</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="film-posti">
+            <h3>SELEZIONA LE POLTRONE</h3>
+            <div id="cinema-screen"></div>
+
+            <form action="../php/prenota.php" method="post">
+                <div id="posti">
+                    {POSTI}
+                </div>
+                <input type='submit' value='Prenota' id="prenota-button">
             </form>
         </div>
 
-        <div id="error-container">
-            <div id="imgError-text">
-                <div id="immagine-errore-500-404"></div>
-                <h2>Errore 500</h2>
-            </div>
-            <p>Stiamo riscontrando problemi tecnici che influenzano il corretto funzionamento del nostro sito web.</p>
-            <p>Desideriamo rassicurarLa che, nonostante questo errore di navigazione, tutti i Suoi dati personali e transazioni sono al sicuro e non sono stati compromessi in alcun modo.</p>
-            <p>Il nostro team è al lavoro per risolvere il problema il più rapidamente possibile.</p>
-            <p>Ci scusiamo per l'inconveniente e La ringraziamo per la sua pazienza.</p>
-            <p><a href="carica_film.php">Torna alla <span lang="en">Home</span></a></p>
-        </div>
-
-
     </main>
-
-
 
     <footer>
         <div>
@@ -78,9 +81,10 @@
             </ul>
         </div>
     </footer>
+
     <nav id="bottomMenu">
         <ul>
-            <li><a href="carica_film.php"><span lang="en">Home</span></a></li>
+            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
             <li><a href="Prenota.html">Prenota</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
             <li><a href="Accedi.html">Accedi</a></li>
