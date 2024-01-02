@@ -39,7 +39,8 @@ foreach ($proiezioniFilm as $data => $orari) {
     $proiezioniHTML .= "</div></ul></div>";
 }
 
-$htmlContent = file_get_contents('..\html\orari.html');
+$htmlContent = file_get_contents('../html/orari.html');//linux
+//$html_content = file_get_contents('..\html\orari.html'); //windows
 $htmlContent = str_replace('{TITOLO}', $nomeFilm, $htmlContent);
 $htmlContent = str_replace('{LOCANDINA}', $locandina, $htmlContent);
 $htmlContent = str_replace('{IDFILM}', $idFilm, $htmlContent);
