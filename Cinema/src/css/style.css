@@ -37,12 +37,10 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
 }
 
 html::before {
     content: "";
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;

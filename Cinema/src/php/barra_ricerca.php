@@ -19,7 +19,6 @@ if ($result) {
     //exit();
 } else {
     $html_content = file_get_contents('../html/barra_ricerca.html'); //linux
-    //$html_content = file_get_contents('..\html\barra_ricerca.html'); //windows
     $html_content = str_replace('{NOMEFILM}', $film_name, $html_content);
     echo $html_content;
 

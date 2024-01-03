@@ -5,7 +5,7 @@ if (isset($_GET['film'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['film'];
 } else {
-    header('Location: ..\html\404.html'); //nel caso in cui chiamo la pagina senza specificare id
+    header('Location: ../html/404.html'); //nel caso in cui chiamo la pagina senza specificare id
     exit; 
 }
 
@@ -29,7 +29,6 @@ $durata = $resultFilm['durata'];
 $trama = $resultFilm['trama'];
 
 // Leggi il contenuto del file HTML
-//$template = file_get_contents('..\html\info_film.html'); // windows
 $template =  file_get_contents('../html/info_film.html'); //linux
 
 // Sostituisci le variabili nel template

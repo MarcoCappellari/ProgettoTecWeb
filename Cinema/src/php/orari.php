@@ -5,7 +5,7 @@ if (isset($_GET['idFilm'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['idFilm'];
 } else {
-    header('Location: ..\html\404.html'); //se utente non inserisce id
+    header('Location: ../html/404.html'); //se utente non inserisce id
     exit; 
 }
 
@@ -40,7 +40,6 @@ foreach ($proiezioniFilm as $data => $orari) {
 }
 
 $htmlContent = file_get_contents('../html/orari.html');//linux
-//$html_content = file_get_contents('..\html\orari.html'); //windows
 $htmlContent = str_replace('{TITOLO}', $nomeFilm, $htmlContent);
 $htmlContent = str_replace('{LOCANDINA}', $locandina, $htmlContent);
 $htmlContent = str_replace('{IDFILM}', $idFilm, $htmlContent);
