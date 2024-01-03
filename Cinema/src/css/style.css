@@ -432,3 +432,30 @@ p {
     padding: 0.7em 1em;
     border-radius: 5px;
 }
+
+#login {
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;    
+    text-align: center; 
+    align-items: center;
+}
+
+
+#login input[type="submit"] {
+    padding: 1em;
+    background-color: var(--visitedLinkColor);
+    color: var(--headerTxtColor);
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc;
+}
+
+#login input[type="text"], #login input[type="password"] {
+    width: 20em;
+    padding: 10px;
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc;
+   
+}
