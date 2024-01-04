@@ -1,9 +1,12 @@
 <?php
 require_once 'queries/queries.php';
+session_start();
 
 //risultato della query
-$result=getFilms($conn);
+$result = getFilms($conn);
 $conn->close();
+
+
 $stringa_info_film = '';
 
 // creo una section  per ogni film
@@ -26,9 +29,16 @@ if ($result->num_rows == 0) {
     $stringa_info_film .= '</div>';
 }
 
-$stringa_footer= file_get_contents('src/html/footer.html');
+$stringa_footer = file_get_contents('src/html/footer.html');
 // sostituisco stringa {FILM} nel file index.html
 $template_film = file_get_contents('src/html/index.html');
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    $accedi_stringa = "Benvenuto " . $_SESSION['username'] . "!";
+} else {
+    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
+}
+
+$template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
 $template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
 $template_film = str_replace('{FOOTER}', $stringa_footer, $template_film);
 echo $template_film;

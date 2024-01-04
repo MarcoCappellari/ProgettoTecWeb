@@ -172,4 +172,12 @@ function getUserByMailOrUsername($conn, $user)
     return $user;
 }
 
+function getUserByMail($conn, $user){
+    $query = "SELECT * FROM Utente WHERE mail = '$user'";
+    $result = $conn->query($query);
+    $user = $result->fetch_assoc();
+    return $user['username'];
+}
+
+
 ?>
