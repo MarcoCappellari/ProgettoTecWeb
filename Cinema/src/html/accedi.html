@@ -33,25 +33,25 @@
     </nav>
 
     <main>
-        <div id="login">
-            <h2>Login</h2>
-            <form action="../php/accedi.php" method="post">
-                <fieldset>
-                    <legend>Login utente</legend>
+
+        <div id="login-container">
+            <div id="login">
+                <h2>Accedi</h2>
+                <form action="../php/accedi.php" method="post">
                     <div>
-                        <label for="username">Username:</label>
+                        <label for="username">Email o username</label>
                         <input type="text" id="username" name="username" required>
                     </div>
                     <div>
-                        <label for="password">Password:</label>
+                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" required>
-                        <input type="submit" value="Accedi">    
                     </div>
-                    
-                </fieldset>
-            </form>
-            <p>Non sei ancora registrato? <a href="registrati.php">Registrati</a></p>
+                    <input type="submit" value="Accedi">
+                </form>
+                <p>Non sei ancora registrato? <a href="#">Registrati</a></p>
+            </div>
         </div>
+
     </main>
     <footer>
         <div>

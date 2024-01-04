@@ -438,29 +438,56 @@ p {
     border-radius: 5px;
 }
 
-#login {
-    background-color: var(--bgColor);
-    color: var(--txtColor);
-    /*max-width: 1024px;*/
-    padding: 1em;
-    margin: auto;    
-    text-align: center; 
+/*login*/
+
+#login-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    background-color: #212121;
 }
 
+#login {
+    width: 20em;
+    padding: 7em;
+    background-color: #181818;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#login h2 {
+    color: var(--txtColorHome);
+    margin-bottom: 1em;
+}
+
+#login label {
+    color: #8c8c8c;
+    font-size: 20px;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+    width: 80%;
+    padding: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 1em;
+}
 
 #login input[type="submit"] {
+    width: 70%;
     padding: 1em;
-    background-color: var(--visitedLinkColor);
-    color: var(--headerTxtColor);
-    margin-bottom: 0.5em;
-    border: 1px solid #ccc;
+    border: none;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: #fff;
+    margin-bottom:1em;
+    font-size: 18px;
 }
 
-#login input[type="text"], #login input[type="password"] {
-    width: 20em;
-    padding: 10px;
-    margin-bottom: 0.5em;
-    border: 1px solid #ccc;
-   
+#login p {
+    color: var(--txtColorHome);
 }
