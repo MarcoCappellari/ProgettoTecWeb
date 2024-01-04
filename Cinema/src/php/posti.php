@@ -26,19 +26,21 @@ $output = '';
 while ($row = $SeatRow->fetch_assoc()) {
     if ($current_fila != $row['fila']) {
         if (!empty($current_fila)) {
-            $output .= "</div>"; //fine riga dei posti
+            $output .= "</tr>"; //fine riga dei posti
         }
         $current_fila = $row['fila'];
-        $output .= "<div><span class='bold-text'>Fila " . $current_fila . "</span>: "; //il div inserito serve per andare a capo ogni riga dei posti
     }
 
-    $stato_posto = $row['disponibile'] ? "selezionabile" : "non-selezionabile";
-    $output .= "<label class='$stato_posto' for='posto_" . $row['fila'] . $row['numero_posto'] . "'>";
+    $stato_posto = $row['disponibile'] ? "disponibile" : "occupato";
+    $output .= "<th>";
+    $output .= "<label class='container-checkbox' for='posto_" . $row['fila'] . $row['numero_posto'] . "'>";
     $output .= "<input type='checkbox' id='posto_" . $row['fila'] . $row['numero_posto'] . "' name='posti_selezionati[]' value='" . $row['fila'] . $row['numero_posto'] . "' " . ($row['disponibile'] ? '' : 'disabled') . ">";
+    $output .= "<span class='custom-checkbox $stato_posto'></span ";
     $output .= "</label> ";
+    $output .= "</th>";
 }
 if (!empty($current_fila)) {
-    $output .= "</div>"; //chiudo ultima riga dei posti
+    $output .= "<tr>"; //chiudo ultima riga dei posti
 }
 
 $ora_formattata = date('H:i', strtotime($ora_film));

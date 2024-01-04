@@ -25,6 +25,10 @@
     --visitedLinkColor: #FF0000;
 
     --font-body_family: "Century Gothic", sans-serif;
+
+    --postoSelezionatoColor: #292828;
+    --postoLiberoColor: gray;
+    --postoOccupatoColor: gray;
 }
 
 html {
@@ -341,7 +345,8 @@ p {
     list-style-type: none;
 }
 
-/*posti*/
+/*----------------posti----------------*/
+
 #film-posti {
     display: flex;
     flex-direction: column;
@@ -354,42 +359,115 @@ p {
     max-width: 1024px;
     padding: 1em;
     margin: auto;
+    gap: 1em;
 }
 
 #cinema-screen {
-    width: 100px;
-    height: 100px;
-    background-image: url("../images/cinema-screen.png");
+    width: 20em;
+    height: 8em;
+    padding: 0.5em;
+    background-color : black;
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
+
 
 /*checkbox*/
 /* Stili per i posti selezionabili */
-.selezionabile {
+
+
+.container-checkbox {  
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.container-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox { 
     display: inline-block;
-    width: 2em;
-    height: 2em;
-    margin: 0.3em;
+    width: 1.8em;
+    height: 1.8em; 
+    cursor: pointer;
+    margin: auto;
+    border: 2px solid var(--postoLiberoColor);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+
+.container-checkbox input:checked ~ .custom-checkbox  {
+    background-color: var(--postoSelezionatoColor);
+    border: 2px solid var(--postoSelezionatoColor);
+}
+
+
+  
+/* Stile della checkbox quando è selezionata */
+.selezionato{
+    background-color: var(--postoSelezionatoColor);
+    border: 2px solid var(--postoSelezionatoColor);
+}
+
+/* Stile della checkbox quando è libera */
+.disponibile {
+    border: 2px solid var(--postoLiberoColor);   
 }
 
 /* Stili per i posti non selezionabili */
-.non-selezionabile {
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    background-image: url("../images/checkbox.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0.4em;
+.occupato {
+    border: 2px solid var(--postoOccupatoColor);
+    background-color: var(--postoOccupatoColor);
+    
 }
+
+/* Stile legenda */
+#legenda {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+    gap: 1em;
+    width: 10em;
+    margin: auto;
+}
+
+.legenda-item{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legenda-posto{
+    width: 1.8em;
+    height: 1.8em;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.legenda-label{
+    font-size: 0.9em;
+}
+
 
 /*500 e 404*/
 #error-container {
     width: 80%;
     margin: 0.4em auto;
-    padding: 20px;
+    padding: 5em;
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
@@ -403,8 +481,8 @@ p {
 }
 
 #immagine-errore-500-404 {
-    width: 200px;
-    height: 200px;
+    width: 20em;
+    height: 20em;
     background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;

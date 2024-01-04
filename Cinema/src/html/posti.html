@@ -53,11 +53,27 @@
             <div id="cinema-screen"></div>
 
             <form action="../php/prenota.php" method="post">
-                <div id="posti">
+                <table id="posti-container">
                     {POSTI}
-                </div>
+                </table>
                 <input type='submit' value='Prenota' id="prenota-button">
             </form>
+
+            <div id="legenda">
+                <h3>Legenda</h3>
+                <div class="legenda-item">
+                    <div class="legenda-posto occupato"></div>
+                    <label class="legenda-label" > Occupato</label>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-posto selezionato"></div>
+                    <label class="legenda-label" > Selezionato </label>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-posto disponibile"></div>
+                    <label class="legenda-label" > Disponibile</label>
+                </div>
+            </div>
         </div>
 
     </main>
