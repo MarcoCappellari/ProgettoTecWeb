@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($password == $user['password'] && ($username == $user['username'] || $username == $user['mail'])) {
         echo "Credenziali corrette.";
+        //$_SESSION['username'] = $user['username'];
         exit();
     } else {
         echo "Credenziali errate o password non corretta.";
