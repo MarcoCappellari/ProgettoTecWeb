@@ -57,7 +57,7 @@ header {
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
     
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 
@@ -74,7 +74,10 @@ header h1 {
 
 }
 
-
+main{
+    max-width: 1800px;
+    margin: auto;
+}
 
 nav {
     color: var(--headerTxtColor);
@@ -100,7 +103,7 @@ a:visited {
 #breadcrumb {
     background-color: var(--breadcrumbBgColor);
     color: var(--headerTxtColor);
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 }
@@ -110,7 +113,7 @@ a:visited {
     justify-content: space-between;
     align-items: center;
     background-color: var(--searchHeaderBg);
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 }
@@ -136,12 +139,12 @@ a:visited {
 
 #film-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
     gap: 2em;
     text-align: center;
     color: var(--txtColorHome);
     background-color: var(--bgColorHome);
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     padding: 1em;
     margin: auto;
 }
@@ -163,7 +166,7 @@ footer {
     justify-content: space-around;
     background-color: var(--footerBgColor);
     color: var(--footerTxtColor);
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 }
@@ -203,7 +206,7 @@ footer li {
     background-color: var(--bgColor);
     color: var(--txtColor);
     align-items: center;
-    max-width: 1024px;
+   /* max-width: 1200px;*/
     padding: 1em;
     margin: auto;
 }
@@ -231,7 +234,7 @@ footer li {
 
 .orari-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     align-items: center;
     justify-items: center;
@@ -319,13 +322,13 @@ p {
 
 #locandina-title img {
     margin: 0.5em;
-    width: 12%;
+    width: 7em;
 }
 
 #film-orari-container {
     background-color: var(--bgColor);
     color: var(--txtColor);
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     padding: 1em;
     margin: auto;
 }
@@ -353,7 +356,7 @@ p {
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     padding: 1em;
     margin: auto;
 }
