@@ -6,21 +6,16 @@ if (isset($_GET['film'])) {
     $idFilm = $_GET['film'];
 } else {
     header('Location: ../html/404.html'); //nel caso in cui chiamo la pagina senza specificare id
-    exit; 
+    exit;
 }
-
-$resultOrariMinimi = null;
 
 $resultFilm = getFilmByIdQuery($conn, $idFilm);
-$dataMinima = getFirstDateOfFilm($conn, $idFilm);
 $attori = getFilmActorsById($conn, $idFilm);
 $generi = getFilmGenresById($conn, $idFilm);
-// verifico che la query precedente abbia avuto un risultato, se si -> prelevo la data_minima
-if ($dataMinima) {
-    $resultOrariMinimi = getTimesByFilmIdAndDate($conn, $idFilm, $dataMinima);
-}
+$proiezioniFilm = getOrariByFilmId($conn, $idFilm);
 
 $conn->close();
+
 
 $titolo = $resultFilm['nome'];
 $immagine = base64_encode($resultFilm['locandina']);
@@ -29,7 +24,7 @@ $durata = $resultFilm['durata'];
 $trama = $resultFilm['trama'];
 
 // Leggi il contenuto del file HTML
-$template =  file_get_contents('../html/info_film.html'); //linux
+$template = file_get_contents('../html/info_film.html'); //linux
 
 // Sostituisci le variabili nel template
 $template = str_replace('{TITOLO}', $titolo, $template);
@@ -38,7 +33,6 @@ $template = str_replace('{TRAMA}', " $trama", $template);
 $template = str_replace('{REGISTA}', $regista, $template);
 $template = str_replace('{DURATA}', $durata, $template);
 $template = str_replace('{GENERI_SECTION}', $generi, $template);
-$template = str_replace('{IDFILM}', $idFilm, $template);
 
 // Aggiungi  attori se presenti nel film (es. film di animazione non ha attori)
 if (!empty($attori)) {
@@ -48,35 +42,40 @@ if (!empty($attori)) {
     $template = str_replace('{ATTORI_SECTION}', '', $template);
 }
 
-// Aggiungi data se presente
-if (!empty($dataMinima)) {
-    $dataHTML = "<p class='film-data'>$dataMinima</p>";
-    $template = str_replace('{DATA}', $dataHTML, $template);
-} else {
-    $template = str_replace('{DATA}', '', $template);
-}
-
 // Aggiungi la variabile degli orari al template HTML
-if ($resultOrariMinimi && $resultOrariMinimi->num_rows > 0) {
-    // Variabile per memorizzare gli orari HTML
-    $orariHTML = " <p><span class='bold-text'>Orari:</span></p>
-                <div id='data-ora'>
-                <ul>
-                <div class='orari-container'>";
+if ($proiezioniFilm) {
 
+    ksort($proiezioniFilm); //ordino array in base alla data (chiave) da + recente a + lontana
+    $proiezioniHTML = '';
+    $count = 0;
+    foreach ($proiezioniFilm as $data => $orari) {
+        $proiezioniHTML .= "<div id='data-ora'>";
+        $proiezioniHTML .= "<p>Data: <span class='film-data'>$data</span></p>";
+        $proiezioniHTML .= "<p>Ora:</p>";
+        $proiezioniHTML .= "<ul>";
+        $proiezioniHTML .= "<div class='orari-container'>";
 
-    while ($rowOrariMinimi = $resultOrariMinimi->fetch_assoc()) {
-        $link = "posti.php?idFilm=$idFilm&data=$dataMinima&ora=" . urlencode($rowOrariMinimi['ora']);
-        $oraFormattata = date('H:i', strtotime($rowOrariMinimi['ora']));
-        $orariHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
+        foreach ($orari as $ora) {
+
+            $oraFormattata = date('H:i', strtotime($ora));
+            //PER OGNI ORA, collego un link alla pagina di selezione posto
+            $link = "posti.php?idFilm=$idFilm&data=$data&ora=" . urlencode($ora);
+            // Crea il link con l'orario come testo del link
+            $proiezioniHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
+        }
+        $count++;
+        $proiezioniHTML .= "</div></ul></div>";
+        if ($count == 1) {
+            $proiezioniHTML .= "<p><span class='bold-text'>Prossime date di Riproduzione:</span></p>";
+        }
     }
+    if ($count == 1) {
+        $proiezioniHTML .= "<p> Nessun'altra programmazione oltre a quella del <span class='film-data'>$data</span> è stata programmata, (le nuove riproduzioni saranno inserite mercoledì sera).</p>";
+    }
+    $template = str_replace('{PROIEZIONI}', $proiezioniHTML, $template);
 
-    $orariHTML .= "</div></ul>";
-    $orariHTML .= "<a href='orari.php?idFilm=$idFilm'><div id='mostra-date'>Mostra tutte le date</div></a>";
-    $orariHTML .= "</div>";
-    $template = str_replace('{ORARI}', $orariHTML, $template);
 } else {
-    $template = str_replace('{ORARI}', "<p> Nessuna riproduzione è ancora stata programmata, la preghiamo di attendere (le nuove riproduzioni saranno inserite mercoledì sera).</p>", $template);
+    $template = str_replace('{PROIEZIONI}', "<p> Nessuna riproduzione è ancora stata programmata, la preghiamo di attendere (le nuove riproduzioni saranno inserite mercoledì sera).</p>", $template);
 }
 
 echo $template;

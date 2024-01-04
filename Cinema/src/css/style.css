@@ -74,6 +74,8 @@ header h1 {
 
 }
 
+
+
 nav {
     color: var(--headerTxtColor);
 }
@@ -254,17 +256,17 @@ footer li {
     font-size: 1.1em;
     font-family: 'architectural', 'cursive', sans-serif;
 }
-
+/*
 #mostra-date {
     max-width: 7em;
-    /* Per non scrivere tutta la stringa in una riga */
+    
     margin: 1px;
     padding: 1em;
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
 }
-
+*/
 #title-date-time h2,
 p {
     margin-bottom: 0.5em;
