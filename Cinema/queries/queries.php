@@ -178,6 +178,18 @@ function getUserByMail($conn, $user){
     $user = $result->fetch_assoc();
     return $user['username'];
 }
+function getPermessiByUsername($conn, $user) {
+    $query = "SELECT permessi FROM Utente WHERE username = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        return (bool) $row['permessi']; 
+    } else {
+        return false; 
+    }
+}
 
 
 ?>
