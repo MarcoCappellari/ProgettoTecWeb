@@ -1,6 +1,19 @@
 <?php
 require_once '../../queries/queries.php';
 
+session_start();
+
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    $permessi=getPermessiByUsername($conn, $_SESSION['username']);
+    if($permessi==True){
+        $accedi_stringa = "<a href='admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
+    }else{
+        $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
+    }
+} else {
+    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
+}
+
 if (isset($_GET['film'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['film'];
@@ -78,6 +91,7 @@ if ($proiezioniFilm) {
     $template = str_replace('{PROIEZIONI}', "<p> Nessuna riproduzione è ancora stata programmata, la preghiamo di attendere (le nuove riproduzioni saranno inserite mercoledì sera).</p>", $template);
 }
 
+$template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 echo $template;
 
 ?>
