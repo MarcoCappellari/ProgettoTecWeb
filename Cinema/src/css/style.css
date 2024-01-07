@@ -545,6 +545,32 @@ p {
     color: #fff;
 }
 
-#logoutForm button:hover {
-    background-color: #c90b11; 
+/*aggiungi proiezione*/
+#aggiungi_proiezione{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: var(--bgColor);
+        color: var(--txtColor);
+        text-align: center;
+        padding: 1em; 
 }
+#aggiungi_proiezione h2{
+    padding: 0.5em;
+}
+#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: large;
+    box-sizing: border-box;
+    margin: 1em;
+}
+
+#aggiungi_proiezione input[type="submit"] {
+    background-color: #e50914;
+}
+

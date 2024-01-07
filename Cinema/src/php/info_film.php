@@ -11,7 +11,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
     }
 } else {
-    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
+    $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
 }
 
 if (isset($_GET['film'])) {

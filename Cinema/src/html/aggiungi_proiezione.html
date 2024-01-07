@@ -30,25 +30,41 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Area Amministrativa</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/admin.php">Area
+                Amministrativa</a> &gt Aggiungi Proiezione</p>
     </nav>
 
     <!--main-->
     <main>
-        <div id="adminArea">
-            <h2>Area Amministrativa</h2>
-            <nav id="adminMenu">
+        <div id="aggiungi_proiezione">
+            <h2>Aggiungi proiezione</h2>
 
-                <ul>
-                    <li><a href="#1">Aggiungi Film</a></li>
-                    <li><a href="../php/aggiungi_proiezione.php">Aggiungi Proiezione</a></li>
-                    <li><a href="#3">Modifica Lista Film</a></li>
-                </ul>
-            </nav>
-            <form id="logoutForm" action="../php/admin.php" method="post">
-                <input type="hidden" name="logout" value="true">
-                <button type="submit"><span lang="en">Log Out</span></button>
+            <form action="../php/aggiungi_proiezione.php" method="post">
+                <div>
+                    <label for="film">Seleziona Film:</label>
+                    <select name="film" required>
+                        {FILM-OPZIONI}
+                    </select>
+                </div>
+                <div>
+                    <label for="data">Seleziona Data:</label>
+                    <input type="date" name="data" required>
+                </div>
+                <div>
+                    <label for="ora">Inserisci Orario:</label>
+                    <input type="time" name="ora" required>
+                </div>
+                <div>
+                    <label for="sala">Seleziona Sala:</label>
+                    <select name="sala" required>
+                        {SALA-OPZIONI}
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" value="Aggiungi Programmazione">
+                </div>
             </form>
+            {RISULTATO}
         </div>
     </main>
 

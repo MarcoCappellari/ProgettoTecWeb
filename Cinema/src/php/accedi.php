@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Credenziali corrette.";
         $_SESSION['username'] = $username;
         $_SESSION['logged_in'] = true;
+        header('Location: ../../index.php');
         exit();
     } else {
         echo "Credenziali errate o password non corretta.";

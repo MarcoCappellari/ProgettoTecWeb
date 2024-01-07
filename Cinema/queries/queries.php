@@ -190,6 +190,10 @@ function getPermessiByUsername($conn, $user) {
         return false; 
     }
 }
-
+function getSala($conn) {
+    $query = "SELECT * FROM Sala";
+    $result = $conn->query($query);
+    return $result;
+}
 
 ?>
