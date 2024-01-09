@@ -1,29 +1,41 @@
 <?php
 
 require_once '../../queries/queries.php';
-session_start(); //serve per usare $_SESSION['username'] (avvio la sessione)
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Verifica se i campi sono stati inviati
-    if (!isset($_POST['username']) || !isset($_POST['password'])) {
+    if (!isset($_POST['utente']) || !isset($_POST['password'])) {
         header('Location: ../html/404.html');
         exit();
     }
 
-    $username = $_POST['username'];
+    $utente = $_POST['utente'];
     $password = $_POST['password'];
 
-    $user = getUserByMailOrUsername($conn, $username);
+    $user = getUserByMailOrUsername($conn, $utente);
+
+    if ($user === null) {
+        echo "Utente non trovato.";
+        exit();
+    }
+
+    if ($utente == $user['mail']) {
+        $username = getUserByMail($conn, $utente);
+    } else {
+        $username = $user['username'];
+    }
+
     $conn->close();
-    // Verifica se l'utente esiste e la password corrisponde
+
     if ($password == $user['password'] && $username == $user['username']) {
-        $_SESSION['username'] = $user['username'];
         echo "Credenziali corrette.";
-        exit(); // Interrompi lo script dopo il reindirizzamento
+        $_SESSION['username'] = $username;
+        $_SESSION['logged_in'] = true;
+        header('Location: ../../index.php');
+        exit();
     } else {
         echo "Credenziali errate o password non corretta.";
     }
 }
-
 
 ?>

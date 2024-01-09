@@ -171,6 +171,30 @@ function getUserByMailOrUsername($conn, $user){
     return $user;
 }
 
+function getUserByMail($conn, $user){
+    $query = "SELECT * FROM Utente WHERE mail = '$user'";
+    $result = $conn->query($query);
+    $user = $result->fetch_assoc();
+    return $user['username'];
+}
+function getPermessiByUsername($conn, $user) {
+    $query = "SELECT permessi FROM Utente WHERE username = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        return (bool) $row['permessi']; 
+    } else {
+        return false; 
+    }
+}
+function getSala($conn) {
+    $query = "SELECT * FROM Sala";
+    $result = $conn->query($query);
+    return $result;
+}
+
 function getSalaAndSeats($conn){
     $query ="SELECT S.nome AS NomeSala, COUNT(P.numero_posto) AS NumPosti, S.TecVideo, S.TecAudio
             FROM Sala AS S JOIN Posto AS P ON S.id=P.id_sala
