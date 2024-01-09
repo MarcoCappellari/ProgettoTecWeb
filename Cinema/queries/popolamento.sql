@@ -23,10 +23,10 @@ INSERT INTO Genere (nome_genere) VALUES
 ('Drammatico');
 
 -- Inserisci dati nella tabella Sala
-INSERT INTO Sala (id, nome) VALUES 
-(1, 'Sala 1'),
-(2, 'Sala 2'),
-(3, 'Sala 3');
+INSERT INTO Sala (id, nome, TecVideo, TecAudio) VALUES 
+(1, 'Sala 1', '3D', 'Dolby Atmos'),
+(2, 'Sala 2', '4K', 'Sorround Sound'),
+(3, 'Sala 3', '4K', 'Dolby Atmos');
 
 -- Inserisci dati nella tabella Posto
 INSERT INTO Posto (fila, numero_posto, id_sala) VALUES 

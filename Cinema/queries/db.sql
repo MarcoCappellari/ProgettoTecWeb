@@ -32,7 +32,9 @@ CREATE TABLE Genere (
 
 CREATE TABLE Sala (
     id INT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(50), 
+    TecVideo VARCHAR(50),
+    TecAudio VARCHAR(50)
 );
 
 CREATE TABLE Posto (
