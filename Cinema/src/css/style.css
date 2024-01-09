@@ -574,3 +574,31 @@ p {
     background-color: #e50914;
 }
 
+#biglietti-container {
+background-color: #181818;
+}
+
+#biglietti-container{
+    font-size: 1em;  
+    color: #333;             
+    padding: 1em;          
+    text-align: center;      
+    text-transform: uppercase; 
+    letter-spacing: 0.1em;     
+}
+
+#biglietti-container h2{
+    color: #e50914;
+}
+
+#nessun-biglietto{
+    color:#fff;
+    padding: 4em;
+}
+
+.biglietto {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em auto;
+}

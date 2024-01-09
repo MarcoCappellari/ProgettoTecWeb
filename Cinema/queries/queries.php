@@ -18,8 +18,8 @@ function getFilmByIdQuery($conn, $idFilm)
     if ($resultFilm && $resultFilm->num_rows > 0) {
         return $resultFilm->fetch_assoc();
     } else {
-        header('Location: ../html/404.html'); 
-        exit; 
+        header('Location: ../html/404.html');
+        exit;
     }
 }
 
@@ -100,7 +100,8 @@ function getFilmGenresById($conn, $idFilm)
     }
 }
 
-function getOrariByFilmId($conn, $idFilm) {
+function getOrariByFilmId($conn, $idFilm)
+{
 
     $query = "SELECT Riproduzione.data, Riproduzione.ora
               FROM Riproduzione
@@ -125,7 +126,8 @@ function getOrariByFilmId($conn, $idFilm) {
     return $orari;
 }
 
-function getFilmByName($conn, $film_name) {
+function getFilmByName($conn, $film_name)
+{
     // Sanifica l'input per prevenire SQL injection
     $film_name = $conn->real_escape_string($film_name);
 
@@ -143,7 +145,8 @@ function getFilmByName($conn, $film_name) {
     }
 }
 
-function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
+function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film)
+{
 
     // Crea la query SQL
     $query = "SELECT A.id_riproduzione, R.id_film, R.ora, R.data, P.fila, P.numero_posto, A.disponibile
@@ -172,28 +175,65 @@ function getUserByMailOrUsername($conn, $user)
     return $user;
 }
 
-function getUserByMail($conn, $user){
+function getUserByMail($conn, $user)
+{
     $query = "SELECT * FROM Utente WHERE mail = '$user'";
     $result = $conn->query($query);
     $user = $result->fetch_assoc();
     return $user['username'];
 }
-function getPermessiByUsername($conn, $user) {
+function getPermessiByUsername($conn, $user)
+{
     $query = "SELECT permessi FROM Utente WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($row = $result->fetch_assoc()) {
-        return (bool) $row['permessi']; 
+        return (bool) $row['permessi'];
     } else {
-        return false; 
+        return false;
     }
 }
-function getSala($conn) {
+function getSala($conn)
+{
     $query = "SELECT * FROM Sala";
     $result = $conn->query($query);
     return $result;
+}
+
+function getBigliettoByUser($conn, $user)
+{
+    $query = "SELECT B.id, F.nome AS nome_film, R.data, R.ora, P.fila, P.numero_posto, S.nome AS nome_sala
+        FROM Biglietto B
+        JOIN Riproduzione R ON B.id_riproduzione = R.id
+        JOIN Film F ON R.id_film = F.id
+        JOIN Assegnazione A ON R.id = A.id_riproduzione
+        JOIN Posto P ON A.fila = P.fila AND A.numero_posto = P.numero_posto AND A.id_sala = P.id_sala
+        JOIN Sala S ON P.id_sala = S.id
+        WHERE B.id_utente = '$user'";
+
+    $result = $conn->query($query);
+    if ($result && $result->num_rows > 0) {
+        return $result;
+    } else {
+        return null; // Nessun risultato trovato
+    }
+}
+
+function getIdByUsername($conn, $username) {
+    $query = "SELECT mail FROM Utente WHERE username = '$username'";
+    $result = $conn->query($query);
+
+    // Controlla se la query ha restituito dei risultati
+    if ($result && $result->num_rows > 0) {
+        // Estrai l'email dalla prima riga risultante
+        $row = $result->fetch_assoc();
+        return $row['mail'];
+    } else {
+        // Nessun risultato trovato
+        return null;
+    }
 }
 
 ?>
