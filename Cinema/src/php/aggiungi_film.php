@@ -15,8 +15,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $file = $_FILES["locandina"];
     $titolo = $_POST['titolo'];
-    $locandina = $_POST['locandina'];
+    $locandina = file_get_contents($file["tmp_name"]);
     $trama_film = $_POST['trama'];
     $regista= $_POST['regista'];
     $durata = $_POST['durata'];
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo '<script>console.log("' . $titolo . '");</script>';
     // Inserimento del nuovo film nel database
-    $sql = "INSERT INTO Film (nome, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$durata' ,$locandina, '$trama_film')";
+    $sql = "INSERT INTO Film (nome, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$durata' ,'$locandina', '$trama_film')";
     $conn->query($sql);
 
 
