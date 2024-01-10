@@ -44,36 +44,41 @@
                 <legend > Film </legend>
                 <div class="aggiungi-film-form-input-field">
                     <label for="film_input">Titolo:</label>
-                    <input type="text" id="film_input" name="film_input" />
+                    <input type="text" id="film_input" name="titolo" required/>
                 </div>
                 <div class="aggiungi-film-form-input-field">
                     <label for="locangina_input">Locandina:</label>
-                    <input type="file" id="locangina_input" name="film_input" />
+                    <input type="file" id="locangina_input" name="locandina" />
                 </div>
                 <div class="aggiungi-film-form-input-field">
                     <label for="trama_film">Trama:</label>
-                    <textarea name="trama_film" id="trama_film"></textarea>
+                    <textarea name="trama" id="trama_film" required></textarea>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Informazioni Film</legend>
                 <div class="aggiungi-film-form-input-field">
                     <label for="regista_input">Regista:</label>
-                    <input type="text" id="regista_input" name="regista_input" />
+                    <input type="text" id="regista_input" name="regista" required/>
+                </div>
+                <div class="aggiungi-film-form-input-field">
+                    <label for="durata_input">Durata (in Minuti):</label>
+                    <input type="number" id="durata_input" name="durata" required/>
                 </div>
                 <div class="aggiungi-film-form-input-field">
                     <label for="attore1">Attore 1:</label>
-                    <input type="text" id="attore1" name="attore1" required>
+                    <input type="text" id="attore1" name="attore" required>
                 </div>
                 <div class="aggiungi-film-form-input-field">
-                    <label for="genere_opzioni">Seleziona Generi:</label>
-                    <select name="genere" id="genere_opzioni" required>
-                        {GENERE-OPZIONI}
-                    </select>
-                    <select name="genere" id="genere_opzioni" required>
+                    <label for="genere_primario">Seleziona Genere Primario:</label>
+                    <select name="genere1" id="genere_primario" required>
                         {GENERE-OPZIONI}
                     </select>
 
+                    <label for="genere_secondario">Seleziona Genere <Secondario></Secondario>:</label>
+                    <select name="genere2" id="genere_secondario" required>
+                        {GENERE-OPZIONI}
+                    </select>
                 </div>
             </fieldset>
             </div>

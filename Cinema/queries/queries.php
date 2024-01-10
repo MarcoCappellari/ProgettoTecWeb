@@ -8,6 +8,13 @@ function getFilms($conn)
     return $result;
 }
 
+function getGeneris($conn)
+{
+    $sql = "SELECT nome_genere FROM Genere";
+    $result = $conn->query($sql);
+    return $result;
+}
+
 function getFilmByIdQuery($conn, $idFilm)
 {
     // Query per ottenere le informazioni del film dato il suo ID

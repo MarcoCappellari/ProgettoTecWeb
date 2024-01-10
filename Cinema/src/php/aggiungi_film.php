@@ -11,61 +11,40 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
     }
 } else {
-    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
+    $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $film = $_POST['film'];
-    $data = $_POST['data'];
-    $ora = $_POST['ora'];
-    $sala = $_POST['sala'];
+    $titolo = $_POST['titolo'];
+    $locandina = $_POST['locandina'];
+    $trama_film = $_POST['trama'];
+    $regista= $_POST['regista'];
+    $durata = $_POST['durata'];
+    $genere_primario = $_POST['genere1'];
+    $genere_secondario = $_POST['genere2'];
 
-    // Inserimento della nuova programmazione nel database
-    $sql = "INSERT INTO Riproduzione (id_film, ora, data) VALUES ('$film', '$ora', '$data')";
+    echo '<script>console.log("' . $titolo . '");</script>';
+    // Inserimento del nuovo film nel database
+    $sql = "INSERT INTO Film (nome, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$durata' ,$locandina, '$trama_film')";
     $conn->query($sql);
 
-    // Ottieni l'ID auto-incremento dell'ultimo inserimento
-    $idRiproduzione = $conn->insert_id;
 
-    // Itera sui posti della sala e inserisci nella tabella Assegnazione
-    $sql = "SELECT fila, numero_posto FROM Posto WHERE id_sala = $sala";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $fila = $row['fila'];
-            $numero_posto = $row['numero_posto'];
-
-            $insertQuery = "INSERT INTO Assegnazione (id_riproduzione, fila, numero_posto, disponibile, id_sala)
-                            VALUES ($idRiproduzione, '$fila', $numero_posto, 1, $sala)";
-            $conn->query($insertQuery);
-            $risultato_info='<p>Proiezione inserita con successo!</p>';
-        }
-    }
 }
 
-$films = getFilms($conn);
-$sale = getSala($conn);
+$generi = getGeneris($conn);
 $conn->close();
 
-$film_info = '';
-while ($row = $films->fetch_assoc()) {
-    $film_info .= '<option value="' . $row['id'] . '">';
-    $film_info .= $row['nome'];
-    $film_info .= '</option>';
+$genere_info  = '';
+while ($row = $generi->fetch_assoc()) {
+    $genere_info .= '<option value="' . $row['id'] . '">';
+    $genere_info  .= $row['nome_genere'];
+    $genere_info  .= '</option>';
 }
 
-$sale_info = '';
-while ($row = $sale->fetch_assoc()) {
-    $sale_info .= '<option value="' . $row['id'] . '">';
-    $sale_info .= $row['nome'];
-    $sale_info .= '</option>';
-}
 
 $template = file_get_contents('../html/aggiungi_film.html');
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
-$template = str_replace('{SALA-OPZIONI}', $sale_info, $template);
-$template = str_replace('{FILM-OPZIONI}', $film_info, $template);
+$template = str_replace('{GENERE-OPZIONI}', $genere_info, $template);
 $template = str_replace('{RISULTATO}', $risultato_info, $template);
 echo $template;
 
