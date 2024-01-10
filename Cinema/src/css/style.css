@@ -390,6 +390,8 @@ p {
     margin: 0.4em;
 }
 
+
+
 /*500 e 404*/
 #error-container {
     width: 80%;
@@ -546,19 +548,22 @@ p {
 }
 
 /*aggiungi proiezione*/
-#aggiungi_proiezione{
+#aggiungi_proiezione , #aggiungi_film{
         display: flex;
         align-items: center;
         flex-direction: column;
-        background-color: var(--bgColor);
+        background-color: #212121;
         color: var(--txtColor);
         text-align: center;
-        padding: 1em; 
+        padding: 1em;
+
 }
-#aggiungi_proiezione h2{
+#aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
     padding: 0.5em;
+    color: var(--txtColorHome)
 }
-#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] ,
+#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea{
     width: 100%;
     padding: 1em;
     border: none;
@@ -567,10 +572,59 @@ p {
     color: #ffffff;
     font-size: large;
     box-sizing: border-box;
-    margin: 1em;
 }
 
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione input[type="submit"], #aggiungi_film input[type="submit"] {
     background-color: #e50914;
 }
 
+
+/* Stili per aggiungi film  */
+
+
+#aggiunta-film-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+#aggiungi-film-form-field{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+#aggiunta-film-form fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2em;
+    border-radius: 8px;
+    gap: 2em;
+    background-color: #181818;
+    width: 24em;
+}
+
+#aggiunta-film-form label{
+    text-align: left;
+    color: #8c8c8c;
+}
+
+
+
+#aggiungi_film textarea{
+    font-size: 1em;
+    resize: none;
+    height: 8em;
+}
+.aggiungi-film-form-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#aggiungi_film input[type="file"] {
+    height: 8em;
+}
