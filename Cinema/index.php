@@ -31,8 +31,8 @@ if ($result->num_rows == 0) {
     while ($row = $result->fetch_assoc()) {
         $stringa_info_film .= '<section class="film">';
         $stringa_info_film .= '<a href="src/php/info_film.php?film=' . $row['id'] . '">';
-        $stringa_info_film .= '<img class="film-image" src="data:image/jpeg;base64,' . base64_encode($row['locandina']) . '" alt="">';
-        $stringa_info_film .= '<p> ' . $row['nome'] . '</p>';
+        $stringa_info_film .= '<img class="film-image" src="' . $row['locandina'] . '" alt="">';
+        $stringa_info_film .= '<p> ' . $row['titolo'] . '</p>';
         $stringa_info_film .= '</a>';
         $stringa_info_film .= '</section>';
     }

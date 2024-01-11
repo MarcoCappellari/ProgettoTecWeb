@@ -1,32 +1,37 @@
 -- Inserisci dati nella tabella Utente
 INSERT INTO Utente (username, nome, cognome, mail, permessi, password) VALUES 
-('user1', 'Mario', 'Rossi', 'mario@email.com', 1, 'password123'),
-('user2', 'Luca', 'Bianchi', 'luca@email.com', 0, 'securepass');
+('user1', 'Mario', 'Rossi', 'mario@email.com', 1, 'a'),
+('user2', 'Luca', 'Bianchi', 'luca@email.com', 0, 'a');
 
 -- Inserisci dati nella tabella Film
-INSERT INTO Film (id, nome, regista, durata, locandina, trama) VALUES 
-(1, 'Il Gladiatore', 'Benjamin Renner', 92, NULL, 'Trama del film...'),
-(2, 'Prendi il volo', 'Ridley Scott', 92, NULL, 'La famiglia Mallard è intrappolata nella sua routine. Mentre papà Mack è felice di mantenere la sua famiglia al sicuro navigando all infinito nel loro stagno del New England, mamma Pam è intenzionata a dare una scossa alla loro vita e mostrare ai loro figli - il figlio adolescente Dax e la papera Gwen - il mondo intero.'),
-(3, 'Inception', 'Christopher Nolan', 148, NULL, 'Trama del film...');
+INSERT INTO Film (titolo, regista, durata, locandina, trama) VALUES 
+('La guerra dei nonni', 'Benjamin Renner', 92,'src/images/locandine/la_guerra_dei_nonni.jpg', 'Trama del film...'),
+('Prendi il volo', 'Ridley Scott', 92, 'src/images/locandine/prendi_il_volo.jpg', 'La famiglia Mallard è intrappolata nella sua routine. Mentre papà Mack è felice di mantenere la sua famiglia al sicuro navigando all infinito nel loro stagno del New England, mamma Pam è intenzionata a dare una scossa alla loro vita e mostrare ai loro figli - il figlio adolescente Dax e la papera Gwen - il mondo intero.'),
+('The marvels', 'Christopher Nolan', 148, 'src/images/locandine/the_marvels.jpg', 'Trama del film...');
 
--- Inserisci dati nella tabella Attori
-INSERT INTO Attori (id, nome, cognome, anni, genere) VALUES 
-(1, 'Russell', 'Crowe', 57, 'Maschile'),
-(2, 'Carol', 'Kane', 71, 'Femminile'),
-(3, 'Danny', ' DeVito', 79, 'Maschile'),
-(4, 'Leonardo', 'DiCaprio', 47, 'Maschile');
 
 -- Inserisci dati nella tabella Genere
-INSERT INTO Genere (nome_genere) VALUES 
+INSERT INTO Genere (nome) VALUES 
 ('Azione'),
 ('Animazione'),
-('Drammatico');
+('Drammatico'),
+('Commedia'),
+('Horror'),
+('Fantascienza'),
+('Fantasy'),
+('Romantico'),
+('Avventura'),
+('Thriller'),
+('Crime'),
+('Mistero'),
+('Biografico'),
+('Documentario');
 
 -- Inserisci dati nella tabella Sala
-INSERT INTO Sala (id, nome, TecVideo, TecAudio) VALUES 
-(1, 'Sala 1', '3D', 'Dolby Atmos'),
-(2, 'Sala 2', '4K', 'Sorround Sound'),
-(3, 'Sala 3', '4K', 'Dolby Atmos');
+INSERT INTO Sala (nome, TecVideo, TecAudio) VALUES 
+('Sala 1', '3D', 'Dolby Atmos'),
+('Sala 2', '4K', 'Sorround Sound'),
+('Sala 3', '4K', 'Dolby Atmos');
 
 -- Inserisci dati nella tabella Posto
 INSERT INTO Posto (fila, numero_posto, id_sala) VALUES 
@@ -182,86 +187,23 @@ INSERT INTO Posto (fila, numero_posto, id_sala) VALUES
 ('E', 10, 3);
 
 
-
-
-
 -- Inserisci dati nella tabella Riproduzione
-INSERT INTO Riproduzione (id, id_film, ora, data) VALUES 
+INSERT INTO Proiezione (id_film, id_sala, ora, data) VALUES 
 (1, 2, '21:00:00', '2023-12-20'),
 (2, 2, '19:00:00', '2023-12-21'),
-(3, 2, '23:00:00', '2023-12-20');
-
--- Inserisci dati nella tabella Assegnazione
-INSERT INTO Assegnazione (id_riproduzione, fila, numero_posto, disponibile, id_sala) VALUES 
-(1, 'A', 1, 1, 1),
-(1, 'A', 2, 0, 1),
-(1, 'A', 3, 0, 1),
-(1, 'A', 4, 1, 1),
-(1, 'A', 5, 0, 1),
-(1, 'A', 6, 1, 1),
-(1, 'A', 7, 0, 1),
-(1, 'A', 8, 1, 1),
-(1, 'A', 9, 0, 1),
-(1, 'A', 10, 1, 1),
-(1, 'B', 1, 0, 1),
-(1, 'B', 2, 1, 1),
-(1, 'B', 3, 0, 1),
-(1, 'B', 4, 1, 1),
-(1, 'B', 5, 0, 1),
-(1, 'B', 6, 1, 1),
-(1, 'B', 7, 0, 1),
-(1, 'B', 8, 1, 1),
-(1, 'B', 9, 0, 1),
-(1, 'B', 10, 1, 1),
-(1, 'C', 1, 0, 1),
-(1, 'C', 2, 1, 1),
-(1, 'C', 3, 0, 1),
-(1, 'C', 4, 1, 1),
-(1, 'C', 5, 0, 1),
-(1, 'C', 6, 1, 1),
-(1, 'C', 7, 0, 1),
-(1, 'C', 8, 1, 1),
-(1, 'C', 9, 0, 1),
-(1, 'C', 10, 1, 1),
-(1, 'D', 1, 0, 1),
-(1, 'D', 2, 1, 1),
-(1, 'D', 3, 0, 1),
-(1, 'D', 4, 1, 1),
-(1, 'D', 5, 0, 1),
-(1, 'D', 6, 1, 1),
-(1, 'D', 7, 0, 1),
-(1, 'D', 8, 1, 1),
-(1, 'D', 9, 0, 1),
-(1, 'D', 10, 1, 1),
-(1, 'E', 1, 0, 1),
-(1, 'E', 2, 1, 1),
-(1, 'E', 3, 0, 1),
-(1, 'E', 4, 1, 1),
-(1, 'E', 5, 0, 1),
-(1, 'E', 6, 1, 1),
-(1, 'E', 7, 0, 1),
-(1, 'E', 8, 1, 1),
-(1, 'E', 9, 0, 1),
-(1, 'E', 10, 1, 1);
+(2, 2, '23:00:00', '2023-12-20');
 
 
+INSERT INTO Classificazione (id_film, nome_genere) VALUES
+(1, 'Fantasy'),
+(2, 'Azione'),
+(2, 'Thriller');
 
+-- Popolamento della tabella Biglietto
+INSERT INTO Biglietto (id_proiezione, id_utente, fila, numero_posto, id_sala) VALUES
+(1, 'mario@email.com', 'A', 1, 1),
+(2, 'mario@email.com', 'B', 3, 2);
 
--- Inserisci dati nella tabella Partecipano
-INSERT INTO Partecipano (id_film, id_attore) VALUES 
-(1, 1),
-(2, 1),
-(2, 2);
-
--- Inserisci dati nella tabella Conforme
-INSERT INTO Conforme (id_film, nome_genere) VALUES 
-(1, 'Azione'),
-(2, 'Drammatico');
-
--- Inserisci dati nella tabella Biglietto
-INSERT INTO Biglietto (id, id_riproduzione, id_utente) VALUES 
-(1, 1, 'mario@email.com'),
-(2, 2, 'luca@email.com');
 
 -- Inserisci dati nella tabella Recensioni
 INSERT INTO Recensioni (id, testo, data_creazione, id_utente) VALUES 
