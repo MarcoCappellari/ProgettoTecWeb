@@ -164,4 +164,38 @@ function getSalaAndSeats($conn)
     }
 }
 
+function getBigliettoByUser($conn, $user)
+{
+ $query = "SELECT Biglietto.id, Film.titolo, Proiezione.ora, Proiezione.data, Sala.nome AS sala, Posto.fila, Posto.numero_posto
+ FROM Biglietto
+ JOIN Proiezione ON Biglietto.id_proiezione = Proiezione.id
+ JOIN Film ON Proiezione.id_film = Film.id
+ JOIN Sala ON Proiezione.id_sala = Sala.id
+ JOIN Posto ON Biglietto.fila = Posto.fila AND Biglietto.numero_posto = Posto.numero_posto AND Biglietto.id_sala = Posto.id_sala
+ WHERE Biglietto.id_utente = '$user'";
+
+    $result = $conn->query($query);
+    if ($result && $result->num_rows > 0) {
+        return $result;
+    } else {
+        return null; 
+    }
+
+}
+
+function getIdByUsername($conn, $username)
+{
+    $query = "SELECT mail FROM Utente WHERE username = '$username'";
+    $result = $conn->query($query);
+
+    // Controlla se la query ha restituito dei risultati
+    if ($result && $result->num_rows > 0) {
+        // Estrai l'email dalla prima riga risultante
+        $row = $result->fetch_assoc();
+        return $row['mail'];
+    } else {
+        // Nessun risultato trovato
+        return null;
+    }
+}
 ?>
