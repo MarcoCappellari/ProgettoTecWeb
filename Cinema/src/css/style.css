@@ -10,7 +10,7 @@
     --breadcrumbBgColor: #292828;
     --breadcrumbTxtColor: #f0f0f0;
 
-    --searchHeaderBg: #f0f0f0; 
+    --searchHeaderBg: #f0f0f0;
 
     --bgColorHome: #000000;
     --txtColorHome: #f0f0f0;
@@ -24,7 +24,7 @@
     --linkColor: #0294b9;
     --visitedLinkColor: #FF0000;
 
-    --theadBgColor: #c5c5c5; 
+    --theadBgColor: #c5c5c5;
     --alternativeLine: #dddddd;
     --borderColor: #8b8b8b;
 
@@ -50,7 +50,7 @@ header {
     justify-content: space-around;
     align-items: center;
     background-color: var(--headerBgColor);
-    color: var(--headerTxtColor);    
+    color: var(--headerTxtColor);
     max-width: 1800px;
     padding: 1em;
     margin: auto;
@@ -68,25 +68,25 @@ header h1 {
     max-width: 1800px;
 }
 
-h1{
+h1 {
     margin-bottom: 1em;
 }
 
-h2{
+h2 {
     margin-top: 0.7em;
     margin-bottom: 0.2em;
 }
 
-p{
+p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
-main{
+main {
     max-width: 1800px;
     margin: auto;
     background-color: var(--bgColor);
-    color: var(--txtColor); 
+    color: var(--txtColor);
 }
 
 nav {
@@ -103,7 +103,7 @@ a:visited {
 }
 
 /*TABELLE*/
-table{
+table {
     margin-top: 0.2em;
     margin-bottom: 0.2em;
     border-collapse: collapse;
@@ -111,7 +111,7 @@ table{
 
 caption {
     font-weight: bold;
-    font-size: 1.2em; 
+    font-size: 1.2em;
     margin-bottom: 0.2em;
     white-space: nowrap;
 }
@@ -121,19 +121,20 @@ thead {
     color: var(--txtColor);
 }
 
-th, td {
+th,
+td {
     border: 1px solid var(--borderColor);
     padding: 0.5em;
     text-align: center;
 }
 
-@media screen and (min-width: 1000px){
-    .table-flip{
+@media screen and (min-width: 1000px) {
+    .table-flip {
         display: flex;
         flex-direction: row;
-    }   
+    }
 
-    .tr-flip{
+    .tr-flip {
         display: flex;
         flex-direction: column;
     }
@@ -147,7 +148,7 @@ tbody tr:nth-child(odd) {
     background-color: var(--bgColor);
 }
 
-.table-container{
+.table-container {
     overflow: auto;
 }
 
@@ -175,7 +176,7 @@ tbody tr:nth-child(odd) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--searchHeaderBg); 
+    background-color: var(--searchHeaderBg);
     padding: 1em;
     margin: auto;
 }
@@ -267,7 +268,7 @@ footer li {
     background-color: var(--bgColor);
     color: var(--txtColor);
     align-items: center;
-   /* max-width: 1200px;*/
+    /* max-width: 1200px;*/
     padding: 1em;
     margin: auto;
 }
@@ -320,13 +321,14 @@ footer li {
     font-family: 'architectural', 'cursive', sans-serif;
 }
 
-#title-date-time h2{
+#title-date-time h2 {
     margin-bottom: 0.5em;
 }
+
 /**/
 
 /*ERRORI DISPONIBILITA'*/
-.div-non-esiste{
+.div-non-esiste {
     align-items: center;
     text-align: center;
     padding: 1em;
@@ -523,7 +525,7 @@ footer li {
     border-radius: 4px;
     background-color: #e50914;
     color: #fff;
-    margin-bottom:1em;
+    margin-bottom: 1em;
     font-size: 18px;
 }
 
@@ -580,24 +582,29 @@ footer li {
     text-align: center;
     border: none;
     border-radius: 5px;
-    background-color: #e50914; 
+    background-color: #e50914;
     color: #fff;
 }
 
 /*aggiungi proiezione*/
-#aggiungi_proiezione{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: var(--bgColor);
-        color: var(--txtColor);
-        text-align: center;
-        padding: 1em; 
+#aggiungi_proiezione {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+    text-align: center;
+    padding: 1em;
 }
-#aggiungi_proiezione h2{
+
+#aggiungi_proiezione h2 {
     padding: 0.5em;
 }
-#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] {
+
+#aggiungi_proiezione select,
+#aggiungi_proiezione input[type="date"],
+#aggiungi_proiezione input[type="time"],
+#aggiungi_proiezione input[type="submit"] {
     width: 100%;
     padding: 1em;
     border: none;
@@ -617,12 +624,41 @@ footer li {
 /*  */
 
 /* Contenitori che contengono informazioni */
-.info{
+.info {
     padding: 2em 3em;
 }
 
 /*screen reader only*/
-.sr-only{
+.sr-only {
     position: absolute;
     left: -9999px;
+}
+
+
+
+#biglietti-container {
+    background-color: #181818;
+    font-size: 1em;
+    color: #333;
+    padding: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#biglietti-container h2 {
+    color: #e50914;
+}
+
+#nessun-biglietto {
+    color: #fff;
+    padding: 4em;
+}
+
+.biglietto {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em auto;
+    max-width: 40em;
 }
