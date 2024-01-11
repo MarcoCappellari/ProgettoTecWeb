@@ -164,8 +164,7 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
     return $result;
 }
 
-function getUserByMailOrUsername($conn, $user)
-{
+function getUserByMailOrUsername($conn, $user){
     $query = "SELECT * FROM Utente WHERE username = '$user' OR mail = '$user'";
     $result = $conn->query($query);
     $user = $result->fetch_assoc();
@@ -194,6 +193,23 @@ function getSala($conn) {
     $query = "SELECT * FROM Sala";
     $result = $conn->query($query);
     return $result;
+}
+
+function getSalaAndSeats($conn){
+    $query ="SELECT S.nome AS NomeSala, COUNT(P.numero_posto) AS NumPosti, S.TecVideo, S.TecAudio
+            FROM Sala AS S JOIN Posto AS P ON S.id=P.id_sala
+            GROUP BY S.nome";
+
+    $result = $conn->query($query);
+
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row; 
+        }
+        return $data;
+    } else {
+        return null;
+    }
 }
 
 ?>
