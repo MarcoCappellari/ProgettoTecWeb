@@ -11,31 +11,24 @@ CREATE TABLE Utente (
 -- Film
 CREATE TABLE Film (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
+    titolo VARCHAR(100),
     regista VARCHAR(100),
     durata INT,
-    locandina BLOB,
+    locandina VARCHAR(100),
     trama TEXT
-);
-
--- Attori
-CREATE TABLE Attori (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50),
-    cognome VARCHAR(50),
-    anni INT,
-    genere VARCHAR(10)
 );
 
 -- Genere
 CREATE TABLE Genere (
-    nome_genere VARCHAR(50) PRIMARY KEY
+    nome VARCHAR(50) PRIMARY KEY
 );
 
 -- Sala
 CREATE TABLE Sala (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(50) NOT NULL,
+    TecVideo VARCHAR(50),
+    TecAudio VARCHAR(50)
 );
 
 -- Posto
@@ -47,52 +40,38 @@ CREATE TABLE Posto (
     FOREIGN KEY (id_sala) REFERENCES Sala(id)
 );
 
--- Riproduzione
-CREATE TABLE Riproduzione (
+-- Proiezione
+CREATE TABLE Proiezione (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_film INT,
     ora TIME,
-    data DATE,
-    FOREIGN KEY (id_film) REFERENCES Film(id)
-);
-
--- Assegnazione
-CREATE TABLE Assegnazione (
-    id_riproduzione INT,
-    fila VARCHAR(1),
-    numero_posto INT,
-    disponibile BOOLEAN,
     id_sala INT,
-    PRIMARY KEY (id_riproduzione, fila, numero_posto, id_sala),
-    FOREIGN KEY (id_riproduzione) REFERENCES Riproduzione(id),
-    FOREIGN KEY (fila, numero_posto, id_sala) REFERENCES Posto(fila, numero_posto, id_sala)
+    data DATE,
+    FOREIGN KEY (id_film) REFERENCES Film(id),
+    FOREIGN KEY (id_sala) REFERENCES Sala(id)
 );
 
--- Partecipano
-CREATE TABLE Partecipano (
-    id_film INT,
-    id_attore INT,
-    PRIMARY KEY (id_film, id_attore),
-    FOREIGN KEY (id_film) REFERENCES Film(id),
-    FOREIGN KEY (id_attore) REFERENCES Attori(id)
-);
 
 -- Conforme
-CREATE TABLE Conforme (
+CREATE TABLE Classificazione (
     id_film INT,
     nome_genere VARCHAR(50),
     PRIMARY KEY (id_film, nome_genere),
     FOREIGN KEY (id_film) REFERENCES Film(id),
-    FOREIGN KEY (nome_genere) REFERENCES Genere(nome_genere)
+    FOREIGN KEY (nome_genere) REFERENCES Genere(nome)
 );
 
 -- Biglietto
 CREATE TABLE Biglietto (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    id_riproduzione INT,
+    id_proiezione INT,
     id_utente VARCHAR(50),
-    FOREIGN KEY (id_riproduzione) REFERENCES Riproduzione(id),
-    FOREIGN KEY (id_utente) REFERENCES Utente(mail)
+    fila VARCHAR(1),
+    numero_posto INT,
+    id_sala INT,
+    FOREIGN KEY (id_proiezione) REFERENCES Proiezione(id),
+    FOREIGN KEY (id_utente) REFERENCES Utente(mail),
+    FOREIGN KEY (fila, numero_posto, id_sala) REFERENCES Posto(fila, numero_posto, id_sala)
 );
 
 -- Recensioni
