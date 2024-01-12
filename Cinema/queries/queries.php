@@ -10,7 +10,7 @@ function getFilms($conn)
 
 function getGeneris($conn)
 {
-    $sql = "SELECT nome_genere FROM Genere";
+    $sql = "SELECT nome FROM Genere";
     $result = $conn->query($sql);
     return $result;
 }

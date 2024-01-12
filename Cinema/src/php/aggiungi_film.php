@@ -1,6 +1,8 @@
 <?php
 
 require_once '../../queries/queries.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 $risultato_info='';
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -16,17 +18,36 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titolo = $_POST['titolo'];
-    $locandina = $_POST['locandina'];
+
     $trama_film = $_POST['trama'];
     $regista= $_POST['regista'];
     $durata = $_POST['durata'];
-    $genere_primario = $_POST['genere1'];
-    $genere_secondario = $_POST['genere2'];
+    $genere_primario = $_POST['genere_primario'];
+    $genere_secondario = $_POST['genere_secondario'];
 
-    echo '<script>console.log("' . $titolo . '");</script>';
+
+    $file_name = $_FILES['locandina']['name'];
+    $file_tmp = $_FILES['locandina']['tmp_name'];
+    $file_size = $_FILES['locandina']['size'];
+    $file_error = $_FILES['locandina']['error'];
+
+    $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    // Genera un nome unico per il file
+    $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
+    // Definisci la cartella di destinazione
+    $locandina_path = "../images/locandine/" . $new_file_name;
+
+    echo '<script>console.log("' . $locandina_path . '");</script>';
+    // Sposta il file nella cartella di destinazione
+    move_uploaded_file($file_tmp, $locandina_path);
+
     // Inserimento del nuovo film nel database
-    $sql = "INSERT INTO Film (nome, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$durata' ,$locandina, '$trama_film')";
+    $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
     $conn->query($sql);
+
+    $sql2 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('[value-1]','[value-2]')";
+
+
 
 
 }
@@ -36,8 +57,8 @@ $conn->close();
 
 $genere_info  = '';
 while ($row = $generi->fetch_assoc()) {
-    $genere_info .= '<option value="' . $row['id'] . '">';
-    $genere_info  .= $row['nome_genere'];
+    $genere_info .= '<option value="' . $row['nome'] . '">';
+    $genere_info  .= $row['nome'];
     $genere_info  .= '</option>';
 }
 

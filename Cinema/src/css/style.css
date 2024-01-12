@@ -38,7 +38,7 @@ html {
     margin: auto;
     font-size: 1.2em;
     background-color: rgba(0, 0, 0, 0.9);
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/asset/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,7 +59,7 @@ header {
 
 header h1 {
     text-indent: -999em;
-    background-image: url("../images/logo1.png");
+    background-image: url("../images/asset/logo1.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -337,7 +337,7 @@ footer li {
 .immagine-indisponibilità {
     width: 200px;
     height: 200px;
-    background-image: url("../images/error-film.png");
+    background-image: url("../images/asset/error-film.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -405,7 +405,7 @@ footer li {
 #cinema-screen {
     width: 100px;
     height: 100px;
-    background-image: url("../images/cinema-screen.png");
+    background-image: url("../images/asset/cinema-screen.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -425,7 +425,7 @@ footer li {
     display: inline-block;
     width: 2em;
     height: 2em;
-    background-image: url("../images/checkbox.png");
+    background-image: url("../images/asset/checkbox.png");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0.4em;
@@ -451,7 +451,7 @@ footer li {
 #immagine-errore-500-404 {
     width: 200px;
     height: 200px;
-    background-image: url("../images/error.png");
+    background-image: url("../images/asset/error.png");
     background-size: contain;
     background-repeat: no-repeat;
 
@@ -587,24 +587,22 @@ footer li {
 }
 
 /*aggiungi proiezione*/
-#aggiungi_proiezione {
+#aggiungi_proiezione , #aggiungi_film{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: var(--bgColor);
+    background-color: #212121;
     color: var(--txtColor);
     text-align: center;
     padding: 1em;
-}
 
-#aggiungi_proiezione h2 {
+}
+#aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
     padding: 0.5em;
+    color: var(--txtColorHome)
 }
-
-#aggiungi_proiezione select,
-#aggiungi_proiezione input[type="date"],
-#aggiungi_proiezione input[type="time"],
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] ,
+#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea{
     width: 100%;
     padding: 1em;
     border: none;
@@ -613,11 +611,61 @@ footer li {
     color: #ffffff;
     font-size: large;
     box-sizing: border-box;
-    margin: 1em;
 }
 
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione input[type="submit"], #aggiungi_film input[type="submit"] {
     background-color: #e50914;
+}
+
+
+/* Stili per aggiungi film  */
+
+
+#aggiunta-film-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+#aggiungi-film-form-field{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+#aggiunta-film-form fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2em;
+    border-radius: 8px;
+    gap: 2em;
+    background-color: #181818;
+    width: 24em;
+}
+
+#aggiunta-film-form label{
+    text-align: left;
+    color: #8c8c8c;
+}
+
+
+
+#aggiungi_film textarea{
+    font-size: 1em;
+    resize: none;
+    height: 8em;
+}
+.aggiungi-film-form-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#aggiungi_film input[type="file"] {
+    height: 8em;
 }
 
 

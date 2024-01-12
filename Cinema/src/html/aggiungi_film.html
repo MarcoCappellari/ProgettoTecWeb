@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png" />
+    <link rel="shortcut icon" href="../images/asset/logo.png" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <nav id="menu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="Prenota.html">Prenota</a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
             <li>{ACCEDI}</li>
         </ul>
@@ -31,14 +31,14 @@
 <!--breadcrumb-->
 <nav id="breadcrumb">
     <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/admin.php">Area
-        Amministrativa</a> &gt Aggiungi Proiezione</p>
+        Amministrativa</a> &gt Aggiungi Film</p>
 </nav>
 
 <!--main-->
 <main>
     <div id="aggiungi_film">
         <h2>Aggiungi Film</h2>
-        <form id="aggiunta-film-form" action="../php/aggiungi_film.php" method="post">
+        <form id="aggiunta-film-form" action="../php/aggiungi_film.php" method="post" enctype="multipart/form-data">
             <div id="aggiungi-film-form-field">
             <fieldset>
                 <legend > Film </legend>
@@ -47,8 +47,8 @@
                     <input type="text" id="film_input" name="titolo" required/>
                 </div>
                 <div class="aggiungi-film-form-input-field">
-                    <label for="locangina_input">Locandina:</label>
-                    <input type="file" id="locangina_input" name="locandina" />
+                    <label for="locandina_input">Locandina:</label>
+                    <input type="file" id="locandina_input" name="locandina" required/>
                 </div>
                 <div class="aggiungi-film-form-input-field">
                     <label for="trama_film">Trama:</label>
@@ -66,17 +66,13 @@
                     <input type="number" id="durata_input" name="durata" required/>
                 </div>
                 <div class="aggiungi-film-form-input-field">
-                    <label for="attore1">Attore 1:</label>
-                    <input type="text" id="attore1" name="attore" required>
-                </div>
-                <div class="aggiungi-film-form-input-field">
                     <label for="genere_primario">Seleziona Genere Primario:</label>
-                    <select name="genere1" id="genere_primario" required>
+                    <select name="genere_primario" id="genere_primario" required>
                         {GENERE-OPZIONI}
                     </select>
 
-                    <label for="genere_secondario">Seleziona Genere <Secondario></Secondario>:</label>
-                    <select name="genere2" id="genere_secondario" required>
+                    <label for="genere_secondario">Seleziona Genere:</label>
+                    <select name="genere_secondario" id="genere_secondario" >
                         {GENERE-OPZIONI}
                     </select>
                 </div>
@@ -108,8 +104,8 @@
 <nav id="bottomMenu">
     <ul>
         <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-        <li><a href="Prenota.html">Prenota</a></li>
-        <li><a href="Recensioni.html">Recensioni</a></li>
+        <li><a href="../php/info_cinema.php">Informazioni</a></li>
+        <li><a href="Recensioni.html">Recensioni </a></li>
         <li>{ACCEDI}</li>
     </ul>
 </nav>
