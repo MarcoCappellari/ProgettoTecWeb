@@ -23,15 +23,14 @@ if (isset($_GET['film'])) {
 }
 
 $resultFilm = getFilmByIdQuery($conn, $idFilm);
-$attori = getFilmActorsById($conn, $idFilm);
 $generi = getFilmGenresById($conn, $idFilm);
 $proiezioniFilm = getOrariByFilmId($conn, $idFilm);
 
 $conn->close();
 
 
-$titolo = $resultFilm['nome'];
-$immagine = base64_encode($resultFilm['locandina']);
+$titolo = $resultFilm['titolo'];
+$immagine = $resultFilm['locandina']; 
 $regista = $resultFilm['regista'];
 $durata = $resultFilm['durata'];
 $trama = $resultFilm['trama'];
@@ -47,13 +46,6 @@ $template = str_replace('{REGISTA}', $regista, $template);
 $template = str_replace('{DURATA}', $durata, $template);
 $template = str_replace('{GENERI_SECTION}', $generi, $template);
 
-// Aggiungi  attori se presenti nel film (es. film di animazione non ha attori)
-if (!empty($attori)) {
-    $attoriSection = "<p><span class='bold-text'>Attori:</span> $attori</p>";
-    $template = str_replace('{ATTORI_SECTION}', $attoriSection, $template);
-} else {
-    $template = str_replace('{ATTORI_SECTION}', '', $template);
-}
 
 // Aggiungi la variabile degli orari al template HTML
 if ($proiezioniFilm) {
@@ -79,16 +71,16 @@ if ($proiezioniFilm) {
         $count++;
         $proiezioniHTML .= "</div></ul></div>";
         if ($count == 1) {
-            $proiezioniHTML .= "<p><span class='bold-text'>Prossime date di Riproduzione:</span></p>";
+            $proiezioniHTML .= "<p><span class='bold-text'>Prossime date di Proiezione:</span></p>";
         }
     }
     if ($count == 1) {
-        $proiezioniHTML .= "<p> Nessun'altra programmazione oltre a quella del <span class='film-data'>$data</span> è stata programmata, (le nuove riproduzioni saranno inserite mercoledì sera).</p>";
+        $proiezioniHTML .= "<p> Nessun'altra programmazione oltre a quella del <span class='film-data'>$data</span> è stata programmata, (le nuove proiezioni saranno inserite mercoledì sera).</p>";
     }
     $template = str_replace('{PROIEZIONI}', $proiezioniHTML, $template);
 
 } else {
-    $template = str_replace('{PROIEZIONI}', "<p> Nessuna riproduzione è ancora stata programmata, la preghiamo di attendere (le nuove riproduzioni saranno inserite mercoledì sera).</p>", $template);
+    $template = str_replace('{PROIEZIONI}', "<p> Nessuna proiezione è ancora stata programmata, la preghiamo di attendere (le nuove proiezioni saranno inserite mercoledì sera).</p>", $template);
 }
 
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
