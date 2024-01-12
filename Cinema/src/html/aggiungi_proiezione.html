@@ -42,21 +42,21 @@
             <form action="../php/aggiungi_proiezione.php" method="post">
                 <div>
                     <label for="film">Seleziona Film:</label>
-                    <select name="film" required>
+                    <select name="film" id="film" required>
                         {FILM-OPZIONI}
                     </select>
                 </div>
                 <div>
                     <label for="data">Seleziona Data:</label>
-                    <input type="date" name="data" required>
+                    <input type="date" id="data" name="data" required>
                 </div>
                 <div>
                     <label for="ora">Inserisci Orario:</label>
-                    <input type="time" name="ora" required>
+                    <input type="time" id="ora" name="ora" required>
                 </div>
                 <div>
                     <label for="sala">Seleziona Sala:</label>
-                    <select name="sala" required>
+                    <select name="sala" id="sala"  required>
                         {SALA-OPZIONI}
                     </select>
                 </div>

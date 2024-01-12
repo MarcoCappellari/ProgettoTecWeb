@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../queries/queries.php';
-error_reporting(E_ALL);
+error_reporting(E_ALL); //debug errori
 ini_set('display_errors', 1);
 session_start();
 $risultato_info='';
@@ -18,12 +18,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titolo = $_POST['titolo'];
-
     $trama_film = $_POST['trama'];
     $regista= $_POST['regista'];
     $durata = $_POST['durata'];
     $genere_primario = $_POST['genere_primario'];
-    $genere_secondario = $_POST['genere_secondario'];
+
 
 
     $file_name = $_FILES['locandina']['name'];
@@ -32,20 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file_error = $_FILES['locandina']['error'];
 
     $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    // Genera un nome unico per il file
     $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
-    // Definisci la cartella di destinazione
     $locandina_path = "../images/locandine/" . $new_file_name;
-
-    echo '<script>console.log("' . $locandina_path . '");</script>';
-    // Sposta il file nella cartella di destinazione
     move_uploaded_file($file_tmp, $locandina_path);
 
-    // Inserimento del nuovo film nel database
     $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
     $conn->query($sql);
 
-    $sql2 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('[value-1]','[value-2]')";
+    $id_film = $conn->insert_id;
+
+    $sql2 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_primario')";
+    $conn->query($sql2);
+
+    if (isset($_POST['genere_secondario']) && !empty($_POST['genere_secondario'])) {
+        $genere_secondario = $_POST['genere_secondario'];
+        $sql3 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_secondario')";
+        $conn->query($sql3);
+    }
 
 
 
