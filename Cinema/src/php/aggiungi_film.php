@@ -33,9 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
     $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
     $locandina_path = "../images/locandine/" . $new_file_name;
+    $path_db="src/images/locandine/" . $new_file_name;
     move_uploaded_file($file_tmp, $locandina_path);
 
-    $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
+    $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$path_db', '$durata' , '$trama_film')";
     $conn->query($sql);
 
     $id_film = $conn->insert_id;
