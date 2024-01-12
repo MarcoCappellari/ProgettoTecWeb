@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!--header-->
+    
     <header>
         <h1>Popcorn Cinema</h1>
         <nav id="menu">
@@ -26,15 +26,13 @@
         </nav>
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
-
-    <!--breadcrumb-->
+    
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
                 href="../php/info_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="../php/orari.php?idFilm={IDFILM}">
                 Date e Orari</a> > Selezione posti</p>
     </nav>
-
-    <!--main-->
+    
     <main>
         <div id="film-orari-container">
             <div id="locandina-title">
@@ -51,12 +49,32 @@
         <div id="film-posti">
             <h3>SELEZIONA LE POLTRONE</h3>
             <div id="cinema-screen"></div>
-
+            
+            
             <form action="../php/prenota.php" method="post">
-                <table id="posti-container">
+                <div id="posti-wrapper">
                     {POSTI}
-                </table>
+                </div>
+
                 <input type='submit' value='Prenota' id="prenota-button">
+
+                <fieldset>
+                    <legend>Legenda Posti</legend>
+                        <div class="legend-element-container">
+                            <span id="label-posto-libero" class="label-posto"></span>
+                            <label for="label-posto-libero">Posto Libero</label>
+                        </div>
+                        <div class="legend-element-container">
+                            <span id="label-posto-selezionato" class="label-posto"></span>
+                            <label for="label-posto-selezionato">Posto Occupato</label>
+                        </div>
+                        <div class="legend-element-container">
+                            <span id="label-posto-non-disponibile" class="label-posto"></span>
+                            <label for="label-posto-non-disponibile">Posto Non Disponibile</label>
+                        </div>
+
+                  </fieldset>
+                  
             </form>
 
             <div id="legenda">
@@ -73,30 +91,13 @@
                     <div class="legenda-posto disponibile"></div>
                     <label class="legenda-label" > Disponibile</label>
                 </div>
+
             </div>
         </div>
 
     </main>
 
-    <footer>
-        <div>
-            <p class="footer-title" lang="en">About Us</p>
-            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en"> Where to Find Us</p>
-            <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
-                    14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en">Contact Us</p>
-            <ul>
-                <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
-                <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
-                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
-            </ul>
-        </div>
-    </footer>
+    {FOOTER}
 
     <nav id="bottomMenu">
         <ul>

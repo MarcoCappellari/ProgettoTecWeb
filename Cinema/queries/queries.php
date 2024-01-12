@@ -145,18 +145,17 @@ function getFilmByName($conn, $film_name) {
 
 function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
 
-    // Crea la query SQL
-    $query = "SELECT A.id_riproduzione, R.id_film, R.ora, R.data, P.fila, P.numero_posto, A.disponibile
-              FROM Assegnazione A
-              JOIN Riproduzione R ON A.id_riproduzione = R.id
-              JOIN Posto P ON A.fila = P.fila AND A.numero_posto = P.numero_posto AND A.id_sala = P.id_sala
-              WHERE R.id_film = $id_film AND R.ora = '$ora_film' AND R.data = '$data_film'";
+    $query ="SELECT A.fila AS fila, A.numero_posto AS numero, A.disponibile AS disponibile
+            FROM Riproduzione AS R
+            JOIN Assegnazione AS A 
+            ON A.id_riproduzione = R.id
+            WHERE R.id_film= $id_film AND R.ora = '$ora_film' AND R.data = '$data_film'
+            ORDER BY A.fila ASC, A.numero_posto ASC";            
 
-    // Esegue la query e restituisce il risultato
     $result = $conn->query($query);
 
     if ($result->num_rows == 0) {
-        header('Location: ../html/500.html');  // NON so se errore 404 o 500
+        header('Location: ../html/500.html'); 
         exit;
     }
 

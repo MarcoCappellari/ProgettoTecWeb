@@ -26,9 +26,11 @@
 
     --font-body_family: "Century Gothic", sans-serif;
 
-    --postoSelezionatoColor: #292828;
-    --postoLiberoColor: gray;
-    --postoOccupatoColor: gray;
+    --cinema_screen_color: #000000;
+    --borderPostoColor: #000000;
+    --postoSelezionatoColor: #48eb32;
+    --postoLiberoColor: rgb(255, 255, 255);
+    --postoOccupatoColor: rgb(155, 155, 155);
 }
 
 html {
@@ -348,11 +350,6 @@ p {
 /*----------------posti----------------*/
 
 #film-posti {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
@@ -366,71 +363,75 @@ p {
     width: 20em;
     height: 8em;
     padding: 0.5em;
-    background-color : black;
+    background-color : var(--cinema_screen_color);
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    margin-bottom: 2em;
+    margin-top: 1em;
 }
 
-
-/*checkbox*/
-/* Stili per i posti selezionabili */
-
-
-.container-checkbox {  
-    display: block;
-    position: relative;
-    cursor: pointer;
+#posti-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-bottom: 1em;
 }
 
-.container-checkbox input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+.fila-posti{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.1em;
+    list-style: none;
 }
 
-.custom-checkbox { 
+.fila-posti li{
+    margin: 0.2em;
+}
+
+.label-posto {
     display: inline-block;
-    width: 1.8em;
-    height: 1.8em; 
     cursor: pointer;
-    margin: auto;
-    border: 2px solid var(--postoLiberoColor);
+    width: 2em;
+    height: 1.8em;
+    margin: auto;   
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+    border: 1px solid var(--borderPostoColor);
 }
 
+/* Posto libero */
+input[type="checkbox"]:not(:checked) + .label-posto, #label-posto-libero {
+    background-color: var(--postoLiberoColor);
+}
 
-.container-checkbox input:checked ~ .custom-checkbox  {
+/* Posto selezionato */
+input[type="checkbox"]:checked + .label-posto, #label-posto-selezionato {
     background-color: var(--postoSelezionatoColor);
-    border: 2px solid var(--postoSelezionatoColor);
 }
 
-
-  
-/* Stile della checkbox quando è selezionata */
-.selezionato{
-    background-color: var(--postoSelezionatoColor);
-    border: 2px solid var(--postoSelezionatoColor);
-}
-
-/* Stile della checkbox quando è libera */
-.disponibile {
-    border: 2px solid var(--postoLiberoColor);   
-}
-
-/* Stili per i posti non selezionabili */
-.occupato {
-    border: 2px solid var(--postoOccupatoColor);
+/* Posto non disponibile */
+input[type="checkbox"]:disabled + .label-posto, #label-posto-non-disponibile {
     background-color: var(--postoOccupatoColor);
-    
+}
+
+.hidden-checkbox {
+    position: absolute;
+    left: -9999px;
 }
 
 /* Stile legenda */
+.legend-element-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;   
+}
+
+
+/*  */
 #legenda {
     display: flex;
     flex-direction: column;
@@ -509,4 +510,5 @@ p {
     color: var(--txtColorHome);
     padding: 0.7em 1em;
     border-radius: 5px;
+    margin-bottom: 2em;
 }
