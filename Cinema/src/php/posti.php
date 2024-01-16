@@ -15,10 +15,12 @@ if (empty($id_film) || empty($ora_film) || empty($data_film) || absentProiection
 
 $FilmRow = getFilmByIdQuery($conn, $id_film);
 $SeatResults = getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film);
+$Sala = getSalaByProiection($conn, $id_film, $ora_film, $data_film);
 $conn->close();
 
 $titolo = $FilmRow['titolo'];
 $locandina = $FilmRow['locandina'];
+$nome_sala= $Sala['nome'];
 
 $current_fila = "";
 $output = '';
@@ -57,6 +59,7 @@ $html_content = str_replace('{TITOLO}', $titolo, $html_content);
 $html_content = str_replace('{LOCANDINA}', $locandina, $html_content);
 $html_content = str_replace('{DATA}', $data_film, $html_content);
 $html_content = str_replace('{ORA}', $ora_formattata, $html_content);
+$html_content = str_replace('{SALA}', $nome_sala, $html_content);
 $html_content = str_replace('{POSTI}', $output, $html_content);
 
 $footer_html = file_get_contents('../html/footer.html');

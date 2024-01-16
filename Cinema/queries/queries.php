@@ -108,6 +108,27 @@ function absentProiection($conn, $id_film, $ora_film, $data_film) {
     }
 }
 
+//Restituisce la sala di una proiezione
+function getSalaByProiection($conn, $id_film, $ora_film, $data_film) {
+    
+    $query ="SELECT S.nome AS nome
+            FROM Proiezione AS P
+            JOIN Sala AS S ON P.id_sala = S.id
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+    
+    if(!($result = $conn->query($query))){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
+
+    if ($result->num_rows == 0) {
+        header('Location: ../html/500.html'); 
+        exit(); 
+    } 
+
+    return $result->fetch_assoc();
+}
+
 //Restituisce i posti di una proiezione identificati da FILA | NUMERO | DISPONIBILE
 function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
 

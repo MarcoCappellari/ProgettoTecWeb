@@ -64,16 +64,15 @@ footer {
     display: none;
 }
 
+/* ------locandina sopra selezione posti--------- */
+#locandina-title img{
+    width: 7em;
+    height: auto;
+}
 
 /*------------- posti---------- */
 .label-posto, .legenda-item {
-    display: inline-block;
-    cursor: pointer;
-    width: 1.7em;
+    width: 1.8em;
     height: 1.4em;
     font-size: 1em;
-    margin: auto;   
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border: 1px solid var(--borderPostoColor);
 }
