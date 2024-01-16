@@ -89,25 +89,71 @@ function getFilmByName($conn, $film_name)
     }
 }
 
-function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film)
-{
-
-    // Crea la query SQL
-    $query = "SELECT A.id_riproduzione, R.id_film, R.ora, R.data, P.fila, P.numero_posto, A.disponibile
-              FROM Assegnazione A
-              JOIN Riproduzione R ON A.id_riproduzione = R.id
-              JOIN Posto P ON A.fila = P.fila AND A.numero_posto = P.numero_posto AND A.id_sala = P.id_sala
-              WHERE R.id_film = $id_film AND R.ora = '$ora_film' AND R.data = '$data_film'";
-
-    // Esegue la query e restituisce il risultato
-    $result = $conn->query($query);
-
-    if ($result->num_rows == 0) {
-        header('Location: ../html/500.html');  // NON so se errore 404 o 500
-        exit;
+//Restituisce TRUE se non trova la proiezione identificata da $id_film, $ora_film, $data_film
+function absentProiection($conn, $id_film, $ora_film, $data_film) {
+    
+    $query ="SELECT *
+            FROM Proiezione AS P
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+    
+    if(!($result = $conn->query($query))){
+        header('Location: ../html/500.html'); 
+        exit(); 
     }
 
-    // Restituisce il risultato
+    if ($result->num_rows == 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+//Restituisce la sala di una proiezione
+function getSalaByProiection($conn, $id_film, $ora_film, $data_film) {
+    
+    $query ="SELECT S.nome AS nome
+            FROM Proiezione AS P
+            JOIN Sala AS S ON P.id_sala = S.id
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+    
+    if(!($result = $conn->query($query))){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
+
+    if ($result->num_rows == 0) {
+        header('Location: ../html/500.html'); 
+        exit(); 
+    } 
+
+    return $result->fetch_assoc();
+}
+
+//Restituisce i posti di una proiezione identificati da FILA | NUMERO | DISPONIBILE
+function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
+
+    $query ="SELECT Po.fila AS fila, 
+                    Po.numero_posto AS numero, 
+                    CASE WHEN B.id IS NOT NULL THEN FALSE ELSE TRUE END AS disponibile
+            FROM 
+                Proiezione AS P
+            JOIN 
+                Posto AS Po ON Po.id_sala = P.id_sala
+            LEFT JOIN
+                Biglietto AS B ON B.id_proiezione = P.id AND B.fila = Po.fila AND B.numero_posto = Po.numero_posto AND B.id_sala = P.id_sala
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'
+            ORDER BY Po.fila ASC, Po.numero_posto ASC";            
+
+    if(!$result = $conn->query($query)){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
+
+    if ($result->num_rows == 0) {
+        header('Location: ../html/500.html'); 
+        exit();
+    }
+
     return $result;
 }
 

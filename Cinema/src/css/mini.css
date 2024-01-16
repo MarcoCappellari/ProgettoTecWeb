@@ -64,15 +64,15 @@ footer {
     display: none;
 }
 
-.selezionabile {
-    width: 0.8em;
-    height: 0.8em;
-
+/* ------locandina sopra selezione posti--------- */
+#locandina-title img{
+    width: 7em;
+    height: auto;
 }
 
-/* Stili per i posti non selezionabili */
-.non-selezionabile {
-    width: 0.8em;
-    height: 0.8em;
-  
+/*------------- posti---------- */
+.label-posto, .legenda-item {
+    width: 1.8em;
+    height: 1.4em;
+    font-size: 1em;
 }
