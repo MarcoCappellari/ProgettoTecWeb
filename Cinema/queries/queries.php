@@ -143,23 +143,50 @@ function getFilmByName($conn, $film_name) {
     }
 }
 
+//Restituisce TRUE se non trova la proiezione identificata da $id_film, $ora_film, $data_film
+function absentProiection($conn, $id_film, $ora_film, $data_film) {
+    
+    $query ="SELECT *
+            FROM Proiezione AS P
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+    
+    if(!($result = $conn->query($query))){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
+
+    if ($result->num_rows == 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+//Restituisce i posti di una proiezione identificati da FILA | NUMERO | DISPONIBILE
 function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
 
-    $query ="SELECT A.fila AS fila, A.numero_posto AS numero, A.disponibile AS disponibile
-            FROM Riproduzione AS R
-            JOIN Assegnazione AS A 
-            ON A.id_riproduzione = R.id
-            WHERE R.id_film= $id_film AND R.ora = '$ora_film' AND R.data = '$data_film'
-            ORDER BY A.fila ASC, A.numero_posto ASC";            
+    $query ="SELECT Po.fila AS fila, 
+                    Po.numero_posto AS numero, 
+                    CASE WHEN B.id IS NOT NULL THEN FALSE ELSE TRUE END AS disponibile
+            FROM 
+                Proiezione AS P
+            JOIN 
+                Posto AS Po ON Po.id_sala = P.id_sala
+            LEFT JOIN
+                Biglietto AS B ON B.id_proiezione = P.id AND B.fila = Po.fila AND B.numero_posto = Po.numero_posto AND B.id_sala = P.id_sala
+            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'
+            ORDER BY Po.fila ASC, Po.numero_posto ASC";            
 
-    $result = $conn->query($query);
+    if(!$result = $conn->query($query)){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
 
     if ($result->num_rows == 0) {
         header('Location: ../html/500.html'); 
-        exit;
+        exit();
     }
 
-    // Restituisce il risultato
     return $result;
 }
 

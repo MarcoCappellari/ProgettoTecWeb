@@ -27,7 +27,7 @@
     --font-body_family: "Century Gothic", sans-serif;
 
     --cinema_screen_color: #000000;
-    --borderPostoColor: #000000;
+    --borderPostoColor: #c4c4c4;
     --postoSelezionatoColor: #48eb32;
     --postoLiberoColor: rgb(255, 255, 255);
     --postoOccupatoColor: rgb(155, 155, 155);
@@ -78,6 +78,10 @@ header h1 {
     width: 200px;
     height: 100px;
 
+}
+
+h3{
+    margin: 1em;
 }
 
 nav {
@@ -136,6 +140,10 @@ a:visited {
     padding: 1em;
     background-color: var(--visitedLinkColor);
     color: var(--headerTxtColor);
+}
+
+#field-set-posti{
+    border: none;
 }
 
 #film-container {
@@ -245,21 +253,17 @@ footer li {
     margin: auto;
 }
 
-.film-data {
+/*  */
+.film-data, .film-ora {
     padding: 0.4em;
     font-weight: bold;
-    color: var(--txtColor);
     font-size: 1.1em;
 }
 
-/*Semprano uguali ma ho aggiunto un font qui sotto*/
 .film-ora {
-    padding: 0.4em;
-    font-weight: bold;
-    color: var(--txtColor);
-    font-size: 1.1em;
     font-family: 'architectural', 'cursive', sans-serif;
 }
+/*  */
 
 #mostra-date {
     max-width: 7em;
@@ -269,11 +273,6 @@ footer li {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
-}
-
-#title-date-time h2,
-p {
-    margin-bottom: 0.5em;
 }
 
 /*Errore film*/
@@ -314,7 +313,6 @@ p {
 
 }
 
-/*altri orari*/
 #locandina-title {
     display: flex;
     align-items: center;
@@ -327,9 +325,8 @@ p {
 }
 
 #film-orari-container {
-    background-color: var(--bgColor);
-    color: var(--txtColor);
-    max-width: 1024px;
+    background-color: var(--bgColor);  /* sicuramente da togliere*/
+    max-width: 1024px;   /*sicuramente da togliere*/
     padding: 1em;
     margin: auto;
 }
@@ -348,6 +345,9 @@ p {
 }
 
 /*----------------posti----------------*/
+#form-posti-wrapper{
+    overflow: auto;
+}
 
 #film-posti {
     background-color: var(--bgColor);
@@ -391,7 +391,7 @@ p {
     margin: 0.2em;
 }
 
-.label-posto {
+.label-posto, .legenda-item {
     display: inline-block;
     cursor: pointer;
     width: 2em;
@@ -402,18 +402,22 @@ p {
     border: 1px solid var(--borderPostoColor);
 }
 
+.legenda-item{
+    cursor: auto;
+}
+
 /* Posto libero */
-input[type="checkbox"]:not(:checked) + .label-posto, #label-posto-libero {
+input[type="checkbox"]:not(:checked) + .label-posto, #libero{
     background-color: var(--postoLiberoColor);
 }
 
 /* Posto selezionato */
-input[type="checkbox"]:checked + .label-posto, #label-posto-selezionato {
+input[type="checkbox"]:checked + .label-posto, #selezionato {
     background-color: var(--postoSelezionatoColor);
 }
 
 /* Posto non disponibile */
-input[type="checkbox"]:disabled + .label-posto, #label-posto-non-disponibile {
+input[type="checkbox"]:disabled + .label-posto, #occupato {
     background-color: var(--postoOccupatoColor);
 }
 
@@ -422,49 +426,22 @@ input[type="checkbox"]:disabled + .label-posto, #label-posto-non-disponibile {
     left: -9999px;
 }
 
-/* Stile legenda */
-.legend-element-container{
+#legenda{
+    display: grid;
+    justify-content: center; 
+    margin-bottom: 2em;
+}
+
+.legenda-div{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 1em;   
 }
 
-
-/*  */
-#legenda {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
-    gap: 1em;
-    width: 10em;
-    margin: auto;
+.desc-item-legenda, .legenda-item{
+    margin: 0.2em;
 }
 
-.legenda-item{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.legenda-posto{
-    width: 1.8em;
-    height: 1.8em;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-.legenda-label{
-    font-size: 0.9em;
-}
-
-
-/*500 e 404*/
+/*-------------------500 e 404---------------------*/
 #error-container {
     width: 80%;
     margin: 0.4em auto;

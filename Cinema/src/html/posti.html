@@ -29,7 +29,7 @@
     
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-                href="../php/info_film.php?film={IDFILM}"> Film: {TITOLO}</a> ><a href="../php/orari.php?idFilm={IDFILM}">
+                href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> ><a href="../php/orari.php?idFilm={IDFILM}">
                 Date e Orari</a> > Selezione posti</p>
     </nav>
     
@@ -37,10 +37,10 @@
         <div id="film-orari-container">
             <div id="locandina-title">
                 <img src="data:image/jpeg;base64,{LOCANDINA} " alt="">
-                <div id="title-date-time">
-                    <h2> {TITOLO} </h2>
-                    <p>Data:<span class="film-data"> {DATA}</span></p>
-                    <p>Ora: <span class="film-ora">{ORA}</span></p>
+                <div>
+                    <h2><cite>{TITOLO}</cite></h2>
+                    <p>Data:<span class="film-data"><time datetime="{DATA}">{DATA}</time></span></p>
+                    <p>Ora: <span class="film-ora"><time datetime="{ORA}">{ORA}</time></span></p>
                 </div>
 
             </div>
@@ -50,49 +50,36 @@
             <h3>SELEZIONA LE POLTRONE</h3>
             <div id="cinema-screen"></div>
             
-            
-            <form action="../php/prenota.php" method="post">
-                <div id="posti-wrapper">
-                    {POSTI}
-                </div>
-
-                <input type='submit' value='Prenota' id="prenota-button">
-
-                <fieldset>
-                    <legend>Legenda Posti</legend>
-                        <div class="legend-element-container">
-                            <span id="label-posto-libero" class="label-posto"></span>
-                            <label for="label-posto-libero">Posto Libero</label>
-                        </div>
-                        <div class="legend-element-container">
-                            <span id="label-posto-selezionato" class="label-posto"></span>
-                            <label for="label-posto-selezionato">Posto Occupato</label>
-                        </div>
-                        <div class="legend-element-container">
-                            <span id="label-posto-non-disponibile" class="label-posto"></span>
-                            <label for="label-posto-non-disponibile">Posto Non Disponibile</label>
+            <div id="form-posti-wrapper">
+                <form action="../php/prenota.php" method="post">
+                    <fieldset id="field-set-posti">
+                        <legend class="sr-only">Selezione posti</legend>
+                        <div id="posti-wrapper">
+                            {POSTI}
                         </div>
 
-                  </fieldset>
-                  
-            </form>
+                        <input type='submit' value='Prenota' id="prenota-button">
+                    </fieldset>   
+                </form>
+            </div>
 
             <div id="legenda">
                 <h3>Legenda</h3>
-                <div class="legenda-item">
-                    <div class="legenda-posto occupato"></div>
-                    <label class="legenda-label" > Occupato</label>
+                <div class="legenda-div">
+                    <div id="occupato" class="legenda-item"></div>
+                    <p class="desc-item-legenda"> Occupato</p>
                 </div>
-                <div class="legenda-item">
-                    <div class="legenda-posto selezionato"></div>
-                    <label class="legenda-label" > Selezionato </label>
+                <div class="legenda-div">
+                    <div id="selezionato" class="legenda-item"></div>
+                    <p class="desc-item-legenda"> Selezionato </p>
                 </div>
-                <div class="legenda-item">
-                    <div class="legenda-posto disponibile"></div>
-                    <label class="legenda-label" > Disponibile</label>
+                <div class="legenda-div">
+                    <div id="disponibile" class="legenda-item"></div>
+                    <p class="desc-item-legenda"> Disponibile</p>
                 </div>
-
             </div>
+            
+
         </div>
 
     </main>

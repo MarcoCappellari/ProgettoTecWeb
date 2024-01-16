@@ -64,15 +64,16 @@ footer {
     display: none;
 }
 
-.selezionabile {
-    width: 0.8em;
-    height: 0.8em;
 
-}
-
-/* Stili per i posti non selezionabili */
-.non-selezionabile {
-    width: 0.8em;
-    height: 0.8em;
-  
+/*------------- posti---------- */
+.label-posto, .legenda-item {
+    display: inline-block;
+    cursor: pointer;
+    width: 1.7em;
+    height: 1.4em;
+    font-size: 1em;
+    margin: auto;   
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid var(--borderPostoColor);
 }

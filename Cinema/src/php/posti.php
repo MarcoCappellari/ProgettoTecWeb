@@ -8,16 +8,16 @@ $ora_film = $_GET['ora'];
 $data_film = $_GET['data'];
 
 // Verifico ERROR 404
-if (empty($id_film) || empty($ora_film) || empty($data_film)) { //VERIFICO CONTROLLO ESISTENZA CAMPI IN DB
+if (empty($id_film) || empty($ora_film) || empty($data_film) || absentProiection($conn, $id_film, $ora_film, $data_film)) {
     header('Location: ../html/404.html');
-    exit;
+    exit();
 }
 
 $FilmRow = getFilmByIdQuery($conn, $id_film);
 $SeatResults = getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film);
 $conn->close();
 
-$titolo = $FilmRow['nome'];
+$titolo = $FilmRow['titolo'];
 $locandina = base64_encode($FilmRow['locandina']);
 
 $current_fila = "";
@@ -46,6 +46,8 @@ if (!empty($current_fila)) {
     $output .= "</ul>"; 
 }
 
+$SeatResults->free();
+
 $ora_formattata = date('H:i', strtotime($ora_film));
 
 $html_content = file_get_contents('../html/posti.html'); 
@@ -57,8 +59,8 @@ $html_content = str_replace('{DATA}', $data_film, $html_content);
 $html_content = str_replace('{ORA}', $ora_formattata, $html_content);
 $html_content = str_replace('{POSTI}', $output, $html_content);
 
-// $footer_html = file_get_contents('../html/footer.hmtl');
-// $html_content = str_replace('{FOOTER}', $footer_html, $html_content);
+$footer_html = file_get_contents('../html/footer.html');
+$html_content = str_replace('{FOOTER}', $footer_html, $html_content);
 
 echo $html_content;
 ?>
