@@ -10,7 +10,7 @@
     --breadcrumbBgColor: #292828;
     --breadcrumbTxtColor: #f0f0f0;
 
-    --searchHeaderBg: #f0f0f0; 
+    --searchHeaderBg: #f0f0f0;
 
     --bgColorHome: #000000;
     --txtColorHome: #f0f0f0;
@@ -23,6 +23,10 @@
 
     --linkColor: #0294b9;
     --visitedLinkColor: #FF0000;
+
+    --theadBgColor: #c5c5c5;
+    --alternativeLine: #dddddd;
+    --borderColor: #8b8b8b;
 
     --font-body_family: "Century Gothic", sans-serif;
 
@@ -39,20 +43,11 @@ html {
     line-height: 1.5em;
     margin: auto;
     font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.9);
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-html::before {
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: -1;
 }
 
 header {
@@ -62,8 +57,7 @@ header {
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
-    
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 
@@ -77,7 +71,28 @@ header h1 {
     background-position: left;
     width: 200px;
     height: 100px;
+    max-width: 1800px;
+}
 
+h1 {
+    margin-bottom: 1em;
+}
+
+h2 {
+    margin-top: 0.7em;
+    margin-bottom: 0.2em;
+}
+
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+main {
+    max-width: 1800px;
+    margin: auto;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
 }
 
 h3{
@@ -88,6 +103,7 @@ nav {
     color: var(--headerTxtColor);
 }
 
+/*--------------LINK-------------*/
 a:link {
     color: var(--linkColor);
 }
@@ -96,6 +112,57 @@ a:visited {
     color: var(--visitedLinkColor);
 }
 
+/*-------------TABELLE-----------*/
+table {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    border-collapse: collapse;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.2em;
+    white-space: nowrap;
+}
+
+thead {
+    background-color: var(--theadBgColor);
+    color: var(--txtColor);
+}
+
+th, td {
+    border: 1px solid var(--borderColor);
+    padding: 0.5em;
+    text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+    .table-flip {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tr-flip {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--alternativeLine);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--bgColor);
+}
+
+.table-container {
+    overflow: auto;
+}
+
+/*-------------MENU E BREADCRUMB------------*/
+/*  */
 #menu ul {
     list-style-type: none;
 }
@@ -108,17 +175,17 @@ a:visited {
 #breadcrumb {
     background-color: var(--breadcrumbBgColor);
     color: var(--headerTxtColor);
-    max-width: 1024px;
     padding: 1em;
     margin: auto;
+    max-width: 1800px;
 }
 
+/*SEARCH*/
 #searchHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--searchHeaderBg);
-    max-width: 1024px;
     padding: 1em;
     margin: auto;
 }
@@ -148,12 +215,11 @@ a:visited {
 
 #film-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
     gap: 2em;
     text-align: center;
     color: var(--txtColorHome);
     background-color: var(--bgColorHome);
-    max-width: 1024px;
     padding: 1em;
     margin: auto;
 }
@@ -175,7 +241,7 @@ footer {
     justify-content: space-around;
     background-color: var(--footerBgColor);
     color: var(--footerTxtColor);
-    max-width: 1024px;
+    max-width: 1800px;
     padding: 1em;
     margin: auto;
 }
@@ -215,7 +281,7 @@ footer li {
     background-color: var(--bgColor);
     color: var(--txtColor);
     align-items: center;
-    max-width: 1024px;
+    /* max-width: 1200px;*/
     padding: 1em;
     margin: auto;
 }
@@ -243,7 +309,7 @@ footer li {
 
 .orari-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     align-items: center;
     justify-items: center;
@@ -265,44 +331,29 @@ footer li {
 }
 /*  */
 
-#mostra-date {
-    max-width: 7em;
-    /* Per non scrivere tutta la stringa in una riga */
-    margin: 1px;
-    padding: 1em;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
+#title-date-time h2 {
+    margin-bottom: 0.5em;
 }
 
-/*Errore film*/
-#film-non-esiste {
-    display: flex;
+/**/
+
+/*------------ERRORI DISPONIBILITA'-------------*/
+.div-non-esiste {
     align-items: center;
-    flex-direction: column;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
     text-align: center;
     padding: 1em;
 }
 
-#immagine-errore-film {
+.immagine-indisponibilità {
     width: 200px;
-    /* Imposta la larghezza dell'immagine */
     height: 200px;
-    /* Imposta l'altezza dell'immagine */
     background-image: url("../images/error-film.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
 }
 
-#film-non-esiste p {
-    margin: 1em;
-    font-size: 1.4em;
-    color: var(--txtColor);
-}
-
+/*  */
 #film-name-error {
     color: var(--visitedLinkColor);
     font-weight: bold;
@@ -321,12 +372,12 @@ footer li {
 
 #locandina-title img {
     margin: 0.5em;
-    width: 12%;
+    width: 7em;
 }
 
 #film-orari-container {
     background-color: var(--bgColor);  /* sicuramente da togliere*/
-    max-width: 1024px;   /*sicuramente da togliere*/
+    color: var(--txtColor);
     padding: 1em;
     margin: auto;
 }
@@ -353,7 +404,7 @@ footer li {
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     padding: 1em;
     margin: auto;
     gap: 1em;
@@ -488,4 +539,188 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     padding: 0.7em 1em;
     border-radius: 5px;
     margin-bottom: 2em;
+}
+
+/*login*/
+
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
+}
+
+#login {
+    width: 20em;
+    padding: 7em;
+    background-color: #181818;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#login h2 {
+    color: var(--txtColorHome);
+    margin-bottom: 1em;
+}
+
+#login label {
+    color: #8c8c8c;
+    font-size: 20px;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+    width: 15em;
+    padding: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 1em;
+}
+
+#login input[type="submit"] {
+    width: 70%;
+    padding: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: #fff;
+    margin-bottom: 1em;
+    font-size: 18px;
+}
+
+#login p {
+    color: var(--txtColorHome);
+}
+
+/*admin section*/
+#adminArea {
+    background-color: var(--bgColor);
+    padding: 2em;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#adminArea h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: var(--txtColor);
+    font-size: 1.8em;
+}
+
+#adminMenu {
+    background-color: #fff;
+    max-width: 28em;
+    margin: auto;
+    border-radius: 8px;
+}
+
+#adminMenu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#adminMenu ul li {
+    margin: 1em;
+    text-align: center;
+}
+
+#adminMenu ul li a {
+    display: block;
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+#logoutForm button {
+    padding: 1em;
+    margin: 1em;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #e50914;
+    color: #fff;
+}
+
+/*aggiungi proiezione*/
+#aggiungi_proiezione {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+    text-align: center;
+    padding: 1em;
+}
+
+#aggiungi_proiezione h2 {
+    padding: 0.5em;
+}
+
+#aggiungi_proiezione select,
+#aggiungi_proiezione input[type="date"],
+#aggiungi_proiezione input[type="time"],
+#aggiungi_proiezione input[type="submit"] {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: large;
+    box-sizing: border-box;
+    margin: 1em;
+}
+
+#aggiungi_proiezione input[type="submit"] {
+    background-color: #e50914;
+}
+
+
+/*  */
+
+/*---------- Contenitori che contengono informazioni -----------*/
+.info {
+    padding: 2em 3em;
+}
+
+/*-----------screen reader only--------------*/
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+/*  */
+
+#biglietti-container {
+    background-color: #181818;
+    font-size: 1em;
+    color: #333;
+    padding: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#biglietti-container h2 {
+    color: #e50914;
+}
+
+#nessun-biglietto {
+    color: #fff;
+    padding: 4em;
+}
+
+.biglietto {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em auto;
+    max-width: 40em;
 }

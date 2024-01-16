@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Date e Orari Cinema PopCorn</title>
-    <meta name="keyword" content="PopCorn Cinema, film ">
+    <title>{TITOLO}, cinema PopCorn</title>
+    <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
@@ -21,36 +21,39 @@
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="Prenota.html">Prenota</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
-                <li><a href="Accedi.html">Accedi</a></li>
+                <li>{ACCEDI}</li>
             </ul>
         </nav>
+
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a href="../php/info_film.php?film={IDFILM}"> Film: {TITOLO}</a> > Date e Orari</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Area Amministrativa</p>
     </nav>
 
     <!--main-->
     <main>
-        <div id="film-orari-container">
-            <div id="locandina-title">
-                <img src="data:image/jpeg;base64, {LOCANDINA} " alt="">
-                <h2>{TITOLO}</h2>
-                
-            </div>
+        <div id="adminArea">
+            <h2>Area Personale</h2>
+            <nav id="adminMenu">
 
-            {PROIEZIONI}
-
+                <ul>
+                    <li><a href="../php/biglietti.php">I miei biglietti</a></li>
+                    <li><a href="#2">I miei dati</a></li>
+                    <li><a href="#3">Non lo so</a></li>
+                </ul>
+            </nav>
+            <form id="logoutForm" action="../php/admin.php" method="post">
+                <input type="hidden" name="logout" value="true">
+                <button type="submit"><span lang="en">Log Out</span></button>
+            </form>
         </div>
     </main>
 
     <footer>
-        <div>
-            <p class="footer-title" lang="en">About Us</p>
-            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
-        </div>
+
         <div>
             <p class="footer-title" lang="en"> Where to Find Us</p>
             <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
@@ -61,7 +64,6 @@
             <ul>
                 <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
                 <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
-                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
             </ul>
         </div>
     </footer>
@@ -70,10 +72,11 @@
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
             <li><a href="Prenota.html">Prenota</a></li>
-            <li><a href="Recensioni.html">Recensioni </a></li>
-            <li><a href="Accedi.html">Accedi</a></li>
+            <li><a href="Recensioni.html">Recensioni</a></li>
+            <li>{ACCEDI}</li>
         </ul>
     </nav>
+
 </body>
 
 </html>

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Film non esistente</title>
-    <meta name="keyword" content="PopCorn Cinema, film ">
+    <title>Accedi</title>
+    <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
@@ -21,7 +21,7 @@
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="../php/info_cinema.php">Informazioni</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
-                <li>{ACCEDI}</li>
+                <li>Accedi</li>
             </ul>
         </nav>
         <a href="#bottomMenu" id="goToMenu"></a>
@@ -29,35 +29,30 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Nessun Risultato per: {NOMEFILM} </p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Accedi</p>
     </nav>
 
-    <!--main-->
     <main>
-        <!--h2 + barra di ricerca, ricordati che ho creato form-->
-        <div id="searchHeader">
-            <h2>Film del momento</h2>
-            <form id="search-form" action="../php/barra_ricerca.php" method="GET">
-                    <input type="text" name="film_name" placeholder="Inserisci il nome di un film...">
-                    <input type="submit" value="Cerca" />
-            </form>
-        </div>
 
-        <div id="film-non-esiste">
-            <div id="immagine-errore-film"> </div>
-            <div id="messaggio-errore-film">
-                <p>Purtroppo, non abbiamo trovato alcun film corrispondente al nome:
-                    <span id="film-name-error">{NOMEFILM}</span>
-                </p>
-                <p> Ti consigliamo di verificare l'ortografia, utilizzare un nome alternativo o esplorare la nostra
-                    vasta selezione di film disponibili.</p>
-                <p>Torna alla <a href="../../index.php">lista dei film</a></p>
+        <div id="login-container">
+            <div id="login">
+                <h2>Accedi</h2>
+                <form action="../php/accedi.php" method="post">
+                    <div>
+                        <label for="utente">Email o username</label>
+                        <input type="text" id="utente" name="utente" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <input type="submit" value="Accedi">
+                </form>
+                <p>Non sei ancora registrato? <a href="#">Registrati</a></p>
             </div>
         </div>
 
-
     </main>
-
     <footer>
         <div>
             <p class="footer-title" lang="en">About Us</p>
@@ -77,12 +72,13 @@
             </ul>
         </div>
     </footer>
+
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
             <li><a href="../php/info_cinema.php">Informazioni</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
-            <li>{ACCEDI}</li>
+            <li>Accedi</li>
         </ul>
     </nav>
 

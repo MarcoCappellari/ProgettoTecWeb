@@ -19,9 +19,9 @@
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-                <li><a href="Prenota.html">Prenota</a></li>
+                <li><a href="../php/info_cinema.php">Informazioni</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
-                <li><a href="Accedi.html">Accedi</a></li>
+                <li>{ACCEDI}</li>
             </ul>
         </nav>
         <a href="#bottomMenu" id="goToMenu"></a>
@@ -29,13 +29,13 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> > Film: {TITOLO}</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Film: {TITOLO}</p>
     </nav>
 
     <main>
         <div id="film-informazioni-container">
             <div id="film-locandina">
-                <img src="data:image/jpeg;base64,{IMMAGINE}" alt="{TITOLO}">
+                <img src="../../{IMMAGINE}" alt="{TITOLO}">
             </div>
             <div id="film-dettagli">
                 <h1>{TITOLO}</h1>
@@ -44,21 +44,15 @@
 
                 <p><span class='bold-text'>Regista:</span> {REGISTA}</p>
                 <p><span class='bold-text'>Durata:</span> {DURATA} minuti</p>
-
-                {ATTORI_SECTION}
-
                 <p><span class='bold-text'>Generi: </span>{GENERI_SECTION}</p>
-
-
                 <p><span class='bold-text'>Data di Riproduzione:</span></p>
-                {DATA}
-                {ORARI}
 
+                {PROIEZIONI}
             </div>
-
+            
         </div>
 
-       
+
 
     </main>
     <footer>
@@ -84,9 +78,9 @@
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="Prenota.html">Prenota</a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
-            <li><a href="Accedi.html">Accedi</a></li>
+            <li>{ACCEDI}</li>
         </ul>
     </nav>
 

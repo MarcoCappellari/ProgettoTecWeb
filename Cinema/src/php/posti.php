@@ -18,7 +18,7 @@ $SeatResults = getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film);
 $conn->close();
 
 $titolo = $FilmRow['titolo'];
-$locandina = base64_encode($FilmRow['locandina']);
+$locandina = $FilmRow['locandina'];
 
 $current_fila = "";
 $output = '';
