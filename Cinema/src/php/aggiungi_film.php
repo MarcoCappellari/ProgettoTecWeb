@@ -1,8 +1,6 @@
 <?php
 
 require_once '../../queries/queries.php';
-error_reporting(E_ALL); //debug errori
-ini_set('display_errors', 1);
 session_start();
 $risultato_info='';
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -24,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $genere_primario = $_POST['genere_primario'];
 
 
-
     $file_name = $_FILES['locandina']['name'];
     $file_tmp = $_FILES['locandina']['tmp_name'];
     $file_size = $_FILES['locandina']['size'];
@@ -36,18 +33,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($file_tmp, $locandina_path);
 
     $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
-    $conn->query($sql);
+    if (!$conn->query($sql)) {
+        header('Location: ../html/500.html');
+        exit();
+    }
 
     $id_film = $conn->insert_id;
 
     $sql2 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_primario')";
-    $conn->query($sql2);
+    if (!$conn->query($sql2)) {
+        header('Location: ../html/500.html');
+        exit();
+    }
 
     if (isset($_POST['genere_secondario']) && !empty($_POST['genere_secondario'])) {
         $genere_secondario = $_POST['genere_secondario'];
         $sql3 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_secondario')";
-        $conn->query($sql3);
+        if (!$conn->query($sql3)) {
+            header('Location: ../html/500.html');
+            exit();
+        }
     }
+
+    $risultato_info='<p>Film inserito con SUCCESSO!</p>';
 
 
 
@@ -63,6 +71,8 @@ while ($row = $generi->fetch_assoc()) {
     $genere_info  .= $row['nome'];
     $genere_info  .= '</option>';
 }
+
+$generi->free();
 
 
 $template = file_get_contents('../html/aggiungi_film.html');

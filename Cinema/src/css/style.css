@@ -28,6 +28,12 @@
     --alternativeLine: #dddddd;
     --borderColor: #8b8b8b;
 
+    /*Colori Form */
+    --formBackground : #212121;
+    --labelColor :#8c8c8c;
+    --formFieldSetColor :#181818;
+    --formInputColor : #333333 ;
+    --formSubmitColor :#e50914;
     --font-body_family: "Century Gothic", sans-serif;
 }
 
@@ -502,7 +508,7 @@ footer li {
 }
 
 #login label {
-    color: #8c8c8c;
+    color: var(--labelColor);
     font-size: 20px;
 }
 
@@ -523,7 +529,7 @@ footer li {
     padding: 1em;
     border: none;
     border-radius: 4px;
-    background-color: #e50914;
+    background-color: var(--formSubmitColor);
     color: #fff;
     margin-bottom: 1em;
     font-size: 18px;
@@ -582,7 +588,7 @@ footer li {
     text-align: center;
     border: none;
     border-radius: 5px;
-    background-color: #e50914;
+    background-color: var(--formSubmitColor);
     color: #fff;
 }
 
@@ -591,11 +597,10 @@ footer li {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #212121;
+    background-color: var(--formBackground);
     color: var(--txtColor);
     text-align: center;
     padding: 1em;
-
 }
 #aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
     padding: 0.5em;
@@ -607,26 +612,27 @@ footer li {
     padding: 1em;
     border: none;
     border-radius: 5px;
-    background-color: #333333;
+    background-color: var(--formInputColor);
     color: #ffffff;
     font-size: large;
     box-sizing: border-box;
 }
 
 #aggiungi_proiezione input[type="submit"], #aggiungi_film input[type="submit"] {
-    background-color: #e50914;
+    background-color: var(--formSubmitColor);
 }
 
 
 /* Stili per aggiungi film  */
 
 
-#aggiunta-film-form {
+#aggiunta-film-form , #aggiunta-proiezione-form {
     display: flex;
     flex-direction: column;
     padding: 2em;
     justify-content: space-between;
     gap: 2em;
+    flex-wrap: wrap;
 }
 
 #aggiungi-film-form-field{
@@ -635,20 +641,21 @@ footer li {
     gap: 1.5em;
 }
 
-#aggiunta-film-form fieldset{
+#aggiunta-film-form fieldset, #aggiungi_proiezione fieldset{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding: 2em;
     border-radius: 8px;
     gap: 2em;
-    background-color: #181818;
+    background-color: var(--formFieldSetColor) ;
     width: 24em;
+    min-width: 10em;
 }
 
-#aggiunta-film-form label{
+#aggiunta-film-form label, #aggiunta-proiezione-form label{
     text-align: left;
-    color: #8c8c8c;
+    color: var(--labelColor);
 }
 
 
@@ -664,9 +671,6 @@ footer li {
     gap: 0.5em;
 }
 
-#aggiungi_film input[type="file"] {
-    height: 8em;
-}
 
 
 /*  */

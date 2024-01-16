@@ -64,6 +64,11 @@ footer {
     display: none;
 }
 
+/* aggiungi film */
+#aggiungi-film-form-field{
+    flex-direction: column;
+}
+
 .selezionabile {
     width: 0.8em;
     height: 0.8em;
