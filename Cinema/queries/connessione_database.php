@@ -3,8 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "cinema3";
-    $conn = null; // Inizializza la variabile $conn
+    $dbname = "cinema";
 
     try {
         $conn = new mysqli($servername, $username, $password, $dbname);

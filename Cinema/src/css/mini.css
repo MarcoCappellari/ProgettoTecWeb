@@ -22,7 +22,7 @@ footer {
     display: inline;
     width: 4em; 
     height: 4em; 
-    background-image: url('../images/menu-bottom.png');
+    background-image: url('../images/asset/menu-bottom.png');
     background-size: cover; 
     background-repeat: no-repeat; 
 }
@@ -62,6 +62,11 @@ footer {
 
 #film-locandina{
     display: none;
+}
+
+/* aggiungi film */
+#aggiungi-film-form-field{
+    flex-direction: column;
 }
 
 .selezionabile {

@@ -22,27 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sala = $_POST['sala'];
 
     // Inserimento della nuova programmazione nel database
-    $sql = "INSERT INTO Riproduzione (id_film, ora, data) VALUES ('$film', '$ora', '$data')";
+    $sql = "INSERT INTO Proiezione (id_film, id_sala, ora, data) VALUES ('$film', '$sala', '$ora', '$data')";
     $conn->query($sql);
-
-    // Ottieni l'ID auto-incremento dell'ultimo inserimento
-    $idRiproduzione = $conn->insert_id;
-
-    // Itera sui posti della sala e inserisci nella tabella Assegnazione
-    $sql = "SELECT fila, numero_posto FROM Posto WHERE id_sala = $sala";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $fila = $row['fila'];
-            $numero_posto = $row['numero_posto'];
-            
-            $insertQuery = "INSERT INTO Assegnazione (id_riproduzione, fila, numero_posto, disponibile, id_sala)
-                            VALUES ($idRiproduzione, '$fila', $numero_posto, 1, $sala)";
-            $conn->query($insertQuery);
-            $risultato_info='<p>Proiezione inserita con successo!</p>';
-        }
-    }
+    $risultato_info='<p>Proiezione inserita con SUCCESSO!</p>';
 }
 
 $films = getFilms($conn);
@@ -52,7 +34,7 @@ $conn->close();
 $film_info = '';
 while ($row = $films->fetch_assoc()) {
     $film_info .= '<option value="' . $row['id'] . '">';
-    $film_info .= $row['nome'];
+    $film_info .= $row['titolo'];
     $film_info .= '</option>';
 }
 
