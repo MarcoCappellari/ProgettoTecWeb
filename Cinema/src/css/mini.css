@@ -69,10 +69,3 @@ footer {
     width: 7em;
     height: auto;
 }
-
-/*------------- posti---------- */
-.label-posto, .legenda-item {
-    width: 1.8em;
-    height: 1.4em;
-    font-size: 1em;
-}

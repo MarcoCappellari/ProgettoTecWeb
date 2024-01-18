@@ -214,6 +214,7 @@ tbody tr:nth-child(odd) {
 
 #field-set-posti{
     border: none;
+    width: 100%;
 }
 
 #film-container {
@@ -371,13 +372,14 @@ footer li {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow: auto;
+    margin-bottom: 3em;
 }
 
 #locandina-title {
     display: flex;
     align-items: center;
     justify-content: left;
+    margin: 5%;
 }
 
 #locandina-title img {
@@ -404,7 +406,7 @@ footer li {
     list-style-type: none;
 }
 
-/*----------------posti----------------*/
+/*----------------POSTI----------------*/
 #film-posti {
     text-align: center;
     padding: 1em;
@@ -412,11 +414,12 @@ footer li {
     margin-left: 5%;
     margin-top: 1em;
     margin-bottom: 1em;
-    margin-left: 3em;
+    max-width: 70%;
+    flex-grow: 1;
 }
 
 #cinema-screen {
-    width: 20em;
+    width: 60%;
     height: 8em;
     padding: 0.5em;
     background-color : var(--cinema_screen_color);
@@ -429,9 +432,12 @@ footer li {
     margin-top: 1em;
 }
 
-#form-container{
+#form-posti{
     display: flex;
     align-items: center;
+    justify-content: left;
+    margin:auto;
+    overflow: auto;
 }
 
 #posti-wrapper{
@@ -439,6 +445,7 @@ footer li {
     flex-direction: column;
     align-items: center;  
     margin-bottom: 1em;
+    width: 100%;
 }
 
 .fila-posti{
@@ -446,25 +453,34 @@ footer li {
     flex-wrap: nowrap;
     gap: 0.1em;
     list-style: none;
+    width: 100%;
+    align-items: center;
 }
 
 .fila-posti li{
+    flex: 1 1 2em;
     margin: 0.2em;
 }
 
 .label-posto, .legenda-item {
     display: inline-block;
     cursor: pointer;
-    width: 2em;
-    height: 1.8em;
+    width: 100%;
+    height: 100%;
     margin: auto;   
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border: 1px solid var(--borderPostoColor);
 }
 
+.label-posto:hover, input[type="checkbox"]:focus + .label-posto{
+    border: 2px solid var(--linkColor);
+}
+
 .legenda-item{
     cursor: auto;
+    width: 2em;
+    height: 1.6em;
 }
 
 /* Posto libero */
