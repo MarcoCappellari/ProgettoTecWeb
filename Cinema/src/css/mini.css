@@ -69,6 +69,10 @@ footer {
     flex-direction: column;
 }
 
+input{
+    width: 10%;
+}
+
 .selezionabile {
     width: 0.8em;
     height: 0.8em;

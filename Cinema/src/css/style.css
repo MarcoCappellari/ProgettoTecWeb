@@ -649,8 +649,8 @@ footer li {
     border-radius: 8px;
     gap: 2em;
     background-color: var(--formFieldSetColor) ;
-    width: 24em;
-    min-width: 10em;
+    width: 80%;
+
 }
 
 #aggiunta-film-form label, #aggiunta-proiezione-form label{
