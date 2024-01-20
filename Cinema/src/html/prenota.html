@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selezione Posti, cinema PopCorn</title>
+    <meta name="keyword" content="PopCorn Cinema, film ">
+    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="shortcut icon" href="../images/logo.png" />
+</head>
+
+<body>
+
+<header>
+    <h1>Popcorn Cinema</h1>
+    <nav id="menu">
+        <ul>
+            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
+            <li><a href="Recensioni.html">Recensioni </a></li>
+            {ACCEDI}
+        </ul>
+    </nav>
+    <a href="#bottomMenu" id="goToMenu"></a>
+</header>
+
+<nav id="breadcrumb">
+    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
+            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> >
+        <a href="../php/posti.php?idFilm={IDFILM}&data={DATA}&ora={ORA}"> Selezione posti </a> > Prenota </p>
+</nav>
+
+<main>
+    <div id="container-prenotazione">
+        <div id="container-recap-biglietti">
+            {BIGLIETTI}
+        </div>
+
+        <div id="container-recap-prenotazione">
+            {REGISTRAZIONE}
+            <p>{PRENOTA}</p>
+        </div>
+
+    </div>
+
+
+
+
+</main>
+
+{FOOTER}
+
+<nav id="bottomMenu">
+    <ul>
+        <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+        <li><a href="../php/info_cinema.php">Informazioni</a></li>
+        <li><a href="Recensioni.html">Recensioni </a></li>
+        <li><a href="Accedi.html">Accedi</a></li>
+    </ul>
+</nav>
+
+</body>
+
+</html>

@@ -59,7 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $prenota .= '<input type="hidden" name="data" value="' . $data_film . '">';
             $prenota .= '<input type="hidden" name="ora" value="' . $ora_film . '">';
             $prenota .= '<input type="hidden" name="sala" value="' . $nome_sala . '">';
-            $prenota .= '<input type="hidden" name="posti" value="' . $posti_selezionati . '">';
+
+            //converto in strina l'array
+            $prenota .= '<input type="hidden" name="posti" value="' . implode(',', $posti_selezionati) . '">';
 
             } else {
                 $registrazione = '<h2>Acquista i biglietti senza registrarti</h2>';
