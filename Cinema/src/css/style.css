@@ -772,7 +772,6 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #biglietto-recap-form fieldset label{
-    color: var(--labelColor);
 }
 
 #biglietto-recap-form input {
@@ -788,6 +787,13 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #biglietto-recap-form input[type="submit"] {
     background-color: #e50914;
 }
+
+#container-recap-prenotazione{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 .biglietto-recap{
     padding: 2em;
     display: flex;

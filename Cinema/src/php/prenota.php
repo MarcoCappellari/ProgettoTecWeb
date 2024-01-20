@@ -26,29 +26,7 @@ $ora_formattata = date('H:i', strtotime($ora_film));
 
 $risultato_info='';
 $prenota='<form id="biglietto-recap-form" action="./php/pagamento.php" method="post">';
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    //$permessi = getPermessiByUsername($conn, $_SESSION['username']);
-    $permessi = false;
-    if ($permessi == true) {
-        $accedi_stringa = "<a href='admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    } else {
-        $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    }
-
-
-} else {
-    $prenota .= '
-                <fieldset>
-                <legend>Email</legend>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                </fieldset>';
-
-    $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
-}
-$prenota .= '<input type="submit" name="submit_button" value="Vai al pagamento">
-            </form>';
-
+$registrazione = '';
 $biglietto = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['posti'])) {
@@ -65,8 +43,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $biglietto .= "<time datatime=“.$data_film.”> $data_film </time>";
             $biglietto .= "</div>";
             $biglietto .= "</div>";
-
         }
+
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            //$permessi = getPermessiByUsername($conn, $_SESSION['username']);
+            $permessi = false;
+            if ($permessi == true) {
+                $accedi_stringa = "<a href='admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
+            } else {
+                $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
+            }
+            $registrazione = '<h2>Acquista i biglietti come '.$_SESSION['username'].'</h2>';
+
+            $prenota .= '<input type="hidden" name="idFilm" value="' . $id_film . '">';
+            $prenota .= '<input type="hidden" name="data" value="' . $data_film . '">';
+            $prenota .= '<input type="hidden" name="ora" value="' . $ora_film . '">';
+            $prenota .= '<input type="hidden" name="sala" value="' . $nome_sala . '">';
+            $prenota .= '<input type="hidden" name="posti" value="' . $posti_selezionati . '">';
+
+            } else {
+                $registrazione = '<h2>Acquista i biglietti senza registrarti</h2>';
+                $prenota .= '
+                <fieldset>
+                <legend>Email</legend>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                </fieldset>';
+
+                $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
+            }
+            $prenota .= '<input type="submit" name="submit_button" value="Vai al pagamento">
+            </form>';
+
+
     } else {
         header('Location: ../html/404.html');
         exit;
@@ -81,12 +90,15 @@ $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 $template = str_replace('{RISULTATO}', $risultato_info, $template);
 $template = str_replace('{BIGLIETTI}', $biglietto, $template);
 $template = str_replace('{PRENOTA}', $prenota, $template);
+$template = str_replace('{REGISTRAZIONE}', $registrazione, $template);
 
 $template = str_replace('{IDFILM}', $id_film, $template);
 $template = str_replace('{TITOLO}', $titolo, $template);
 $template = str_replace('{DATA}', $data_film, $template);
 $template = str_replace('{ORA}', $ora_codificata, $template);
 $template = str_replace('{SALA}', $nome_sala, $template);
+
+
 
 $stringa_footer= file_get_contents('../html/footer.html');
 $template = str_replace('{FOOTER}', $stringa_footer, $template);
