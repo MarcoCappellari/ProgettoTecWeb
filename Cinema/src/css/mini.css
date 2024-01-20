@@ -22,7 +22,7 @@ footer {
     display: inline;
     width: 4em; 
     height: 4em; 
-    background-image: url('../images/menu-bottom.png');
+    background-image: url('../images/asset/menu-bottom.png');
     background-size: cover; 
     background-repeat: no-repeat; 
 }
@@ -63,6 +63,26 @@ footer {
 #film-locandina{
     display: none;
 }
+
+/* aggiungi film */
+#aggiungi-film-form-field{
+    flex-direction: column;
+}
+
+input{
+    width: 10%;
+}
+
+.selezionabile {
+    width: 0.8em;
+    height: 0.8em;
+
+}
+
+/* Stili per i posti non selezionabili */
+.non-selezionabile {
+    width: 0.8em;
+    height: 0.8em;
 
 /* ------locandina sopra selezione posti--------- */
 #locandina-title img{
