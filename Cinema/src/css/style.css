@@ -35,6 +35,8 @@
     --postoSelezionatoColor: #48eb32;
     --postoLiberoColor: rgb(255, 255, 255);
     --postoOccupatoColor: rgb(155, 155, 155);
+
+    --mainBackground : #fff;
 }
 
 html {
@@ -734,3 +736,75 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     margin: 1em auto;
     max-width: 40em;
 }
+
+/*---------- Pagina Prenota -----------*/
+
+#container-prenotazione{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#container-recap-biglietti{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em;
+    flex-wrap: wrap;
+}
+
+#biglietto-recap-form{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    min-width: 20em;
+    gap: 1em;
+}
+
+#biglietto-recap-form fieldset{
+    flex-direction: column;
+    display: flex;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+#biglietto-recap-form fieldset label{
+    color: var(--labelColor);
+}
+
+#biglietto-recap-form input {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: large;
+    box-sizing: border-box;
+}
+#biglietto-recap-form input[type="submit"] {
+    background-color: #e50914;
+}
+.biglietto-recap{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--borderPostoColor);
+    margin: 1em auto;
+    width: 15vw;
+    min-width: fit-content;
+}
+
+.biglietto-recap-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+

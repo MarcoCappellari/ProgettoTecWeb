@@ -21,7 +21,7 @@
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
             <li><a href="../php/info_cinema.php">Informazioni</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
-            <li><a href="Accedi.html">Accedi</a></li>
+            {ACCEDI}
         </ul>
     </nav>
     <a href="#bottomMenu" id="goToMenu"></a>
@@ -29,56 +29,21 @@
 
 <nav id="breadcrumb">
     <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> ><a href="../php/orari.php?idFilm={IDFILM}">
-        Date e Orari</a> > Selezione posti</p>
+            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> >
+        <a href="../php/posti.php?idFilm={IDFILM}&data={DATA}&ora={ORA}"> Selezione posti </a> > Prenota </p>
 </nav>
 
 <main>
-    <div id="container-pagina-selezione-posti">
-        <div id="locandina-title">
-            <img src="../../{LOCANDINA}" alt="">
-            <div>
-                <h2><cite>{TITOLO}</cite></h2>
-                <p>Data:<span class="film-data"><time datetime="{DATA}">{DATA}</time></span></p>
-                <p>Ora: <span class="film-ora"><time datetime="{ORA}">{ORA}</time></span></p>
-                <p>{SALA}</p>
-            </div>
+    <div id="container-prenotazione">
+        <div id="container-recap-biglietti">
+            {BIGLIETTI}
         </div>
 
-        <div id="film-posti">
-            <h3>SELEZIONA LE POLTRONE</h3>
-            <div id="cinema-screen"></div>
-
-            <div id="form-container">
-                <form action="../php/prenota.php" method="post">
-                    <fieldset id="field-set-posti">
-                        <legend class="sr-only">Selezione posti</legend>
-                        <div id="posti-wrapper">
-                            {POSTI}
-                        </div>
-
-                        <input type='submit' value='Prenota' id="prenota-button">
-                    </fieldset>
-                </form>
-            </div>
-        </div>
+        <p>{PRENOTA}</p>
     </div>
 
-    <div id="legenda">
-        <h3>Legenda</h3>
-        <div class="legenda-div">
-            <div id="occupato" class="legenda-item"></div>
-            <p class="desc-item-legenda"> Occupato</p>
-        </div>
-        <div class="legenda-div">
-            <div id="selezionato" class="legenda-item"></div>
-            <p class="desc-item-legenda"> Selezionato </p>
-        </div>
-        <div class="legenda-div">
-            <div id="disponibile" class="legenda-item"></div>
-            <p class="desc-item-legenda"> Disponibile</p>
-        </div>
-    </div>
+
+
 
 </main>
 
