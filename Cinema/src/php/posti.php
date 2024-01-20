@@ -25,11 +25,6 @@ $nome_sala= $Sala['nome'];
 $current_fila = "";
 $output = '';
 
-$input = '';
-$input .= '<input type="hidden" name="idFilm" value="' . $id_film . '">';
-$input .= '<input type="hidden" name="data" value="' . $data_film . '">';
-$input .= '<input type="hidden" name="ora" value="' . $ora_film . '">';
-
 while ($row = $SeatResults->fetch_assoc()) {
     //Aggiornamento fila corrente
     if ($current_fila != $row['fila']) {
@@ -43,7 +38,7 @@ while ($row = $SeatResults->fetch_assoc()) {
     $stato_posto = $row['disponibile'] ? "disponibile" : "occupato";
     $output .= "<li aria-label='posto". $row['fila'].$row['numero']."'>";
 
-    $output .= "<input type='checkbox' class='hidden-checkbox' id='posto_" . $row['fila'] . $row['numero'] . "' name='posti[]' value='" . $row['fila'] . $row['numero'] . "' " . ($row['disponibile'] ? '' : 'disabled') . ">";
+    $output .= "<input type='checkbox' class='hidden-checkbox' id='posto_" . $row['fila'] . $row['numero'] . "' name='posti' value='" . $row['fila'] . $row['numero'] . "' " . ($row['disponibile'] ? '' : 'disabled') . ">";
     $output .= "<label for='posto_" . $row['fila'] . $row['numero'] . "' class='label-posto'>" . $row['fila'] . $row['numero'] . "</label>";
 
     $output .= "</li>";
@@ -66,8 +61,6 @@ $html_content = str_replace('{DATA}', $data_film, $html_content);
 $html_content = str_replace('{ORA}', $ora_formattata, $html_content);
 $html_content = str_replace('{SALA}', $nome_sala, $html_content);
 $html_content = str_replace('{POSTI}', $output, $html_content);
-
-$html_content = str_replace('{INPUT}', $input, $html_content);
 
 $footer_html = file_get_contents('../html/footer.html');
 $html_content = str_replace('{FOOTER}', $footer_html, $html_content);

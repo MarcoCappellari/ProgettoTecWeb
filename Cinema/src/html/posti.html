@@ -29,7 +29,8 @@
     
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-                href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> > Selezione posti</p>
+                href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> ><a href="../php/orari.php?idFilm={IDFILM}">
+                Date e Orari</a> > Selezione posti</p>
     </nav>
     
     <main>
@@ -55,10 +56,8 @@
                             {POSTI}
                         </div>
 
-                        {INPUT}
-
-                    </fieldset>
-                    <input type='submit' value='Prenota' id="prenota-button">
+                        <input type='submit' value='Prenota' id="prenota-button">
+                    </fieldset>   
                 </form>
             </div>
         </div>
