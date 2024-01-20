@@ -38,7 +38,7 @@ while ($row = $SeatResults->fetch_assoc()) {
     $stato_posto = $row['disponibile'] ? "disponibile" : "occupato";
     $output .= "<li aria-label='posto". $row['fila'].$row['numero']."'>";
 
-    $output .= "<input type='checkbox' class='hidden-checkbox' id='posto_" . $row['fila'] . $row['numero'] . "' name='posti' value='" . $row['fila'] . $row['numero'] . "' " . ($row['disponibile'] ? '' : 'disabled') . ">";
+    $output .= "<input type='checkbox' class='hidden-checkbox' id='posto_" . $row['fila'] . $row['numero'] . "' name='posti[]' value='" . $row['fila'] . $row['numero'] . "' " . ($row['disponibile'] ? '' : 'disabled') . ">";
     $output .= "<label for='posto_" . $row['fila'] . $row['numero'] . "' class='label-posto'>" . $row['fila'] . $row['numero'] . "</label>";
 
     $output .= "</li>";
