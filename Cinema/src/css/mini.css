@@ -83,5 +83,9 @@ input{
 .non-selezionabile {
     width: 0.8em;
     height: 0.8em;
-  
+
+/* ------locandina sopra selezione posti--------- */
+#locandina-title img{
+    width: 7em;
+    height: auto;
 }

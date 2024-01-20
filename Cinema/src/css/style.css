@@ -35,6 +35,12 @@
     --formInputColor : #333333 ;
     --formSubmitColor :#e50914;
     --font-body_family: "Century Gothic", sans-serif;
+
+    --cinema_screen_color: #000000;
+    --borderPostoColor: #c4c4c4;
+    --postoSelezionatoColor: #48eb32;
+    --postoLiberoColor: rgb(255, 255, 255);
+    --postoOccupatoColor: rgb(155, 155, 155);
 }
 
 html {
@@ -74,6 +80,12 @@ header h1 {
     max-width: 1800px;
 }
 
+body{
+    max-width: 1800px;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+}
+
 h1 {
     margin-bottom: 1em;
 }
@@ -89,17 +101,18 @@ p {
 }
 
 main {
-    max-width: 1800px;
     margin: auto;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
+}
+
+h3{
+    margin: 1em;
 }
 
 nav {
     color: var(--headerTxtColor);
 }
 
-/*LINK*/
+/*--------------LINK-------------*/
 a:link {
     color: var(--linkColor);
 }
@@ -108,7 +121,7 @@ a:visited {
     color: var(--visitedLinkColor);
 }
 
-/*TABELLE*/
+/*-------------TABELLE-----------*/
 table {
     margin-top: 0.2em;
     margin-bottom: 0.2em;
@@ -127,8 +140,7 @@ thead {
     color: var(--txtColor);
 }
 
-th,
-td {
+th, td {
     border: 1px solid var(--borderColor);
     padding: 0.5em;
     text-align: center;
@@ -158,7 +170,7 @@ tbody tr:nth-child(odd) {
     overflow: auto;
 }
 
-/*MENU E BREADCRUMB*/
+/*-------------MENU E BREADCRUMB------------*/
 /*  */
 #menu ul {
     list-style-type: none;
@@ -204,6 +216,11 @@ tbody tr:nth-child(odd) {
     padding: 1em;
     background-color: var(--visitedLinkColor);
     color: var(--headerTxtColor);
+}
+
+#field-set-posti{
+    border: none;
+    width: 100%;
 }
 
 #film-container {
@@ -312,20 +329,17 @@ footer li {
     margin: auto;
 }
 
-.film-data {
+/*  */
+.film-data, .film-ora {
     padding: 0.4em;
     font-weight: bold;
-    color: var(--txtColor);
     font-size: 1.1em;
 }
 
 .film-ora {
-    padding: 0.4em;
-    font-weight: bold;
-    color: var(--txtColor);
-    font-size: 1.1em;
     font-family: 'architectural', 'cursive', sans-serif;
 }
+/*  */
 
 #title-date-time h2 {
     margin-bottom: 0.5em;
@@ -333,7 +347,7 @@ footer li {
 
 /**/
 
-/*ERRORI DISPONIBILITA'*/
+/*------------ERRORI DISPONIBILITA'-------------*/
 .div-non-esiste {
     align-items: center;
     text-align: center;
@@ -348,8 +362,7 @@ footer li {
     background-repeat: no-repeat;
     margin: auto;
 }
-
-/*  */
+/* usato ? */
 #film-name-error {
     color: var(--visitedLinkColor);
     font-weight: bold;
@@ -360,26 +373,31 @@ footer li {
 
 }
 
-/*altri orari*/
+/* ----------locandina nella pagina selezione posti------------- */
+#container-pagina-selezione-posti{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
 #locandina-title {
     display: flex;
     align-items: center;
     justify-content: left;
+    margin: 5%;
 }
 
 #locandina-title img {
-    margin: 0.5em;
-    width: 7em;
+    margin-left: 5%;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    max-width: 10em;
+    height: auto;
 }
 
-#film-orari-container {
-    background-color: var(--bgColor);
-    color: var(--txtColor);
-    /*max-width: 1024px;*/
-    padding: 1em;
-    margin: auto;
-}
-
+/* usato ? */
 #data-ora {
     display: flex;
     flex-wrap: wrap;
@@ -389,59 +407,132 @@ footer li {
 
 }
 
+/* usato ? */
 #data-ora ul {
     list-style-type: none;
 }
 
-/*posti*/
+/*----------------POSTI----------------*/
 #film-posti {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
     text-align: center;
-    /*max-width: 1024px;*/
     padding: 1em;
-    margin: auto;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    max-width: 70%;
+    flex-grow: 1;
 }
 
 #cinema-screen {
-    width: 100px;
-    height: 100px;
-    background-image: url("../images/asset/cinema-screen.png");
+    width: 60%;
+    height: 8em;
+    padding: 0.5em;
+    background-color : var(--cinema_screen_color);
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    margin-bottom: 2em;
+    margin-top: 1em;
 }
 
-/*checkbox*/
-/* Stili per i posti selezionabili */
-.selezionabile {
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    margin: 0.3em;
+#form-posti{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin:auto;
+    overflow: auto;
 }
 
-/* Stili per i posti non selezionabili */
-.non-selezionabile {
+#posti-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.fila-posti{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.1em;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+}
+
+.fila-posti li{
+    flex: 1 1 2em;
+    margin: 0.2em;
+}
+
+.label-posto, .legenda-item {
     display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    margin: auto;   
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid var(--borderPostoColor);
+}
+
+.label-posto:hover, input[type="checkbox"]:focus + .label-posto{
+    border: 2px solid var(--linkColor);
+}
+
+.legenda-item{
+    cursor: auto;
     width: 2em;
-    height: 2em;
     background-image: url("../images/asset/checkbox.png");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0.4em;
+    height: 1.6em;
 }
 
-/*500 e 404*/
+/* Posto libero */
+input[type="checkbox"]:not(:checked) + .label-posto, #libero{
+    background-color: var(--postoLiberoColor);
+}
+
+/* Posto selezionato */
+input[type="checkbox"]:checked + .label-posto, #selezionato {
+    background-color: var(--postoSelezionatoColor);
+}
+
+/* Posto non disponibile */
+input[type="checkbox"]:disabled + .label-posto, #occupato {
+    background-color: var(--postoOccupatoColor);
+}
+
+.hidden-checkbox {
+    position: absolute;
+    left: -9999px;
+}
+
+#legenda{
+    display: grid;
+    justify-content: center; 
+    margin-bottom: 2em;
+}
+
+.legenda-div{
+    display: flex;
+    align-items: center;
+}
+
+.desc-item-legenda, .legenda-item{
+    margin: 0.2em;
+}
+
+/*-------------------500 e 404---------------------*/
 #error-container {
     width: 80%;
     margin: 0.4em auto;
-    padding: 20px;
+    padding: 5em;
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
@@ -455,9 +546,9 @@ footer li {
 }
 
 #immagine-errore-500-404 {
-    width: 200px;
-    height: 200px;
-    background-image: url("../images/asset/error.png");
+    width: 20em;
+    height: 20em;
+    background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
 
@@ -483,6 +574,7 @@ footer li {
     color: var(--txtColorHome);
     padding: 0.7em 1em;
     border-radius: 5px;
+    margin-bottom: 2em;
 }
 
 /*login*/
@@ -675,18 +767,18 @@ footer li {
 
 /*  */
 
-/* Contenitori che contengono informazioni */
+/*---------- Contenitori che contengono informazioni -----------*/
 .info {
     padding: 2em 3em;
 }
 
-/*screen reader only*/
+/*-----------screen reader only--------------*/
 .sr-only {
     position: absolute;
     left: -9999px;
 }
 
-
+/*  */
 
 #biglietti-container {
     background-color: #181818;
