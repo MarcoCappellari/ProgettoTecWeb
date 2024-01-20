@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="../images/asset/logo.png" />
+    <link rel="shortcut icon" href="../images/logo.png" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-                <li><a href="../php/info_cinema.php">Informazioni</a></li>
+                <li><a href="Prenota.html">Prenota</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
                 <li>{ACCEDI}</li>
             </ul>
@@ -39,31 +39,30 @@
         <div id="aggiungi_proiezione">
             <h2>Aggiungi proiezione</h2>
 
-            <form id="aggiunta-proiezione-form" action="../php/aggiungi_proiezione.php" method="post">
-                <fieldset>
-                    <legend> Dati Proiezione </legend>
-                    <div>
-                        <label for="film">Seleziona Film:</label>
-                        <select name="film" id="film" required>
-                            {FILM-OPZIONI}
-                        </select>
-                    </div>
-                    <div>
-                        <label for="data">Seleziona Data:</label>
-                        <input type="date" id="data" name="data" required>
-                    </div>
-                    <div>
-                        <label for="ora">Inserisci Orario:</label>
-                        <input type="time" id="ora" name="ora" required>
-                    </div>
-                    <div>
-                        <label for="sala">Seleziona Sala:</label>
-                        <select name="sala" id="sala"  required>
-                            {SALA-OPZIONI}
-                        </select>
-                    </div>
-                </fieldset>
+            <form action="../php/aggiungi_proiezione.php" method="post">
+                <div>
+                    <label for="film">Seleziona Film:</label>
+                    <select name="film" required>
+                        {FILM-OPZIONI}
+                    </select>
+                </div>
+                <div>
+                    <label for="data">Seleziona Data:</label>
+                    <input type="date" name="data" required>
+                </div>
+                <div>
+                    <label for="ora">Inserisci Orario:</label>
+                    <input type="time" name="ora" required>
+                </div>
+                <div>
+                    <label for="sala">Seleziona Sala:</label>
+                    <select name="sala" required>
+                        {SALA-OPZIONI}
+                    </select>
+                </div>
+                <div>
                     <input type="submit" value="Aggiungi Programmazione">
+                </div>
             </form>
             {RISULTATO}
         </div>
@@ -88,8 +87,8 @@
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="../php/info_cinema.php">Informazioni</a></li>
-            <li><a href="Recensioni.html">Recensioni </a></li>
+            <li><a href="Prenota.html">Prenota</a></li>
+            <li><a href="Recensioni.html">Recensioni</a></li>
             <li>{ACCEDI}</li>
         </ul>
     </nav>
