@@ -27,6 +27,7 @@
     --theadBgColor: #c5c5c5;
     --alternativeLine: #dddddd;
     --borderColor: #8b8b8b;
+    --hoverColor: #0294b9;
 
     --font-body_family: "Century Gothic", sans-serif;
 
@@ -37,6 +38,8 @@
     --postoOccupatoColor: rgb(155, 155, 155);
 
     --bgRecensioni: #dddddd;
+
+    --buttonColor: #e50914;
 }
 
 html {
@@ -665,16 +668,20 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     font-size: 1.2em;
 }
 
-#logoutForm button {
+#logoutForm button, #invia-recensione-button {
     padding: 1em;
     margin: 1em;
-    font-size: 18px;
     font-weight: bold;
     text-align: center;
     border: none;
     border-radius: 5px;
-    background-color: #e50914;
+    background-color: var(--buttonColor);
     color: #fff;
+}
+
+#invia-recensione-button:hover, #invia-recensione-button:focus {
+    border: 2px solid var(--hoverColor);
+    transition: ease-in;
 }
 
 /*aggiungi proiezione*/
@@ -708,7 +715,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #aggiungi_proiezione input[type="submit"] {
-    background-color: #e50914;
+    background-color: var(--buttonColor);
 }
 
 
@@ -768,6 +775,12 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #textarea-recensione{
     width: 80%;
+    resize: none;
+    margin: 1em;
+    font-size: 1em;
+    font-family: var(--font-body_family);
+    border-radius: 8px;
+    border-color: var(--borderColor);
 }
 
 #recensioni-container{
@@ -803,4 +816,5 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 .content-recensione{
     margin: 1em 5%;
+    font-size: 1em;
 }

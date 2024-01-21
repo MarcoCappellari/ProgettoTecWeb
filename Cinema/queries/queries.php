@@ -157,9 +157,13 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
     return $result;
 }
 
+//restituisce tutta la linea della tabella Utente contentente l'user per l'username OR mail
 function getUserByMailOrUsername($conn, $user)
 {
-    $query = "SELECT * FROM Utente WHERE username = '$user' OR mail = '$user'";
+    $query =    "SELECT * 
+                FROM Utente 
+                WHERE username = '$user' OR mail = '$user'";
+                
     $result = $conn->query($query);
     $user = $result->fetch_assoc();
     return $user;

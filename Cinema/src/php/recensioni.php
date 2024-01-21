@@ -7,13 +7,18 @@ session_start();
 $recensioni_page = file_get_contents('../html/recensioni.html');
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     $accedi_stringa = "Benvenuto " . $_SESSION['username'];
-    $form_recensione = "<form action='scrivi_recensione.php' method='get' id='form-recensione'>
-                            <input type='hidden' name='mail_utente' value='". $_SESSION['username'] ."'>
-
-                            <textarea rows='10' cols='40' name='recensione' id='textarea-recensione'> Scrivi qui la tua recensione! </textarea>
-                            <input type='submit' value='Invia' id='invia-button'>
-                        </form>";
-    $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $form_recensione, $recensioni_page);
+    if($_SESSION['conferma-recensione'] == true){
+        $_SESSION['conferma-recensione'] = false;
+        $conferma_recensione = "<p>Recensione inviata con successo!<br>
+                                Vuoi scrivere un'altra recensione? <a href='recensioni.php'>Clicca qui</a>!</p>";
+        $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $conferma_recensione, $recensioni_page);
+    } else {
+        $form_recensione = "<form action='scrivi_recensione.php' method='get' id='form-recensione'>
+                                <textarea rows='10' cols='40' name='recensione' id='textarea-recensione'> Scrivi qui la tua recensione! </textarea>
+                                <input type='submit' value='Invia' id='invia-recensione-button'>
+                            </form>";
+        $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $form_recensione, $recensioni_page);
+    }
 } else {
     $accedi_stringa = "<a href='../html/accedi.html'>Accedi</a>";
     $accedi_per_recensione =    "<p>Ops! Sembra che tu non abbia ancora effettuato l'accesso!<br>
