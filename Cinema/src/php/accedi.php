@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
+    //dovrebbe essere inutile, basta $username = $user['username'];
     if ($utente == $user['mail']) {
         $username = getUserByMail($conn, $utente);
     } else {
@@ -29,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($password == $user['password'] && $username == $user['username']) {
         echo "Credenziali corrette.";
-        $_SESSION['username'] = $username;
+        $_SESSION['mail-utente']= $user['mail'];
+        $_SESSION['username'] = $username; //$user['username'] posso sostituirlo
         $_SESSION['logged_in'] = true;
         header('Location: ../../index.php');
         exit();

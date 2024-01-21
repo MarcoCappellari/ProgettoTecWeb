@@ -157,9 +157,13 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film) {
     return $result;
 }
 
+//restituisce tutta la linea della tabella Utente contentente l'user per l'username OR mail
 function getUserByMailOrUsername($conn, $user)
 {
-    $query = "SELECT * FROM Utente WHERE username = '$user' OR mail = '$user'";
+    $query =    "SELECT * 
+                FROM Utente 
+                WHERE username = '$user' OR mail = '$user'";
+                
     $result = $conn->query($query);
     $user = $result->fetch_assoc();
     return $user;
@@ -229,8 +233,8 @@ function getBigliettoByUser($conn, $user)
 
 }
 
-function getIdByUsername($conn, $username)
-{
+function getIdByUsername($conn, $username){
+
     $query = "SELECT mail FROM Utente WHERE username = '$username'";
     $result = $conn->query($query);
 
@@ -243,5 +247,45 @@ function getIdByUsername($conn, $username)
         // Nessun risultato trovato
         return null;
     }
+}
+
+
+//Restituisce tutte le recensioni a partire dalla più recente nella forma content | data | username
+function getRecensioni($conn){
+
+    $query = "  SELECT R.testo AS content,
+                    R.data_creazione AS data,
+                    U.username AS username 
+                FROM Recensioni AS R
+                JOIN Utente AS U
+                ON R.id_utente = U.mail
+                ORDER BY data DESC;";
+
+    if(!$result = $conn->query($query)){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    }
+
+    if ($result->num_rows == 0) {
+        return null;
+    }
+
+    return $result;
+}
+
+//Scrive la recensione a partire dalla connesione | mail-utente | contenuto-recensione
+function writeRecensione($conn, $mail_utente, $content){
+
+    $query = "  INSERT INTO Recensioni (testo, data_creazione, id_utente) 
+                VALUES 
+                ('$content', NOW(), '$mail_utente');";
+
+    if(!$conn->query($query)){
+        header('Location: ../html/500.html'); 
+        exit(); 
+    } else {
+        return null;
+    }
+    
 }
 ?>
