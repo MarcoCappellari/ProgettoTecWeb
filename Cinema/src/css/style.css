@@ -35,6 +35,8 @@
     --postoSelezionatoColor: #48eb32;
     --postoLiberoColor: rgb(255, 255, 255);
     --postoOccupatoColor: rgb(155, 155, 155);
+
+    --bgRecensioni: #dddddd;
 }
 
 html {
@@ -96,6 +98,7 @@ p {
 
 main {
     margin: auto;
+    line-height: 1.5;
 }
 
 h3{
@@ -372,7 +375,7 @@ footer li {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
 
 #locandina-title {
@@ -749,4 +752,55 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     border-radius: 8px;
     margin: 1em auto;
     max-width: 40em;
+}
+
+/* ---------------------RECENSIONI---------------------- */
+#main_recensioni{
+    text-align: center;
+    padding: 2em;
+}
+
+#form-recensione{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#textarea-recensione{
+    width: 80%;
+}
+
+#recensioni-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    text-align: left;
+}
+
+.recensione{
+    width: 80%;
+    height: auto;
+    margin: 1em;
+    background-color: var(--bgRecensioni);
+    border: 1px solid var(--borderColor); 
+    border-radius: 8px;
+}
+
+.utente{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+
+.data-recensione{
+    font-size: 0.6em;
+    font-style: italic;
+    margin-left: 2em;
+}
+
+.content-recensione{
+    margin: 1em 5%;
 }

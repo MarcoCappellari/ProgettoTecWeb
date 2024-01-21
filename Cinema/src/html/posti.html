@@ -21,22 +21,22 @@
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="../php/info_cinema.php">Informazioni</a></li>
                 <li><a href="Recensioni.html">Recensioni </a></li>
-                <li><a href="Accedi.html">Accedi</a></li>
+                <li>{ACCEDI}</li>
             </ul>
         </nav>
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
     
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-                href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> ><a href="../php/orari.php?idFilm={IDFILM}">
-                Date e Orari</a> > Selezione posti</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt<a
+                href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> &gt<a href="../php/orari.php?idFilm={IDFILM}">
+                Date e Orari</a> &gt Selezione posti</p>
     </nav>
     
     <main>
         <div id="container-pagina-selezione-posti">    
             <div id="locandina-title">
-                <img src="../../{LOCANDINA}" alt="">
+                <img src="../../{LOCANDINA}" alt="locandina del film {TITOLO}">
                 <div>
                     <h2><cite>{TITOLO}</cite></h2>
                     <p>Data:<span class="film-data"><time datetime="{DATA}">{DATA}</time></span></p>
@@ -87,7 +87,7 @@
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
             <li><a href="../php/info_cinema.php">Informazioni</a></li>
             <li><a href="Recensioni.html">Recensioni </a></li>
-            <li><a href="Accedi.html">Accedi</a></li>
+            <li>{ACCEDI}</li>
         </ul>
     </nav>
 
