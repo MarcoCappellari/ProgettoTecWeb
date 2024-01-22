@@ -56,18 +56,20 @@ html {
 }
 
 header {
-    padding: 1em;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
     max-width: 1800px;
-    padding: 1em;
     margin: auto;
-
 }
 
+#logo{
+    width: 9em;
+    height: auto; 
+}
+/*
 header h1 {
     text-indent: -999em;
     background-image: url("../images/logo1.png");
@@ -78,11 +80,12 @@ header h1 {
     height: 100px;
     max-width: 1800px;
 }
-
+*/
 body{
     max-width: 1800px;
     background-color: var(--bgColor);
     color: var(--txtColor);
+    margin: auto;
 }
 
 h1 {
@@ -528,7 +531,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #error-container {
     width: 80%;
     margin: 0.4em auto;
-    padding: 5em;
+    padding: 1em;
     background-color: var(--bgColor);
     color: var(--txtColor);
     text-align: center;
@@ -542,8 +545,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #immagine-errore-500-404 {
-    width: 20em;
-    height: 20em;
+    width: 10em;
+    height: 10em;
     background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;

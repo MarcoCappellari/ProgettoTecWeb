@@ -2,6 +2,10 @@ header{
     justify-content: space-between;
 }
 
+#logo{
+    width: 7em;
+}
+
 #menu ul li {
     margin-right: 5px;
 }
@@ -20,8 +24,9 @@ footer {
 
 #goToMenu {
     display: inline;
-    width: 4em; 
-    height: 4em; 
+    margin-right: 1em;
+    width: 5em; 
+    height: 5em; 
     background-image: url('../images/menu-bottom.png');
     background-size: cover; 
     background-repeat: no-repeat; 
