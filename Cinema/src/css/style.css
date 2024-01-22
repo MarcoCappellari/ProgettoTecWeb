@@ -56,16 +56,12 @@ html {
 }
 
 header {
-    padding: 1em;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
     max-width: 1800px;
-    padding: 1em;
-    margin: auto;
-
 }
 
 header h1 {
@@ -74,15 +70,16 @@ header h1 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
-    width: 200px;
-    height: 100px;
-    max-width: 1800px;
+    width: 7em;
+    height: 7em;
+
 }
 
 body{
     max-width: 1800px;
     background-color: var(--bgColor);
     color: var(--txtColor);
+    margin: auto;
 }
 
 h1 {
