@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sezione admin, cinema PopCorn</title>
+    <title>Elimina proiezione</title>
     <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
@@ -15,46 +15,46 @@
 <body>
     <!--header-->
     <header>
-        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <h1>Popcorn Cinema</h1>
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-                <li><a href="../php/info_cinema.php">Informazioni</a></li>
-                <li><a href="../php/recensioni.php">Recensioni </a></li>
+                <li><a href="Prenota.html">Prenota</a></li>
+                <li><a href="Recensioni.html">Recensioni </a></li>
                 <li>{ACCEDI}</li>
             </ul>
         </nav>
-
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Area Amministrativa</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a
+                href="../php/admin.php">Area Amministrativa</a> &gt Elimina proiezione</p>
     </nav>
 
-    <!--main-->
-    <main>
-        <div id="adminArea">
-            <h2>Area Amministrativa</h2>
-            <nav id="adminMenu">
 
-                <ul>
-                    <li><a href="#1">Aggiungi Film</a></li>
-                    <li><a href="../php/aggiungi_proiezione.php">Aggiungi Proiezione</a></li>
-                    <li><a href="../php/modifica_film.php">Modifica o elimina film</a></li>
-                    <li><a href="../php/elimina_proiezione.php">Elimina proiezione</a></li>
-                </ul>
-            </nav>
-            <form id="logoutForm" action="../php/admin.php" method="post">
-                <input type="hidden" name="logout" value="true">
-                <button type="submit"><span lang="en">Log Out</span></button>
+
+    <main>
+        <div id="proiezioni_container">
+            <h2>Seleziona le proiezioni da eliminare:</h2>
+            <form method="post" action="../php/elimina_proiezione.php">
+                {PROIEZIONI}
             </form>
+            {RISULTATO}
         </div>
     </main>
 
-    <footer>
 
+
+
+
+
+    <footer>
+        <div>
+            <p class="footer-title" lang="en">About Us</p>
+            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
+        </div>
         <div>
             <p class="footer-title" lang="en"> Where to Find Us</p>
             <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
@@ -65,6 +65,7 @@
             <ul>
                 <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
                 <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
+                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
             </ul>
         </div>
     </footer>
@@ -72,8 +73,8 @@
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="../php/info_cinema.php">Informazioni</a></li>
-            <li><a href="../php/recensioni.php">Recensioni </a></li>
+            <li><a href="Prenota.html">Prenota</a></li>
+            <li><a href="Recensioni.html">Recensioni </a></li>
             <li>{ACCEDI}</li>
         </ul>
     </nav>
