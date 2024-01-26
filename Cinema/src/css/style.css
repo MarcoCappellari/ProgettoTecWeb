@@ -576,35 +576,40 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     margin-bottom: 2em;
 }
 
-/*login*/
-
-#login-container {
+/*login e Signin*/
+#login-container , #signin-container {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #212121;
 }
 
-#login {
-    width: 20em;
-    padding: 7em;
+#login , #signin {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 7em 1em 7em;
     background-color: #181818;
     border-radius: 8px;
     text-align: center;
 }
 
-#login h2 {
+#login h2 , #signin  h2 {
     color: var(--txtColorHome);
     margin-bottom: 1em;
 }
 
-#login label {
+#login label , #signin label{
     color: #8c8c8c;
     font-size: 20px;
 }
 
-#login input[type="text"],
-#login input[type="password"] {
+#login form , #signin form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+#login input , #signin input {
     width: 15em;
     padding: 1em;
     border: none;
@@ -612,22 +617,49 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     background-color: #333333;
     color: #fff;
     font-size: 20px;
-    margin-bottom: 1em;
+
 }
 
-#login input[type="submit"] {
-    width: 70%;
+#login input[type="submit"] , #signin input[type="submit"]  {
+    width: 18em;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1em;
     border: none;
     border-radius: 4px;
     background-color: #e50914;
     color: #fff;
-    margin-bottom: 1em;
     font-size: 18px;
 }
 
-#login p {
+#login p, #signin p {
     color: var(--txtColorHome);
+}
+
+#login fieldset , #signin fieldset {
+    border-radius: 8px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 1em;
+}
+
+#signin fieldset #signin-personal-container{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.login-item-container , .signin-item-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#login legend, #signin legend {
+    color: var(--txtColorHome);
+    padding: 0.3em;
 }
 
 /*admin section*/

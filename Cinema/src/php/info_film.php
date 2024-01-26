@@ -36,7 +36,7 @@ $durata = $resultFilm['durata'];
 $trama = $resultFilm['trama'];
 
 // Leggi il contenuto del file HTML
-$template = file_get_contents('../html/info_film.html'); //linux
+$template = file_get_contents('../html/info_film.html');
 
 // Sostituisci le variabili nel template
 $template = str_replace('{TITOLO}', $titolo, $template);

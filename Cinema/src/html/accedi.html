@@ -38,17 +38,20 @@
             <div id="login">
                 <h2>Accedi</h2>
                 <form action="../php/accedi.php" method="post">
-                    <div>
-                        <label for="utente">Email o username</label>
-                        <input type="text" id="utente" name="utente" required>
-                    </div>
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
+                    <fieldset>
+                        <legend>Dati di Accesso</legend>
+                        <div class="login-item-container">
+                            <label for="utente">Email o username</label>
+                            <input type="text" id="utente" name="utente" required>
+                        </div>
+                        <div class="login-item-container">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                    </fieldset>
                     <input type="submit" value="Accedi">
                 </form>
-                <p>Non sei ancora registrato? <a href="#">Registrati</a></p>
+                <p>Non sei ancora registrato? <a href="../php/registrazione.php">Registrati</a></p>
             </div>
         </div>
 
