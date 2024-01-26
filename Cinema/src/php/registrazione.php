@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Credenziali errate o password non corretta.";
     }
 }
+
 $template = file_get_contents('../html/registrazione.html');
 echo $template;
 
