@@ -824,7 +824,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 /*modifica film*/
 
-#modifica_film_container, #proiezioni_container  {
+#modifica_film_container, #proiezioni_container, #modifica_utente_container {
     max-width: 60%;
     margin: auto;
     padding: 1em;
@@ -834,7 +834,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     text-align: center;
 }
 
-#modifica_film_container h2 {
+#modifica_film_container h2, #modifica_utente_container h2{
     text-align: center;
     margin-bottom: 1em;
     color: var(--txtColor);
@@ -842,6 +842,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #modifica_film_container input[type="submit"],
+#modifica_utente_container input[type="submit"],
 #proiezioni_container input[type="submit"] {
     width: 10em; 
     background-color: #e50914;
@@ -865,7 +866,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #modifica_film_container select,
 #modifica_film_container input,
-#modifica_film_container textarea {
+#modifica_film_container textarea,
+#modifica_utente_container input{
     width: 100%; 
     padding: 0.5em;
     background-color: #333333;
