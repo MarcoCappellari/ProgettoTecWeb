@@ -400,4 +400,18 @@ function getProiezioni($conn)
 
 }
 
+function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {
+    $sql_update_user = "UPDATE Utente SET  username=?, nome=?, cognome=?, password=? WHERE mail=?";
+    $stmt = $conn->prepare($sql_update_user);
+    $stmt->bind_param("sssss", $username, $nome, $cognome, $password, $mail);
+
+    // Esegui la query
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 ?>

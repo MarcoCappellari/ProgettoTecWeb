@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica dati utente</title>
+    <meta name="keywords" content="PopCorn Cinema, film ">
+    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="shortcut icon" href="../images/logo.png" />
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <nav id="menu">
+            <ul>
+                <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+                <li><a href="../php/info_cinema.php">Informazioni</a></li>
+                <li><a href="../php/recensioni.php">Recensioni </a></li>
+                <li>{ACCEDI}</li>
+            </ul>
+        </nav>
+        <a href="#bottomMenu" id="goToMenu"></a>
+    </header>
+
+    <!--breadcrumb-->
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/admin.php">Area
+                Amministrativa</a> &gt Modifica dati utente</p>
+    </nav>
+
+    <main>
+        <div id="modifica_utente_container">
+            <h1>Modifica dati utente</h1>
+            <form action="../php/modifica_utente.php" method="post">
+                <fieldset>
+                    <legend>Dati utente</legend>
+                    <div>
+                        <label for="mail">Email:</label>
+                        <input type="email" name="mail" value="{MAIL}" required readonly><br>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Dati utente modificabili</legend>
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" value="{USERNAME}" required><br>
+                    </div>
+                    <div>
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" value="{NOME}" required><br>
+                    </div>
+                    <div>
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" name="cognome" value="{COGNOME}" required><br>
+                    </div>
+                    <div>
+                        <label for="password">Nuova Password:</label>
+                        <input type="password" name="password" id="password" autocomplete="new-password"><br>
+                    </div>
+                    <div>
+                        <label for="confirm_password">Conferma Password:</label>
+                        <input type="password" name="confirm_password" id="confirm_password"><br>
+                    </div>
+                    <div>
+                        <input type="submit" value="Modifica">
+                    </div>
+                </fieldset>
+            </form>
+            <p>{RISULTATO}</p>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p class="footer-title" lang="en">About Us</p>
+            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
+        </div>
+        <div>
+            <p class="footer-title" lang="en"> Where to Find Us</p>
+            <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
+                    14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
+        </div>
+        <div>
+            <p class="footer-title" lang="en">Contact Us</p>
+            <ul>
+                <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
+                <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
+                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <nav id="bottomMenu">
+        <ul>
+            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
+            <li><a href="../php/recensioni.php">Recensioni </a></li>
+            <li>{ACCEDI}</li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>

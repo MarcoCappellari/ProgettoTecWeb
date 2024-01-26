@@ -1,11 +1,11 @@
 -- Utente
 CREATE TABLE Utente (
     mail VARCHAR(50) PRIMARY KEY,
-    username VARCHAR(50),
-    nome VARCHAR(50),
-    cognome VARCHAR(50),
-    permessi BOOLEAN,
-    password VARCHAR(255)
+    username VARCHAR(50) unique NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    permessi BOOLEAN NOT NULL,
+    password VARCHAR(255) NOT NULL
 );
 
 -- Film
