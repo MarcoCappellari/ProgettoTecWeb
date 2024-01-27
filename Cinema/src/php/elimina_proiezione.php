@@ -1,5 +1,10 @@
 <?php
 require_once '../../queries/queries.php';
+
+session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
+
 $risultato='';
 if (isset($_POST['elimina_proiezioni'])) {
     $proiezioni_selezionate = $_POST['proiezioni_selezionate'];
@@ -49,6 +54,7 @@ if ($result_proiezioni) {
 $template = file_get_contents('../html/elimina_proiezione.html');
 $template = str_replace('{PROIEZIONI}', $tutte_proiezioni, $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
+$template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 echo $template;
 
 ?>

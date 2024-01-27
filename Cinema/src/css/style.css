@@ -431,15 +431,20 @@ footer li {
     width: 60%;
     height: 8em;
     padding: 0.5em;
-    background-color : var(--cinema_screen_color);
-    background-size: contain;
+    background-color: black; /* Colore di sfondo nero */
+    background-image: url('../images/logo1.png'); /* Aggiungi un'immagine di cinema come sfondo */
+    background-size: contain; /* Ridimensiona l'immagine per adattarsi all'interno */
     background-repeat: no-repeat;
+    background-position: center; /* Centra l'immagine */
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: 1em;
+    border: 10px solid black; /* Aggiungi una cornice nera */
 }
+
+
 
 #form-posti{
     display: flex;

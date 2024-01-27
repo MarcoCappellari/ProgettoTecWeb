@@ -3,7 +3,7 @@
 require_once '../../queries/queries.php';
 session_start();
 
-include 'src/php/user_session.php';
+include 'user_session.php';
 $accedi_stringa = gestisciAccesso($conn);
 
 $risultato_info='';

@@ -9,26 +9,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $utente = $_POST['utente']; //potrebbe essere mail o mail
+    $utente = $_POST['utente']; //potrebbe essere mail o username
     $password = $_POST['password'];
 
     $user = getUserByMailOrUsername($conn, $utente);
-
+    $conn->close();
     if ($user === null) {
         echo "Utente non trovato.";
         exit();
     }
-/*
-    //dovrebbe essere inutile, basta $mail = $user['mail'];
-    if ($utente == $user['mail']) {
-        $mail = $user['mail'];
-    } else {
+    /*
+        //dovrebbe essere inutile, basta $mail = $user['mail'];
+        if ($utente == $user['mail']) {
+            $mail = $user['mail'];
+        } else {
 
-        $mail = getUserByMail($conn, $utente);
-    }
-*/
-    $conn->close();
-    $mail=$user['mail'];
+            $mail = getUserByMail($conn, $utente);
+        }
+    */
+
+    $mail = $user['mail'];
 
     if ($password == $user['password'] && $mail == $user['mail']) {
         echo "Credenziali corrette.";

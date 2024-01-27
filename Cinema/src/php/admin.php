@@ -3,7 +3,7 @@ session_start();
 
 $admin_page = file_get_contents('../html/admin.html');
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $accedi_stringa = "Benvenuto " . $_SESSION['username'];
+    $accedi_stringa = "Area Amministrativa";
 } else {
     header('Location: ../html/500.html');
     exit();
