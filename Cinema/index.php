@@ -15,8 +15,14 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && isset($_
 //risultato della query
 $result = getFilms($conn);
 $conn->close();
+$datalist_risultati = '';
+$titoliFilm = $result;
 
-
+while ($row = $result->fetch_assoc()) {
+    $titolo = $row['titolo'];
+    $datalist_risultati .= "<option value='$titolo'>";
+}
+mysqli_data_seek($result, 0);
 $stringa_info_film = '';
 
 // creo una section  per ogni film
@@ -42,6 +48,7 @@ if ($result->num_rows == 0) {
 $template_film = file_get_contents('src/html/index.html');
 $template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
 $template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
+$template_film = str_replace('{DATALIST-RISULTATI}', $datalist_risultati, $template_film);
 
 $stringa_footer= file_get_contents('src/html/footer.html');
 $template_film = str_replace('{FOOTER}', $stringa_footer, $template_film);
