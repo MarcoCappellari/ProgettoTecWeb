@@ -5,26 +5,29 @@ session_start();
 include 'user_session.php';
 $accedi_stringa = gestisciAccesso($conn);
 
-$risultato_info='';
+$risultato_info = '';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titolo = $_POST['titolo'];
     $trama_film = $_POST['trama'];
-    $regista= $_POST['regista'];
+    $regista = $_POST['regista'];
     $durata = $_POST['durata'];
     $genere_primario = $_POST['genere_primario'];
 
+    /*
+        $file_name = $_FILES['locandina']['name'];
+        $file_tmp = $_FILES['locandina']['tmp_name'];
+        $file_size = $_FILES['locandina']['size'];
+        $file_error = $_FILES['locandina']['error'];
 
-    $file_name = $_FILES['locandina']['name'];
-    $file_tmp = $_FILES['locandina']['tmp_name'];
-    $file_size = $_FILES['locandina']['size'];
-    $file_error = $_FILES['locandina']['error'];
-
-    $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
-    $locandina_path = "../images/locandine/" . $new_file_name;
-    move_uploaded_file($file_tmp, $locandina_path);
+        $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
+        $locandina_path = "src/images/locandine/" . $new_file_name;
+        move_uploaded_file($file_tmp, $locandina_path);
+    */
+    $locandina = $_FILES["locandina"]["name"];;
+    $locandina_path = "src/images/locandine/" . $locandina;
 
     $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
     if (!$conn->query($sql)) {
@@ -49,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $risultato_info='<p>Film inserito con SUCCESSO!</p>';
+    $risultato_info = '<p>Film inserito con SUCCESSO!</p>';
 
 
 
@@ -59,11 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $generi = getGeneris($conn);
 $conn->close();
 
-$genere_info  = '';
+$genere_info = '';
 while ($row = $generi->fetch_assoc()) {
     $genere_info .= '<option value="' . $row['nome'] . '">';
-    $genere_info  .= $row['nome'];
-    $genere_info  .= '</option>';
+    $genere_info .= $row['nome'];
+    $genere_info .= '</option>';
 }
 
 $generi->free();
