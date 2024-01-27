@@ -1,6 +1,11 @@
 <?php
 require_once '../../queries/queries.php';
 
+session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
+
+
 $film_info = '';
 $risultato = '';
 $primogenere = null;
@@ -116,6 +121,7 @@ $template = str_replace('{GENERE2}', $genere_secondo, $template);
 $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
 $template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? 'hidden' : '', $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
+$template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 echo $template;
 
 ?>

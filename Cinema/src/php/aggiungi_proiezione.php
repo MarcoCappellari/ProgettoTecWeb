@@ -2,18 +2,11 @@
 
 require_once '../../queries/queries.php';
 session_start();
-$risultato_info='';
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $permessi = getPermessiByUsername($conn, $_SESSION['username']);
-    if ($permessi == true) {
-        $accedi_stringa = "<a href='admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    } else {
-        $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    }
-} else {
-    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
-}
 
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
+
+$risultato_info='';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $film = $_POST['film'];
     $data = $_POST['data'];

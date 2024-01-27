@@ -181,7 +181,7 @@ function getUserByMail($conn, $user)
 }
 function getPermessiByUsername($conn, $user)
 {
-    $query = "SELECT permessi FROM Utente WHERE username = ?";
+    $query = "SELECT permessi FROM Utente WHERE mail = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $user);
     $stmt->execute();
