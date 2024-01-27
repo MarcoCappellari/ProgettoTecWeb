@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $utente = $_POST['utente'];
+    $utente = $_POST['utente']; //potrebbe essere mail o mail
     $password = $_POST['password'];
 
     $user = getUserByMailOrUsername($conn, $utente);
@@ -18,20 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Utente non trovato.";
         exit();
     }
-
-    //dovrebbe essere inutile, basta $username = $user['username'];
+/*
+    //dovrebbe essere inutile, basta $mail = $user['mail'];
     if ($utente == $user['mail']) {
-        $username = getUserByMail($conn, $utente);
+        $mail = $user['mail'];
     } else {
-        $username = $user['username'];
+
+        $mail = getUserByMail($conn, $utente);
     }
-
+*/
     $conn->close();
+    $mail=$user['mail'];
 
-    if ($password == $user['password'] && $username == $user['username']) {
+    if ($password == $user['password'] && $mail == $user['mail']) {
         echo "Credenziali corrette.";
-        $_SESSION['mail-utente']= $user['mail'];
-        $_SESSION['username'] = $username; //$user['username'] posso sostituirlo
+        $_SESSION['mail'] = $user['mail'];
+        //$_SESSION['mail'] = $mail; $user['mail'] posso sostituirlo
         $_SESSION['logged_in'] = true;
         header('Location: ../../index.php');
         exit();

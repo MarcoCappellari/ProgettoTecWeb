@@ -6,7 +6,7 @@ require_once '../../queries/queries.php';
 session_start();
 $recensioni_page = file_get_contents('../html/recensioni.html');
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $accedi_stringa = "Benvenuto " . $_SESSION['username'];
+    $accedi_stringa = "Benvenuto " . $_SESSION['mail'];
     
     if (isset($_SESSION['conferma-recensione']) && $_SESSION['conferma-recensione'] == true) {
         $_SESSION['conferma-recensione'] = false;

@@ -1,15 +1,11 @@
 <?php
+
+
+require_once '../../queries/queries.php';
+
 session_start();
 
-$template_film = file_get_contents('../html/profilo.html');
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $accedi_stringa = "Benvenuto " . $_SESSION['username'];
-} else {
-    header('Location: ../html/500.html');
-    exit();
-}
-$template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
-echo $template_film;
+
 // Verifica se l'utente è loggato
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -22,5 +18,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && $_SERVER
     header('Location: ../../index.php');
 
 }
+
+$template_film = file_get_contents('../html/profilo.html');
+//$template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
+echo $template_film;
 
 ?>

@@ -3,14 +3,11 @@
 require_once '../../queries/queries.php';
 
 session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
+
 $risultato = '';
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-
-    $utente = getUserByMailOrUsername($conn, $_SESSION['username']);
-} else {
-    $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
-}
-
+$utente = getUserByMailOrUsername($conn, $_SESSION['mail']);
 if ($utente) {
     $mail = $utente['mail'];
     $username = $utente['username'];
@@ -41,13 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $risultato = "Errore nell'aggiornamento dei dati!";
     }
 }
-
+//$risultato = $_SESSION['mail'];
 $template = file_get_contents('../html/modifica_utente.html');
 $template = str_replace('{MAIL}', $mail, $template);
 $template = str_replace('{USERNAME}', $username, $template);
 $template = str_replace('{NOME}', $nome, $template);
 $template = str_replace('{COGNOME}', $cognome, $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
-
+$template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 echo $template;
 ?>
