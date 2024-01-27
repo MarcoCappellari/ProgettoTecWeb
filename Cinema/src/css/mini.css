@@ -74,3 +74,13 @@ footer {
     width: 7em;
     height: auto;
 }
+
+#aggiungi-film-form-field{
+    flex-direction: column;
+}
+
+.selezionabile {
+    width: 0.8em;
+    height: 0.8em;
+
+}

@@ -40,6 +40,13 @@
     --bgRecensioni: #dddddd;
 
     --buttonColor: #e50914;
+
+    /*Colori Form */
+    --formBackground : #212121;
+    --labelColor :#8c8c8c;
+    --formFieldSetColor :#181818;
+    --formInputColor : #333333 ;
+    --formSubmitColor :#e50914;
 }
 
 html {
@@ -691,39 +698,83 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     border: 2px solid var(--hoverColor);
     transition: ease-in;
 }
-
 /*aggiungi proiezione*/
-#aggiungi_proiezione {
+#aggiungi_proiezione , #aggiungi_film{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: var(--bgColor);
+    background-color: var(--formBackground);
     color: var(--txtColor);
     text-align: center;
     padding: 1em;
 }
-
-#aggiungi_proiezione h2 {
+#aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
     padding: 0.5em;
+    color: var(--txtColorHome)
 }
-
-#aggiungi_proiezione select,
-#aggiungi_proiezione input[type="date"],
-#aggiungi_proiezione input[type="time"],
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] ,
+#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea{
     width: 100%;
     padding: 1em;
     border: none;
     border-radius: 5px;
-    background-color: #333333;
+    background-color: var(--formInputColor);
     color: #ffffff;
     font-size: large;
     box-sizing: border-box;
-    margin: 1em;
 }
 
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione input[type="submit"], #aggiungi_film input[type="submit"] {
     background-color: var(--buttonColor);
+}
+
+
+/* Stili per aggiungi film  */
+
+
+#aggiunta-film-form , #aggiunta-proiezione-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    justify-content: space-between;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+#aggiungi-film-form-field{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+#aggiunta-film-form fieldset, #aggiungi_proiezione fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2em;
+    border-radius: 8px;
+    gap: 2em;
+    background-color: var(--formFieldSetColor) ;
+    width: 80%;
+
+}
+
+#aggiunta-film-form label, #aggiunta-proiezione-form label{
+    text-align: left;
+    color: var(--labelColor);
+}
+
+
+
+#aggiungi_film textarea{
+    font-size: 1em;
+    resize: none;
+    height: 8em;
+}
+.aggiungi-film-form-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 
