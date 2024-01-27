@@ -1,7 +1,7 @@
 <?php
 require_once 'queries/queries.php';
 session_start();
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && isset($_SESSION['mail'])) {
     $permessi = getPermessiByUsername($conn, $_SESSION['mail']);
     if ($permessi == true) {
         $accedi_stringa = "<a href='src/php/admin.php'>Area amministrativa</a>";
