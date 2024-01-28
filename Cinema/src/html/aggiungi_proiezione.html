@@ -44,22 +44,22 @@
                 <fieldset>
                     <legend> Dati Proiezione </legend>
                     <div>
-                        <label for="film">Seleziona Film:</label>
+                        <label for="film">Seleziona Film: <span class="required">*</span></label>
                         <select name="film" id="film" required>
                             <option value="" selected disabled hidden></option>
                             {FILM-OPZIONI}
                         </select>
                     </div>
                     <div>
-                        <label for="data">Seleziona Data:</label>
+                        <label for="data">Seleziona Data: <span class="required">*</span></label>
                         <input type="date" id="data" name="data" required>
                     </div>
                     <div>
-                        <label for="ora">Inserisci Orario:</label>
+                        <label for="ora">Inserisci Orario: <span class="required">*</span></label>
                         <input type="time" id="ora" name="ora" required>
                     </div>
                     <div>
-                        <label for="sala">Seleziona Sala:</label>
+                        <label for="sala">Seleziona Sala: <span class="required">*</span></label>
                         <select name="sala" id="sala" required>
                             <option value="" selected disabled hidden></option>
                             {SALA-OPZIONI}
