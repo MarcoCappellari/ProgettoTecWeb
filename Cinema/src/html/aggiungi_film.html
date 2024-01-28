@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{TITOLO}, cinema PopCorn</title>
+    <meta name="keywords" content="PopCorn Cinema, film ">
+    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="shortcut icon" href="../images/asset/logo.png" />
+</head>
+
+<body>
+<!--header-->
+<header>
+    <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+    <nav id="menu">
+        <ul>
+            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
+            <li><a href="../php/recensioni.php">Recensioni </a></li>
+            <li>{ACCEDI}</li>
+        </ul>
+    </nav>
+
+    <a href="#bottomMenu" id="goToMenu"></a>
+</header>
+
+<!--breadcrumb-->
+<nav id="breadcrumb">
+    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/admin.php">Area
+        Amministrativa</a> &gt Aggiungi Film</p>
+</nav>
+
+<!--main-->
+<main>
+    <div id="aggiungi_film">
+        <h2>Aggiungi Film</h2>
+        <form id="aggiunta-film-form" action="../php/aggiungi_film.php" method="post" enctype="multipart/form-data">
+            <div id="aggiungi-film-form-field">
+                <fieldset>
+                    <legend > Film </legend>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="film_input">Titolo: <span class="required">*</span></label>
+                        <input type="text" id="film_input" name="titolo" required/>
+                    </div>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="locandina">Locandina: <span class="required">*</span></label>
+                        <input type="file" id="locandina" name="locandina" required/>
+                    </div>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="trama_film">Trama: <span class="required">*</span></label>
+                        <textarea name="trama" id="trama_film" required></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Informazioni Film</legend>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="regista_input">Regista: <span class="required">*</span></label>
+                        <input type="text" id="regista_input" name="regista" required/>
+                    </div>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="durata_input">Durata (in Minuti): <span class="required">*</span></label>
+                        <input type="number" id="durata_input" name="durata" required/>
+                    </div>
+                    <div class="aggiungi-film-form-input-field">
+                        <label for="genere_primario">Seleziona Genere Primario: <span class="required">*</span></label>
+                        <select name="genere_primario" id="genere_primario" required>
+                            {GENERE-OPZIONI}
+                        </select>
+
+                        <label for="genere_secondario">Seleziona Genere:</label>
+                        <select name="genere_secondario" id="genere_secondario" >
+                            <option value="" selected></option>
+                            {GENERE-OPZIONI}
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+
+            <input type="submit" value="Aggiungi Film">
+        </form>
+        {RISULTATO}
+    </div>
+</main>
+
+<footer>
+
+    <div>
+        <p class="footer-title" lang="en"> Where to Find Us</p>
+        <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
+            14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
+    </div>
+    <div>
+        <p class="footer-title" lang="en">Contact Us</p>
+        <ul>
+            <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
+            <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
+        </ul>
+    </div>
+</footer>
+
+<nav id="bottomMenu">
+    <ul>
+        <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+        <li><a href="../php/info_cinema.php">Informazioni</a></li>
+        <li><a href="../php/recensioni.php">Recensioni </a></li>
+        <li>{ACCEDI}</li>
+    </ul>
+</nav>
+
+</body>
+
+</html>

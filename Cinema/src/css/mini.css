@@ -74,9 +74,3 @@ footer {
     width: 7em;
     height: auto;
 }
-
-/*login e signin*/
-
-#signin fieldset #signin-personal-container{
-    flex-direction: column;
-}

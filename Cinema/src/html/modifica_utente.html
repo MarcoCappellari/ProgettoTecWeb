@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Biglietti acquistati</title>
+    <title>Modifica dati utente</title>
     <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
@@ -29,15 +29,49 @@
 
     <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a
-                href="../php/profilo.php">Area personale</a> &gt Biglietti acquistati</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/profilo.php">Area
+                personale</a> &gt Modifica dati utente</p>
     </nav>
 
     <main>
-
-        <div id="biglietti-container">
-            <h2>Biglietti acquistati</h2>
-            {BIGLIETTI}
+        <div id="modifica_utente_container">
+            <h1>Modifica dati utente</h1>
+            <form action="../php/modifica_utente.php" method="post">
+                <fieldset>
+                    <legend>Dati utente</legend>
+                    <div>
+                        <label for="mail">Email: <span class="required">*</span></label>
+                        <input type="email" name="mail" value="{MAIL}" required readonly><br>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Dati utente modificabili</legend>
+                    <div>
+                        <label for="username">Username: <span class="required">*</span></label>
+                        <input type="text" name="username" value="{USERNAME}" required><br>
+                    </div>
+                    <div>
+                        <label for="nome">Nome: <span class="required">*</span></label>
+                        <input type="text" name="nome" value="{NOME}" required><br>
+                    </div>
+                    <div>
+                        <label for="cognome">Cognome: <span class="required">*</span></label>
+                        <input type="text" name="cognome" value="{COGNOME}" required><br>
+                    </div>
+                    <div>
+                        <label for="password">Nuova Password:</label>
+                        <input type="password" name="password" id="password" autocomplete="new-password"><br>
+                    </div>
+                    <div>
+                        <label for="confirm_password">Conferma Password:</label>
+                        <input type="password" name="confirm_password" id="confirm_password"><br>
+                    </div>
+                    <div>
+                        <input type="submit" value="Modifica">
+                    </div>
+                </fieldset>
+            </form>
+            <p>{RISULTATO}</p>
         </div>
     </main>
     <footer>

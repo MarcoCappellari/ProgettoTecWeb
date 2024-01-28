@@ -4,7 +4,7 @@ require_once '../../queries/queries.php';
 
 session_start();
 
-$mail_utente = $_SESSION['mail-utente'];
+$mail_utente = $_SESSION['mail'];
 $content = $_GET['recensione'];
 
 $output = writeRecensione($conn, $mail_utente, $content);

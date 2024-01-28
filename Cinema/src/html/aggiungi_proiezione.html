@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{TITOLO}, cinema PopCorn</title>
+    <title>Inserisci proiezione</title>
     <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="print.css" media="print">
     <link rel="shortcut icon" href="../images/logo.png" />
+    <script src="../javascript/aggiungi_proiezione.js"></script>
 </head>
 
 <body>
@@ -31,41 +32,47 @@
     <!--breadcrumb-->
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a href="../php/admin.php">Area
-                Amministrativa</a> &gt Aggiungi Proiezione</p>
+                amministrativa</a> &gt Aggiungi proiezione</p>
     </nav>
 
     <!--main-->
     <main>
         <div id="aggiungi_proiezione">
             <h2>Aggiungi proiezione</h2>
-
-            <form action="../php/aggiungi_proiezione.php" method="post">
-                <div>
-                    <label for="film">Seleziona Film:</label>
-                    <select name="film" required>
-                        {FILM-OPZIONI}
-                    </select>
-                </div>
-                <div>
-                    <label for="data">Seleziona Data:</label>
-                    <input type="date" name="data" required>
-                </div>
-                <div>
-                    <label for="ora">Inserisci Orario:</label>
-                    <input type="time" name="ora" required>
-                </div>
-                <div>
-                    <label for="sala">Seleziona Sala:</label>
-                    <select name="sala" required>
-                        {SALA-OPZIONI}
-                    </select>
-                </div>
-                <div>
-                    <input type="submit" value="Aggiungi Programmazione">
-                </div>
-            </form>
             {RISULTATO}
+            <form id="aggiunta-proiezione-form" action="../php/aggiungi_proiezione.php" method="post">
+                <fieldset>
+                    <legend> Dati Proiezione </legend>
+                    <div>
+                        <label for="film">Seleziona Film: <span class="required">*</span></label>
+                        <select name="film" id="film" required>
+                            <option value="" selected disabled hidden></option>
+                            {FILM-OPZIONI}
+                        </select>
+                    </div>
+                    <div>
+                        <label for="data">Seleziona Data: <span class="required">*</span></label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+                    <div>
+                        <label for="ora">Inserisci Orario: <span class="required">*</span></label>
+                        <input type="time" id="ora" name="ora" required>
+                    </div>
+                    <div>
+                        <label for="sala">Seleziona Sala: <span class="required">*</span></label>
+                        <select name="sala" id="sala" required>
+                            <option value="" selected disabled hidden></option>
+                            {SALA-OPZIONI}
+                        </select>
+                    </div>
+                </fieldset>
+                <input type="submit" value="Aggiungi Programmazione">
+            </form>
+            <p>INFO: Da una proiezione a un' altra devono passare almeno 3 ore per garantire la
+                riproduzione del film e la pulizia della sala.
+            </p>
         </div>
+
     </main>
 
     <footer>

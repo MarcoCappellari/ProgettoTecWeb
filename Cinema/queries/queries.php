@@ -181,7 +181,7 @@ function getUserByMail($conn, $user)
 }
 function getPermessiByUsername($conn, $user)
 {
-    $query = "SELECT permessi FROM Utente WHERE username = ?";
+    $query = "SELECT permessi FROM Utente WHERE mail = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $user);
     $stmt->execute();
@@ -398,6 +398,52 @@ function getProiezioni($conn)
         return null;
     }
 
+}
+
+function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {
+    $sql_update_user = "UPDATE Utente SET  username=?, nome=?, cognome=?, password=? WHERE mail=?";
+    $stmt = $conn->prepare($sql_update_user);
+    $stmt->bind_param("sssss", $username, $nome, $cognome, $password, $mail);
+
+    // Esegui la query
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+//controllo pagina proiezioni
+function verificaProiezione($conn, $sala, $data, $ora) {
+    $sql_verifica = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora = '$ora'";
+    $result_verifica = $conn->query($sql_verifica);
+    $row_verifica = $result_verifica->fetch_assoc();
+
+    return $row_verifica['count'];
+}
+
+function verificaProiezioniPrecedenti($conn, $sala, $data, $ora) {
+    $ora_inizio = date('H:i:s', strtotime($ora . ' -3 hours'));
+    $sql_verifica_prec = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora >= '$ora_inizio' AND ora < '$ora'";
+    $result_verifica_prec = $conn->query($sql_verifica_prec);
+    $row_verifica_prec = $result_verifica_prec->fetch_assoc();
+
+    return $row_verifica_prec['count'];
+}
+
+function verificaProiezioniSuccessive($conn, $sala, $data, $ora) {
+    $ora_fine = date('H:i:s', strtotime($ora . ' +3 hours'));
+    $sql_verifica_succ = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora > '$ora' AND ora <= '$ora_fine'";
+    $result_verifica_succ = $conn->query($sql_verifica_succ);
+    $row_verifica_succ = $result_verifica_succ->fetch_assoc();
+
+    return $row_verifica_succ['count'];
+}
+
+function inserisciProiezione($conn, $film, $sala, $ora, $data) {
+    $sql = "INSERT INTO Proiezione (id_film, id_sala, ora, data) VALUES ('$film', '$sala', '$ora', '$data')";
+    $conn->query($sql);
 }
 
 ?>

@@ -1,6 +1,11 @@
 <?php
 require_once '../../queries/queries.php';
 
+session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
+
+
 $film_info = '';
 $risultato = '';
 $primogenere = null;
@@ -80,7 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $regista = $_POST["regista"];
     $durata = $_POST["durata"];
     $genere_primario = $_POST["genere_primario"];
-    $genere_secondario = $_POST["genere_secondario"];
+    if(isset($_POST["genere_secondario"])) {
+        
+        $genere_secondario = $_POST["genere_secondario"];
+
+    } else {
+        $genere_secondario = null; 
+    }
 
     if (empty($_POST["locandina"])) {
         $locandina = $_POST["locandina_path"];
@@ -116,6 +127,7 @@ $template = str_replace('{GENERE2}', $genere_secondo, $template);
 $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
 $template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? 'hidden' : '', $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
+$template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 echo $template;
 
 ?>

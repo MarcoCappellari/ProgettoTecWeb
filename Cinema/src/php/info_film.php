@@ -3,16 +3,8 @@ require_once '../../queries/queries.php';
 
 session_start();
 
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $permessi=getPermessiByUsername($conn, $_SESSION['username']);
-    if($permessi==True){
-        $accedi_stringa = "<a href='admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    }else{
-        $accedi_stringa = "<a href='profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    }
-} else {
-    $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
-}
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
 
 if (isset($_GET['film'])) {
     // Recupera l'ID del film dalla query string

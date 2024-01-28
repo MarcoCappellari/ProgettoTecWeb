@@ -1,6 +1,9 @@
 <?php
 
 require_once '../../queries/queries.php';
+session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
 
 $result=getSalaAndSeats($conn);
 
@@ -41,7 +44,7 @@ if ($result==null) {
 
     $template_info_cinema = file_get_contents('../html/info_cinema.html');
     $template_info_cinema = str_replace('{SALE}', $stringa_info_sale, $template_info_cinema);
-
+    $template_info_cinema = str_replace('{ACCEDI}', $accedi_stringa, $template_info_cinema);
     $stringa_footer= file_get_contents('../html/footer.html');
     $template_info_cinema = str_replace('{FOOTER}', $stringa_footer, $template_info_cinema);
 

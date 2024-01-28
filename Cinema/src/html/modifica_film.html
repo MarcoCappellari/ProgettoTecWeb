@@ -15,12 +15,12 @@
 <body>
     <!--header-->
     <header>
-        <h1>Popcorn Cinema</h1>
+        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-                <li><a href="Prenota.html">Prenota</a></li>
-                <li><a href="Recensioni.html">Recensioni </a></li>
+                <li><a href="../php/info_cinema.php">Informazioni</a></li>
+                <li><a href="../php/recensioni.php">Recensioni </a></li>
                 <li>{ACCEDI}</li>
             </ul>
         </nav>
@@ -30,18 +30,18 @@
     <!--breadcrumb-->
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a
-                href="../php/admin.php">Area Amministrativa</a> &gt Modifica o elimina film</p>
+                href="../php/admin.php">Area amministrativa</a> &gt Modifica o elimina film</p>
     </nav>
 
     <main>
         <div id="modifica_film_container">
-            <h2>Seleziona un film da modificare o eliminare:</h2>
+            <h1>Seleziona un film da modificare o eliminare:</h1>
             <form id="seleziona-film" action="../php/modifica_film.php" method="post">
                 <fieldset>
                     <legend>Film</legend>
-                    <label for="film_selezionato">Seleziona Film:</label>
+                    <label for="film_selezionato">Seleziona Film: <span class="required">*</span></label>
                     <select name="film_selezionato" required>
-                        <option value="">Nessun film selezionato</option>
+                        <option value="" selected disabled hidden></option>
                         {FILM-OPZIONI}
                     </select>
                     <div>
@@ -61,38 +61,38 @@
                 <fieldset>
                     <legend>Film</legend>
                     <div>
-                        <label for="titolo">Titolo:</label>
+                        <label for="titolo">Titolo: <span class="required">*</span></label>
                         <input type="text" id="titolo" name="titolo" value="{TITOLO}" required>
+                        
                     </div>
                     <div id="locandina-modifica">
-                        <label for="locandina">Locandina:</label>
+                        <label for="locandina">Locandina: <span class="required">*</span></label>
                         <input type="hidden" id="locandina_path" name="locandina_path" value="{LOCANDINA}" readonly>
                         <img id="immagine_modifica" src="../../{LOCANDINA}" alt="Locandina del film {TITOLO}" />
                         <input type="file" id="locandina" name="locandina" accept="image/*">
                     </div>
                     <div>
-                        <label for="trama">Trama:</label>
+                        <label for="trama">Trama: <span class="required">*</span></label>
                         <textarea id="trama" name="trama" rows="6" cols="40" required>{TRAMA}</textarea>
                     </div>
                     <div>
-                        <label for="regista">Regista:</label>
+                        <label for="regista">Regista: <span class="required">*</span></label>
                         <input type="text" id="regista" name="regista" value="{REGISTA}" required>
                     </div>
                     <div>
-                        <label for="durata">Durata (in Minuti):</label>
+                        <label for="durata">Durata (in Minuti): <span class="required">*</span></label>
                         <input type="number" id="durata" name="durata" value="{DURATA}" required>
                     </div>
                     <div>
-                        <label for="genere_primario">Seleziona Genere Primario:</label>
+                        <label for="genere_primario">Seleziona Genere Primario: <span class="required">*</span></label>
                         <select name="genere_primario" id="genere_primario" required>
-                            <option value="">Nessun genere selezionato</option>
                             {GENERE1}
                         </select>
                     </div>
                     <div>
                         <label for="genere_secondario">Seleziona Genere:</label>
                         <select name="genere_secondario" id="genere_secondario">
-                            <option value="">Nessun genere selezionato</option>
+                            <option value=""> Nessun genere secondario</option>
                             {GENERE2}
 
                         </select>
@@ -131,8 +131,8 @@
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="Prenota.html">Prenota</a></li>
-            <li><a href="Recensioni.html">Recensioni </a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
+            <li><a href="../php/recensioni.php">Recensioni </a></li>
             <li>{ACCEDI}</li>
         </ul>
     </nav>

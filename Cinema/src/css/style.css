@@ -40,6 +40,13 @@
     --bgRecensioni: #dddddd;
 
     --buttonColor: #e50914;
+
+    /*Colori Form */
+    --formBackground : #212121;
+    --labelColor :#8c8c8c;
+    --formFieldSetColor :#181818;
+    --formInputColor : #333333 ;
+    --formSubmitColor :#e50914;
 }
 
 html {
@@ -207,7 +214,7 @@ tbody tr:nth-child(odd) {
     border: none;
 }
 
-#search-form input[type="text"] {
+#search-form input[list] {
     height: 1em;
     width: 17em;
     padding: 1em;
@@ -431,15 +438,20 @@ footer li {
     width: 60%;
     height: 8em;
     padding: 0.5em;
-    background-color : var(--cinema_screen_color);
-    background-size: contain;
+    background-color: black; /* Colore di sfondo nero */
+    background-image: url('../images/logo1.png'); /* Aggiungi un'immagine di cinema come sfondo */
+    background-size: contain; /* Ridimensiona l'immagine per adattarsi all'interno */
     background-repeat: no-repeat;
+    background-position: center; /* Centra l'immagine */
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: 1em;
+    border: 10px solid black; /* Aggiungi una cornice nera */
 }
+
+
 
 #form-posti{
     display: flex;
@@ -479,7 +491,7 @@ footer li {
     margin: auto;   
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
-    border: 1px solid var(--borderPostoColor);
+    border: 2px solid var(--borderPostoColor);
 }
 
 .label-posto:hover, input[type="checkbox"]:focus + .label-posto{
@@ -718,39 +730,83 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     border: 2px solid var(--hoverColor);
     transition: ease-in;
 }
-
 /*aggiungi proiezione*/
-#aggiungi_proiezione {
+#aggiungi_proiezione , #aggiungi_film{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: var(--bgColor);
+    background-color: var(--formBackground);
     color: var(--txtColor);
     text-align: center;
     padding: 1em;
 }
-
-#aggiungi_proiezione h2 {
+#aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
     padding: 0.5em;
+    color: var(--txtColorHome)
 }
-
-#aggiungi_proiezione select,
-#aggiungi_proiezione input[type="date"],
-#aggiungi_proiezione input[type="time"],
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] ,
+#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea{
     width: 100%;
     padding: 1em;
     border: none;
     border-radius: 5px;
-    background-color: #333333;
+    background-color: var(--formInputColor);
     color: #ffffff;
     font-size: large;
     box-sizing: border-box;
-    margin: 1em;
 }
 
-#aggiungi_proiezione input[type="submit"] {
+#aggiungi_proiezione input[type="submit"], #aggiungi_film input[type="submit"] {
     background-color: var(--buttonColor);
+}
+
+
+/* Stili per aggiungi film  */
+
+
+#aggiunta-film-form , #aggiunta-proiezione-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    justify-content: space-between;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+#aggiungi-film-form-field{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+#aggiunta-film-form fieldset, #aggiungi_proiezione fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2em;
+    border-radius: 8px;
+    gap: 2em;
+    background-color: var(--formFieldSetColor) ;
+    width: 80%;
+
+}
+
+#aggiunta-film-form label, #aggiunta-proiezione-form label{
+    text-align: left;
+    color: var(--labelColor);
+}
+
+
+
+#aggiungi_film textarea{
+    font-size: 1em;
+    resize: none;
+    height: 8em;
+}
+.aggiungi-film-form-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 
@@ -856,7 +912,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 /*modifica film*/
 
-#modifica_film_container, #proiezioni_container  {
+#modifica_film_container, #proiezioni_container, #modifica_utente_container {
     max-width: 60%;
     margin: auto;
     padding: 1em;
@@ -866,7 +922,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     text-align: center;
 }
 
-#modifica_film_container h2 {
+#modifica_film_container h2, #modifica_utente_container h2{
     text-align: center;
     margin-bottom: 1em;
     color: var(--txtColor);
@@ -874,6 +930,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #modifica_film_container input[type="submit"],
+#modifica_utente_container input[type="submit"],
 #proiezioni_container input[type="submit"] {
     width: 10em; 
     background-color: #e50914;
@@ -897,7 +954,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #modifica_film_container select,
 #modifica_film_container input,
-#modifica_film_container textarea {
+#modifica_film_container textarea,
+#modifica_utente_container input{
     width: 100%; 
     padding: 0.5em;
     background-color: #333333;
@@ -913,5 +971,91 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #ora-container{
     display: flex;
+}
+
+
+/*---------- Pagina Prenota -----------*/
+
+#container-prenotazione{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#container-recap-biglietti{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em;
+    flex-wrap: wrap;
+}
+
+#biglietto-recap-form{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    min-width: 20em;
+    gap: 1em;
+}
+
+#biglietto-recap-form fieldset{
+    flex-direction: column;
+    display: flex;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+#biglietto-recap-form fieldset label{
+}
+
+#biglietto-recap-form input {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: large;
+    box-sizing: border-box;
+}
+#biglietto-recap-form input[type="submit"] {
+    background-color: #e50914;
+}
+
+#container-recap-prenotazione{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.biglietto-recap{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--borderPostoColor);
+    margin: 1em auto;
+    width: 15vw;
+    min-width: fit-content;
+}
+
+.biglietto-recap-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.required {
+    color: red;
+    font-size: 2em; /* Aumenta la dimensione del carattere */
+    font-weight: bold; /* Rendi il testo in grassetto */
+    position: relative; /* Assicura che l'elemento sia posizionato in base alle coordinate relative al suo contenitore */
+    top: 0.4em; /* Sposta leggermente l'asterisco verso l'alto per centrarlo verticalmente */
 }
 

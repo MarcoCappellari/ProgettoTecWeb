@@ -1,22 +1,28 @@
 <?php
 require_once 'queries/queries.php';
 session_start();
-
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $permessi=getPermessiByUsername($conn, $_SESSION['username']);
-    if($permessi==True){
-        $accedi_stringa = "<a href='src/php/admin.php'>Benvenuto " . $_SESSION['username'] . "</a>";
-    }else{
-        $accedi_stringa = "<a href='src/php/profilo.php'>Benvenuto " . $_SESSION['username'] . "</a>";
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && isset($_SESSION['mail'])) {
+    $permessi = getPermessiByUsername($conn, $_SESSION['mail']);
+    if ($permessi == true) {
+        $accedi_stringa = "<a href='src/php/admin.php'>Area amministrativa</a>";
+    } else {
+        $accedi_stringa = "<a href='src/php/profilo.php'>Area personale</a>";
     }
 } else {
     $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
 }
+
 //risultato della query
 $result = getFilms($conn);
 $conn->close();
+$datalist_risultati = '';
+$titoliFilm = $result;
 
-
+while ($row = $result->fetch_assoc()) {
+    $titolo = $row['titolo'];
+    $datalist_risultati .= "<option value='$titolo'>";
+}
+mysqli_data_seek($result, 0);
 $stringa_info_film = '';
 
 // creo una section  per ogni film
@@ -42,6 +48,7 @@ if ($result->num_rows == 0) {
 $template_film = file_get_contents('src/html/index.html');
 $template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
 $template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
+$template_film = str_replace('{DATALIST-RISULTATI}', $datalist_risultati, $template_film);
 
 $stringa_footer= file_get_contents('src/html/footer.html');
 $template_film = str_replace('{FOOTER}', $stringa_footer, $template_film);

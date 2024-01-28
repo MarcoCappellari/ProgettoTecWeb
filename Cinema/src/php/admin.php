@@ -1,13 +1,22 @@
 <?php
+require_once '../../queries/queries.php';
 session_start();
 
 $admin_page = file_get_contents('../html/admin.html');
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    $accedi_stringa = "Benvenuto " . $_SESSION['username'];
+    $permessi = getPermessiByUsername($conn, $_SESSION['mail']);
+    if ($permessi == true) {
+        $accedi_stringa = "<a href='src/php/admin.php'>Area amministrativa</a>";
+    } else {
+        header('Location: ../html/500.html');
+        exit();
+    }
+    $accedi_stringa = "Area Amministrativa";
 } else {
     header('Location: ../html/500.html');
     exit();
 }
+$conn->close();
 $admin_page = str_replace('{ACCEDI}', $accedi_stringa, $admin_page);
 echo $admin_page;
 // Verifica se l'utente è loggato
