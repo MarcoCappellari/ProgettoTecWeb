@@ -1019,4 +1019,11 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     gap: 1em;
 }
 
+.required {
+    color: red;
+    font-size: 2em; /* Aumenta la dimensione del carattere */
+    font-weight: bold; /* Rendi il testo in grassetto */
+    position: relative; /* Assicura che l'elemento sia posizionato in base alle coordinate relative al suo contenitore */
+    top: 0.4em; /* Sposta leggermente l'asterisco verso l'alto per centrarlo verticalmente */
+}
 

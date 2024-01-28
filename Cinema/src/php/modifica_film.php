@@ -85,7 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $regista = $_POST["regista"];
     $durata = $_POST["durata"];
     $genere_primario = $_POST["genere_primario"];
-    $genere_secondario = $_POST["genere_secondario"];
+    if(isset($_POST["genere_secondario"])) {
+        
+        $genere_secondario = $_POST["genere_secondario"];
+
+    } else {
+        $genere_secondario = null; 
+    }
 
     if (empty($_POST["locandina"])) {
         $locandina = $_POST["locandina_path"];
