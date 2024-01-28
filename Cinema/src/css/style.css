@@ -646,7 +646,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     gap: 1em;
 }
 
-#signin fieldset #signin-personal-container{
+#signin fieldset .signin-personal-container{
     display: flex;
     flex-direction: row;
     gap: 0.5em;
