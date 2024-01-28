@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{TITOLO}, cinema PopCorn</title>
+    <title>Inserisci proiezione</title>
     <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
@@ -39,12 +39,14 @@
     <main>
         <div id="aggiungi_proiezione">
             <h2>Aggiungi proiezione</h2>
+            {RISULTATO}
             <form id="aggiunta-proiezione-form" action="../php/aggiungi_proiezione.php" method="post">
                 <fieldset>
                     <legend> Dati Proiezione </legend>
                     <div>
                         <label for="film">Seleziona Film:</label>
                         <select name="film" id="film" required>
+                            <option value="" selected disabled hidden></option>
                             {FILM-OPZIONI}
                         </select>
                     </div>
@@ -58,15 +60,19 @@
                     </div>
                     <div>
                         <label for="sala">Seleziona Sala:</label>
-                        <select name="sala" id="sala"  required>
+                        <select name="sala" id="sala" required>
+                            <option value="" selected disabled hidden></option>
                             {SALA-OPZIONI}
                         </select>
                     </div>
                 </fieldset>
                 <input type="submit" value="Aggiungi Programmazione">
             </form>
-            {RISULTATO}
+            <p>INFO: Da una proiezione a un' altra devono passare almeno 3 ore per garantire la
+                riproduzione del film e la pulizia della sala.
+            </p>
         </div>
+
     </main>
 
     <footer>
