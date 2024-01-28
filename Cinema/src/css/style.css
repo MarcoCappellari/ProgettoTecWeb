@@ -674,6 +674,10 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     padding: 0.3em;
 }
 
+#signin p.signin-error, #signin p.signin-success{
+    font-weight: bold;
+}
+
 /*admin section*/
 #adminArea {
     background-color: var(--bgColor);

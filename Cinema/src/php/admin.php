@@ -11,7 +11,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         header('Location: ../html/500.html');
         exit();
     }
-    $accedi_stringa = "Area Amministrativa";
+    $accedi_stringa = "Area amministrativa";
 } else {
     header('Location: ../html/500.html');
     exit();

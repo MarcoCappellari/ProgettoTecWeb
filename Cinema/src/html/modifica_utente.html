@@ -38,25 +38,14 @@
             <h1>Modifica dati utente</h1>
             <form action="../php/modifica_utente.php" method="post">
                 <fieldset>
-                    <legend>Dati utente</legend>
-                    <div>
-                        <label for="mail">Email: <span class="required">*</span></label>
-                        <input type="email" name="mail" value="{MAIL}" required readonly><br>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Dati utente modificabili</legend>
+                    <legend>Dati D'accesso</legend>
                     <div>
                         <label for="username">Username: <span class="required">*</span></label>
-                        <input type="text" name="username" value="{USERNAME}" required><br>
+                        <input type="text" id="username" name="username" value="{USERNAME}" required><br>
                     </div>
                     <div>
-                        <label for="nome">Nome: <span class="required">*</span></label>
-                        <input type="text" name="nome" value="{NOME}" required><br>
-                    </div>
-                    <div>
-                        <label for="cognome">Cognome: <span class="required">*</span></label>
-                        <input type="text" name="cognome" value="{COGNOME}" required><br>
+                        <label for="mail">Email: <span class="required">*</span></label>
+                        <input type="email" id="mail" name="mail" value="{MAIL}" required readonly><br>
                     </div>
                     <div>
                         <label for="password">Nuova Password:</label>
@@ -65,6 +54,17 @@
                     <div>
                         <label for="confirm_password">Conferma Password:</label>
                         <input type="password" name="confirm_password" id="confirm_password"><br>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Dati Personali</legend>
+                    <div>
+                        <label for="nome">Nome: <span class="required">*</span></label>
+                        <input type="text" id="nome" name="nome" value="{NOME}" required><br>
+                    </div>
+                    <div>
+                        <label for="cognome">Cognome: <span class="required">*</span></label>
+                        <input type="text" id='cognome' name="cognome" value="{COGNOME}" required><br>
                     </div>
                     <div>
                         <input type="submit" value="Modifica">

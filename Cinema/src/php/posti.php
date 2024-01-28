@@ -1,6 +1,9 @@
 <?php
 
 require_once '../../queries/queries.php';
+session_start();
+include 'user_session.php';
+$accedi_stringa = gestisciAccesso($conn);
 
 // Recupero i valori dai parametri GET
 $id_film = $_GET['idFilm'];
@@ -68,8 +71,9 @@ $html_content = str_replace('{SALA}', $nome_sala, $html_content);
 $html_content = str_replace('{POSTI}', $output, $html_content);
 
 $html_content = str_replace('{INPUT}', $input, $html_content);
-
+$html_content = str_replace('{ACCEDI}', $accedi_stringa, $html_content);
 $footer_html = file_get_contents('../html/footer.html');
+
 $html_content = str_replace('{FOOTER}', $footer_html, $html_content);
 
 echo $html_content;
