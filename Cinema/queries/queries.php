@@ -1,6 +1,12 @@
 <?php
 require_once 'connessione_database.php';
 
+function clearINput($value){
+    $value = trim($value);
+    $value = strip_tags($value);
+    return htmlentities($value);
+}
+
 function getFilms($conn)
 {
     $sql = "SELECT id, titolo, locandina FROM Film";
