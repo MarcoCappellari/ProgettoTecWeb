@@ -1,0 +1,57 @@
+#breadcrumb, #bottomMenu, #goToMenu, nav,#search-form {
+    display: none;
+}
+
+
+/* Ottimizza il layout per la stampa */
+main {
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+#logo{
+    width: 9em;
+    height: auto; 
+}
+
+
+
+.film-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#film-container {
+    grid-template-columns: repeat(auto-fill, 7em);
+    justify-content: center; 
+   
+}
+
+
+
+/*info-film*/
+#film-locandina {
+display: none;
+}
+
+#film-dettagli {
+    max-width: 100%;
+}
+
+#data-ora {
+    
+    flex-wrap: nowrap;
+}
+
+.orari-container {
+   
+    grid-template-columns: repeat(3, 1fr);
+
+}
