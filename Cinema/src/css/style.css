@@ -1062,4 +1062,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     position: relative; /* Assicura che l'elemento sia posizionato in base alle coordinate relative al suo contenitore */
     top: 0.4em; /* Sposta leggermente l'asterisco verso l'alto per centrarlo verticalmente */
 }
-
+/*
+#logo-print{
+    display: none;
+}
+*/
