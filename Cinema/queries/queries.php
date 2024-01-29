@@ -12,16 +12,25 @@ function getFilms($conn)
 {
     $sql = "SELECT id, titolo, locandina FROM Film";
     $result = $conn->query($sql);
+
+    if (!$result) {
+        header('Location: ../html/500.html');
+        exit();
+    }
+
     return $result;
 }
 
 function getFilmByIdQuery($conn, $idFilm)
 {
-    // Query per ottenere le informazioni del film dato il suo ID
-    $queryFilm = "SELECT * FROM Film WHERE id='$idFilm'";
-    $resultFilm = $conn->query($queryFilm);
+    $queryFilm = "SELECT * FROM Film WHERE id=?";
 
-    // Verifica se la query ha prodotto risultati
+    $stmt = $conn->prepare($queryFilm);
+    $stmt->bind_param("i", $idFilm);
+    $stmt->execute();
+
+    $resultFilm = $stmt->get_result();
+    $stmt->close();
     if ($resultFilm && $resultFilm->num_rows > 0) {
         return $resultFilm->fetch_assoc();
     } else {
@@ -36,18 +45,24 @@ function getFilmGenresById($conn, $idFilm)
 
     $queryGeneri = "SELECT Classificazione.nome_genere
                     FROM Classificazione
-                    WHERE Classificazione.id_film = '$idFilm'";
+                    WHERE Classificazione.id_film = ?";
 
-    $resultGeneri = $conn->query($queryGeneri);
+
+    $stmt = $conn->prepare($queryGeneri);
+    $stmt->bind_param("i", $idFilm);
+    $stmt->execute();
+
+    $resultGeneri = $stmt->get_result();
+    $stmt->close();
     $generi = "";
 
     if ($resultGeneri->num_rows > 0) {
         while ($rowGeneri = $resultGeneri->fetch_assoc()) {
             $generi .= $rowGeneri['nome_genere'] . ', ';
         }
-        return rtrim($generi, ', ');  // Rimuove l'ultima virgola e lo spazio
+        return rtrim($generi, ', ');
     } else {
-        return null;  // Oppure puoi restituire un valore predefinito o vuoto
+        return null;
     }
 }
 
@@ -56,10 +71,15 @@ function getOrariByFilmId($conn, $idFilm)
 
     $query = "SELECT Proiezione.data, Proiezione.ora
               FROM Proiezione
-              WHERE Proiezione.id_film = $idFilm
+              WHERE Proiezione.id_film = ?
               ORDER BY Proiezione.ora";
 
-    $result = $conn->query($query);
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $idFilm);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $stmt->close();
 
     if (!$result) {
         return null;
@@ -67,47 +87,48 @@ function getOrariByFilmId($conn, $idFilm)
 
     $orari = array();
 
-    // Processa i risultati della query
     while ($row = $result->fetch_assoc()) {
         $data = $row['data'];
         $ora = $row['ora'];
-        // Aggiungi le informazioni all'array
         $orari[$data][] = $ora;
     }
     return $orari;
 }
 
+//@gian
 function getFilmByName($conn, $film_name)
 {
-    // Sanifica l'input per prevenire SQL injection
     $film_name = $conn->real_escape_string($film_name);
 
-    // Costruisci la query
     $query = "SELECT * FROM film WHERE titolo LIKE '%$film_name%'";
 
-    // Esegui la query
     $result = $conn->query($query);
 
-    // Se la query ha prodotto risultati, restituisci i dati
     if ($result && $result->num_rows > 0) {
         return $result->fetch_assoc();
     } else {
-        return null; // Nessun film trovato
+        return null;
     }
 }
 
-//Restituisce TRUE se non trova la proiezione identificata da $id_film, $ora_film, $data_film
 function absentProiection($conn, $id_film, $ora_film, $data_film){
 
     $query = "SELECT *
             FROM Proiezione AS P
-            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+            WHERE P.id_film= ? AND P.ora = ? AND P.data = ?";
 
-    if (!($result = $conn->query($query))) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iss", $id_film , $ora_film , $data_film);
+    $stmt->execute();
+
+
+
+    if (!($result = $stmt->get_result())) {
+        $stmt->close();
         header('Location: ../html/500.html');
         exit();
     }
-
+    $stmt->close();
     if ($result->num_rows == 0) {
         return TRUE;
     } else {
@@ -121,18 +142,24 @@ function getSalaByProiection($conn, $id_film, $ora_film, $data_film){
     $query = "SELECT S.nome AS nome
             FROM Proiezione AS P
             JOIN Sala AS S ON P.id_sala = S.id
-            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'";
+            WHERE P.id_film= ? AND P.ora = ? AND P.data = ?";
 
-    if (!($result = $conn->query($query))) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iss", $id_film , $ora_film , $data_film);
+    $stmt->execute();
+
+    if (!($result = $stmt->get_result())) {
         header('Location: ../html/500.html');
+        $stmt->close();
         exit();
     }
 
     if ($result->num_rows == 0) {
         header('Location: ../html/500.html');
+        $stmt->close();
         exit();
     }
-
+    $stmt->close();
     return $result->fetch_assoc();
 }
 
@@ -148,19 +175,26 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film){
                 Posto AS Po ON Po.id_sala = P.id_sala
             LEFT JOIN
                 Biglietto AS B ON B.id_proiezione = P.id AND B.fila = Po.fila AND B.numero_posto = Po.numero_posto AND B.id_sala = P.id_sala
-            WHERE P.id_film= $id_film AND P.ora = '$ora_film' AND P.data = '$data_film'
+            WHERE P.id_film= ? AND P.ora = ? AND P.data = ?
             ORDER BY Po.fila ASC, Po.numero_posto ASC";
 
-    if (!$result = $conn->query($query)) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iss", $id_film , $ora_film , $data_film);
+    $stmt->execute();
+
+
+    if (!$result = $stmt->get_result()) {
         header('Location: ../html/500.html');
+        $stmt->close();
         exit();
     }
 
     if ($result->num_rows == 0) {
         header('Location: ../html/500.html');
+        $stmt->close();
         exit();
     }
-
+    $stmt->close();
     return $result;
 }
 
@@ -168,25 +202,33 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film){
 function getUserByMailOrUsername($conn, $user){
     $query = "SELECT * 
                 FROM Utente 
-                WHERE username = '$user' OR mail = '$user'";
+                WHERE username = ? OR mail = ?";
 
-    $result = $conn->query($query);
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $user , $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (!$result || $result->num_rows == 0) {
+    if (!$result) {
         header('Location: ../html/500.html');
         exit();
     }
 
-    $user = $result->fetch_assoc();
+    if($result->num_rows == 0){
+        return null;
+    }
+    $stmt->close();
+    return $result->fetch_assoc();
 
-    return $user;
 }
 
 function getUserByMail($conn, $user)
 {
-    $query = "SELECT * FROM Utente WHERE mail = '$user'";
-    $result = $conn->query($query);
-    $user = $result->fetch_assoc();
+    $query = "SELECT * FROM Utente WHERE mail = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user);
+    $stmt->execute();
+    $user = $stmt->get_result()->fetch_assoc();
     return $user['username'];
 }
 
@@ -194,22 +236,34 @@ function getUserByMail($conn, $user)
 function getPermessiByUsername($conn, $user){
     $query = "SELECT U.permessi 
             FROM Utente AS U 
-            WHERE U.mail = '$user'";
-    
-    $result = $conn->query($query);
+            WHERE U.mail = ?";
 
-    if (!$result || $result->num_rows == 0) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
         header('Location: ../html/500.html');
         exit();
     }
 
     $row = $result->fetch_assoc();
+    $stmt->close();
+
     return (bool) $row['permessi'];
 }
 
 function getSala($conn){
     $query = "SELECT * FROM Sala";
     $result = $conn->query($query);
+
+    if (!$result) {
+        header('Location: ../html/500.html');
+        exit();
+    }
+
     return $result;
 }
 
@@ -239,9 +293,14 @@ function getBigliettoByUser($conn, $user)
  JOIN Film ON Proiezione.id_film = Film.id
  JOIN Sala ON Proiezione.id_sala = Sala.id
  JOIN Posto ON Biglietto.fila = Posto.fila AND Biglietto.numero_posto = Posto.numero_posto AND Biglietto.id_sala = Posto.id_sala
- WHERE Biglietto.id_utente = '$user'";
+ WHERE Biglietto.id_utente = ?";
 
-    $result = $conn->query($query);
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
     if ($result && $result->num_rows > 0) {
         return $result;
     } else {
@@ -249,24 +308,6 @@ function getBigliettoByUser($conn, $user)
     }
 
 }
-
-function getIdByUsername($conn, $username)
-{
-
-    $query = "SELECT mail FROM Utente WHERE username = '$username'";
-    $result = $conn->query($query);
-
-    // Controlla se la query ha restituito dei risultati
-    if ($result && $result->num_rows > 0) {
-        // Estrai l'email dalla prima riga risultante
-        $row = $result->fetch_assoc();
-        return $row['mail'];
-    } else {
-        // Nessun risultato trovato
-        return null;
-    }
-}
-
 
 //Restituisce tutte le recensioni a partire dalla più recente nella forma content | data | username
 function getRecensioni($conn){
@@ -296,21 +337,31 @@ function writeRecensione($conn, $mail_utente, $content){
 
     $query = "  INSERT INTO Recensioni (testo, data_creazione, id_utente) 
                 VALUES 
-                ('$content', NOW(), '$mail_utente');";
+                (?, NOW(), ?);";
 
-    if (!$conn->query($query)) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $content , $mail_utente);
+    $stmt->execute();
+    $stmt->get_result();
+
+    if ($stmt->errno) {
         header('Location: ../html/500.html');
         exit();
     } else {
         return null;
     }
-
 }
 
 function getGeneris($conn)
 {
     $sql = "SELECT nome FROM Genere";
     $result = $conn->query($sql);
+
+    if (!$result) {
+        header('Location: ../html/500.html');
+        exit();
+    }
+
     return $result;
 }
 
@@ -319,12 +370,14 @@ function getGenereById($conn, $film_id)
     $query = "SELECT Film.*, Classificazione.nome_genere
           FROM Film
           LEFT JOIN Classificazione ON Film.id = Classificazione.id_film
-          WHERE Film.id = $film_id;";
-    $result = mysqli_query($conn, $query);
+          WHERE Film.id = ? ;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $film_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     if ($result) {
         return $result;
     } else {
-        // Se la query ha fallito, restituisci null o gestisci l'errore in modo appropriato
         return null;
     }
 
@@ -343,6 +396,11 @@ function updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film
     $stmt = $conn->prepare($updateFilmQuery);
     $stmt->bind_param("ssssii", $titolo, $locandina, $trama, $regista, $durata, $film_id);
     $stmt->execute();
+
+    if(!$stmt->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmt->close();
 }
 
@@ -352,19 +410,26 @@ function updateGeneri($conn, $film_id, $genere_primario, $genere_secondario)
     $stmtDeleteGeneri = $conn->prepare($deleteGeneriQuery);
     $stmtDeleteGeneri->bind_param("i", $film_id);
     $stmtDeleteGeneri->execute();
+    if(!$stmtDeleteGeneri->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmtDeleteGeneri->close();
 
     $addGenerePrimarioQuery = "INSERT INTO Classificazione (id_film, nome_genere) VALUES (?, ?)";
     $stmtAddGenerePrimario = $conn->prepare($addGenerePrimarioQuery);
     $stmtAddGenerePrimario->bind_param("is", $film_id, $genere_primario);
     $stmtAddGenerePrimario->execute();
+    if(!$stmtAddGenerePrimario->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmtAddGenerePrimario->close();
 
     if (!empty($genere_secondario)) {
         $addGenereSecondarioQuery = "INSERT INTO Classificazione (id_film, nome_genere) VALUES (?, ?)";
         $stmtAddGenereSecondario = $conn->prepare($addGenereSecondarioQuery);
 
-        // Verifica che $film_id sia diverso da null prima di eseguire la query
         if ($film_id !== null) {
             $stmtAddGenereSecondario->bind_param("is", $film_id, $genere_secondario);
             $stmtAddGenereSecondario->execute();
@@ -380,6 +445,10 @@ function deleteFilm($conn, $film_id)
     $stmtProiezioni = $conn->prepare($deleteProiezioniQuery);
     $stmtProiezioni->bind_param("i", $film_id);
     $stmtProiezioni->execute();
+    if(!$stmtProiezioni->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmtProiezioni->close();
 
     // Elimina le classificazioni correlate al film
@@ -387,6 +456,10 @@ function deleteFilm($conn, $film_id)
     $stmtClassificazioni = $conn->prepare($deleteClassificazioniQuery);
     $stmtClassificazioni->bind_param("i", $film_id);
     $stmtClassificazioni->execute();
+    if(!$stmtClassificazioni->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmtClassificazioni->close();
 
     // Infine, elimina il film dalla tabella Film
@@ -394,6 +467,10 @@ function deleteFilm($conn, $film_id)
     $stmtFilm = $conn->prepare($deleteFilmQuery);
     $stmtFilm->bind_param("i", $film_id);
     $stmtFilm->execute();
+    if(!$stmtFilm->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
     $stmtFilm->close();
 }
 
@@ -417,7 +494,6 @@ function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {
     $stmt = $conn->prepare($sql_update_user);
     $stmt->bind_param("sssss", $username, $nome, $cognome, $password, $mail);
 
-    // Esegui la query
     if ($stmt->execute()) {
         return true;
     } else {
@@ -428,8 +504,11 @@ function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {
 
 //controllo pagina proiezioni
 function verificaProiezione($conn, $sala, $data, $ora) {
-    $sql_verifica = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora = '$ora'";
-    $result_verifica = $conn->query($sql_verifica);
+    $sql_verifica = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = ? AND data = ? AND ora = ?";
+    $stmt = $conn->prepare($sql_verifica);
+    $stmt->bind_param("sss", $sala, $data, $ora);
+    $stmt->execute();
+    $result_verifica = $stmt->get_result();
     $row_verifica = $result_verifica->fetch_assoc();
 
     return $row_verifica['count'];
@@ -437,8 +516,11 @@ function verificaProiezione($conn, $sala, $data, $ora) {
 
 function verificaProiezioniPrecedenti($conn, $sala, $data, $ora) {
     $ora_inizio = date('H:i:s', strtotime($ora . ' -3 hours'));
-    $sql_verifica_prec = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora >= '$ora_inizio' AND ora < '$ora'";
-    $result_verifica_prec = $conn->query($sql_verifica_prec);
+    $sql_verifica_prec = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = ? AND data = ? AND ora >= ? AND ora < ?";
+    $stmt = $conn->prepare($sql_verifica_prec);
+    $stmt->bind_param("ssss", $sala, $data, $ora_inizio, $ora);
+    $stmt->execute();
+    $result_verifica_prec = $stmt->get_result();
     $row_verifica_prec = $result_verifica_prec->fetch_assoc();
 
     return $row_verifica_prec['count'];
@@ -446,16 +528,53 @@ function verificaProiezioniPrecedenti($conn, $sala, $data, $ora) {
 
 function verificaProiezioniSuccessive($conn, $sala, $data, $ora) {
     $ora_fine = date('H:i:s', strtotime($ora . ' +3 hours'));
-    $sql_verifica_succ = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = '$sala' AND data = '$data' AND ora > '$ora' AND ora <= '$ora_fine'";
-    $result_verifica_succ = $conn->query($sql_verifica_succ);
-    $row_verifica_succ = $result_verifica_succ->fetch_assoc();
+    $sql_verifica_succ = "SELECT COUNT(*) AS count FROM Proiezione WHERE id_sala = ? AND data = ? AND ora > ? AND ora <= ?";
+    $stmt = $conn->prepare($sql_verifica_succ);
+    $stmt->bind_param("ssss", $sala, $data, $ora, $ora_fine);
+    $stmt->execute();
+    $result_verifica_succ = $stmt->get_result();
+    if(!$result_verifica_succ){
+        header('Location: ../html/500.html');
+        exit();
+    }
 
+    $row_verifica_succ = $result_verifica_succ->fetch_assoc();
     return $row_verifica_succ['count'];
 }
 
 function inserisciProiezione($conn, $film, $sala, $ora, $data) {
-    $sql = "INSERT INTO Proiezione (id_film, id_sala, ora, data) VALUES ('$film', '$sala', '$ora', '$data')";
-    $conn->query($sql);
+    $sql = "INSERT INTO Proiezione (id_film, id_sala, ora, data) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $film, $sala, $ora, $data);
+    $stmt->execute();
+
+    if(!$stmt->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
+}
+
+function inserisciFilm($conn , $titolo , $regista , $locandina_path, $durata , $trama_film){
+    $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES (? , ? , ?, ? , ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $titolo, $regista, $locandina_path, $durata , $trama_film );
+    $stmt->execute();
+    if(!$stmt->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
+
+}
+
+function inserisciGenere($conn , $id_film , $genere ){
+    $sql = "INSERT INTO Classificazione(id_film, nome_genere) VALUES (?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $id_film, $genere );
+    $stmt->execute();
+    if(!$stmt->get_result()){
+        header('Location: ../html/500.html');
+        exit();
+    }
 }
 
 ?>
