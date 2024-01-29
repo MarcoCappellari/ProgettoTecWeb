@@ -397,10 +397,6 @@ function updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film
     $stmt->bind_param("ssssii", $titolo, $locandina, $trama, $regista, $durata, $film_id);
     $stmt->execute();
 
-    if(!$stmt->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
     $stmt->close();
 }
 
@@ -410,20 +406,12 @@ function updateGeneri($conn, $film_id, $genere_primario, $genere_secondario)
     $stmtDeleteGeneri = $conn->prepare($deleteGeneriQuery);
     $stmtDeleteGeneri->bind_param("i", $film_id);
     $stmtDeleteGeneri->execute();
-    if(!$stmtDeleteGeneri->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
     $stmtDeleteGeneri->close();
 
     $addGenerePrimarioQuery = "INSERT INTO Classificazione (id_film, nome_genere) VALUES (?, ?)";
     $stmtAddGenerePrimario = $conn->prepare($addGenerePrimarioQuery);
     $stmtAddGenerePrimario->bind_param("is", $film_id, $genere_primario);
     $stmtAddGenerePrimario->execute();
-    if(!$stmtAddGenerePrimario->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
     $stmtAddGenerePrimario->close();
 
     if (!empty($genere_secondario)) {
@@ -445,10 +433,7 @@ function deleteFilm($conn, $film_id)
     $stmtProiezioni = $conn->prepare($deleteProiezioniQuery);
     $stmtProiezioni->bind_param("i", $film_id);
     $stmtProiezioni->execute();
-    if(!$stmtProiezioni->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
+
     $stmtProiezioni->close();
 
     // Elimina le classificazioni correlate al film
@@ -456,10 +441,7 @@ function deleteFilm($conn, $film_id)
     $stmtClassificazioni = $conn->prepare($deleteClassificazioniQuery);
     $stmtClassificazioni->bind_param("i", $film_id);
     $stmtClassificazioni->execute();
-    if(!$stmtClassificazioni->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
+
     $stmtClassificazioni->close();
 
     // Infine, elimina il film dalla tabella Film
@@ -467,10 +449,7 @@ function deleteFilm($conn, $film_id)
     $stmtFilm = $conn->prepare($deleteFilmQuery);
     $stmtFilm->bind_param("i", $film_id);
     $stmtFilm->execute();
-    if(!$stmtFilm->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
+
     $stmtFilm->close();
 }
 
@@ -533,11 +512,6 @@ function verificaProiezioniSuccessive($conn, $sala, $data, $ora) {
     $stmt->bind_param("ssss", $sala, $data, $ora, $ora_fine);
     $stmt->execute();
     $result_verifica_succ = $stmt->get_result();
-    if(!$result_verifica_succ){
-        header('Location: ../html/500.html');
-        exit();
-    }
-
     $row_verifica_succ = $result_verifica_succ->fetch_assoc();
     return $row_verifica_succ['count'];
 }
@@ -548,33 +522,7 @@ function inserisciProiezione($conn, $film, $sala, $ora, $data) {
     $stmt->bind_param("ssss", $film, $sala, $ora, $data);
     $stmt->execute();
 
-    if(!$stmt->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
 }
 
-function inserisciFilm($conn , $titolo , $regista , $locandina_path, $durata , $trama_film){
-    $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES (? , ? , ?, ? , ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $titolo, $regista, $locandina_path, $durata , $trama_film );
-    $stmt->execute();
-    if(!$stmt->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
-
-}
-
-function inserisciGenere($conn , $id_film , $genere ){
-    $sql = "INSERT INTO Classificazione(id_film, nome_genere) VALUES (?,?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $id_film, $genere );
-    $stmt->execute();
-    if(!$stmt->get_result()){
-        header('Location: ../html/500.html');
-        exit();
-    }
-}
 
 ?>
