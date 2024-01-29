@@ -1,4 +1,5 @@
 <?php
+
 require_once 'connessione_database.php';
 
 function clearINput($value){
@@ -96,8 +97,7 @@ function getFilmByName($conn, $film_name)
 }
 
 //Restituisce TRUE se non trova la proiezione identificata da $id_film, $ora_film, $data_film
-function absentProiection($conn, $id_film, $ora_film, $data_film)
-{
+function absentProiection($conn, $id_film, $ora_film, $data_film){
 
     $query = "SELECT *
             FROM Proiezione AS P
@@ -116,8 +116,7 @@ function absentProiection($conn, $id_film, $ora_film, $data_film)
 }
 
 //Restituisce la sala di una proiezione
-function getSalaByProiection($conn, $id_film, $ora_film, $data_film)
-{
+function getSalaByProiection($conn, $id_film, $ora_film, $data_film){
 
     $query = "SELECT S.nome AS nome
             FROM Proiezione AS P
@@ -138,8 +137,7 @@ function getSalaByProiection($conn, $id_film, $ora_film, $data_film)
 }
 
 //Restituisce i posti di una proiezione identificati da FILA | NUMERO | DISPONIBILE
-function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film)
-{
+function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film){
 
     $query = "SELECT Po.fila AS fila, 
                     Po.numero_posto AS numero, 
@@ -167,14 +165,20 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film)
 }
 
 //restituisce tutta la linea della tabella Utente contentente l'user per l'username OR mail
-function getUserByMailOrUsername($conn, $user)
-{
+function getUserByMailOrUsername($conn, $user){
     $query = "SELECT * 
                 FROM Utente 
                 WHERE username = '$user' OR mail = '$user'";
 
     $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        header('Location: ../html/500.html');
+        exit();
+    }
+
     $user = $result->fetch_assoc();
+
     return $user;
 }
 
@@ -185,21 +189,25 @@ function getUserByMail($conn, $user)
     $user = $result->fetch_assoc();
     return $user['username'];
 }
-function getPermessiByUsername($conn, $user)
-{
-    $query = "SELECT permessi FROM Utente WHERE mail = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $user);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        return (bool) $row['permessi'];
-    } else {
-        return false;
+
+//restituisce il permesso dell'utente a partire dalla mail dell'username
+function getPermessiByUsername($conn, $user){
+    $query = "SELECT U.permessi 
+            FROM Utente AS U 
+            WHERE U.mail = '$user'";
+    
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        header('Location: ../html/500.html');
+        exit();
     }
+
+    $row = $result->fetch_assoc();
+    return (bool) $row['permessi'];
 }
-function getSala($conn)
-{
+
+function getSala($conn){
     $query = "SELECT * FROM Sala";
     $result = $conn->query($query);
     return $result;
@@ -261,8 +269,7 @@ function getIdByUsername($conn, $username)
 
 
 //Restituisce tutte le recensioni a partire dalla più recente nella forma content | data | username
-function getRecensioni($conn)
-{
+function getRecensioni($conn){
 
     $query = "  SELECT R.testo AS content,
                     R.data_creazione AS data,
@@ -285,8 +292,7 @@ function getRecensioni($conn)
 }
 
 //Scrive la recensione a partire dalla connesione | mail-utente | contenuto-recensione
-function writeRecensione($conn, $mail_utente, $content)
-{
+function writeRecensione($conn, $mail_utente, $content){
 
     $query = "  INSERT INTO Recensioni (testo, data_creazione, id_utente) 
                 VALUES 

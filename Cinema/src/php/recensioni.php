@@ -16,7 +16,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $conferma_recensione, $recensioni_page);
     } else {
         $form_recensione = "<form action='scrivi_recensione.php' method='get' id='form-recensione'>
-                                <textarea rows='10' cols='40' name='recensione' id='textarea-recensione'> Scrivi qui la tua recensione! </textarea>
+                                <textarea rows='10' cols='40' name='recensione' id='textarea-recensione' placeholder='Scrivi qui la tua recensione...'></textarea>
                                 <input type='submit' value='Invia' id='invia-recensione-button'>
                             </form>";
         $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $form_recensione, $recensioni_page);

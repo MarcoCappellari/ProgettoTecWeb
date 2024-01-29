@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="src/css/print.css" media="print">
-    <link rel="shortcut icon" href="src/images/logo.png">
+    <link rel="shortcut icon" href="src/images/logo-PopCorn-Cinema.png">
 </head>
 
 <body>
-    <!--header-->
     <header>
 
-        <img id="logo" src="src/images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
-        <!--<img id="logo-print" src="src/images/logoPrint.png" alt="Logo PopCorn cinema con cestello di popcorn">-->
+        <img id="logo" src="src/images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
 
         <nav id="menu">
             <ul>
@@ -31,24 +29,20 @@
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
 
-    <!--breadcrumb-->
     <nav id="breadcrumb">
         <p>Ti trovi in: <span lang="en">Home</span></p>
     </nav>
 
-    <!--main-->
     <main>
-        <!--h2 + barra di ricerca-->
         <div id="searchHeader">
-            <h2>Film del momento</h2>
-            <form id="search-form" action="src/php/barra_ricerca.php" method="GET">
+            <h1>Film del momento</h1>
+            <form id="search-form" action="src/php/barra_ricerca.php" role="search" method="GET">
                 <input list="film-list" name="film_name" placeholder="Inserisci il nome di un film...">
                 <datalist id="film-list">
                     {DATALIST-RISULTATI}
                 </datalist>
                 <input type="submit" value="Cerca" />
             </form>
-
         </div>
 
         {FILM}

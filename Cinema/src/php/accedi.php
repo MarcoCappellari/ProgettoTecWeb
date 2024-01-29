@@ -3,6 +3,8 @@
 require_once '../../queries/queries.php';
 session_start();
 
+$utente_errato="";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_POST['utente']) || !isset($_POST['password'])) {
         header('Location: ../html/404.html');
@@ -15,31 +17,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = getUserByMailOrUsername($conn, $utente);
     $conn->close();
     if ($user === null) {
-        echo "Utente non trovato.";
-        exit();
-    }
-    /*
-        //dovrebbe essere inutile, basta $mail = $user['mail'];
-        if ($utente == $user['mail']) {
-            $mail = $user['mail'];
-        } else {
-
-            $mail = getUserByMail($conn, $utente);
-        }
-    */
-
-    $mail = $user['mail'];
-
-    if ($password == $user['password'] && $mail == $user['mail']) {
-        echo "Credenziali corrette.";
-        $_SESSION['mail'] = $user['mail'];
-        //$_SESSION['mail'] = $mail; $user['mail'] posso sostituirlo
-        $_SESSION['logged_in'] = true;
-        header('Location: ../../index.php');
-        exit();
+        $utente_errato="<p>Credenziali errate o password non corretta!</p>";
     } else {
-        echo "Credenziali errate o password non corretta.";
+
+        $mail = $user['mail'];
+
+        if ($password == $user['password'] && $mail == $user['mail']) {
+            $_SESSION['mail'] = $user['mail'];
+            $_SESSION['logged_in'] = true;
+            if($user['permessi']){
+                header('Location: admin.php');
+            } else{
+                header('Location: profilo.php');
+            }
+            exit();
+        } else { 
+            $utente_errato="<p>Credenziali errate o password non corretta!</p>";
+        }
     }
 }
+
+$template = file_get_contents('../html/accedi.html');
+$footer = file_get_contents('../html/footer.html');
+
+$template = str_replace('{UTENTE-ERRATO}', $utente_errato, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
+echo $template;
 
 ?>

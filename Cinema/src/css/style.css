@@ -4,9 +4,10 @@
 }
 
 :root {
+    /* HEADER */
     --headerBgColor: #000000;
     --headerTxtColor: #f0f0f0;
-
+    /* BREADCRUMB */
     --breadcrumbBgColor: #292828;
     --breadcrumbTxtColor: #f0f0f0;
 
@@ -16,11 +17,10 @@
     --txtColorHome: #f0f0f0;
     --bgColor: #f0f0f0;
     --txtColor: #000000;
-
-    --footerTitleColor: #ffffff;
+    /* FOOTER */
     --footerBgColor: #292828;
     --footerTxtColor: #ffffff;
-
+    /* LINK */
     --linkColor: #0294b9;
     --visitedLinkColor: #FF0000;
 
@@ -28,47 +28,58 @@
     --alternativeLine: #dddddd;
     --borderColor: #8b8b8b;
     --hoverColor: #0294b9;
-
+    /* FONT */
     --font-body_family: "Century Gothic", sans-serif;
-
+    /* POSTI */
     --cinema_screen_color: #000000;
     --borderPostoColor: #c4c4c4;
     --postoSelezionatoColor: #48eb32;
     --postoLiberoColor: rgb(255, 255, 255);
     --postoOccupatoColor: rgb(155, 155, 155);
-
+    /* RECENSIONI */
     --bgRecensioni: #dddddd;
-
+    /* AREA */
+    --AreaBgColor: #ffffff;
+    /* BUTTON */
     --buttonColor: #e50914;
-
-    /*Colori Form */
-    --formBackground : #212121;
+    --buttonTxtColor: #ffffff;
+    /* FORM */
     --labelColor :#8c8c8c;
     --formFieldSetColor :#181818;
-    --formInputColor : #333333 ;
+    --formInputColor : #333333;
+    --borderInputColor: #e1e1e1;
+    --formInputBgColor: #e9e7dd;
     --formSubmitColor :#e50914;
 }
 
 html {
-    font-size: 100%;
     font-family: var(--font-body_family);
     line-height: 1.5em;
     margin: auto;
     font-size: 1.2em;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--bgColor);
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+/* -----------------------BODY---------------------- */
+body{
+    max-width: 1600px;
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+    margin: auto;
+    overflow-x: hidden;
+}
+
+/* -----------------------HEADER-------------------- */
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--headerBgColor);
     color: var(--headerTxtColor);
-    max-width: 1800px;
     margin: auto;
 }
 
@@ -76,25 +87,29 @@ header {
     width: 9em;
     height: auto; 
 }
-/*
-header h1 {
-    text-indent: -999em;
-    background-image: url("../images/logo1.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left;
-    width: 200px;
-    height: 100px;
-    max-width: 1800px;
+
+/* ------------------------NAV---------------------- */
+nav {
+    color: var(--headerTxtColor);
 }
-*/
-body{
-    max-width: 1800px;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
+
+/* ------------------------MAIN--------------------- */
+main {
+    margin: auto;
+    line-height: 1.5;
+}
+
+/* ------------------FOOTER------------------------ */
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--footerBgColor);
+    color: var(--footerTxtColor);
+    padding: 1em;
     margin: auto;
 }
 
+/* ------------------TITLE---------------------- */
 h1 {
     margin-bottom: 1em;
 }
@@ -104,22 +119,13 @@ h2 {
     margin-bottom: 0.2em;
 }
 
-p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-main {
-    margin: auto;
-    line-height: 1.5;
-}
-
 h3{
     margin: 1em;
 }
 
-nav {
-    color: var(--headerTxtColor);
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 /*--------------LINK-------------*/
@@ -181,14 +187,21 @@ tbody tr:nth-child(odd) {
 }
 
 /*-------------MENU E BREADCRUMB------------*/
-/*  */
 #menu ul {
     list-style-type: none;
 }
 
 #menu ul li {
-    margin: 0 1em;
+    margin: 0 0.6em;
     display: inline-block;
+}
+
+#goToMenu {
+    display: none;
+}
+
+#bottomMenu {
+    display: none;
 }
 
 #breadcrumb {
@@ -196,10 +209,9 @@ tbody tr:nth-child(odd) {
     color: var(--headerTxtColor);
     padding: 1em;
     margin: auto;
-    max-width: 1800px;
 }
 
-/*SEARCH*/
+/*---------------SEARCHBAR-----------------*/
 #searchHeader {
     display: flex;
     justify-content: space-between;
@@ -254,38 +266,6 @@ tbody tr:nth-child(odd) {
 .film-image:hover {
     transform: scale(0.9);
     /* Ingrandisce l'elemento del 10% al passaggio del mouse */
-}
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    background-color: var(--footerBgColor);
-    color: var(--footerTxtColor);
-    max-width: 1800px;
-    padding: 1em;
-    margin: auto;
-}
-
-/* Stile per ciascuna colonna nel footer */
-footer>div {
-    flex: 1;
-    padding: 1em 2em;
-    text-align: center;
-}
-
-footer .footer-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--footerTitleColor);
-    margin-bottom: 1em;
-}
-
-footer ul {
-    list-style-type: none;
-}
-
-footer li {
-    margin-bottom: 1em;
 }
 
 .bold-text {
@@ -451,8 +431,6 @@ footer li {
     border: 10px solid black; /* Aggiungi una cornice nera */
 }
 
-
-
 #form-posti{
     display: flex;
     align-items: center;
@@ -542,42 +520,23 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 /*-------------------500 e 404---------------------*/
 #error-container {
     width: 80%;
-    margin: 0.4em auto;
+    margin: auto;
     padding: 1em;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
     text-align: center;
 }
 
-#error-container p {
-    margin: 0.6em 0;
-    line-height: 1.6em;
-    color: var(--txtColor);
-    font-size: 1.3em;
+#subtitle-error{
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
-#immagine-errore-500-404 {
+#immagine-errore{
     width: 10em;
     height: 10em;
+    margin: auto;
     background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
-
-}
-
-#imgError-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-}
-
-#goToMenu {
-    display: none;
-}
-
-#bottomMenu {
-    display: none;
 }
 
 #prenota-button {
@@ -588,73 +547,61 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     margin-bottom: 2em;
 }
 
-/*login e Signin*/
+/*-------------LOGIN e SIGNIN--------------------*/
 #login-container , #signin-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #212121;
+    width: 100%;
 }
 
 #login , #signin {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 1em 7em 1em 7em;
-    background-color: #181818;
-    border-radius: 8px;
     text-align: center;
+    width: 100%;
 }
 
-#login h2 , #signin  h2 {
-    color: var(--txtColorHome);
+#login h1 , #signin  h1 {
+    font-size: 1.8em;
     margin-bottom: 1em;
 }
 
 #login label , #signin label{
-    color: #8c8c8c;
-    font-size: 20px;
+    color: var(--formInputColor);
+    margin-bottom: 0.3em;
 }
 
 #login form , #signin form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: auto;
     gap: 0.7em;
 }
 
 #login input , #signin input {
     width: 15em;
     padding: 1em;
-    border: none;
+    border: 1px solid var(--borderInputColor);
     border-radius: 4px;
-    background-color: #333333;
-    color: #fff;
-    font-size: 20px;
-
-}
-
-#login input[type="submit"] , #signin input[type="submit"]  {
-    width: 18em;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1em;
-    border: none;
-    border-radius: 4px;
-    background-color: #e50914;
-    color: #fff;
-    font-size: 18px;
-}
-
-#login p, #signin p {
-    color: var(--txtColorHome);
+    background-color: var(--formInputBgColor);
+    color: var(--formInputColor);
+    font-size: 1em;
 }
 
 #login fieldset , #signin fieldset {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    width: 50%;
+    max-width: 400px;
     border-radius: 8px;
     padding: 2em;
     display: flex;
     flex-direction: column;
-    justify-items: center;
-    align-items: center;
     gap: 1em;
 }
 
@@ -667,74 +614,79 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 .login-item-container , .signin-item-container {
     display: flex;
     flex-direction: column;
+    align-items: center; 
+    text-align: center;
 }
 
 #login legend, #signin legend {
-    color: var(--txtColorHome);
-    padding: 0.3em;
+    padding: 0.5em;
 }
 
 #signin p.signin-error, #signin p.signin-success{
     font-weight: bold;
 }
 
-/*admin section*/
-#adminArea {
-    background-color: var(--bgColor);
+/*------------AREA AMMINISTRATIVA e AREA PERSONALE----------------*/
+#adminArea, #UtenteArea {
     padding: 2em;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-#adminArea h2 {
-    text-align: center;
+#adminArea h1, #UtenteArea h1{
     margin-bottom: 1em;
-    color: var(--txtColor);
-    font-size: 1.8em;
+    font-size: 1.7em;
 }
 
-#adminMenu {
-    background-color: #fff;
-    max-width: 28em;
+#adminMenu, #UtenteMenu {
+    background-color: var(--AreaBgColor);
+    border: 1px solid var(--borderColor);
     margin: auto;
+    margin-bottom: 1.5em;
     border-radius: 8px;
 }
 
-#adminMenu ul {
+#adminMenu ul, #UtenteMenu ul {
     list-style-type: none;
     padding: 0;
 }
 
-#adminMenu ul li {
+#adminMenu ul li, #UtenteMenu ul li {
     margin: 1em;
     text-align: center;
 }
 
-#adminMenu ul li a {
+#adminMenu ul li a, #UtenteMenu ul li a {
     display: block;
     padding: 1em;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
-#logoutForm button, #invia-recensione-button {
+/* -------------------------BUTTON---------------------------*/
+#login input[type="submit"], 
+#signin input[type="submit"], 
+#logoutForm button, 
+#invia-recensione-button {    
+    margin-left: auto;
+    margin-right: auto;
     padding: 1em;
-    margin: 1em;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid var(--buttonColor);
+    border-radius: 4px;
     background-color: var(--buttonColor);
-    color: #fff;
+    color: var(--buttonTxtColor);
+    font-size: 1em;
 }
 
-#invia-recensione-button:hover, #invia-recensione-button:focus {
+#login input[type="submit"]:hover, #login input[type="submit"]:focus, 
+#signin input[type="submit"]:hover, #signin input[type="submit"]:focus,
+#invia-recensione-button:hover, #invia-recensione-button:focus,
+#logoutForm button:hover, #logoutForm button:focus{
     border: 2px solid var(--hoverColor);
-    transition: ease-in;
 }
-/*aggiungi proiezione*/
+
+/*-----------------------------aggiungi proiezione---------------*/
 #aggiungi_proiezione , #aggiungi_film{
     display: flex;
     align-items: center;
@@ -744,10 +696,11 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     text-align: center;
     padding: 1em;
 }
-#aggiungi_proiezione h2,  #aggiungi_film  h2, legend{
+#aggiungi_proiezione h2,  #aggiungi_film  h2{
     padding: 0.5em;
     color: var(--txtColorHome)
 }
+
 #aggiungi_proiezione select,#aggiungi_proiezione input[type="date"], #aggiungi_proiezione input[type="time"],#aggiungi_proiezione input[type="submit"] ,
 #aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea{
     width: 100%;
@@ -813,9 +766,6 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     gap: 0.5em;
 }
 
-
-/*  */
-
 /*---------- Contenitori che contengono informazioni -----------*/
 .info {
     padding: 2em 3em;
@@ -872,6 +822,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     width: 80%;
     resize: none;
     margin: 1em;
+    padding: 0.3em;
     font-size: 1em;
     font-family: var(--font-body_family);
     border-radius: 8px;
@@ -914,7 +865,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     font-size: 1em;
 }
 
-/*modifica film*/
+/*----------------------------------modifica film--------------------------*/
 
 #modifica_film_container, #proiezioni_container, #modifica_utente_container {
     max-width: 60%;
@@ -1062,8 +1013,3 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     position: relative; /* Assicura che l'elemento sia posizionato in base alle coordinate relative al suo contenitore */
     top: 0.4em; /* Sposta leggermente l'asterisco verso l'alto per centrarlo verticalmente */
 }
-/*
-#logo-print{
-    display: none;
-}
-*/
