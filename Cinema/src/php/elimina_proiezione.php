@@ -51,10 +51,15 @@ if ($result_proiezioni) {
     $tutte_proiezioni .= "<a href='aggiungi_proiezione.php'>Aggiungi proiezioni</a>";
     $risultato='';
 }
+
 $template = file_get_contents('../html/elimina_proiezione.html');
+$footer = file_get_contents('../html/footer.html');
+
 $template = str_replace('{PROIEZIONI}', $tutte_proiezioni, $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

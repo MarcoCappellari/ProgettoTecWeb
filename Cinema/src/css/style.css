@@ -281,7 +281,7 @@ tbody tr:nth-child(odd) {
     font-size: 1.1em;
 }
 
-/*Template_film*/
+/*---------------------Template_film-----------------------*/
 #film-informazioni-container {
     display: flex;
     justify-content: space-around;
@@ -301,7 +301,6 @@ tbody tr:nth-child(odd) {
     text-transform: uppercase;
     border-radius: 8px;
     line-height: 1;
-    /*L'ho aggiunto perche' se titolo troppo lungo*/
 }
 
 #film-locandina img {
@@ -357,7 +356,7 @@ tbody tr:nth-child(odd) {
     background-repeat: no-repeat;
     margin: auto;
 }
-/* usato ? */
+
 #film-name-error {
     color: var(--visitedLinkColor);
     font-weight: bold;
@@ -880,6 +879,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     text-align: center;
 }
 
+#seleziona-film, #seleziona-film fieldset,
+#modifica-film-form, #modifica-film-form fieldset,
 #modifica_utente_container form, #modifica_utente_container form fieldset{
     display: flex;
     flex-direction: column;
@@ -887,10 +888,12 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     gap: 0.5em;
 }
 
+#seleziona-film fieldset,
+#modifica-film-form fieldset,
 #modifica_utente_container form fieldset{
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 1000px;
     padding: 2em;
     border-radius: 8px;
     gap: 1em;
@@ -905,7 +908,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #immagine_modifica {
     margin: 0.5em;
-    width: 7em;
+    width: 50%;
 }
 
 #locandina-modifica {
@@ -930,13 +933,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 }
 
 #modifica_film_container textarea{
-    font-size: 1.6em;
-}
-
-#ora-container{
-    display: flex;
-}
-
+    font-family: var(--font-body_family);
+} 
 
 /*--------------------PAGINA PRENOTA-----------*/
 #container-prenotazione{

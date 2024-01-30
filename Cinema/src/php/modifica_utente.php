@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nuova_password = $_POST['password'];
     $conferma_password = $_POST['confirm_password'];
 
-    if($username=='' || getUserByMailOrUsername($conn, $username)){
+    if($username=='' || ($username!=$utente['username'] && getUserByMailOrUsername($conn, $username))){
         $risultato .="L'username inserito non è valido o è già in uso"; 
     } else {
         if (!empty($nuova_password) && $nuova_password === $conferma_password) {

@@ -116,6 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
 }
 
 $template = file_get_contents('../html/modifica_film.html');
+$footer = file_get_contents('../html/footer.html');
+
 $template = str_replace('{ID_FILM}', $film_id, $template);
 $template = str_replace('{TITOLO}', $titolo, $template);
 $template = str_replace('{LOCANDINA}', $locandina, $template);
@@ -128,6 +130,8 @@ $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
 $template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? 'hidden' : '', $template);
 $template = str_replace('{RISULTATO}', $risultato, $template);
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

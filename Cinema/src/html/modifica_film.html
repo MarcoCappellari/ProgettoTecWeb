@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Modifica o elimina film</title>
-    <meta name="keywords" content="PopCorn Cinema, film ">
-    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <title>Modifica o elimina film PopCorn Cinema</title>
+    <meta name="keywords" content="Modifica film, modifica, elimina film, elimina, PopCorn Cinema, film ">
+    <meta name="description" content="Pagina per modifica o eliminare film del sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png">
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
+    <script src="../javascript/index.js"></script>
 </head>
 
 <body>
-    <!--header-->
     <header>
-        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
@@ -27,10 +27,9 @@
         <a href="#bottomMenu" id="goToMenu"></a>
     </header>
 
-    <!--breadcrumb-->
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt <a
-                href="../php/admin.php">Area amministrativa</a> &gt Modifica o elimina film</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt; <a
+                href="../php/admin.php">Area Amministrativa</a> &gt; Modifica o Elimina Film</p>
     </nav>
 
     <main>
@@ -44,12 +43,9 @@
                         <option value="" selected disabled hidden></option>
                         {FILM-OPZIONI}
                     </select>
-                    <div>
-                        <input type="hidden" name="form_type" value="form1">
-                        <input type="submit" value="Modifica Film">
-                    </div>
+                    <input type="hidden" name="form_type" value="form1">
                 </fieldset>
-
+                <input type="submit" value="Modifica Film">
             </form>
 
             <form id="modifica-film-form" action="../php/modifica_film.php" method="post" {SHOW_SECOND_FORM}>
@@ -80,8 +76,8 @@
                         <input type="text" id="regista" name="regista" value="{REGISTA}" required>
                     </div>
                     <div>
-                        <label for="durata">Durata (in Minuti): <span class="required">*</span></label>
-                        <input type="number" id="durata" name="durata" value="{DURATA}" required>
+                        <label for="durata_input">Durata (in Minuti): <span class="required">*</span></label>
+                        <input type="number" id="durata_input" name="durata" value="{DURATA}" required>
                     </div>
                     <div>
                         <label for="genere_primario">Seleziona Genere Primario: <span class="required">*</span></label>
@@ -108,25 +104,8 @@
             {RISULTATO}
         </div>
     </main>
-    <footer>
-        <div>
-            <p class="footer-title" lang="en">About Us</p>
-            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en"> Where to Find Us</p>
-            <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
-                    14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en">Contact Us</p>
-            <ul>
-                <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
-                <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
-                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
-            </ul>
-        </div>
-    </footer>
+    
+    {FOOTER}
 
     <nav id="bottomMenu">
         <ul>
