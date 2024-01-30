@@ -1,5 +1,6 @@
+
 html{
-    font-size: 1.5em;
+    font-size: 1.25em!important;
 }
 
 header{
@@ -55,7 +56,9 @@ footer {
     margin-bottom: 3em; 
     color: var(--txtColor);
     font-weight: bold;
+    font-size: 1.25em;
 }
+
 
 #menu{
     display: none;
@@ -78,4 +81,38 @@ footer {
 #locandina-title img{
     width: 7em;
     height: auto;
+}
+
+
+/*-------------------*/
+
+#login fieldset, #signin fieldset{
+    width: 90%;
+    max-width: none;
+    padding: 0.5em;
+    gap: 0.7em;
+}
+
+#login-container p{
+    padding: 1em;
+}
+
+#aggiunta-film-form fieldset, #aggiunta-proiezione-form fieldset{
+    width: 90%;
+    max-width: none;
+}
+
+#modifica_film_container, #proiezioni_container, #modifica_utente_container{
+    max-width: none;
+}
+
+#main_recensioni{
+    padding: 0.5em;
+}
+
+.info{
+    padding: 0.5em 1.25em;
+}
+#modifica_film_container, #proiezioni_container, #modifica_utente_container{
+    padding: 0.5em;
 }
