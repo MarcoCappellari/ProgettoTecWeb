@@ -448,19 +448,23 @@ function deleteFilm($conn, $film_id){
     $stmtFilm->close();
 }
 
-function getProiezioni($conn)
+function getProiezioniFilm($conn, $film)
 {
     $result = "SELECT Film.titolo, Proiezione.*
                                 FROM Film
                                 JOIN Proiezione ON Film.id = Proiezione.id_film
+                                WHERE Film.id = ?
                                 ORDER BY Film.titolo, Proiezione.data, Proiezione.ora";
-    $result_proiezioni_per_film = $conn->query($result);
+    $stmt = $conn->prepare($result);
+    $stmt->bind_param("i", $film);
+    $stmt->execute();
+    $result_proiezioni_per_film = $stmt->get_result();
+
     if ($result_proiezioni_per_film->num_rows > 0) {
         return $result_proiezioni_per_film;
     } else {
         return null;
     }
-
 }
 
 function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {

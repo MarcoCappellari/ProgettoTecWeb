@@ -32,8 +32,21 @@
     </nav>
 
     <main>
+
         <div id="proiezioni_container">
-            <h1>Seleziona le proiezioni da eliminare</h1>
+            <form id="seleziona-film" action="../php/elimina_proiezione.php" method="post">
+                <fieldset>
+                    <legend>Film</legend>
+                    <label for="film_selezionato">Seleziona Film: <span class="required">*</span></label>
+                    <select name="film_selezionato" required>
+                        <option value="" selected disabled hidden></option>
+                        {FILM-OPZIONI}
+                    </select>
+                    <input type="hidden" name="form_type" value="form1">
+                </fieldset>
+                <input type="submit" value="Seleziona Film">
+            </form>
+            <h2>Seleziona le proiezioni da eliminare</h2>
             <form method="post" action="../php/elimina_proiezione.php">
                 {PROIEZIONI}
             </form>
