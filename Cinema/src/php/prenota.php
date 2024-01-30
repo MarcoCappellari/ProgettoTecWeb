@@ -2,9 +2,6 @@
 
 require_once '../../queries/queries.php';
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 include 'user_session.php';
 $accedi_stringa = gestisciAccesso($conn);
@@ -19,7 +16,7 @@ if (empty($id_film) || empty($ora_film) || empty($data_film) || absentProiection
     exit();
 }
 
-$FilmRow = getFilmByIdQuery($conn, $id_film);
+$FilmRow = getFilmByIdQuery($conn, $id_film); 
 $Sala = getSalaByProiection($conn, $id_film, $ora_film, $data_film);
 
 
@@ -36,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $posti_selezionati = $_POST['posti'];
         foreach ($posti_selezionati as $posto) {
             $biglietto .= "<div class='biglietto-recap'>";
-            $biglietto .= "<h2>$titolo</h2>";
+            $biglietto .= "<p id='titolo-biglietto'>$titolo</p>";
             $biglietto .= "<div class='biglietto-recap-field'>";
             $biglietto .= "<p>$nome_sala</p>";
             $biglietto .= "<p>Poltrona: $posto</p>";
@@ -49,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $registrazione = '<h2>Acquista i biglietti come '.$_SESSION['mail'].'</h2>';
+            $registrazione = '<h2>Acquista i biglietti come '.$_SESSION['mail'].'</h2>
+                                <p>I biglietti che acquisterai verranno inviati alla precedente <span lang="en">mail<span></p>';
 
             $prenota .= '<input type="hidden" name="idFilm" value="' . $id_film . '">';
             $prenota .= '<input type="hidden" name="data" value="' . $data_film . '">';
@@ -62,19 +60,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $prenota .= '
                 <fieldset>
                 <legend>Email</legend>
-                <label for="email">Email:</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 </fieldset>';
 
-            $accedi_stringa = '<a href="../html/accedi.html">Accedi</a>';
+            $accedi_stringa = '<a href="accedi.php">Accedi</a>';
         }
         $prenota .= '<input type="submit" name="submit_button" value="Vai al pagamento">
             </form>';
 
 
     } else {
-        header('Location: ../html/404.html');
-        exit;
+        $prenota .= "<div class='immagine-indisponibilità'></div>
+                    <div class='div-non-esiste'>
+                        <p>Non hai selezionato alcun posto da prenotare! <br>
+                        Per tornare alla home <a href='../../index.php'>Clicca qui</a></p>
+                    </div>    
+                </form>";
     }
 }
 $conn->close();

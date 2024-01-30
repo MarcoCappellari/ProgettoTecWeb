@@ -8,15 +8,13 @@ function clearINput($value){
     return htmlentities($value);
 }
 
-function getFilms($conn)
-{
+function getFilms($conn){
     $sql = "SELECT id, titolo, locandina FROM Film";
     $result = $conn->query($sql);
     return $result;
 }
 
-function getFilmByIdQuery($conn, $idFilm)
-{
+function getFilmByIdQuery($conn, $idFilm){
     // Query per ottenere le informazioni del film dato il suo ID
     $queryFilm = "SELECT * FROM Film WHERE id='$idFilm'";
     $resultFilm = $conn->query($queryFilm);
@@ -31,8 +29,7 @@ function getFilmByIdQuery($conn, $idFilm)
 }
 
 
-function getFilmGenresById($conn, $idFilm)
-{
+function getFilmGenresById($conn, $idFilm){
 
     $queryGeneri = "SELECT Classificazione.nome_genere
                     FROM Classificazione
@@ -51,8 +48,7 @@ function getFilmGenresById($conn, $idFilm)
     }
 }
 
-function getOrariByFilmId($conn, $idFilm)
-{
+function getOrariByFilmId($conn, $idFilm){
 
     $query = "SELECT Proiezione.data, Proiezione.ora
               FROM Proiezione
@@ -173,7 +169,7 @@ function getUserByMailOrUsername($conn, $user){
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -346,8 +342,7 @@ function updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film
     $stmt->close();
 }
 
-function updateGeneri($conn, $film_id, $genere_primario, $genere_secondario)
-{
+function updateGeneri($conn, $film_id, $genere_primario, $genere_secondario){
     $deleteGeneriQuery = "DELETE FROM Classificazione WHERE id_film = ?";
     $stmtDeleteGeneri = $conn->prepare($deleteGeneriQuery);
     $stmtDeleteGeneri->bind_param("i", $film_id);
@@ -374,8 +369,7 @@ function updateGeneri($conn, $film_id, $genere_primario, $genere_secondario)
 }
 
 
-function deleteFilm($conn, $film_id)
-{
+function deleteFilm($conn, $film_id){
     $deleteProiezioniQuery = "DELETE FROM Proiezione WHERE id_film = ?";
     $stmtProiezioni = $conn->prepare($deleteProiezioniQuery);
     $stmtProiezioni->bind_param("i", $film_id);

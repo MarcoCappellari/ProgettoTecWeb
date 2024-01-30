@@ -7,33 +7,30 @@
     <meta name="keywords" content="PopCorn Cinema, film ">
     <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
-    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
-    <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png" />
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
 </head>
 
-<body>
-<!--header-->
-<header>
-    <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
-    <nav id="menu">
-        <ul>
-            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-            <li><a href="../php/info_cinema.php">Informazioni</a></li>
-            <li><a href="../php/recensioni.php">Recensioni </a></li>
-            <li><a href="../html/accedi.html">Accedi </a></li>
-        </ul>
+    <body>
+    <header>
+        <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <nav id="menu">
+            <ul>
+                <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+                <li><a href="../php/info_cinema.php">Informazioni</a></li>
+                <li><a href="../php/recensioni.php">Recensioni </a></li>
+                <li><a href="../php/accedi.php">Accedi </a></li>
+            </ul>
+        </nav>
+        <a href="#bottomMenu" id="goToMenu"></a>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Registrati</p>
     </nav>
-    <a href="#bottomMenu" id="goToMenu"></a>
-</header>
 
-<!--breadcrumb-->
-<nav id="breadcrumb">
-    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Registrati</p>
-</nav>
-
-<main>
-    <div id="signin-container">
+    <main>
         <div id="signin">
             <h2>Registrati</h2>
             <form action="../php/registrazione.php" method="post">
@@ -71,45 +68,27 @@
                                 <input type="password" id="password_conferma" name="password_conferma" required>
                             </div>
                         </div>
-
+                        <p>* Campo obbligatorio</p>
                 </fieldset>
                 <input type="submit" value="Registrati">
             </form>
-            <p>Sei gia' registrato? <a href="../html/accedi.html">Accedi</a></p>
-            <p>* Campo obbligatorio</p>
+            <p>Sei gia' registrato? <a href="../php/accedi.php">Accedi</a></p>
+
             {FEEDBACK}
         </div>
-    </div>
 
-</main>
-<footer>
-    <div>
-        <p class="footer-title" lang="en">About Us</p>
-        <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
-    </div>
-    <div>
-        <p class="footer-title" lang="en"> Where to Find Us</p>
-        <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
-            14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
-    </div>
-    <div>
-        <p class="footer-title" lang="en">Contact Us</p>
+    </main>
+    
+    {FOOTER}
+
+    <nav id="bottomMenu">
         <ul>
-            <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
-            <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
-            <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
+            <li><a href="../../index.php"><span lang="en">Home</span></a></li>
+            <li><a href="../php/info_cinema.php">Informazioni</a></li>
+            <li><a href="../php/recensioni.php">Recensioni </a></li>
+            <li><a href="../php/accedi.php">Accedi </a></li>
         </ul>
-    </div>
-</footer>
-
-<nav id="bottomMenu">
-    <ul>
-        <li><a href="../../index.php"><span lang="en">Home</span></a></li>
-        <li><a href="../php/info_cinema.php">Informazioni</a></li>
-        <li><a href="../php/recensioni.php">Recensioni </a></li>
-        <li>Accedi</li>
-    </ul>
-</nav>
+    </nav>
 
 </body>
 

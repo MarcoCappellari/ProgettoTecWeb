@@ -40,8 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $template = file_get_contents('../html/registrazione.html');
+$footer = file_get_contents('../html/footer.html');
 
 $template = str_replace('{FEEDBACK}', $risultato_info, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

@@ -55,10 +55,14 @@ while ($row = $sale->fetch_assoc()) {
 }
 
 $template = file_get_contents('../html/aggiungi_proiezione.html');
+$footer = file_get_contents('../html/footer.html');
+
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 $template = str_replace('{SALA-OPZIONI}', $sale_info, $template);
 $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
 $template = str_replace('{RISULTATO}', $risultato_info, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

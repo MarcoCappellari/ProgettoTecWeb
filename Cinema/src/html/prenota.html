@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Visualizza Biglietti, cinema PopCorn</title>
-    <meta name="keyword" content="PopCorn Cinema, film ">
-    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <title>Prenota Biglietti {TITOLO} PopCorn Cinema</title>
+    <meta name="keywords" content="Prenota, biglietti, prenota biglietti, PopCorn Cinema, film ">
+    <meta name="description" content="Prenotazione biglietti del sito ufficiale del PopCorn Cinema di Padova">
     <link rel="stylesheet" href="../css/style.css" media="screen">
-    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png" />
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
 </head>
 
 <body>
 
 <header>
-    <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+    <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
     <nav id="menu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
@@ -28,13 +28,14 @@
 </header>
 
 <nav id="breadcrumb">
-    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> >
-        <a href="../php/posti.php?idFilm={IDFILM}&data={DATA}&ora={ORA}"> Selezione posti </a> > Prenota </p>
+    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt;
+        <a href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> &gt;
+        <a href="../php/posti.php?idFilm={IDFILM}&data={DATA}&ora={ORA}"> Selezione posti </a> &gt; Prenota </p>
 </nav>
 
 <main>
     <div id="container-prenotazione">
+        <h1>Prenotazione Biglietti</h1>
         <div id="container-recap-biglietti">
             {BIGLIETTI}
         </div>
@@ -45,9 +46,6 @@
         </div>
 
     </div>
-
-
-
 
 </main>
 

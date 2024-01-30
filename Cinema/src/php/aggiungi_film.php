@@ -15,17 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $durata = $_POST['durata'];
     $genere_primario = $_POST['genere_primario'];
 
-    /*
-        $file_name = $_FILES['locandina']['name'];
-        $file_tmp = $_FILES['locandina']['tmp_name'];
-        $file_size = $_FILES['locandina']['size'];
-        $file_error = $_FILES['locandina']['error'];
-
-        $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-        $new_file_name = uniqid('locandina_', true) . '.' . $file_ext;
-        $locandina_path = "src/images/locandine/" . $new_file_name;
-        move_uploaded_file($file_tmp, $locandina_path);
-    */
     $locandina = $_FILES["locandina"]["name"];;
     $locandina_path = "src/images/locandine/" . $locandina;
 
@@ -53,10 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $risultato_info = '<p>Film inserito con SUCCESSO!</p>';
-
-
-
-
 }
 
 $generi = getGeneris($conn);
@@ -71,11 +56,14 @@ while ($row = $generi->fetch_assoc()) {
 
 $generi->free();
 
-
 $template = file_get_contents('../html/aggiungi_film.html');
+$footer = file_get_contents('../html/footer.html');
+
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 $template = str_replace('{GENERE-OPZIONI}', $genere_info, $template);
 $template = str_replace('{RISULTATO}', $risultato_info, $template);
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

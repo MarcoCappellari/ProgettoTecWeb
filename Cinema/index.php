@@ -9,7 +9,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && isset($_
         $accedi_stringa = "<a href='src/php/profilo.php'>Area personale</a>";
     }
 } else {
-    $accedi_stringa = '<a href="src/html/accedi.html">Accedi</a>';
+    $accedi_stringa = '<a href="src/php/accedi.php">Accedi</a>';
 }
 
 //risultato della query

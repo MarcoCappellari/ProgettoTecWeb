@@ -1,3 +1,7 @@
+html{
+    font-size: 1.5em;
+}
+
 header{
     justify-content: space-between;
 }
