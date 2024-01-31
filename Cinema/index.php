@@ -47,7 +47,7 @@ if ($result->num_rows == 0) {
 
 $template_film = file_get_contents('src/html/index.html');
 $template_film = str_replace('{ACCEDI}', $accedi_stringa, $template_film);
-$template_film = str_replace('{FILM}', $stringa_info_film, $template_film);
+$template_film = str_replace('{FILM}', $stringa_info_film, $template_film); 
 $template_film = str_replace('{DATALIST-RISULTATI}', $datalist_risultati, $template_film);
 
 $stringa_footer= file_get_contents('src/html/footer.html');

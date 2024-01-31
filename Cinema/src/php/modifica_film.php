@@ -77,35 +77,35 @@ while ($row = $generi->fetch_assoc()) {
 //SECONDO FORM
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST["form_type"] == "form2") {
 
-    $film_id = $_POST["film_id"];
-    $titolo = $_POST["titolo"];
-    $locandina_path = $_POST["locandina_path"];
-    $locandina = $_POST["locandina"];
-    $trama = $_POST["trama"];
-    $regista = $_POST["regista"];
-    $durata = $_POST["durata"];
-    $genere_primario = $_POST["genere_primario"];
-    if(isset($_POST["genere_secondario"])) {
+    $film_id = clearInput($_POST["film_id"]);
+    $titolo = clearInput($_POST["titolo"]);
+    $locandina_path = clearInput($_POST["locandina_path"]);
+    $locandina = clearInput($_POST["locandina"]);
+    $trama = clearInput($_POST["trama"]);
+    $regista = clearInput($_POST["regista"]);
+    $durata = clearInput($_POST["durata"]);
+    $genere_primario = clearInput($_POST["genere_primario"]);
+    if(isset(clearInput($_POST["genere_secondario"]))) {
         
-        $genere_secondario = $_POST["genere_secondario"];
+        $genere_secondario = clearInput($_POST["genere_secondario"]);
 
     } else {
         $genere_secondario = null; 
     }
 
-    if (empty($_POST["locandina"])) {
-        $locandina = $_POST["locandina_path"];
+    if (empty(clearInput($_POST["locandina"]))) {
+        $locandina = clearInput($_POST["locandina_path"]);
     } else {
-        $locandina = $_POST["locandina"];
+        $locandina = clearInput($_POST["locandina"]);
         $locandina = "src/images/locandine/" . $locandina;
     }
 
-    if (isset($_POST["aggiorna_film"])) {
+    if (isset(clearInput($_POST["aggiorna_film"]))) {
         // Aggiorna i dati del film nella tabella Film
         updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film_id);
         updateGeneri($conn, $film_id, $genere_primario, $genere_secondario);
         $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato AGGIORNATO correttamente!</p>";
-    } elseif (isset($_POST["elimina_film"])) {
+    } elseif (isset(clearInput($_POST["elimina_film"]))) {
         deleteFilm($conn, $film_id);
         $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato ELIMINATO correttamente!</p>";
     }

@@ -9,11 +9,11 @@ $risultato_info = '';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titolo = $_POST['titolo'];
-    $trama_film = $_POST['trama'];
-    $regista = $_POST['regista'];
-    $durata = $_POST['durata'];
-    $genere_primario = $_POST['genere_primario'];
+    $titolo = clearInput($_POST['titolo']);
+    $trama_film = clearInput($_POST['trama']);
+    $regista = clearInput($_POST['regista']);
+    $durata = clearInput($_POST['durata']);
+    $genere_primario = clearInput($_POST['genere_primario']);
 
     $locandina = $_FILES["locandina"]["name"];;
     $locandina_path = "src/images/locandine/" . $locandina;

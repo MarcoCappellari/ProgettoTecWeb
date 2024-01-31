@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $utente = $_POST['utente']; //potrebbe essere mail o username
-    $password = $_POST['password'];
+    $utente = clearInput($_POST['utente']); //potrebbe essere mail o username
+    $password = clearInput($_POST['password']);
 
     $user = getUserByMailOrUsername($conn, $utente);
     $conn->close();

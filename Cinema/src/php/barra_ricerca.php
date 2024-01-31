@@ -7,8 +7,14 @@ session_start();
 include 'user_session.php';
 $accedi_stringa = gestisciAccesso($conn);
 
+$result_film = getFilms($conn);
+$datalist_risultati = '';
+while ($row = $result_film->fetch_assoc()) {
+    $titolo = $row['titolo'];
+    $datalist_risultati .= "<option value='$titolo'>";
+}
 
-if(isset($_GET['film_name'])) {
+if(isset(clearInput($_GET['film_name']))) {
     $film_name = $_GET['film_name'];
     $result = getFilmByName($conn, $film_name);
     $conn->close();
@@ -17,6 +23,7 @@ if(isset($_GET['film_name'])) {
 if ($film_name === '') {
     $result = null;
 }
+
 
 // Elabora i risultati
 if ($result) {
@@ -28,6 +35,8 @@ if ($result) {
 
     $html_content = str_replace('{ACCEDI}', $accedi_stringa, $html_content);
     $html_content = str_replace('{NOMEFILM}', $film_name, $html_content);
+    
+    $html_content = str_replace('{DATALIST-RISULTATI}', $datalist_risultati, $html_content);
     $html_content = str_replace('{FOOTER}', $footer, $html_content);
     
     echo $html_content;

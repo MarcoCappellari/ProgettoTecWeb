@@ -20,18 +20,18 @@ if ($utente) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $mail = $_POST['mail'];
-    $username = $_POST['username'];
-    $nome = $_POST['nome'];
-    $cognome = $_POST['cognome'];
-    $nuova_password = $_POST['password'];
-    $conferma_password = $_POST['confirm_password'];
+    $mail = clearInput($_POST['mail']);
+    $username = clearInput($_POST['username']);
+    $nome = clearInput($_POST['nome']);
+    $cognome = clearInput($_POST['cognome']);
+    $nuova_password = clearInput($_POST['password']);
+    $conferma_password = clearInput($_POST['confirm_password']);
 
     if($username=='' || ($username!=$utente['username'] && getUserByMailOrUsername($conn, $username))){
         $risultato .="L'username inserito non è valido o è già in uso"; 
     } else {
         if (!empty($nuova_password) && $nuova_password === $conferma_password) {
-            $password = $nuova_password ? $_POST['password'] : $password;
+            $password = $nuova_password ? clearInput($_POST['password']) : $password;
         } else {
             $risultato .='Non hai inserito una password valida! Controlla che entrambe le password siano uguali <br>';
         }

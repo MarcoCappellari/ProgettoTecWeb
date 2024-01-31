@@ -9,10 +9,10 @@ $accedi_stringa = gestisciAccesso($conn);
 $risultato_info = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $film = $_POST['film'];
-    $data = $_POST['data'];
-    $ora = $_POST['ora'];
-    $sala = $_POST['sala'];
+    $film = clearInput($_POST['film']);
+    $data = clearInput($_POST['data']);
+    $ora = clearInput($_POST['ora']);
+    $sala = clearInput($_POST['sala']);
 
     $oggi = date('Y-m-d');
 

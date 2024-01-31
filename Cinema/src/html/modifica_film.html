@@ -26,7 +26,7 @@
                 <li>{ACCEDI}</li>
             </ul>
         </nav>
-        <a href="#bottomMenu" id="goToMenu">Menù</a>
+        <a href="#bottomMenu" id="goToMenu"><span class="sr-only">Menù</span></a>
     </header>
 
     <nav id="breadcrumb">
@@ -41,7 +41,7 @@
                 <fieldset>
                     <legend>Film</legend>
                     <label for="film_selezionato">Seleziona Film: <span class="required">*</span></label>
-                    <select name="film_selezionato" required>
+                    <select name="film_selezionato" id="film_selezionato" required>
                         <option value="" selected disabled hidden></option>
                         {FILM-OPZIONI}
                     </select>
