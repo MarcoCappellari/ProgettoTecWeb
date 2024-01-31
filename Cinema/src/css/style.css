@@ -214,8 +214,7 @@ tbody tr:nth-child(odd) {
     align-items: center;
     background-color: var(--formInputBgColor);
     padding: 1em;
-    margin: auto;
-    margin-bottom: 1em;
+    margin: auto auto 1em;
 }
 
 #searchHeader h1{
@@ -387,10 +386,7 @@ tbody tr:nth-child(odd) {
 }
 
 #locandina-title img {
-    margin-left: 5%;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    margin-top: 1em;
+    margin: 1em 1em 1em 5%;
     max-width: 10em;
     height: auto;
 }
@@ -399,10 +395,7 @@ tbody tr:nth-child(odd) {
 #film-posti {
     text-align: center;
     padding: 1em;
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1em 5%;
     overflow-x: auto !important;
 }
 
@@ -410,11 +403,9 @@ tbody tr:nth-child(odd) {
     width: 60%;
     height: 8em;
     background-color : var(--cinema_screen_color);
-    margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    margin-bottom: 2em;
-    margin-top: 1em;
+    margin: 1em auto 2em;
 }
 
 #field-set-posti{
@@ -619,8 +610,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #adminMenu, #UtenteMenu {
     background-color: var(--AreaBgColor);
     border: 1px solid var(--borderColor);
-    margin: auto;
-    margin-bottom: 1.5em;
+    margin: auto auto 1.5em;
     border-radius: 8px;
 }
 
@@ -720,7 +710,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #aggiungi_film select, #aggiungi_film input[type="text"], #aggiungi_film input[type="number"], #aggiungi_film input[type="file"], #aggiungi_film textarea{
     width: 100%;
     padding: 1em;
-    border: 1xp solid var(--borderColor);
+    border: 1px solid var(--borderColor);
     border-radius: 5px;
     background-color: var(--formInputBgColor);
     font-size: 1em;
@@ -729,7 +719,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 
 #aggiunta-film-form label, #aggiunta-proiezione-form label{
     text-align: left;
-    margin-left: 0%;
+    margin-left: 0;
     color: var(--formInputColor);
 }
 
