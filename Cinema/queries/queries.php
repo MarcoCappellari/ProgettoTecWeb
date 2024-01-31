@@ -96,7 +96,7 @@ function getFilmByName($conn, $film_name)
 {
     $film_name = $conn->real_escape_string($film_name);
 
-    $query = "SELECT * FROM film WHERE titolo LIKE '%$film_name%'";
+    $query = "SELECT * FROM Film WHERE titolo LIKE '%$film_name%'";
 
     $result = $conn->query($query);
 
