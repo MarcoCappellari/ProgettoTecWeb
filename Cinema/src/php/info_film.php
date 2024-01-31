@@ -47,10 +47,9 @@ if ($proiezioniFilm) {
     $count = 0;
     foreach ($proiezioniFilm as $data => $orari) {
         $proiezioniHTML .= "<div id='data-ora'>";
-        $proiezioniHTML .= "<p>Data: <time class='film-data' datatime=".$data.">$data</time></p>";
+        $proiezioniHTML .= "<p>Data: <time class='film-data' datetime=".$data.">$data</time></p>";
         $proiezioniHTML .= "<p>Ora:</p>";
-        $proiezioniHTML .= "<ul>";
-        $proiezioniHTML .= "<div class='orari-container'>";
+        $proiezioniHTML .= "<ul class='orari-container'>";
 
         foreach ($orari as $ora) {
 
@@ -61,7 +60,7 @@ if ($proiezioniFilm) {
             $proiezioniHTML .= "<li class='film-ora'><a href='$link'>$oraFormattata</a></li>";
         }
         $count++;
-        $proiezioniHTML .= "</div></ul></div>";
+        $proiezioniHTML .= "</ul></div>";
         if ($count == 1) {
             $proiezioniHTML .= "<p class='header-info-film'>Prossime date di Proiezione:</p>";
         }

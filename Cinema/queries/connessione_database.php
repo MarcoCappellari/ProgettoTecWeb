@@ -5,10 +5,10 @@
     $password = "ailie4ouga2Eehee";
     $dbname = "mcappell";
 */
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cinema";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "cinema";
     try {
         $conn = new mysqli($servername, $username, $password, $dbname);
         

@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $showSecondForm = true;
 
 }
-
+$durata=(float) $durata;
 $template = file_get_contents('../html/modifica_film.html');
 $footer = file_get_contents('../html/footer.html');
 
