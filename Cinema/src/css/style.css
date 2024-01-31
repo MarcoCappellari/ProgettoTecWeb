@@ -174,7 +174,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: var(--BgColor);
+    background-color: var(--AreaBgColor);
 }
 
 .table-container {
@@ -237,8 +237,6 @@ tbody tr:nth-child(odd) {
 #search-form input[list] {
     width: 60%;
     min-width: fit-content;
-    /* margin-left: auto;
-    margin-right: auto; */
     padding: 0.5em 1em;
     border: 1px solid var(--borderColor);
     border-radius: 4px;
