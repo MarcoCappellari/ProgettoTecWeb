@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $showSecondForm = false;
 }
 
-$films = getFilms($conn); 
-$generi = getGeneris($conn); 
+$films = getFilms($conn);
+$generi = getGeneris($conn);
 
 //tutti i totoli del film
 while ($row = $films->fetch_assoc()) {
@@ -76,45 +76,49 @@ while ($row = $generi->fetch_assoc()) {
 
 //SECONDO FORM
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST["form_type"] == "form2") {
+    if (isset($_POST["film_id"])) {
+        $film_id = $_POST["film_id"];
 
-    $film_id = clearInput($_POST["film_id"]);
-    $titolo = clearInput($_POST["titolo"]);
-    $locandina_path = clearInput($_POST["locandina_path"]);
-    $locandina = clearInput($_POST["locandina"]);
-    $trama = clearInput($_POST["trama"]);
-    $regista = clearInput($_POST["regista"]);
-    $durata = clearInput($_POST["durata"]);
-    $genere_primario = clearInput($_POST["genere_primario"]);
-    if(isset($_POST["genere_secondario"])) {
-        
-        $genere_secondario = clearInput($_POST["genere_secondario"]);
-
-    } else {
-        $genere_secondario = null; 
-    }
-
-    if (empty($_POST["locandina"])) {
-        $locandina = clearInput($_POST["locandina_path"]);
-    } else {
+        $titolo = clearInput($_POST["titolo"]);
+        $locandina_path = clearInput($_POST["locandina_path"]);
         $locandina = clearInput($_POST["locandina"]);
-        $locandina = "src/images/locandine/" . $locandina;
-    }
+        $trama = clearInput($_POST["trama"]);
+        $regista = clearInput($_POST["regista"]);
+        $durata = clearInput($_POST["durata"]);
+        $genere_primario = clearInput($_POST["genere_primario"]);
+        if (isset($_POST["genere_secondario"])) {
 
-    if (isset($_POST["aggiorna_film"])) {
-        // Aggiorna i dati del film nella tabella Film
-        updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film_id);
-        updateGeneri($conn, $film_id, $genere_primario, $genere_secondario);
-        $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato AGGIORNATO correttamente!</p>";
-    } elseif (isset($_POST["elimina_film"])) {
-        deleteFilm($conn, $film_id);
-        $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato ELIMINATO correttamente!</p>";
-    }
+            $genere_secondario = clearInput($_POST["genere_secondario"]);
 
-    $conn->close();
-    $showSecondForm = true;
+        } else {
+            $genere_secondario = null;
+        }
+
+        if (empty($_POST["locandina"])) {
+            $locandina = clearInput($_POST["locandina_path"]);
+        } else {
+            $locandina = clearInput($_POST["locandina"]);
+            $locandina = "src/images/locandine/" . $locandina;
+        }
+
+        if (isset($_POST["aggiorna_film"])) {
+            // Aggiorna i dati del film nella tabella Film
+            updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film_id);
+            updateGeneri($conn, $film_id, $genere_primario, $genere_secondario);
+            $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato AGGIORNATO correttamente!</p>";
+        } elseif (isset($_POST["elimina_film"])) {
+            deleteFilm($conn, $film_id);
+            $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato ELIMINATO correttamente!</p>";
+        }
+
+        $conn->close();
+        $showSecondForm = true;
+    } else {
+        $risultato="<p>Devi prima selezionare un film!</p>";
+    }
 
 }
-$durata=(float) $durata;
+$durata = (float) $durata;
 $template = file_get_contents('../html/modifica_film.html');
 $footer = file_get_contents('../html/footer.html');
 
@@ -127,7 +131,8 @@ $template = str_replace('{DURATA}', $durata, $template);
 $template = str_replace('{GENERE1}', $genere_primo, $template);
 $template = str_replace('{GENERE2}', $genere_secondo, $template);
 $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
-$template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? 'hidden' : '', $template);
+$template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? '' : 'hidden', $template);
+
 $template = str_replace('{RISULTATO}', $risultato, $template);
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 $template = str_replace('{FOOTER}', $footer, $template);

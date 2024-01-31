@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>Modifica o elimina film: Area Amministrativa</title>
     <meta name="keywords" content="Modifica film, modifica, elimina film, elimina, PopCorn Cinema, film ">
-    <meta name="description" content="Pagina per modifica o eliminare film del sito ufficiale del PopCorn Cinema di Padova">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Pagina per modifica o eliminare film del sito ufficiale del PopCorn Cinema di Padova">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
@@ -19,7 +20,7 @@
         <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
         <nav id="menu">
             <ul>
-                <li><a href="#breadcrumb"  class="sr-only">Salta al contenuto principale</a></li>
+                <li><a href="#breadcrumb" class="sr-only">Salta al contenuto principale</a></li>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
                 <li><a href="../php/info_cinema.php">Informazioni</a></li>
                 <li><a href="../php/recensioni.php">Recensioni </a></li>
@@ -30,8 +31,8 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt; <a
-                href="../php/admin.php">Area Amministrativa</a> &gt; Modifica o Elimina Film</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt; <a href="../php/admin.php">Area
+                Amministrativa</a> &gt; Modifica o Elimina Film</p>
     </nav>
 
     <main>
@@ -49,7 +50,7 @@
                 </fieldset>
                 <input type="submit" value="Modifica Film">
             </form>
-
+            {RISULTATO}
             <form id="modifica-film-form" action="../php/modifica_film.php" method="post" {SHOW_SECOND_FORM}>
 
                 <input type="hidden" id="film_id" name="film_id" value="{ID_FILM}">
@@ -61,7 +62,7 @@
                     <div>
                         <label for="titolo">Titolo: <span class="required">*</span></label>
                         <input type="text" id="titolo" name="titolo" value="{TITOLO}" required>
-                        
+
                     </div>
                     <div id="locandina-modifica">
                         <label for="locandina">Locandina: <span class="required">*</span></label>
@@ -101,12 +102,13 @@
                         <input type="submit" name="elimina_film" value="Elimina">
                     </div>
                 </fieldset>
+
             </form>
 
-            {RISULTATO}
+
         </div>
     </main>
-    
+
     {FOOTER}
 
     <nav id="bottomMenu">
