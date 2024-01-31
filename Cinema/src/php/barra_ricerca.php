@@ -14,8 +14,8 @@ while ($row = $result_film->fetch_assoc()) {
     $datalist_risultati .= "<option value='$titolo'>";
 }
 
-if(isset(clearInput($_GET['film_name']))) {
-    $film_name = $_GET['film_name'];
+if(isset($_GET['film_name'])) {
+    $film_name = clearInput($_GET['film_name']);
     $result = getFilmByName($conn, $film_name);
     $conn->close();
 }

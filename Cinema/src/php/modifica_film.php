@@ -93,19 +93,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $genere_secondario = null; 
     }
 
-    if (empty(clearInput($_POST["locandina"]))) {
+    if (empty($_POST["locandina"])) {
         $locandina = clearInput($_POST["locandina_path"]);
     } else {
         $locandina = clearInput($_POST["locandina"]);
         $locandina = "src/images/locandine/" . $locandina;
     }
 
-    if (isset(clearInput($_POST["aggiorna_film"]))) {
+    if (isset($_POST["aggiorna_film"])) {
         // Aggiorna i dati del film nella tabella Film
         updateFilm($conn, $titolo, $locandina, $trama, $regista, $durata, $film_id);
         updateGeneri($conn, $film_id, $genere_primario, $genere_secondario);
         $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato AGGIORNATO correttamente!</p>";
-    } elseif (isset(clearInput($_POST["elimina_film"]))) {
+    } elseif (isset($_POST["elimina_film"])) {
         deleteFilm($conn, $film_id);
         $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato ELIMINATO correttamente!</p>";
     }
