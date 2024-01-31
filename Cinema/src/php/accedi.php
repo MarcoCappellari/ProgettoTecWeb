@@ -7,7 +7,7 @@ $utente_errato="";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_POST['utente']) || !isset($_POST['password'])) {
-        header('Location: ../html/404.html');
+        header('Location: 404.php');
         exit();
     }
 

@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png">
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
 </head>
 
 <body>
 
 <header>
-    <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+    <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
     <nav id="menu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>
@@ -28,8 +28,8 @@
 </header>
 
 <nav id="breadcrumb">
-    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> ><a
-            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> > Selezione posti</p>
+    <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt;<a
+            href="../php/info_film.php?film={IDFILM}"> Film: <cite>{TITOLO}</cite></a> &gt; Selezione Posti</p>
 </nav>
 
 <main>
@@ -37,7 +37,7 @@
         <div id="locandina-title">
             <img src="../../{LOCANDINA}" alt="locandina del film {TITOLO}">
             <div>
-                <h2><cite>{TITOLO}</cite></h2>
+                <h1 id="titolo-film-posti"><cite>{TITOLO}</cite></h1>
                 <p>Data:<span class="film-data"><time datetime="{DATA}">{DATA}</time></span></p>
                 <p>Ora: <span class="film-ora"><time datetime="{ORA}">{ORA}</time></span></p>
                 <p>{SALA}</p>
@@ -45,23 +45,20 @@
         </div>
 
         <div id="film-posti">
-            <h3>SELEZIONA LE POLTRONE</h3>
+            <h2>SELEZIONA LE POLTRONE</h2>
             <div id="cinema-screen"></div>
 
-            <div id="form-container">
-                <form action="../php/prenota.php" method="post">
-                    <fieldset id="field-set-posti">
-                        <legend class="sr-only">Selezione posti</legend>
-                        <div id="posti-wrapper">
-                            {POSTI}
-                        </div>
+            <form action="../php/prenota.php" method="post">
+                <fieldset id="field-set-posti">
+                    <legend class="sr-only">Selezione posti</legend>
+                    <div id="posti-wrapper">
+                        {POSTI}
+                    </div>
+                    {INPUT}
+                </fieldset>
+                <input type='submit' value='Prenota' id="prenota-button">
+            </form>
 
-                        {INPUT}
-
-                    </fieldset>
-                    <input type='submit' value='Prenota' id="prenota-button">
-                </form>
-            </div>
         </div>
     </div>
 
@@ -90,7 +87,7 @@
         <li><a href="../../index.php"><span lang="en">Home</span></a></li>
         <li><a href="../php/info_cinema.php">Informazioni</a></li>
         <li><a href="Recensioni.html">Recensioni </a></li>
-        <li><a href="Accedi.html">Accedi</a></li>
+        <li>{ACCEDI}</li>
     </ul>
 </nav>
 

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO Film (titolo, regista, locandina, durata, trama) VALUES ('$titolo' , '$regista' , '$locandina_path', '$durata' , '$trama_film')";
     if (!$conn->query($sql)) {
-        header('Location: ../html/500.html');
+        header('Location: 500.php');
         exit();
     }
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql2 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_primario')";
     if (!$conn->query($sql2)) {
-        header('Location: ../html/500.html');
+        header('Location: 500.php');
         exit();
     }
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $genere_secondario = $_POST['genere_secondario'];
         $sql3 = "INSERT INTO Classificazione(id_film, nome_genere) VALUES ('$id_film','$genere_secondario')";
         if (!$conn->query($sql3)) {
-            header('Location: ../html/500.html');
+            header('Location: 500.php');
             exit();
         }
     }

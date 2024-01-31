@@ -13,7 +13,7 @@ if(!$output){
     header('Location: recensioni.php'); 
     exit();
 } else {
-    header('Location: ../html/500.html'); 
+    header('Location: 500.php'); 
     exit(); 
 }
 

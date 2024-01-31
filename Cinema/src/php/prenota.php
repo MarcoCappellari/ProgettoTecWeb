@@ -10,9 +10,8 @@ $id_film = $_POST['idFilm'];
 $ora_film = $_POST['ora'];
 $data_film = $_POST['data'];
 
-// Verifico ERROR 404
 if (empty($id_film) || empty($ora_film) || empty($data_film) || absentProiection($conn, $id_film, $ora_film, $data_film)) {
-    header('Location: ../html/404.html');
+    header('Location: 404.php');
     exit();
 }
 

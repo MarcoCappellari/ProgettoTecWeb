@@ -146,9 +146,9 @@ a:visited {
 
 /*-------------TABELLE-----------*/
 table {
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
+    margin: auto;
     border-collapse: collapse;
+    width: 80%;
 }
 
 caption {
@@ -167,18 +167,6 @@ th, td {
     border: 1px solid var(--borderColor);
     padding: 0.5em;
     text-align: center;
-}
-
-@media screen and (min-width: 1000px) {
-    .table-flip {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .tr-flip {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 tbody tr:nth-child(even) {
@@ -272,35 +260,30 @@ tbody tr:nth-child(odd) {
 
 .film-image:hover {
     transform: scale(0.9);
-    /* Ingrandisce l'elemento del 10% al passaggio del mouse */
 }
 
-.bold-text {
+.header-info-film {
     font-weight: bold;
-    color: var(--txtColor);
     font-size: 1.1em;
 }
 
-/*---------------------Template_film-----------------------*/
+/*---------------------INFO FILM-----------------------*/
 #film-informazioni-container {
     display: flex;
     justify-content: space-around;
-    background-color: var(--bgColor);
-    color: var(--txtColor);
     align-items: center;
-    /* max-width: 1200px;*/
     padding: 1em;
     margin: auto;
 }
 
 #film-dettagli h1 {
     padding: 0.2em;
-    background-color: var(--visitedLinkColor);
-    color: var(--bgColor);
+    background-color: var(--formInputBgColor);
     text-align: center;
     text-transform: uppercase;
     border-radius: 8px;
     line-height: 1;
+    border: 1px solid var(--borderColor);
 }
 
 #film-locandina img {
@@ -319,27 +302,32 @@ tbody tr:nth-child(odd) {
     gap: 10px;
     align-items: center;
     justify-items: center;
-    border: 1px solid var(--txtColor);
+    border: 1px solid var(--borderColor);
+    background-color: var(--formInputBgColor);
     border-radius: 8px;
     padding: 0.4em;
     margin: auto;
 }
 
-/*  */
 .film-data, .film-ora {
     padding: 0.4em;
     font-weight: bold;
     font-size: 1.1em;
 }
 
-.film-ora {
-    font-family: 'architectural', 'cursive', sans-serif;
-}
-/*  */
+#data-ora {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em;
 
-#title-date-time h2 {
-    margin-bottom: 0.5em;
 }
+
+#data-ora ul {
+    list-style-type: none;
+}
+
 
 /*------------ERRORI DISPONIBILITA'-------------*/
 .div-non-esiste {
@@ -351,7 +339,7 @@ tbody tr:nth-child(odd) {
 .immagine-indisponibilità {
     width: 200px;
     height: 200px;
-    background-image: url("../images/error-film.png");
+    background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -375,6 +363,10 @@ tbody tr:nth-child(odd) {
     margin-bottom: 1em;
 }
 
+#titolo-film-posti{
+    font-size: 1.5em;
+}
+
 #locandina-title {
     display: flex;
     align-items: center;
@@ -391,21 +383,6 @@ tbody tr:nth-child(odd) {
     height: auto;
 }
 
-/* usato ? */
-#data-ora {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5em;
-
-}
-
-/* usato ? */
-#data-ora ul {
-    list-style-type: none;
-}
-
 /*----------------POSTI----------------*/
 #film-posti {
     text-align: center;
@@ -414,33 +391,18 @@ tbody tr:nth-child(odd) {
     margin-left: 5%;
     margin-top: 1em;
     margin-bottom: 1em;
-    max-width: 70%;
-    flex-grow: 1;
+    overflow-x: auto !important;
 }
 
 #cinema-screen {
     width: 60%;
     height: 8em;
-    padding: 0.5em;
-    background-color: var(--cinema_screen_color); 
-    background-image: url('../images/logo1.png'); 
-    background-size: contain; /* Ridimensiona l'immagine per adattarsi all'interno */
-    background-repeat: no-repeat;
-    background-position: center; /* Centra l'immagine */
+    background-color : var(--cinema_screen_color);
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: 1em;
-    border: 10px solid black; /* Aggiungi una cornice nera */
-}
-
-#form-posti{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    margin:auto;
-    overflow: auto;
 }
 
 #posti-wrapper{
@@ -448,42 +410,39 @@ tbody tr:nth-child(odd) {
     flex-direction: column;
     align-items: center;  
     margin-bottom: 1em;
-    width: 100%;
+    overflow-x: auto !important;
 }
 
 .fila-posti{
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     gap: 0.1em;
     list-style: none;
-    width: 100%;
-    align-items: center;
+    overflow-x: auto !important;
 }
 
 .fila-posti li{
-    flex: 1 1 2em;
     margin: 0.2em;
 }
 
 .label-posto, .legenda-item {
     display: inline-block;
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+    width: 2em;
+    height: 1.8em;
     margin: auto;   
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
-    border: 2px solid var(--borderPostoColor);
+    border: 1px solid var(--borderPostoColor);
 }
 
-.label-posto:hover, input[type="checkbox"]:focus + .label-posto{
-    border: 2px solid var(--linkColor);
+.label-posto:hover, .label-posto:focus{
+    border: 1px solid var(--linkColor);
 }
 
 .legenda-item{
     cursor: auto;
-    width: 2em;
-    height: 1.6em;
 }
 
 /* Posto libero */
@@ -541,14 +500,6 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     background-image: url("../images/error.png");
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-#prenota-button {
-    background-color: var(--linkColor);
-    color: var(--txtColorHome);
-    padding: 0.7em 1em;
-    border-radius: 5px;
-    margin-bottom: 2em;
 }
 
 /*-------------LOGIN e SIGNIN--------------------*/
@@ -681,7 +632,8 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #biglietto-recap-form input[type="submit"],
 #modifica_film_container input[type="submit"],
 #modifica_utente_container input[type="submit"],
-#proiezioni_container input[type="submit"]
+#proiezioni_container input[type="submit"],
+#prenota-button,
 #invia-recensione-button {    
     margin-left: auto;
     margin-right: auto;
@@ -703,6 +655,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #modifica_film_container input[type="submit"]:hover, #modifica_film_container input[type="submit"]:focus,
 #modifica_utente_container input[type="submit"]:hover, #modifica_utente_container input[type="submit"]:focus,
 #proiezioni_container input[type="submit"]:hover, #proiezioni_container input[type="submit"]:focus,
+#prenota-button:hover, #prenota-button:focus,
 #logoutForm button:hover, #logoutForm button:focus{
     border: 2px solid var(--hoverColor);
 }

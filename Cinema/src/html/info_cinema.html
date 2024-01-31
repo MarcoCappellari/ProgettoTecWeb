@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png">
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
 </head>
 
 <body>
     
     <header>
-        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
@@ -29,7 +29,7 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt Informazioni</p>
+        <p>Ti trovi in: <a href="../../index.php"><span lang="en">Home</span></a> &gt; Informazioni</p>
     </nav>
 
     <main>
@@ -55,86 +55,54 @@
             Per informazioni dettagliate sugli orari in giorni festivi, si prega di contattarci direttamente.<br>
             Ringraziamo per la comprensione.</p>
             <div class="table-container">
-                <table aria-describedby="desc-orari" class="table-flip" id="orari">
+                <table aria-describedby="desc-orari" id="orari">
                     <thead>
-                        <tr class="tr-flip">
+                        <tr>
                             <th scope="col">Giorno</th>
                             <th scope="col">Orario Apertura</th>
                             <th scope="col">Orario Chiusura</th>
                         </tr>
                     </thead>
-                    <tbody class="table-flip">
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Lunedì</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="23:00">23:00</time></td>
+                    <tbody>
+                        <tr>
+                            <th scope="row" abbr="lun">Lunedì</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="23:00">23:00</time></td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Martedì</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="23:00">23:00</time></td>
+                        <tr>
+                            <th scope="row" abbr="mar">Martedì</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="23:00">23:00</time></td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Mercoledì</th>
-                            <td scope="row" data-label="Orario Apertura">Chiuso</td>
-                            <td scope="row" data-label="Orario Chiusura">Chiuso</td>
+                        <tr>
+                            <th scope="row" abbr="mer">Mercoledì</th>
+                            <td>Chiuso</td>
+                            <td>Chiuso</td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Giovedì</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="23:00">23:00</time></td>
+                        <tr>
+                            <th scope="row" abbr="gio">Giovedì</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="23:00">23:00</time></td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Venerdì</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="01:00">01:00</time></td>
+                        <tr>
+                            <th scope="row" abbr="ven">Venerdì</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="01:00">01:00</time></td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Sabato</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="02:00">02:00</time></td>
+                        <tr>
+                            <th scope="row" abbr="sab">Sabato</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="02:00">02:00</time></td>
                         </tr>
-                        <tr class="tr-flip">
-                            <th scope="row" data-label="Giorno">Domenica</th>
-                            <td scope="row" data-label="Orario Apertura"><time datatime="15:30">15:30</time></td>
-                            <td scope="row" data-label="Orario Chiusura"><time datatime="01:00">00:00</time></td>
+                        <tr>
+                            <th scope="row" abbr="dom">Domenica</th>
+                            <td><time datatime="15:30">15:30</time></td>
+                            <td><time datatime="01:00">00:00</time></td>
                         </tr>
                     </tbody>
                 </table>
                 <p class="sr-only" id="desc-orari">La tabella presenta tre colonne: ogni riga riporta il giorno seguito dall'orario di apertura e seguito dall'orario di chisura
                 relativo a quel giorno.</p>
-            </div>
-
-            <h2>Tariffe</h2>
-            <p>Le tariffe del cinema variano in base all'età: di seguito sono esposte le tariffe per le diverse fasce da noi selezionate.</p>
-            <div class="table-container">
-                <table aria-describedby="desc-tariffe">
-                    <thead>
-                        <tr>
-                            <th scope="col">Fascia d'Età</th>
-                            <th scope="col">Tariffa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" data-label="Fascia d'Età">Adulti (18+)</th>
-                            <td scope="row" data-label="Tariffa">10,00 &euro;</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" data-label="Fascia d'Età">Adolescenti (13-17)</th>
-                            <td scope="row" data-label="Tariffa">8,00 &euro;</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" data-label="Fascia d'Età">Bambini (5-12)</th>
-                            <td scope="row" data-label="Tariffa">6,00 &euro;</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" data-label="Fascia d'Età">Bambini (0-4)</th>
-                            <td scope="row" data-label="Tariffa">Gratis</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p id="desc-tariffe" class="sr-only">La tabella, composta da due colonne, fornisce in ogni riga la fascia d'età associata al relativo prezzo di entrata.</p>
             </div>
 
             <h2>Le Nostre Sale</h2>

@@ -31,10 +31,10 @@ if ($result==null) {
 
     foreach ($result as $row) {
         $stringa_info_sale .=  '<tr>
-                                    <td scope="row" data-label="Sala">' . $row['NomeSala'] . '</td>
-                                    <td scope="row" data-label="n posti">' . $row['NumPosti'] .'</td>
-                                    <td scope="row" data-label="tecnologia video">' .$row['TecVideo'] .'</td>
-                                    <td scope="row" data-label="tecologia audio"><span lang="en">' .$row['TecAudio'] .'</span></td>
+                                    <th scope="row">' . $row['NomeSala'] . '</th>
+                                    <td>' . $row['NumPosti'] .'</td>
+                                    <td>' .$row['TecVideo'] .'</td>
+                                    <td><span lang="en">' .$row['TecAudio'] .'</span></td>
                                 </tr>'; 
     }
     $stringa_info_sale .=      '</tbody>

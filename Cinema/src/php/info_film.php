@@ -10,7 +10,7 @@ if (isset($_GET['film'])) {
     // Recupera l'ID del film dalla query string
     $idFilm = $_GET['film'];
 } else {
-    header('Location: ../html/404.html'); //nel caso in cui chiamo la pagina senza specificare id
+    header('Location: 404.php'); 
     exit;
 }
 
@@ -47,7 +47,7 @@ if ($proiezioniFilm) {
     $count = 0;
     foreach ($proiezioniFilm as $data => $orari) {
         $proiezioniHTML .= "<div id='data-ora'>";
-        $proiezioniHTML .= "<p>Data: <span class='film-data'>$data</span></p>";
+        $proiezioniHTML .= "<p>Data: <time class='film-data' datatime=".$data.">$data</time></p>";
         $proiezioniHTML .= "<p>Ora:</p>";
         $proiezioniHTML .= "<ul>";
         $proiezioniHTML .= "<div class='orari-container'>";
@@ -63,7 +63,7 @@ if ($proiezioniFilm) {
         $count++;
         $proiezioniHTML .= "</div></ul></div>";
         if ($count == 1) {
-            $proiezioniHTML .= "<p><span class='bold-text'>Prossime date di Proiezione:</span></p>";
+            $proiezioniHTML .= "<p class='header-info-film'>Prossime date di Proiezione:</p>";
         }
     }
     if ($count == 1) {
@@ -76,6 +76,10 @@ if ($proiezioniFilm) {
 }
 
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
+
+$footer = file_get_contents('../html/footer.html');
+$template = str_replace('{FOOTER}', $footer, $template);
+
 echo $template;
 
 ?>

@@ -31,7 +31,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && $_SERVER
     session_destroy();
 
     // Reindirizza l'utente alla pagina di login o alla home
-    header('Location: Accedi.php');
+    header('Location: accedi.php');
     exit();
 }
 
