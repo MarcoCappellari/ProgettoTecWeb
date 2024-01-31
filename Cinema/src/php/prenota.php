@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $biglietto .= "<p>Poltrona: $posto</p>";
             $biglietto .= "</div>";
             $biglietto .= "<div class='biglietto-recap-field'>";
-            $biglietto .= "<time datatime=“.$ora_formattata.”> $ora_formattata </time>";
-            $biglietto .= "<time datatime=“.$data_film.”> $data_film </time>";
+            $biglietto .= "<time datetime=“.$ora_formattata.”> $ora_formattata </time>";
+            $biglietto .= "<time datetime=“.$data_film.”> $data_film </time>";
             $biglietto .= "</div>";
             $biglietto .= "</div>";
         }

@@ -47,7 +47,7 @@ if (!$recensioni) {
     while ($recensione = $recensioni->fetch_assoc()) {
         $output_recensioni .= '<div class="recensione">
                                 <p class="utente">' . $recensione['username'] . '</p>
-                                <p class="data-recensione"><time datatime="' . $recensione['data'] . '">' . $recensione['data'] . '</time></p>
+                                <p class="data-recensione"><time datetime="' . $recensione['data'] . '">' . $recensione['data'] . '</time></p>
                                 <p class="content-recensione">"' . $recensione['content'] . '"</p> 
                             </div>';
     }
