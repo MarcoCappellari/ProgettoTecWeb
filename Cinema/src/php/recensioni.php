@@ -22,10 +22,10 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $form_recensione, $recensioni_page);
     }
 } else {
-    $accedi_stringa = "<a href='../html/accedi.html'>Accedi</a>";
+    $accedi_stringa = "<a href='../php/accedi.php'>Accedi</a>";
     $accedi_per_recensione = "<p>Ops! Sembra che tu non abbia ancora effettuato l'accesso!<br>
                                 Per lasciare una recensione devi prima aver effettuato l'accesso al tuo accout.<br>
-                                Clicca qui per <a href='../html/accedi.html'>Accedere</a>.</p>";
+                                Clicca qui per <a href='../php/accedi.php'>Accedere</a>.</p>";
     $recensioni_page = str_replace('{SCRIVI-RECENSIONE}', $accedi_per_recensione, $recensioni_page);
 }
 $recensioni_page = str_replace('{ACCEDI}', $accedi_stringa, $recensioni_page);
