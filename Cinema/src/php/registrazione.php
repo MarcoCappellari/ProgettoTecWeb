@@ -32,8 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if($check_cont === 0){
-        $sql = "INSERT INTO Utente (mail, username, nome, cognome, permessi, password) VALUES ('$email','$username','$nome','$cognome',0,'$password')";
-        $conn->query($sql);
+        effettuaRegistrazione($conn, $email, $username, $nome, $cognome, $password);
         $risultato_info="<p class='signin-success'>Utente registrato con SUCCESSO!</p>";
     }
     $conn->close();

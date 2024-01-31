@@ -551,5 +551,11 @@ function getIdSala($conn, $sala){
     return $row_verifica_succ['id'];
 }
 
+function effettuaRegistrazione($conn, $email, $username, $nome, $cognome, $password){
+    $sql = "INSERT INTO Utente (mail, username, nome, cognome, permessi, password) VALUES (?, ?, ?, ?, 0, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $email, $username, $nome, $cognome, $password);
+    $stmt->execute();
+}
 
 ?>

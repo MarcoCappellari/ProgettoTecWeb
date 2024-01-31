@@ -37,6 +37,7 @@
         <div id="login-container">
             <div id="login">
                 <h1>Accedi</h1>
+                {UTENTE-ERRATO}
                 <form action="../php/accedi.php" method="post">
                     <fieldset>
                         <legend>Dati di Accesso</legend>
@@ -49,7 +50,6 @@
                             <input type="password" id="password" name="password" required>
                         </div>
                     </fieldset>
-                    {UTENTE-ERRATO}
                     <input type="submit" value="Accedi">
                 </form>
                 <p>Non sei ancora registrato? <a href="../php/registrazione.php">Registrati</a></p>
