@@ -1,31 +1,38 @@
-#breadcrumb, #bottomMenu, #goToMenu, nav,#search-form {
+#bottomMenu, #goToMenu, #search-form , #menu{
     display: none;
 }
 
-
-/* Ottimizza il layout per la stampa */
-main {
-    margin: 20px;
+#breadcrumb {
+    color: black;
+    padding: 0;
+    margin: 0;
 }
 
-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
+main {
+    margin: 10px;
+}
+
+footer {
+    padding: 0em;
+    margin: 0;
+}
+
+footer>div {
+    padding: 10px ;
+}
+
+footer .footer-title {
+    font-size: 20px;
+    margin-bottom: 0;
 }
 
 #logo{
     width: 9em;
     height: auto; 
 }
-
-
-
+/*Index*/
 .film-image {
-    max-width: 80%;
-    height: auto;
-    border-radius: 8px;
+    max-width: 90%;
 }
 
 #film-container {
@@ -34,11 +41,10 @@ header {
    
 }
 
-
-
 /*info-film*/
 #film-locandina {
 display: none;
+margin: 0;
 }
 
 #film-dettagli {
@@ -51,7 +57,93 @@ display: none;
 }
 
 .orari-container {
-   
+
+   margin: 10px;
     grid-template-columns: repeat(3, 1fr);
 
+}
+
+/*posti*/
+#locandina-title img {
+    margin:20px;
+    max-width: 100px;
+    height: auto;
+}
+
+#film-posti {
+   
+    padding: 10px;
+    margin:10px;
+    max-width: 70%;
+    flex-grow: 1;
+}
+
+#cinema-screen {
+    width: 30%;
+    height: 2em;
+}
+
+/*recap biglietti*/
+#container-recap-biglietti{
+    flex-wrap: nowrap;
+    padding: 10px;
+
+}
+
+.biglietto-recap{
+    padding: 10px;
+}
+
+
+#container-recap-prenotazione p{
+    display: none;
+}
+
+/*Recensione*/
+.recensione{
+    width: 100%;
+    margin: 20px;
+   padding: 0px;
+}
+
+/*login*/
+#login {
+    padding: 10px;
+
+}
+
+/*admin*/
+#adminArea {
+    padding: 0;
+    margin: 0;
+}
+
+/*aggiungi-film*/
+#aggiungi_film{
+    padding: 0;
+}
+
+#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea,#aggiungi_film fieldset{
+    width: 100%;
+    padding: 5px;
+    font-size: medium;
+    box-sizing: border-box;
+}
+#aggiunta-film-form {
+   
+    padding: 0px;
+
+    gap: 10px;
+
+}
+
+/*aggiungi proiezione*/
+#aggiungi_proiezione{
+    padding: 10px;
+}
+
+/*elimina proiezioni*/
+#modifica_film_container, #proiezioni_container, #modifica_utente_container {
+    max-width: 100%;
+    
 }

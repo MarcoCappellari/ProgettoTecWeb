@@ -4,9 +4,9 @@ session_start();
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true && isset($_SESSION['mail'])) {
     $permessi = getPermessiByUsername($conn, $_SESSION['mail']);
     if ($permessi == true) {
-        $accedi_stringa = "<a href='src/php/admin.php'>Area amministrativa</a>";
+        $accedi_stringa = "<a href='src/php/admin.php'>Area Amministrativa</a>";
     } else {
-        $accedi_stringa = "<a href='src/php/profilo.php'>Area personale</a>";
+        $accedi_stringa = "<a href='src/php/profilo.php'>Area Personale</a>";
     }
 } else {
     $accedi_stringa = '<a href="src/php/accedi.php">Accedi</a>';
@@ -37,7 +37,7 @@ if ($result->num_rows == 0) {
     while ($row = $result->fetch_assoc()) {
         $stringa_info_film .= '<section class="film">';
         $stringa_info_film .= '<a href="src/php/info_film.php?film=' . $row['id'] . '">';
-        $stringa_info_film .= '<img class="film-image" src="' . $row['locandina'] . '" alt="">';
+        $stringa_info_film .= '<img class="film-image" src="' . $row['locandina'] . '" alt="locandina del film ' .$row['titolo'] .'">';
         $stringa_info_film .= '<p> ' . $row['titolo'] . '</p>';
         $stringa_info_film .= '</a>';
         $stringa_info_film .= '</section>';

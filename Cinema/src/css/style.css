@@ -102,7 +102,6 @@ main {
     margin: auto;
     line-height: 1.5;
     background-color: var(--mainBgColor);
-    padding-top: 1em;
     padding-bottom: 1em;
 }
 
@@ -111,6 +110,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     background-color: var(--BgColor);
     color: var(--footerTxtColor);
     padding: 1em;
@@ -209,45 +209,55 @@ tbody tr:nth-child(odd) {
 /*---------------SEARCHBAR-----------------*/
 #searchHeader {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--searchHeaderBg);
+    background-color: var(--formInputBgColor);
     padding: 1em;
     margin: auto;
+    margin-bottom: 1em;
+}
+
+#searchHeader h1{
+    margin: 0;
+    text-align: center;
 }
 
 #search-form {
-    margin-right: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    min-width: fit-content;
     border: none;
 }
 
 #search-form input[list] {
-    height: 1em;
-    width: 17em;
-    padding: 1em;
-    font-size: 0.8em;
+    width: 60%;
+    min-width: fit-content;
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding: 0.5em 1em;
+    border: 1px solid var(--borderColor);
+    border-radius: 4px;
+    font-size: 1em;
 }
 
-
-#search-form input[type="submit"] {
-    padding: 1em;
-    background-color: var(--visitedLinkColor);
-    color: var(--headerTxtColor);
+#search-form input[type="submit"]{
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-#field-set-posti{
-    border: none;
-    width: 100%;
-}
-
+/*------------INDEX-----------------*/
 #film-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
     gap: 2em;
     text-align: center;
-    color: var(--txtColorHome);
-    background-color: var(--bgColorHome);
-    padding: 1em;
     margin: auto;
 }
 
@@ -262,7 +272,7 @@ tbody tr:nth-child(odd) {
     transform: scale(0.9);
 }
 
-.header-info-film {
+.header-info-film, .header-info-biglietto {
     font-weight: bold;
     font-size: 1.1em;
 }
@@ -345,14 +355,16 @@ tbody tr:nth-child(odd) {
     margin: auto;
 }
 
+#film-non-esiste{
+    margin: auto;
+    text-align: center;
+}
+
 #film-name-error {
-    color: var(--visitedLinkColor);
     font-weight: bold;
     font-size: 1.3em;
-    background-color: var(--bgColor);
     padding: 0.3em;
     border-radius: 5px;
-
 }
 
 /* ----------locandina nella pagina selezione posti------------- */
@@ -403,6 +415,10 @@ tbody tr:nth-child(odd) {
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: 1em;
+}
+
+#field-set-posti{
+    border: none;
 }
 
 #posti-wrapper{
@@ -634,10 +650,12 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #modifica_utente_container input[type="submit"],
 #proiezioni_container input[type="submit"],
 #prenota-button,
+#search-form input[type="submit"],
 #invia-recensione-button {    
     margin-left: auto;
     margin-right: auto;
-    padding: 1em;
+    margin-top: 1em;
+    padding: 0.5em 1em;
     border: 2px solid var(--buttonColor);
     border-radius: 4px;
     background-color: var(--buttonColor);
@@ -656,6 +674,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 #modifica_utente_container input[type="submit"]:hover, #modifica_utente_container input[type="submit"]:focus,
 #proiezioni_container input[type="submit"]:hover, #proiezioni_container input[type="submit"]:focus,
 #prenota-button:hover, #prenota-button:focus,
+#search-form input[type="submit"]:hover, #search-form input[type="submit"]:focus,
 #logoutForm button:hover, #logoutForm button:focus{
     border: 2px solid var(--hoverColor);
 }
@@ -738,26 +757,19 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
 /*------------------BIGLIETTI------------------*/
 
 #biglietti-container {
-    background-color: #181818;
     font-size: 1em;
-    color: #333;
     padding: 1em;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-#biglietti-container h2 {
-    color: #e50914;
-}
-
 #nessun-biglietto {
-    color: #fff;
     padding: 4em;
 }
 
 .biglietto {
-    background-color: #fff;
+    background-color: var(--AreaBgColor);
     padding: 1em;
     border-radius: 8px;
     margin: 1em auto;
@@ -823,7 +835,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     font-size: 1em;
 }
 
-/*--------------------------MODIFICA UTENTE E MODIFICA FILM--------------------------*/
+/*--------------------------MODIFICA UTENTE E MODIFICA FILM E ELIMINA FILM--------------------------*/
 
 #modifica_film_container, #proiezioni_container, #modifica_utente_container {
     max-width: 60%;
@@ -871,6 +883,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     padding: 1em;
 }
 
+#seleziona-film select,
 #modifica_film_container select,
 #modifica_film_container input,
 #modifica_film_container textarea,

@@ -22,11 +22,14 @@ if ($film_name === '') {
 if ($result) {
     $film_id = $result['id'];
     header("Location: info_film.php?film=$film_id");
-    //exit();
 } else {
-    $html_content = file_get_contents('../html/barra_ricerca.html'); //linux
+    $html_content = file_get_contents('../html/barra_ricerca.html'); 
+    $footer = file_get_contents('../html/footer.html');
+
     $html_content = str_replace('{ACCEDI}', $accedi_stringa, $html_content);
     $html_content = str_replace('{NOMEFILM}', $film_name, $html_content);
+    $html_content = str_replace('{FOOTER}', $footer, $html_content);
+    
     echo $html_content;
 
 }

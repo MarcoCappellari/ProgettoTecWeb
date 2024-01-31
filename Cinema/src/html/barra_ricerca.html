@@ -3,18 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Film non esistente</title>
-    <meta name="keyword" content="PopCorn Cinema, film ">
-    <meta name="description" content="Sito ufficiale del PopCorn Cinema di Padova">
+    <title>Film Non Esistente PopCorn Cinema</title>
+    <meta name="keywords" content="PopCorn Cinema, film ">
+    <meta name="description" content="Il film cercato non è presente nel sito ufficiale del PopCorn Cinema di Padova">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="../css/style.css" media="screen">
-    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1000px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 760px)">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="shortcut icon" href="../images/logo.png">
+    <link rel="shortcut icon" href="../images/logo-PopCorn-Cinema.png">
 </head>
 
 <body>
     <header>
-        <img id="logo" src="../images/logo1.png" alt="Logo PopCorn cinema con cestello di popcorn">
+        <img id="logo" src="../images/logo-PopCorn-Cinema.png" alt="Logo PopCorn cinema con cestello di popcorn">
         <nav id="menu">
             <ul>
                 <li><a href="../../index.php"><span lang="en">Home</span></a></li>
@@ -32,47 +33,30 @@
 
     <main>
         <div id="searchHeader">
-            <h2>Film del momento</h2>
+            <h1>Film del momento</h1>
             <form id="search-form" action="../php/barra_ricerca.php" method="GET">
-                    <input type="text" name="film_name" placeholder="Inserisci il nome di un film...">
-                    <input type="submit" value="Cerca" />
+                <input list="film-list" name="film_name" placeholder="Inserisci il nome di un film...">
+                <input type="submit" value="Cerca" />
             </form>
         </div>
 
         <div id="film-non-esiste">
-            <div id="immagine-errore-film"> </div>
+            <div class="immagine-indisponibilità"> </div>
             <div id="messaggio-errore-film">
                 <p>Purtroppo, non abbiamo trovato alcun film corrispondente al nome:
                     <span id="film-name-error">{NOMEFILM}</span>
                 </p>
                 <p> Ti consigliamo di verificare l'ortografia, utilizzare un nome alternativo o esplorare la nostra
                     vasta selezione di film disponibili.</p>
-                <p>Torna alla <a href="../../index.php">lista dei film</a></p>
+                <p>Torna alla <a href="../../index.php">Lista dei Film</a></p>
             </div>
         </div>
 
 
     </main>
 
-    <footer>
-        <div>
-            <p class="footer-title" lang="en">About Us</p>
-            <p>Siamo il primo cinema in Italia a regalare l'emozione di proiezioni immersive a 360 gradi.</p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en"> Where to Find Us</p>
-            <p><a href="https://maps.app.goo.gl/z8vrPKRSw4mfEA6HA" target="_blank">Via Antonio de Curtis,
-                    14, Due Carrare (<abbr title="Padova">PD</abbr>)</a></p>
-        </div>
-        <div>
-            <p class="footer-title" lang="en">Contact Us</p>
-            <ul>
-                <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
-                <li>Telefono: <a href="tel:+123456789">+123456789</a></li>
-                <li><a href="#"><span lang="en"><abbr title="Frequently Asked Questions">FAQ</abbr></span></a></li>
-            </ul>
-        </div>
-    </footer>
+    {FOOTER}
+
     <nav id="bottomMenu">
         <ul>
             <li><a href="../../index.php"><span lang="en">Home</span></a></li>

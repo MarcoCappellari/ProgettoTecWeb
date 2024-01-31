@@ -92,7 +92,6 @@ function getOrariByFilmId($conn, $idFilm){
     return $orari;
 }
 
-//@gian
 function getFilmByName($conn, $film_name)
 {
     $film_name = $conn->real_escape_string($film_name);
@@ -448,19 +447,23 @@ function deleteFilm($conn, $film_id){
     $stmtFilm->close();
 }
 
-function getProiezioni($conn)
+function getProiezioniFilm($conn, $film)
 {
     $result = "SELECT Film.titolo, Proiezione.*
                                 FROM Film
                                 JOIN Proiezione ON Film.id = Proiezione.id_film
+                                WHERE Film.id = ?
                                 ORDER BY Film.titolo, Proiezione.data, Proiezione.ora";
-    $result_proiezioni_per_film = $conn->query($result);
+    $stmt = $conn->prepare($result);
+    $stmt->bind_param("i", $film);
+    $stmt->execute();
+    $result_proiezioni_per_film = $stmt->get_result();
+
     if ($result_proiezioni_per_film->num_rows > 0) {
         return $result_proiezioni_per_film;
     } else {
         return null;
     }
-
 }
 
 function updateUserInfo($conn, $mail, $username, $nome, $cognome, $password) {
@@ -517,6 +520,35 @@ function inserisciProiezione($conn, $film, $sala, $ora, $data) {
     $stmt->bind_param("ssss", $film, $sala, $ora, $data);
     $stmt->execute();
 
+}
+
+function inserisciBiglietto($conn, $id_proiezione, $mail, $fila, $num_posto, $id_sala){
+    $sql = "INSERT INTO Biglietto (id_proiezione, id_utente, fila, numero_posto, id_sala)
+    VALUES (?, ?, ?, ?, ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("issii", $id_proiezione, $mail, $fila, $num_posto, $id_sala);
+    $stmt->execute();
+
+}
+
+function getIdProiezione($conn, $id_film, $ora, $id_sala){
+    $sql = "SELECT P.id FROM Proiezione AS P WHERE (P.id_film = ? && P.ora = ? && P.id_sala = ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isi", $id_film, $ora, $id_sala);
+    $stmt->execute();
+    $result_verifica_succ = $stmt->get_result();
+    $row_verifica_succ = $result_verifica_succ->fetch_assoc();
+    return $row_verifica_succ['id'];
+}
+
+function getIdSala($conn, $sala){
+    $sql = "SELECT S.id FROM Sala AS S WHERE S.nome=?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $sala);
+    $stmt->execute();
+    $result_verifica_succ = $stmt->get_result();
+    $row_verifica_succ = $result_verifica_succ->fetch_assoc();
+    return $row_verifica_succ['id'];
 }
 
 

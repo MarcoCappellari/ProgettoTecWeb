@@ -24,7 +24,7 @@ $nome_sala= $Sala['nome'];
 $ora_formattata = date('H:i', strtotime($ora_film));
 
 $risultato_info='';
-$prenota='<form id="biglietto-recap-form" action="./php/pagamento.php" method="post">';
+$prenota='<form id="biglietto-recap-form" action="conferma_prenotazione.php" method="post">';
 $registrazione = '';
 $biglietto = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $registrazione = '<h2>Acquista i biglietti come '.$_SESSION['mail'].'</h2>
+            $registrazione = '<h2>Prenota i biglietti come '.$_SESSION['mail'].'</h2>
                                 <p>I biglietti che acquisterai verranno inviati alla precedente <span lang="en">mail<span></p>';
 
             $prenota .= '<input type="hidden" name="idFilm" value="' . $id_film . '">';
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $accedi_stringa = '<a href="accedi.php">Accedi</a>';
         }
-        $prenota .= '<input type="submit" name="submit_button" value="Vai al pagamento">
+        $prenota .= '<input type="submit" name="submit_button" value="Conferma Prenotazione">
             </form>';
 
 
