@@ -34,8 +34,8 @@ footer {
     width: 5em; 
     height: 5em; 
     background-image: url('../images/menu-bottom.png');
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #bottomMenu {
@@ -43,7 +43,7 @@ footer {
     text-align: center;
     background-color: var(--BgColor); 
     font-size: 26px;
-    padding: 3em; 
+    padding: 1em;
     margin: auto;
 }
 
@@ -56,6 +56,7 @@ footer {
     margin-bottom: 3em; 
     font-weight: bold;
     font-size: 1.25em;
+    line-height: 1.3em;
 }
 
 #menu{
@@ -120,4 +121,17 @@ footer {
 
 #modifica_film_container, #proiezioni_container, #modifica_utente_container{
     padding: 0.5em;
+}
+
+/* ---------------------- */
+#searchHeader{
+    gap: 0.25em;
+}
+
+#film-dettagli
+{
+    max-width: 90%;
+}
+#cinema-screen{
+    width: 80%;
 }
