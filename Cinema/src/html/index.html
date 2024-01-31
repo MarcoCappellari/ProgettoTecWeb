@@ -38,7 +38,7 @@
         <div id="searchHeader">
             <h1>Film del momento</h1>
             <form id="search-form" action="src/php/barra_ricerca.php" role="search" method="GET">
-                <input list="film-list" name="film_name" placeholder="Inserisci il nome di un film...">
+                <input list="film-list" name="film_name" placeholder="Inserisci il nome di un film..." required>
                 <datalist id="film-list">
                     {DATALIST-RISULTATI}
                 </datalist>

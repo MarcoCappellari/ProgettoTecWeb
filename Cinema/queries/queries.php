@@ -13,7 +13,7 @@ function getFilms($conn){
     $result = $conn->query($sql);
 
     if (!$result) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -33,7 +33,7 @@ function getFilmByIdQuery($conn, $idFilm)
     if ($resultFilm && $resultFilm->num_rows > 0) {
         return $resultFilm->fetch_assoc();
     } else {
-        header('Location: ../html/404.html');
+        header('Location: ../php/404.php');
         exit;
     }
 }
@@ -121,7 +121,7 @@ function absentProiection($conn, $id_film, $ora_film, $data_film){
 
     if (!($result = $stmt->get_result())) {
         $stmt->close();
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
     $stmt->close();
@@ -145,13 +145,13 @@ function getSalaByProiection($conn, $id_film, $ora_film, $data_film){
     $stmt->execute();
 
     if (!($result = $stmt->get_result())) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         $stmt->close();
         exit();
     }
 
     if ($result->num_rows == 0) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         $stmt->close();
         exit();
     }
@@ -180,13 +180,13 @@ function getSeatByFilmOraData($conn, $id_film, $ora_film, $data_film){
 
 
     if (!$result = $stmt->get_result()) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         $stmt->close();
         exit();
     }
 
     if ($result->num_rows == 0) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         $stmt->close();
         exit();
     }
@@ -206,7 +206,7 @@ function getUserByMailOrUsername($conn, $user){
     $result = $stmt->get_result();
 
     if (!$result) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -241,7 +241,7 @@ function getPermessiByUsername($conn, $user){
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -256,7 +256,7 @@ function getSala($conn){
     $result = $conn->query($query);
 
     if (!$result) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -317,7 +317,7 @@ function getRecensioni($conn){
                 ORDER BY data DESC;";
 
     if (!$result = $conn->query($query)) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
@@ -341,7 +341,7 @@ function writeRecensione($conn, $mail_utente, $content){
     $stmt->get_result();
 
     if ($stmt->errno) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     } else {
         return null;
@@ -354,7 +354,7 @@ function getGeneris($conn)
     $result = $conn->query($sql);
 
     if (!$result) {
-        header('Location: ../html/500.html');
+        header('Location: ../php/500.php');
         exit();
     }
 
