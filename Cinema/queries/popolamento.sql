@@ -1,7 +1,7 @@
 -- Inserisci dati nella tabella Utente
 INSERT INTO Utente (username, nome, cognome, mail, permessi, password) VALUES 
-('user1', 'Mario', 'Rossi', 'mario@email.com', 1, 'a'),
-('user2', 'Luca', 'Bianchi', 'luca@email.com', 0, 'a');
+('admin', 'Mario', 'Rossi', 'admin@gmail.com', 1, 'admin'),
+('user', 'Luca', 'Bianchi', 'user@gmail.com', 0, 'user');
 
 -- Inserisci dati nella tabella Film
 INSERT INTO Film (titolo, regista, durata, locandina, trama) VALUES 
@@ -201,11 +201,11 @@ INSERT INTO Classificazione (id_film, nome_genere) VALUES
 
 -- Popolamento della tabella Biglietto
 INSERT INTO Biglietto (id_proiezione, id_utente, fila, numero_posto, id_sala) VALUES
-(1, 'mario@email.com', 'A', 1, 1),
-(2, 'mario@email.com', 'B', 3, 2);
+(1, 'admin@gmail.com', 'A', 1, 1),
+(2, 'admin@gmail.com', 'B', 3, 2);
 
 
 -- Inserisci dati nella tabella Recensioni
 INSERT INTO Recensioni (id, testo, data_creazione, id_utente) VALUES 
-(1, 'Bel film!', NOW(), 'mario@email.com'),
-(2, 'Molto interessante', NOW(), 'luca@email.com');
+(1, 'Bel film!', NOW(), 'admin@gmail.com'),
+(2, 'Molto interessante', NOW(), 'user@gmail.com');

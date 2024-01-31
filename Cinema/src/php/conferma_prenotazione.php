@@ -33,8 +33,12 @@ foreach ($posti_selezionati as $posto) {
 
     inserisciBiglietto($conn, $id_proiezione, $mail, $fila, $num_posto, $id_sala);
 }
+if($_SESSION['mail']!=''){
+    header('Location: biglietti.php');  
+}else{
+    header('Location: ../../index.php');   
+}
 
-header('Location: biglietti.php');
 exit();
 
 ?>
