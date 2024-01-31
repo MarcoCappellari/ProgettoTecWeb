@@ -20,6 +20,7 @@ if ($result==null) {
 } else {
     $stringa_info_sale .= ' <div class="table-container">
                                 <table aria-describedby="desc-sale">
+                                <caption>Sale PopCorn Cinema</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">Sala</th>
