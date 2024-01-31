@@ -15,19 +15,19 @@
     /* LAYOUT */
     --bgColorHome: #000000;
     --txtColorHome: #f0f0f0;
-    --mainBgColor: #f0f0f0;
+    --mainBgColor: #ffffff;
     --txtColor: #000000;
     /* FOOTER */
     --BgColor: #292828;
     --footerTxtColor: #ffffff;
     /* LINK */
-    --linkColor: #0294b9;
-    --visitedLinkColor: #FF0000;
+    --linkColor: #4e78a2;
+    --visitedLinkColor: #AB4CC8 ;
     /* TABLE */
     --theadBgColor: #c5c5c5;
     --alternativeLine: #dddddd;
     --borderColor: #8b8b8b;
-    --hoverColor: #0294b9;
+    --hoverColor: #4e78a2;
     /* FONT */
     --font-body_family: "Century Gothic", sans-serif;
     /* POSTI */
