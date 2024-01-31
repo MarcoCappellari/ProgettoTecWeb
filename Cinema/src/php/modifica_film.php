@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $regista = clearInput($_POST["regista"]);
     $durata = clearInput($_POST["durata"]);
     $genere_primario = clearInput($_POST["genere_primario"]);
-    if(isset(clearInput($_POST["genere_secondario"]))) {
+    if(isset($_POST["genere_secondario"])) {
         
         $genere_secondario = clearInput($_POST["genere_secondario"]);
 
