@@ -796,7 +796,7 @@ input[type="checkbox"]:disabled + .label-posto, #occupato {
     font-size: 1em;
     font-family: var(--font-body_family);
     border-radius: 8px;
-    border-color: var(--borderColor);
+    border: 1px solid var(--borderColor);
 }
 
 #recensioni-container{
