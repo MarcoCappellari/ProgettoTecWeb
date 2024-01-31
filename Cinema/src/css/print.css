@@ -7,7 +7,9 @@
     padding: 0;
     margin: 0;
 }
-
+#logo{
+    filter: invert(100%);
+}
 main {
     margin: 10px;
 }
@@ -26,19 +28,25 @@ footer .footer-title {
     margin-bottom: 0;
 }
 
-#logo{
-    width: 9em;
-    height: auto; 
+/*link*/
+a:link::after, a:visited::after{
+    content:"[http://www.cinema/"attr(href)"]";
+    font-size: 80%;
+    word-wrap: break-word;
 }
+
+.film-ora a:link::after, a:visited::after{
+    content: none;
+}
+
 /*Index*/
 .film-image {
     max-width: 90%;
 }
 
 #film-container {
-    grid-template-columns: repeat(auto-fill, 7em);
+    grid-template-columns: repeat(auto-fill, 10em);
     justify-content: center; 
-   
 }
 
 /*info-film*/
@@ -51,16 +59,13 @@ margin: 0;
     max-width: 100%;
 }
 
-#data-ora {
-    
+#data-ora {  
     flex-wrap: nowrap;
 }
 
 .orari-container {
-
    margin: 10px;
     grid-template-columns: repeat(3, 1fr);
-
 }
 
 /*posti*/
@@ -71,7 +76,6 @@ margin: 0;
 }
 
 #film-posti {
-   
     padding: 10px;
     margin:10px;
     max-width: 70%;
@@ -87,16 +91,10 @@ margin: 0;
 #container-recap-biglietti{
     flex-wrap: nowrap;
     padding: 10px;
-
 }
 
 .biglietto-recap{
     padding: 10px;
-}
-
-
-#container-recap-prenotazione p{
-    display: none;
 }
 
 /*Recensione*/
@@ -106,44 +104,4 @@ margin: 0;
    padding: 0px;
 }
 
-/*login*/
-#login {
-    padding: 10px;
 
-}
-
-/*admin*/
-#adminArea {
-    padding: 0;
-    margin: 0;
-}
-
-/*aggiungi-film*/
-#aggiungi_film{
-    padding: 0;
-}
-
-#aggiungi_film select,#aggiungi_film input , #aggiungi_film textarea,#aggiungi_film fieldset{
-    width: 100%;
-    padding: 5px;
-    font-size: medium;
-    box-sizing: border-box;
-}
-#aggiunta-film-form {
-   
-    padding: 0px;
-
-    gap: 10px;
-
-}
-
-/*aggiungi proiezione*/
-#aggiungi_proiezione{
-    padding: 10px;
-}
-
-/*elimina proiezioni*/
-#modifica_film_container, #proiezioni_container, #modifica_utente_container {
-    max-width: 100%;
-    
-}
