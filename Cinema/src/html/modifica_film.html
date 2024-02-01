@@ -51,12 +51,12 @@
                 <input type="submit" value="Modifica Film">
             </form>
             {RISULTATO}
-            <form id="modifica-film-form" action="../php/modifica_film.php" method="post" {SHOW_SECOND_FORM}>
+            <form id="modifica-film-form" action="../php/modifica_film.php" method="post">
 
                 <input type="hidden" id="film_id" name="film_id" value="{ID_FILM}">
                 <input type="hidden" name="form_type" value="form2">
 
-                <h2>Scheda del film: {TITOLO}</h2>
+                <h1>Scheda del film: {TITOLO}</h1>
                 <fieldset>
                     <legend>Film</legend>
                     <div>

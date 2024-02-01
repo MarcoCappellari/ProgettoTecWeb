@@ -15,7 +15,6 @@ $locandina = '';
 $trama = '';
 $regista = '';
 $durata = '';
-$showSecondForm = true;
 $film_id = '';
 
 // Se il form è stato inviato
@@ -38,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $durata = $filmInfo['durata'];
     $locandina = $filmInfo['locandina'];
     $trama = $filmInfo['trama'];
-    $showSecondForm = false;
 }
 
 $films = getFilms($conn);
@@ -76,9 +74,8 @@ while ($row = $generi->fetch_assoc()) {
 
 //SECONDO FORM
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST["form_type"] == "form2") {
-    if (isset($_POST["film_id"])) {
+    if ($_POST["film_id"]!='') {
         $film_id = $_POST["film_id"];
-
         $titolo = clearInput($_POST["titolo"]);
         $locandina_path = clearInput($_POST["locandina_path"]);
         $locandina = clearInput($_POST["locandina"]);
@@ -110,9 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
             deleteFilm($conn, $film_id);
             $risultato = "<p>Il film <span class='bold-text'>'" . $titolo . "' </span> è stato ELIMINATO correttamente!</p>";
         }
-
         $conn->close();
-        $showSecondForm = true;
     } else {
         $risultato="<p>Devi prima selezionare un film!</p>";
     }
@@ -131,8 +126,6 @@ $template = str_replace('{DURATA}', $durata, $template);
 $template = str_replace('{GENERE1}', $genere_primo, $template);
 $template = str_replace('{GENERE2}', $genere_secondo, $template);
 $template = str_replace('{FILM-OPZIONI}', $film_info, $template);
-$template = str_replace('{SHOW_SECOND_FORM}', $showSecondForm ? '' : 'hidden', $template);
-
 $template = str_replace('{RISULTATO}', $risultato, $template);
 $template = str_replace('{ACCEDI}', $accedi_stringa, $template);
 $template = str_replace('{FOOTER}', $footer, $template);
